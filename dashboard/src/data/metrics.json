@@ -1,0 +1,140 @@
+{
+  "dataset": {
+    "trajectories": 3150,
+    "rows": 5340865,
+    "trainTrajectories": 2205,
+    "valTrajectories": 472,
+    "testTrajectories": 473,
+    "splitOverlap": 0
+  },
+  "v02": {
+    "prAuc": 0.8133,
+    "eventRecall": 1.0,
+    "nEvents": 14,
+    "nWarned": 14,
+    "medianLeadTimeS": 0.525,
+    "warningCoverage": {
+      ">=1s": 0.1429,
+      ">=2s": 0.1429,
+      ">=3s": 0.0714,
+      ">=4s": 0.0,
+      ">=5s": 0.0
+    }
+  },
+  "v03": {
+    "prAuc": 0.8903,
+    "rocAuc": 0.9775,
+    "precision": 0.9348,
+    "recall": 0.7361,
+    "eventRecall": 0.9605,
+    "nEvents": 76,
+    "nWarned": 73,
+    "medianLeadTimeS": 4.72,
+    "meanLeadTimeS": 3.4244,
+    "warningCoverage": {
+      ">=1s": 0.7237,
+      ">=2s": 0.6447,
+      ">=3s": 0.5921,
+      ">=4s": 0.5526,
+      ">=5s": 0.3816
+    },
+    "leadTimeRecallBuckets": [
+      {
+        "bucket": "0-0.5s",
+        "n_positive_rows": 20547,
+        "recall": 0.9718,
+        "n_warned": 19967,
+        "n_missed": 580
+      },
+      {
+        "bucket": "0.5-1s",
+        "n_positive_rows": 3725,
+        "recall": 0.6961,
+        "n_warned": 2593,
+        "n_missed": 1132
+      },
+      {
+        "bucket": "1-2s",
+        "n_positive_rows": 6790,
+        "recall": 0.6184,
+        "n_warned": 4199,
+        "n_missed": 2591
+      },
+      {
+        "bucket": "2-3s",
+        "n_positive_rows": 5621,
+        "recall": 0.4819,
+        "n_warned": 2709,
+        "n_missed": 2912
+      },
+      {
+        "bucket": "3-4s",
+        "n_positive_rows": 5109,
+        "recall": 0.4692,
+        "n_warned": 2397,
+        "n_missed": 2712
+      },
+      {
+        "bucket": "4-5s",
+        "n_positive_rows": 4372,
+        "recall": 0.4842,
+        "n_warned": 2117,
+        "n_missed": 2255
+      }
+    ],
+    "nFeatures": 23,
+    "windowS": 1.0,
+    "threshold": 0.8586
+  },
+  "generalization": {
+    "forward": {
+      "prAuc": 0.8353,
+      "eventRecall": 1.0,
+      "nEvents": 46,
+      "nWarned": 46,
+      "medianLeadTimeS": 2.955,
+      "meanLeadTimeS": 3.2483,
+      "warningCoverage": {
+        ">=1s": 0.8913,
+        ">=2s": 0.8913,
+        ">=3s": 0.4565,
+        ">=4s": 0.3696,
+        ">=5s": 0.2826
+      }
+    },
+    "reverse": {
+      "prAuc": 0.7075,
+      "eventRecall": 0.8704,
+      "nEvents": 54,
+      "nWarned": 47,
+      "medianLeadTimeS": 5.0,
+      "warningCoverage": {
+        ">=1s": 0.7778,
+        ">=2s": 0.7222,
+        ">=3s": 0.5741,
+        ">=4s": 0.463,
+        ">=5s": 0.4444
+      }
+    },
+    "decision": "CASE A",
+    "forwardPopulation": {
+      "n_trajectories": 300,
+      "n_crossing_trajectories": 47,
+      "n_usable_rows": 259025,
+      "n_events": 46
+    },
+    "reverseTrainPopulation": {
+      "n_rows": 248362,
+      "n_trajectories": 273
+    },
+    "zeroExposureExclusion": {
+      "prAuc": 0.5523,
+      "eventRecall": 0.6447,
+      "medianLeadTimeS": 0.73
+    }
+  },
+  "tests": {
+    "passing": 190,
+    "total": 190
+  }
+}

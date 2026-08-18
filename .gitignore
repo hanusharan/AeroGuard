@@ -27,3 +27,6 @@ data/ml_temporal_v03/*.parquet
 outputs/v03_calibration/*.parquet
 outputs/ml_v03_generalization/data/*.parquet
 outputs/ml_v03_generalization/calibration/*.parquet
+
+# Claude Code local configuration
+.claude/
