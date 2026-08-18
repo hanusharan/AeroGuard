@@ -1,0 +1,95 @@
+{
+  "seed": 20260817,
+  "dt": 0.01,
+  "history_windows_s": [
+    0.5,
+    1.0,
+    2.0,
+    3.0
+  ],
+  "rf_hyperparameters_frozen": {
+    "n_estimators": 200,
+    "max_depth": 12,
+    "min_samples_leaf": 5,
+    "class_weight": "balanced_subsample"
+  },
+  "primary_window_s": 1.0,
+  "instantaneous_state_features": [
+    "V",
+    "alpha",
+    "gamma",
+    "pitch_rate",
+    "altitude",
+    "elevator",
+    "throttle",
+    "stall_margin"
+  ],
+  "state_derivative_features_model_b": [
+    "V",
+    "alpha",
+    "gamma",
+    "pitch_rate",
+    "altitude",
+    "elevator",
+    "throttle",
+    "stall_margin",
+    "dV_dt",
+    "dalpha_dt",
+    "dgamma_dt",
+    "dq_dt",
+    "d2alpha_dt2"
+  ],
+  "temporal_feature_columns_by_window": {
+    "0.5": [
+      "alpha_mean_0.5s",
+      "alpha_min_0.5s",
+      "alpha_max_0.5s",
+      "alpha_range_0.5s",
+      "alpha_slope_0.5s",
+      "alpha_trend_0.5s",
+      "V_slope_0.5s",
+      "gamma_slope_0.5s",
+      "pitch_rate_slope_0.5s",
+      "elevator_change_0.5s"
+    ],
+    "1": [
+      "alpha_mean_1s",
+      "alpha_min_1s",
+      "alpha_max_1s",
+      "alpha_range_1s",
+      "alpha_slope_1s",
+      "alpha_trend_1s",
+      "V_slope_1s",
+      "gamma_slope_1s",
+      "pitch_rate_slope_1s",
+      "elevator_change_1s"
+    ],
+    "2": [
+      "alpha_mean_2s",
+      "alpha_min_2s",
+      "alpha_max_2s",
+      "alpha_range_2s",
+      "alpha_slope_2s",
+      "alpha_trend_2s",
+      "V_slope_2s",
+      "gamma_slope_2s",
+      "pitch_rate_slope_2s",
+      "elevator_change_2s"
+    ],
+    "3": [
+      "alpha_mean_3s",
+      "alpha_min_3s",
+      "alpha_max_3s",
+      "alpha_range_3s",
+      "alpha_slope_3s",
+      "alpha_trend_3s",
+      "V_slope_3s",
+      "gamma_slope_3s",
+      "pitch_rate_slope_3s",
+      "elevator_change_3s"
+    ]
+  },
+  "primary_model_threshold": 0.8413257579281453,
+  "best_window_ablation_model_by_common_subset_pr_auc": "D_1s",
+  "runtime_seconds": 544.5129919052124
+}

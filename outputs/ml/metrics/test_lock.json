@@ -1,0 +1,132 @@
+{
+  "aoa_rule_threshold_rad": 0.2521062213634384,
+  "trend_rule_margin_rad": 0.09154259484431554,
+  "trend_rule_trend_rad_s": 4.649058915617843e-14,
+  "models": {
+    "logistic_regression": {
+      "hyperparameters": {
+        "C": 1.0,
+        "class_weight": null
+      },
+      "probability_threshold": 0.3379114500068208,
+      "tuning_log": [
+        {
+          "params": {
+            "C": 0.1,
+            "class_weight": "balanced"
+          },
+          "val_pr_auc": 0.6798618047385198,
+          "fit_seconds": 0.46776866912841797
+        },
+        {
+          "params": {
+            "C": 1.0,
+            "class_weight": "balanced"
+          },
+          "val_pr_auc": 0.6796900959657207,
+          "fit_seconds": 0.5011162757873535
+        },
+        {
+          "params": {
+            "C": 10.0,
+            "class_weight": "balanced"
+          },
+          "val_pr_auc": 0.6796843585156926,
+          "fit_seconds": 0.5165820121765137
+        },
+        {
+          "params": {
+            "C": 1.0,
+            "class_weight": null
+          },
+          "val_pr_auc": 0.682049074189804,
+          "fit_seconds": 0.4442000389099121
+        }
+      ]
+    },
+    "random_forest": {
+      "hyperparameters": {
+        "n_estimators": 200,
+        "max_depth": 12,
+        "min_samples_leaf": 5,
+        "class_weight": "balanced_subsample"
+      },
+      "probability_threshold": 0.7730512613347896,
+      "tuning_log": [
+        {
+          "params": {
+            "n_estimators": 200,
+            "max_depth": 12,
+            "min_samples_leaf": 5,
+            "class_weight": "balanced_subsample"
+          },
+          "val_pr_auc": 0.7709046795884412,
+          "fit_seconds": 27.30165195465088
+        },
+        {
+          "params": {
+            "n_estimators": 200,
+            "max_depth": 20,
+            "min_samples_leaf": 5,
+            "class_weight": "balanced_subsample"
+          },
+          "val_pr_auc": 0.7438436992022248,
+          "fit_seconds": 30.36373805999756
+        },
+        {
+          "params": {
+            "n_estimators": 300,
+            "max_depth": 20,
+            "min_samples_leaf": 2,
+            "class_weight": "balanced_subsample"
+          },
+          "val_pr_auc": 0.7462928649998767,
+          "fit_seconds": 46.062968730926514
+        }
+      ]
+    },
+    "gradient_boosting": {
+      "hyperparameters": {
+        "max_iter": 300,
+        "max_depth": 6,
+        "learning_rate": 0.05,
+        "class_weight": "balanced"
+      },
+      "probability_threshold": 0.7816073908519552,
+      "tuning_log": [
+        {
+          "params": {
+            "max_iter": 150,
+            "max_depth": 6,
+            "learning_rate": 0.1,
+            "class_weight": "balanced"
+          },
+          "val_pr_auc": 0.7228094179508289,
+          "fit_seconds": 3.317034959793091
+        },
+        {
+          "params": {
+            "max_iter": 300,
+            "max_depth": 6,
+            "learning_rate": 0.05,
+            "class_weight": "balanced"
+          },
+          "val_pr_auc": 0.7306707774980541,
+          "fit_seconds": 6.064486265182495
+        },
+        {
+          "params": {
+            "max_iter": 150,
+            "max_depth": 10,
+            "learning_rate": 0.1,
+            "class_weight": "balanced"
+          },
+          "val_pr_auc": 0.6986232101379972,
+          "fit_seconds": 3.600327968597412
+        }
+      ]
+    }
+  },
+  "frozen_at": "2026-08-18 02:46:31",
+  "sklearn_version": "1.9.0"
+}

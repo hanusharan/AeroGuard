@@ -1,0 +1,29 @@
+# Environment / tooling
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# --- Large generated data & artifacts -----------------------------------
+# These are all regenerable from the versioned scripts + documented seeds
+# (see REPRODUCIBILITY.md). Excluded from git so the repo stays a
+# reasonably-sized source/report artifact rather than a multi-GB data dump.
+# Small, human-readable metadata (CSV/JSON manifests, schemas) is
+# deliberately kept — see the negations below.
+
+# data/: raw + processed trajectory parquet files (v1/v2/v3, ~3.6GB total)
+data/raw/
+data/processed/
+data/ml/*.parquet
+data/ml_temporal/*.parquet
+data/ml_temporal_v03/*.parquet
+# data/metadata/ and data/splits/ are small (CSV/JSON) and ARE tracked.
+
+# outputs/: bulky intermediate calibration/generalization parquet dumps
+# (raw per-timestep telemetry for calibration batches). Reports, metrics
+# (csv/json/md), plots (png), and trained models (joblib) ARE tracked —
+# those are the actual research artifacts.
+outputs/v03_calibration/*.parquet
+outputs/ml_v03_generalization/data/*.parquet
+outputs/ml_v03_generalization/calibration/*.parquet

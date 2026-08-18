@@ -1,0 +1,173 @@
+{
+  "dataset_version": "stage2-initial-1000-v1",
+  "seed": 20260817,
+  "generation_config": {
+    "seed": 20260817,
+    "dataset_version": "stage2-initial-1000-v1",
+    "n_trajectories": 1000,
+    "dt": 0.01,
+    "duration_s": 20.0,
+    "v0_min": 30.0,
+    "v0_max": 75.0,
+    "altitude_min": 500.0,
+    "altitude_max": 2000.0,
+    "validity_v_floor_fraction_of_vstall": 0.5,
+    "validity_gamma_max_deg": 45.0,
+    "labeling_horizon_s": 5.0,
+    "regime_proportions": {
+      "normal": 0.5,
+      "boundary": 0.25,
+      "stall": 0.25
+    }
+  },
+  "aircraft_parameters": {
+    "mass": 1200.0,
+    "wing_area": 16.2,
+    "Iyy": 1285.0,
+    "CD0": 0.028,
+    "k": 0.045,
+    "CL0": 0.2,
+    "CL_alpha": 5.5,
+    "alpha_stall": 0.2793,
+    "stall_transition_rate": 25.0,
+    "post_stall_decay_rate": 3.0,
+    "thrust_max": 2600.0,
+    "elevator_effectiveness": 32000.0,
+    "pitch_damping": 6000.0,
+    "alpha_stiffness": 10000.0
+  },
+  "regime_control_configs": {
+    "normal": {
+      "elevator": {
+        "magnitude_min": 0.01,
+        "magnitude_max": 0.04,
+        "rise_s_min": 0.5,
+        "rise_s_max": 2.0,
+        "hold_s_min": 0.2,
+        "hold_s_max": 1.5,
+        "fall_s_min": 0.5,
+        "fall_s_max": 2.0
+      },
+      "throttle": {
+        "magnitude_min": 0.03,
+        "magnitude_max": 0.1,
+        "rise_s_min": 0.5,
+        "rise_s_max": 2.5,
+        "hold_s_min": 0.5,
+        "hold_s_max": 2.0,
+        "fall_s_min": 0.5,
+        "fall_s_max": 2.5
+      },
+      "n_pulses_choices": [
+        1,
+        2
+      ],
+      "both_channels_prob": 0.3,
+      "elevator_prob_if_single": 0.5
+    },
+    "boundary": {
+      "elevator": {
+        "magnitude_min": 0.07,
+        "magnitude_max": 0.14,
+        "rise_s_min": 0.3,
+        "rise_s_max": 1.5,
+        "hold_s_min": 0.8,
+        "hold_s_max": 3.5,
+        "fall_s_min": 0.5,
+        "fall_s_max": 2.5
+      },
+      "throttle": {
+        "magnitude_min": 0.05,
+        "magnitude_max": 0.15,
+        "rise_s_min": 0.3,
+        "rise_s_max": 2.0,
+        "hold_s_min": 0.5,
+        "hold_s_max": 2.5,
+        "fall_s_min": 0.5,
+        "fall_s_max": 2.0
+      },
+      "n_pulses_choices": [
+        1,
+        2
+      ],
+      "both_channels_prob": 0.4,
+      "elevator_prob_if_single": 0.7
+    },
+    "stall": {
+      "elevator": {
+        "magnitude_min": 0.19,
+        "magnitude_max": 0.32,
+        "rise_s_min": 0.2,
+        "rise_s_max": 1.0,
+        "hold_s_min": 2.0,
+        "hold_s_max": 5.0,
+        "fall_s_min": 0.3,
+        "fall_s_max": 1.5
+      },
+      "throttle": {
+        "magnitude_min": 0.05,
+        "magnitude_max": 0.2,
+        "rise_s_min": 0.2,
+        "rise_s_max": 1.5,
+        "hold_s_min": 0.5,
+        "hold_s_max": 3.0,
+        "fall_s_min": 0.3,
+        "fall_s_max": 1.5
+      },
+      "n_pulses_choices": [
+        1,
+        2
+      ],
+      "both_channels_prob": 0.4,
+      "elevator_prob_if_single": 0.85
+    }
+  },
+  "resolved_validity_envelope": {
+    "v_stall_m_s": 26.140289984056395,
+    "v_floor_m_s": 13.070144992028197,
+    "gamma_max_rad": 0.7853981633974483,
+    "gamma_max_deg": 45.0
+  },
+  "resolved_stall_boundary": {
+    "alpha_at_cl_peak_rad": 0.28044009791924895,
+    "alpha_at_cl_peak_deg": 16.068034017008504,
+    "cl_max": 1.7362343483416827
+  },
+  "v0_range_validation": {
+    "v_stall_m_s": 26.140289984056395,
+    "v_floor_m_s": 13.070144992028197,
+    "requested_v0_min": 30.0,
+    "requested_v0_max": 75.0,
+    "v0_min_margin_over_vstall": 1.1476536801350612,
+    "v0_max_margin_over_vstall": 2.869134200337653,
+    "v0_min_above_vstall": true,
+    "v0_min_above_v_floor": true
+  },
+  "train_val_test_fractions": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "raw_columns": [
+    "trajectory_id",
+    "time",
+    "V",
+    "alpha",
+    "theta",
+    "gamma",
+    "altitude",
+    "pitch_rate",
+    "vertical_speed",
+    "thrust",
+    "elevator",
+    "throttle"
+  ],
+  "derived_columns": [
+    "dV_dt",
+    "dalpha_dt",
+    "stall_margin",
+    "is_unsafe",
+    "future_stall_5s",
+    "future_stall_5s_available"
+  ]
+}

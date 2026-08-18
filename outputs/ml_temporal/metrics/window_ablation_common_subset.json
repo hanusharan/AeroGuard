@@ -1,0 +1,1151 @@
+{
+  "common_subset_population": {
+    "note": "Rows with a full history window at the LARGEST window under comparison (3.0s) -- required so every model in this table is trained and evaluated on IDENTICAL rows (Task 5). This is a strictly easier/longer-trajectory population than the primary test set -- see the primary-population model for a realistic-scale number.",
+    "train_rows": 706974,
+    "val_rows": 143779,
+    "test_rows": 148436,
+    "train_rows_pct_of_usable": 0.7912571266125115,
+    "test_trajectories": 126,
+    "test_trajectories_total": 150
+  },
+  "A_frozen_baseline": {
+    "threshold": 0.8221727982762517,
+    "test_metrics": {
+      "pr_auc": 0.93285148480315,
+      "roc_auc": 0.9781528984552821,
+      "precision": 0.9554502369668246,
+      "recall": 0.8811188811188811,
+      "f1": 0.9167803547066848,
+      "accuracy": 0.9938357271820852,
+      "confusion_matrix": {
+        "tn": 142481,
+        "fp": 235,
+        "fn": 680,
+        "tp": 5040
+      },
+      "n_positive": 5720,
+      "n_negative": 142716
+    },
+    "lead_time_recall_bucket": [
+      {
+        "bucket": "0-0.5s",
+        "n_positive_rows": 4949,
+        "recall": 0.9995958779551425,
+        "n_warned": 4947,
+        "n_missed": 2
+      },
+      {
+        "bucket": "0.5-1s",
+        "n_positive_rows": 249,
+        "recall": 0.3654618473895582,
+        "n_warned": 91,
+        "n_missed": 158
+      },
+      {
+        "bucket": "1-2s",
+        "n_positive_rows": 299,
+        "recall": 0.006688963210702341,
+        "n_warned": 2,
+        "n_missed": 297
+      },
+      {
+        "bucket": "2-3s",
+        "n_positive_rows": 162,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 162
+      },
+      {
+        "bucket": "3-4s",
+        "n_positive_rows": 57,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 57
+      },
+      {
+        "bucket": "4-5s",
+        "n_positive_rows": 4,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 4
+      }
+    ],
+    "event_level": {
+      "n_events": 13,
+      "n_warned": 9,
+      "n_missed": 4,
+      "event_recall": 0.6923076923076923,
+      "median_lead_time_s": 0.5699999999999994,
+      "mean_lead_time_s": 0.5066666666666667,
+      "std_lead_time_s": 0.27636529770898843,
+      "min_lead_time_s": 0.08000000000000007,
+      "max_lead_time_s": 1.0100000000000002,
+      "lead_times_s": [
+        0.33000000000000007,
+        0.56,
+        0.5699999999999994,
+        0.5700000000000003,
+        1.0100000000000002,
+        0.7000000000000002,
+        0.10999999999999988,
+        0.08000000000000007,
+        0.6299999999999999
+      ]
+    },
+    "fraction_of_events_detected_at_least": {
+      ">=1s": 0.07692307692307693,
+      ">=2s": 0.0,
+      ">=3s": 0.0,
+      ">=4s": 0.0,
+      ">=5s": 0.0
+    },
+    "feature_columns": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "dV_dt",
+      "dalpha_dt",
+      "dgamma_dt",
+      "dq_dt"
+    ],
+    "n_features": 12,
+    "note": "Frozen outputs/ml_baseline/models/random_forest.joblib, NOT retrained here -- re-scored on this experiment's row population for reference only."
+  },
+  "B_state_derivatives": {
+    "threshold": 0.8748336991928778,
+    "test_metrics": {
+      "pr_auc": 0.9331639238224942,
+      "roc_auc": 0.9813706262591637,
+      "precision": 0.9291497975708503,
+      "recall": 0.8826923076923077,
+      "f1": 0.9053254437869822,
+      "accuracy": 0.9928858228462099,
+      "confusion_matrix": {
+        "tn": 142331,
+        "fp": 385,
+        "fn": 671,
+        "tp": 5049
+      },
+      "n_positive": 5720,
+      "n_negative": 142716
+    },
+    "lead_time_recall_bucket": [
+      {
+        "bucket": "0-0.5s",
+        "n_positive_rows": 4949,
+        "recall": 0.997373206708426,
+        "n_warned": 4936,
+        "n_missed": 13
+      },
+      {
+        "bucket": "0.5-1s",
+        "n_positive_rows": 249,
+        "recall": 0.42971887550200805,
+        "n_warned": 107,
+        "n_missed": 142
+      },
+      {
+        "bucket": "1-2s",
+        "n_positive_rows": 299,
+        "recall": 0.020066889632107024,
+        "n_warned": 6,
+        "n_missed": 293
+      },
+      {
+        "bucket": "2-3s",
+        "n_positive_rows": 162,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 162
+      },
+      {
+        "bucket": "3-4s",
+        "n_positive_rows": 57,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 57
+      },
+      {
+        "bucket": "4-5s",
+        "n_positive_rows": 4,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 4
+      }
+    ],
+    "event_level": {
+      "n_events": 13,
+      "n_warned": 9,
+      "n_missed": 4,
+      "event_recall": 0.6923076923076923,
+      "median_lead_time_s": 0.5799999999999992,
+      "mean_lead_time_s": 0.5122222222222221,
+      "std_lead_time_s": 0.3010639569474226,
+      "min_lead_time_s": 0.08000000000000007,
+      "max_lead_time_s": 1.0600000000000005,
+      "lead_times_s": [
+        0.2200000000000002,
+        0.56,
+        0.5799999999999992,
+        0.6600000000000001,
+        1.0600000000000005,
+        0.71,
+        0.10999999999999988,
+        0.08000000000000007,
+        0.6299999999999999
+      ]
+    },
+    "fraction_of_events_detected_at_least": {
+      ">=1s": 0.07692307692307693,
+      ">=2s": 0.0,
+      ">=3s": 0.0,
+      ">=4s": 0.0,
+      ">=5s": 0.0
+    },
+    "feature_columns": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "dV_dt",
+      "dalpha_dt",
+      "dgamma_dt",
+      "dq_dt",
+      "d2alpha_dt2"
+    ],
+    "n_features": 13
+  },
+  "C_0.5s": {
+    "threshold": 0.8733384577944246,
+    "test_metrics": {
+      "pr_auc": 0.9308159577519682,
+      "roc_auc": 0.9826605952415253,
+      "precision": 0.8643190056965303,
+      "recall": 0.8753496503496504,
+      "f1": 0.869799357248328,
+      "accuracy": 0.9899013716349133,
+      "confusion_matrix": {
+        "tn": 141930,
+        "fp": 786,
+        "fn": 713,
+        "tp": 5007
+      },
+      "n_positive": 5720,
+      "n_negative": 142716
+    },
+    "lead_time_recall_bucket": [
+      {
+        "bucket": "0-0.5s",
+        "n_positive_rows": 4949,
+        "recall": 0.995554657506567,
+        "n_warned": 4927,
+        "n_missed": 22
+      },
+      {
+        "bucket": "0.5-1s",
+        "n_positive_rows": 249,
+        "recall": 0.30120481927710846,
+        "n_warned": 75,
+        "n_missed": 174
+      },
+      {
+        "bucket": "1-2s",
+        "n_positive_rows": 299,
+        "recall": 0.016722408026755852,
+        "n_warned": 5,
+        "n_missed": 294
+      },
+      {
+        "bucket": "2-3s",
+        "n_positive_rows": 162,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 162
+      },
+      {
+        "bucket": "3-4s",
+        "n_positive_rows": 57,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 57
+      },
+      {
+        "bucket": "4-5s",
+        "n_positive_rows": 4,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 4
+      }
+    ],
+    "event_level": {
+      "n_events": 13,
+      "n_warned": 9,
+      "n_missed": 4,
+      "event_recall": 0.6923076923076923,
+      "median_lead_time_s": 0.5499999999999998,
+      "mean_lead_time_s": 0.47111111111111115,
+      "std_lead_time_s": 0.28691634260585624,
+      "min_lead_time_s": 0.08000000000000007,
+      "max_lead_time_s": 1.0400000000000005,
+      "lead_times_s": [
+        0.18999999999999995,
+        0.56,
+        0.4899999999999993,
+        0.5499999999999998,
+        1.0400000000000005,
+        0.6400000000000006,
+        0.10999999999999988,
+        0.08000000000000007,
+        0.5800000000000001
+      ]
+    },
+    "fraction_of_events_detected_at_least": {
+      ">=1s": 0.07692307692307693,
+      ">=2s": 0.0,
+      ">=3s": 0.0,
+      ">=4s": 0.0,
+      ">=5s": 0.0
+    },
+    "feature_columns": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "alpha_mean_0.5s",
+      "alpha_min_0.5s",
+      "alpha_max_0.5s",
+      "alpha_range_0.5s",
+      "alpha_slope_0.5s",
+      "alpha_trend_0.5s",
+      "V_slope_0.5s",
+      "gamma_slope_0.5s",
+      "pitch_rate_slope_0.5s",
+      "elevator_change_0.5s"
+    ],
+    "n_features": 18
+  },
+  "D_0.5s": {
+    "threshold": 0.8666682735707422,
+    "test_metrics": {
+      "pr_auc": 0.932687153473603,
+      "roc_auc": 0.9824747684628499,
+      "precision": 0.8909251101321586,
+      "recall": 0.8839160839160839,
+      "f1": 0.8874067573497147,
+      "accuracy": 0.9913565442345522,
+      "confusion_matrix": {
+        "tn": 142097,
+        "fp": 619,
+        "fn": 664,
+        "tp": 5056
+      },
+      "n_positive": 5720,
+      "n_negative": 142716
+    },
+    "lead_time_recall_bucket": [
+      {
+        "bucket": "0-0.5s",
+        "n_positive_rows": 4949,
+        "recall": 0.9995958779551425,
+        "n_warned": 4947,
+        "n_missed": 2
+      },
+      {
+        "bucket": "0.5-1s",
+        "n_positive_rows": 249,
+        "recall": 0.40963855421686746,
+        "n_warned": 102,
+        "n_missed": 147
+      },
+      {
+        "bucket": "1-2s",
+        "n_positive_rows": 299,
+        "recall": 0.023411371237458192,
+        "n_warned": 7,
+        "n_missed": 292
+      },
+      {
+        "bucket": "2-3s",
+        "n_positive_rows": 162,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 162
+      },
+      {
+        "bucket": "3-4s",
+        "n_positive_rows": 57,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 57
+      },
+      {
+        "bucket": "4-5s",
+        "n_positive_rows": 4,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 4
+      }
+    ],
+    "event_level": {
+      "n_events": 13,
+      "n_warned": 9,
+      "n_missed": 4,
+      "event_recall": 0.6923076923076923,
+      "median_lead_time_s": 0.5799999999999992,
+      "mean_lead_time_s": 0.5177777777777778,
+      "std_lead_time_s": 0.2881272009904954,
+      "min_lead_time_s": 0.08000000000000007,
+      "max_lead_time_s": 1.0600000000000005,
+      "lead_times_s": [
+        0.33000000000000007,
+        0.56,
+        0.5799999999999992,
+        0.6299999999999999,
+        1.0600000000000005,
+        0.7000000000000002,
+        0.10999999999999988,
+        0.08000000000000007,
+        0.6099999999999999
+      ]
+    },
+    "fraction_of_events_detected_at_least": {
+      ">=1s": 0.07692307692307693,
+      ">=2s": 0.0,
+      ">=3s": 0.0,
+      ">=4s": 0.0,
+      ">=5s": 0.0
+    },
+    "feature_columns": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "dV_dt",
+      "dalpha_dt",
+      "dgamma_dt",
+      "dq_dt",
+      "d2alpha_dt2",
+      "alpha_mean_0.5s",
+      "alpha_min_0.5s",
+      "alpha_max_0.5s",
+      "alpha_range_0.5s",
+      "alpha_slope_0.5s",
+      "alpha_trend_0.5s",
+      "V_slope_0.5s",
+      "gamma_slope_0.5s",
+      "pitch_rate_slope_0.5s",
+      "elevator_change_0.5s"
+    ],
+    "n_features": 23
+  },
+  "C_1s": {
+    "threshold": 0.8585388009091853,
+    "test_metrics": {
+      "pr_auc": 0.9293885423817511,
+      "roc_auc": 0.9791955402112111,
+      "precision": 0.8272095332671301,
+      "recall": 0.8737762237762238,
+      "f1": 0.8498554667573542,
+      "accuracy": 0.9881026166159153,
+      "confusion_matrix": {
+        "tn": 141672,
+        "fp": 1044,
+        "fn": 722,
+        "tp": 4998
+      },
+      "n_positive": 5720,
+      "n_negative": 142716
+    },
+    "lead_time_recall_bucket": [
+      {
+        "bucket": "0-0.5s",
+        "n_positive_rows": 4949,
+        "recall": 0.9925237421701354,
+        "n_warned": 4912,
+        "n_missed": 37
+      },
+      {
+        "bucket": "0.5-1s",
+        "n_positive_rows": 249,
+        "recall": 0.3172690763052209,
+        "n_warned": 79,
+        "n_missed": 170
+      },
+      {
+        "bucket": "1-2s",
+        "n_positive_rows": 299,
+        "recall": 0.023411371237458192,
+        "n_warned": 7,
+        "n_missed": 292
+      },
+      {
+        "bucket": "2-3s",
+        "n_positive_rows": 162,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 162
+      },
+      {
+        "bucket": "3-4s",
+        "n_positive_rows": 57,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 57
+      },
+      {
+        "bucket": "4-5s",
+        "n_positive_rows": 4,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 4
+      }
+    ],
+    "event_level": {
+      "n_events": 13,
+      "n_warned": 9,
+      "n_missed": 4,
+      "event_recall": 0.6923076923076923,
+      "median_lead_time_s": 0.56,
+      "mean_lead_time_s": 0.4744444444444446,
+      "std_lead_time_s": 0.2924270511544951,
+      "min_lead_time_s": 0.08000000000000007,
+      "max_lead_time_s": 1.0600000000000005,
+      "lead_times_s": [
+        0.18999999999999995,
+        0.56,
+        0.5099999999999998,
+        0.5600000000000005,
+        1.0600000000000005,
+        0.6100000000000003,
+        0.09999999999999964,
+        0.08000000000000007,
+        0.6000000000000001
+      ]
+    },
+    "fraction_of_events_detected_at_least": {
+      ">=1s": 0.07692307692307693,
+      ">=2s": 0.0,
+      ">=3s": 0.0,
+      ">=4s": 0.0,
+      ">=5s": 0.0
+    },
+    "feature_columns": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "alpha_mean_1s",
+      "alpha_min_1s",
+      "alpha_max_1s",
+      "alpha_range_1s",
+      "alpha_slope_1s",
+      "alpha_trend_1s",
+      "V_slope_1s",
+      "gamma_slope_1s",
+      "pitch_rate_slope_1s",
+      "elevator_change_1s"
+    ],
+    "n_features": 18
+  },
+  "D_1s": {
+    "threshold": 0.8622469274495478,
+    "test_metrics": {
+      "pr_auc": 0.9338406340802714,
+      "roc_auc": 0.9822430065275122,
+      "precision": 0.8205169891074622,
+      "recall": 0.8823426573426574,
+      "f1": 0.8503074719905652,
+      "accuracy": 0.9880285106038966,
+      "confusion_matrix": {
+        "tn": 141612,
+        "fp": 1104,
+        "fn": 673,
+        "tp": 5047
+      },
+      "n_positive": 5720,
+      "n_negative": 142716
+    },
+    "lead_time_recall_bucket": [
+      {
+        "bucket": "0-0.5s",
+        "n_positive_rows": 4949,
+        "recall": 0.997373206708426,
+        "n_warned": 4936,
+        "n_missed": 13
+      },
+      {
+        "bucket": "0.5-1s",
+        "n_positive_rows": 249,
+        "recall": 0.41767068273092367,
+        "n_warned": 104,
+        "n_missed": 145
+      },
+      {
+        "bucket": "1-2s",
+        "n_positive_rows": 299,
+        "recall": 0.023411371237458192,
+        "n_warned": 7,
+        "n_missed": 292
+      },
+      {
+        "bucket": "2-3s",
+        "n_positive_rows": 162,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 162
+      },
+      {
+        "bucket": "3-4s",
+        "n_positive_rows": 57,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 57
+      },
+      {
+        "bucket": "4-5s",
+        "n_positive_rows": 4,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 4
+      }
+    ],
+    "event_level": {
+      "n_events": 13,
+      "n_warned": 9,
+      "n_missed": 4,
+      "event_recall": 0.6923076923076923,
+      "median_lead_time_s": 0.5699999999999994,
+      "mean_lead_time_s": 0.5055555555555556,
+      "std_lead_time_s": 0.2943207287263756,
+      "min_lead_time_s": 0.08000000000000007,
+      "max_lead_time_s": 1.0600000000000005,
+      "lead_times_s": [
+        0.2400000000000002,
+        0.56,
+        0.5699999999999994,
+        0.6500000000000004,
+        1.0600000000000005,
+        0.6400000000000006,
+        0.10999999999999988,
+        0.08000000000000007,
+        0.6400000000000001
+      ]
+    },
+    "fraction_of_events_detected_at_least": {
+      ">=1s": 0.07692307692307693,
+      ">=2s": 0.0,
+      ">=3s": 0.0,
+      ">=4s": 0.0,
+      ">=5s": 0.0
+    },
+    "feature_columns": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "dV_dt",
+      "dalpha_dt",
+      "dgamma_dt",
+      "dq_dt",
+      "d2alpha_dt2",
+      "alpha_mean_1s",
+      "alpha_min_1s",
+      "alpha_max_1s",
+      "alpha_range_1s",
+      "alpha_slope_1s",
+      "alpha_trend_1s",
+      "V_slope_1s",
+      "gamma_slope_1s",
+      "pitch_rate_slope_1s",
+      "elevator_change_1s"
+    ],
+    "n_features": 23
+  },
+  "C_2s": {
+    "threshold": 0.8744611019879035,
+    "test_metrics": {
+      "pr_auc": 0.9298494014833478,
+      "roc_auc": 0.9847889927661115,
+      "precision": 0.8982316853121617,
+      "recall": 0.8702797202797202,
+      "f1": 0.8840348073166401,
+      "accuracy": 0.9912015953003315,
+      "confusion_matrix": {
+        "tn": 142152,
+        "fp": 564,
+        "fn": 742,
+        "tp": 4978
+      },
+      "n_positive": 5720,
+      "n_negative": 142716
+    },
+    "lead_time_recall_bucket": [
+      {
+        "bucket": "0-0.5s",
+        "n_positive_rows": 4949,
+        "recall": 0.9915134370579916,
+        "n_warned": 4907,
+        "n_missed": 42
+      },
+      {
+        "bucket": "0.5-1s",
+        "n_positive_rows": 249,
+        "recall": 0.26104417670682734,
+        "n_warned": 65,
+        "n_missed": 184
+      },
+      {
+        "bucket": "1-2s",
+        "n_positive_rows": 299,
+        "recall": 0.020066889632107024,
+        "n_warned": 6,
+        "n_missed": 293
+      },
+      {
+        "bucket": "2-3s",
+        "n_positive_rows": 162,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 162
+      },
+      {
+        "bucket": "3-4s",
+        "n_positive_rows": 57,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 57
+      },
+      {
+        "bucket": "4-5s",
+        "n_positive_rows": 4,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 4
+      }
+    ],
+    "event_level": {
+      "n_events": 13,
+      "n_warned": 9,
+      "n_missed": 4,
+      "event_recall": 0.6923076923076923,
+      "median_lead_time_s": 0.5300000000000002,
+      "mean_lead_time_s": 0.45444444444444465,
+      "std_lead_time_s": 0.29635230952031527,
+      "min_lead_time_s": 0.08000000000000007,
+      "max_lead_time_s": 1.0500000000000003,
+      "lead_times_s": [
+        0.10000000000000009,
+        0.56,
+        0.5,
+        0.5600000000000005,
+        1.0500000000000003,
+        0.5300000000000002,
+        0.10999999999999988,
+        0.08000000000000007,
+        0.6000000000000001
+      ]
+    },
+    "fraction_of_events_detected_at_least": {
+      ">=1s": 0.07692307692307693,
+      ">=2s": 0.0,
+      ">=3s": 0.0,
+      ">=4s": 0.0,
+      ">=5s": 0.0
+    },
+    "feature_columns": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "alpha_mean_2s",
+      "alpha_min_2s",
+      "alpha_max_2s",
+      "alpha_range_2s",
+      "alpha_slope_2s",
+      "alpha_trend_2s",
+      "V_slope_2s",
+      "gamma_slope_2s",
+      "pitch_rate_slope_2s",
+      "elevator_change_2s"
+    ],
+    "n_features": 18
+  },
+  "D_2s": {
+    "threshold": 0.8716541230273286,
+    "test_metrics": {
+      "pr_auc": 0.9328658761354394,
+      "roc_auc": 0.9790029655943429,
+      "precision": 0.8662190082644629,
+      "recall": 0.8795454545454545,
+      "f1": 0.8728313671061763,
+      "accuracy": 0.9901236896709693,
+      "confusion_matrix": {
+        "tn": 141939,
+        "fp": 777,
+        "fn": 689,
+        "tp": 5031
+      },
+      "n_positive": 5720,
+      "n_negative": 142716
+    },
+    "lead_time_recall_bucket": [
+      {
+        "bucket": "0-0.5s",
+        "n_positive_rows": 4949,
+        "recall": 0.9965649626187109,
+        "n_warned": 4932,
+        "n_missed": 17
+      },
+      {
+        "bucket": "0.5-1s",
+        "n_positive_rows": 249,
+        "recall": 0.36947791164658633,
+        "n_warned": 92,
+        "n_missed": 157
+      },
+      {
+        "bucket": "1-2s",
+        "n_positive_rows": 299,
+        "recall": 0.023411371237458192,
+        "n_warned": 7,
+        "n_missed": 292
+      },
+      {
+        "bucket": "2-3s",
+        "n_positive_rows": 162,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 162
+      },
+      {
+        "bucket": "3-4s",
+        "n_positive_rows": 57,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 57
+      },
+      {
+        "bucket": "4-5s",
+        "n_positive_rows": 4,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 4
+      }
+    ],
+    "event_level": {
+      "n_events": 13,
+      "n_warned": 9,
+      "n_missed": 4,
+      "event_recall": 0.6923076923076923,
+      "median_lead_time_s": 0.56,
+      "mean_lead_time_s": 0.48444444444444446,
+      "std_lead_time_s": 0.2943962224663713,
+      "min_lead_time_s": 0.08000000000000007,
+      "max_lead_time_s": 1.0600000000000005,
+      "lead_times_s": [
+        0.18999999999999995,
+        0.56,
+        0.5699999999999994,
+        0.6500000000000004,
+        1.0600000000000005,
+        0.5300000000000002,
+        0.10999999999999988,
+        0.08000000000000007,
+        0.6099999999999999
+      ]
+    },
+    "fraction_of_events_detected_at_least": {
+      ">=1s": 0.07692307692307693,
+      ">=2s": 0.0,
+      ">=3s": 0.0,
+      ">=4s": 0.0,
+      ">=5s": 0.0
+    },
+    "feature_columns": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "dV_dt",
+      "dalpha_dt",
+      "dgamma_dt",
+      "dq_dt",
+      "d2alpha_dt2",
+      "alpha_mean_2s",
+      "alpha_min_2s",
+      "alpha_max_2s",
+      "alpha_range_2s",
+      "alpha_slope_2s",
+      "alpha_trend_2s",
+      "V_slope_2s",
+      "gamma_slope_2s",
+      "pitch_rate_slope_2s",
+      "elevator_change_2s"
+    ],
+    "n_features": 23
+  },
+  "C_3s": {
+    "threshold": 0.8558948656035112,
+    "test_metrics": {
+      "pr_auc": 0.9304583278414479,
+      "roc_auc": 0.9812715597625838,
+      "precision": 0.8152315720808871,
+      "recall": 0.8739510489510489,
+      "f1": 0.843570705366183,
+      "accuracy": 0.9875097685197661,
+      "confusion_matrix": {
+        "tn": 141583,
+        "fp": 1133,
+        "fn": 721,
+        "tp": 4999
+      },
+      "n_positive": 5720,
+      "n_negative": 142716
+    },
+    "lead_time_recall_bucket": [
+      {
+        "bucket": "0-0.5s",
+        "n_positive_rows": 4949,
+        "recall": 0.993736108304708,
+        "n_warned": 4918,
+        "n_missed": 31
+      },
+      {
+        "bucket": "0.5-1s",
+        "n_positive_rows": 249,
+        "recall": 0.30522088353413657,
+        "n_warned": 76,
+        "n_missed": 173
+      },
+      {
+        "bucket": "1-2s",
+        "n_positive_rows": 299,
+        "recall": 0.016722408026755852,
+        "n_warned": 5,
+        "n_missed": 294
+      },
+      {
+        "bucket": "2-3s",
+        "n_positive_rows": 162,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 162
+      },
+      {
+        "bucket": "3-4s",
+        "n_positive_rows": 57,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 57
+      },
+      {
+        "bucket": "4-5s",
+        "n_positive_rows": 4,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 4
+      }
+    ],
+    "event_level": {
+      "n_events": 13,
+      "n_warned": 9,
+      "n_missed": 4,
+      "event_recall": 0.6923076923076923,
+      "median_lead_time_s": 0.56,
+      "mean_lead_time_s": 0.45888888888888896,
+      "std_lead_time_s": 0.29553884664548474,
+      "min_lead_time_s": 0.08000000000000007,
+      "max_lead_time_s": 1.0400000000000005,
+      "lead_times_s": [
+        0.10999999999999988,
+        0.56,
+        0.5199999999999996,
+        0.5600000000000005,
+        1.0400000000000005,
+        0.5600000000000005,
+        0.09999999999999964,
+        0.08000000000000007,
+        0.6000000000000001
+      ]
+    },
+    "fraction_of_events_detected_at_least": {
+      ">=1s": 0.07692307692307693,
+      ">=2s": 0.0,
+      ">=3s": 0.0,
+      ">=4s": 0.0,
+      ">=5s": 0.0
+    },
+    "feature_columns": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "alpha_mean_3s",
+      "alpha_min_3s",
+      "alpha_max_3s",
+      "alpha_range_3s",
+      "alpha_slope_3s",
+      "alpha_trend_3s",
+      "V_slope_3s",
+      "gamma_slope_3s",
+      "pitch_rate_slope_3s",
+      "elevator_change_3s"
+    ],
+    "n_features": 18
+  },
+  "D_3s": {
+    "threshold": 0.869744006280701,
+    "test_metrics": {
+      "pr_auc": 0.9318418807790884,
+      "roc_auc": 0.9793974290130116,
+      "precision": 0.8344953519256308,
+      "recall": 0.8788461538461538,
+      "f1": 0.8560967302452316,
+      "accuracy": 0.9886146217898623,
+      "confusion_matrix": {
+        "tn": 141719,
+        "fp": 997,
+        "fn": 693,
+        "tp": 5027
+      },
+      "n_positive": 5720,
+      "n_negative": 142716
+    },
+    "lead_time_recall_bucket": [
+      {
+        "bucket": "0-0.5s",
+        "n_positive_rows": 4949,
+        "recall": 0.9949484744392807,
+        "n_warned": 4924,
+        "n_missed": 25
+      },
+      {
+        "bucket": "0.5-1s",
+        "n_positive_rows": 249,
+        "recall": 0.3855421686746988,
+        "n_warned": 96,
+        "n_missed": 153
+      },
+      {
+        "bucket": "1-2s",
+        "n_positive_rows": 299,
+        "recall": 0.023411371237458192,
+        "n_warned": 7,
+        "n_missed": 292
+      },
+      {
+        "bucket": "2-3s",
+        "n_positive_rows": 162,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 162
+      },
+      {
+        "bucket": "3-4s",
+        "n_positive_rows": 57,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 57
+      },
+      {
+        "bucket": "4-5s",
+        "n_positive_rows": 4,
+        "recall": 0.0,
+        "n_warned": 0,
+        "n_missed": 4
+      }
+    ],
+    "event_level": {
+      "n_events": 13,
+      "n_warned": 9,
+      "n_missed": 4,
+      "event_recall": 0.6923076923076923,
+      "median_lead_time_s": 0.5600000000000005,
+      "mean_lead_time_s": 0.4822222222222222,
+      "std_lead_time_s": 0.3045863416277442,
+      "min_lead_time_s": 0.08000000000000007,
+      "max_lead_time_s": 1.0600000000000005,
+      "lead_times_s": [
+        0.1200000000000001,
+        0.56,
+        0.5799999999999992,
+        0.6600000000000001,
+        1.0600000000000005,
+        0.5600000000000005,
+        0.10999999999999988,
+        0.08000000000000007,
+        0.6099999999999999
+      ]
+    },
+    "fraction_of_events_detected_at_least": {
+      ">=1s": 0.07692307692307693,
+      ">=2s": 0.0,
+      ">=3s": 0.0,
+      ">=4s": 0.0,
+      ">=5s": 0.0
+    },
+    "feature_columns": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "dV_dt",
+      "dalpha_dt",
+      "dgamma_dt",
+      "dq_dt",
+      "d2alpha_dt2",
+      "alpha_mean_3s",
+      "alpha_min_3s",
+      "alpha_max_3s",
+      "alpha_range_3s",
+      "alpha_slope_3s",
+      "alpha_trend_3s",
+      "V_slope_3s",
+      "gamma_slope_3s",
+      "pitch_rate_slope_3s",
+      "elevator_change_3s"
+    ],
+    "n_features": 23
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "threshold": 0.7287691677456268,
+  "test_metrics": {
+    "pr_auc": 0.7075340845474946,
+    "roc_auc": 0.9703396999029561,
+    "precision": 0.7975956167881271,
+    "recall": 0.4997833405553148,
+    "f1": 0.6145081967213115,
+    "accuracy": 0.9525197687067619,
+    "confusion_matrix": {
+      "tn": 362401,
+      "fp": 3805,
+      "fn": 15007,
+      "tp": 14994
+    },
+    "n_positive": 30001,
+    "n_negative": 366206
+  },
+  "lead_time_recall_bucket": [
+    {
+      "bucket": "0-0.5s",
+      "n_positive_rows": 10848,
+      "recall": 0.804019174041298,
+      "n_warned": 8722,
+      "n_missed": 2126
+    },
+    {
+      "bucket": "0.5-1s",
+      "n_positive_rows": 2699,
+      "recall": 0.43645794738792143,
+      "n_warned": 1178,
+      "n_missed": 1521
+    },
+    {
+      "bucket": "1-2s",
+      "n_positive_rows": 5058,
+      "recall": 0.24831949387109528,
+      "n_warned": 1256,
+      "n_missed": 3802
+    },
+    {
+      "bucket": "2-3s",
+      "n_positive_rows": 4122,
+      "recall": 0.28432799611838916,
+      "n_warned": 1172,
+      "n_missed": 2950
+    },
+    {
+      "bucket": "3-4s",
+      "n_positive_rows": 3729,
+      "recall": 0.3499597747385358,
+      "n_warned": 1305,
+      "n_missed": 2424
+    },
+    {
+      "bucket": "4-5s",
+      "n_positive_rows": 3540,
+      "recall": 0.38333333333333336,
+      "n_warned": 1357,
+      "n_missed": 2183
+    }
+  ],
+  "event_level": {
+    "n_events": 54,
+    "n_warned": 47,
+    "n_missed": 7,
+    "event_recall": 0.8703703703703703,
+    "median_lead_time_s": 5.0,
+    "mean_lead_time_s": 3.705531914893617,
+    "std_lead_time_s": 1.5857796371161026,
+    "min_lead_time_s": 0.23000000000000043,
+    "max_lead_time_s": 5.0,
+    "lead_times_s": [
+      0.7799999999999994,
+      3.9000000000000004,
+      5.0,
+      0.7899999999999991,
+      0.7799999999999994,
+      5.0,
+      5.0,
+      3.6499999999999995,
+      5.0,
+      1.1399999999999997,
+      3.95,
+      5.0,
+      5.0,
+      2.59,
+      1.67,
+      5.0,
+      2.1499999999999995,
+      3.499999999999999,
+      5.0,
+      3.5699999999999985,
+      2.0600000000000005,
+      5.0,
+      5.0,
+      2.49,
+      5.0,
+      2.8200000000000003,
+      5.0,
+      0.9100000000000001,
+      5.0,
+      5.0,
+      5.0,
+      3.6499999999999995,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      1.1199999999999992,
+      5.0,
+      2.17,
+      5.0,
+      5.0,
+      0.23000000000000043,
+      2.58,
+      4.97,
+      2.6899999999999995,
+      5.0
+    ]
+  },
+  "fraction_of_events_detected_at_least": {
+    ">=1s": 0.7777777777777778,
+    ">=2s": 0.7222222222222222,
+    ">=3s": 0.5740740740740741,
+    ">=4s": 0.46296296296296297,
+    ">=5s": 0.4444444444444444
+  },
+  "row_level_false_positive_rate": 0.010390326755978875,
+  "train_population": {
+    "n_rows": 248362,
+    "n_trajectories": 273
+  },
+  "description": "Fresh RandomForest (same frozen hyperparameters/features/threshold procedure as every other v0.3 model), trained ONLY on the alternative single-pulse mechanism's own train/val trajectories, evaluated on the FROZEN v0.3 TEST split's gradual_approach_v3-regime rows only (never touched during this model's training)."
+}

@@ -1,0 +1,6 @@
+Model,Feature Set,PR-AUC,Precision,Recall,F1,Accuracy,Event Recall,Median Lead Time (s),Mean Lead Time (s),False Warning Rate
+AoA rule,alpha (rule),0.5984,0.9763,0.5049,0.6656,0.9734,1.0,0.06,0.076,0.125
+Trend rule,stall_margin + dalpha_dt (rule),0.5717,0.6582,0.3464,0.4539,0.9563,1.0,0.19,0.243,0.5172
+logistic_regression,C_state_dynamics,0.6431,0.9029,0.5663,0.6961,0.9741,1.0,0.55,0.563,0.4
+random_forest,C_state_dynamics,0.7501,0.7443,0.6516,0.6949,0.97,1.0,0.59,1.123,0.4634
+gradient_boosting,C_state_dynamics,0.7166,0.6717,0.5955,0.6313,0.9636,1.0,0.57,0.766,0.7857

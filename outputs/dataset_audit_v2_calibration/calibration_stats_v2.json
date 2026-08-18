@@ -1,0 +1,21 @@
+{
+  "label": "v0.2 calibration (near_boundary regime)",
+  "n_trajectories": 150,
+  "pct_crossed_boundary": 20.0,
+  "pct_terminated_gamma": 22.666666666666668,
+  "pct_terminated_low_airspeed": 0.0,
+  "pct_completed_full_duration": 77.33333333333333,
+  "max_alpha_deg_mean": 9.822353381765847,
+  "max_alpha_deg_median": 3.9578142533547975,
+  "max_alpha_deg_p25": 1.3780463609198184,
+  "max_alpha_deg_p75": 10.748569210614114,
+  "max_alpha_deg_p90": 25.474006919323294,
+  "max_gamma_deg_mean": 19.849665405887595,
+  "max_gamma_deg_median": 15.840769945399256,
+  "max_gamma_deg_p90": 45.268961619114876,
+  "frac_spent_meaningful_time_8_16deg_pct": 25.333333333333336,
+  "frac_small_margin_crossing_0_5deg_over_pct": 3.3333333333333335,
+  "future_stall_5s_positive_rate_pct_of_available": 6.611772833123489,
+  "future_stall_5s_n_positive": 11868,
+  "future_stall_5s_n_negative": 167630
+}

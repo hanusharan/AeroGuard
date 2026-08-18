@@ -1,0 +1,25 @@
+[
+  {
+    "n_trajectories":175,
+    "n_crossings":40,
+    "pct_crossed":22.8571428571,
+    "pct_gamma_term":57.7142857143,
+    "pct_ground_contact":0.0,
+    "pct_low_v":1.1428571429,
+    "pct_completed":41.1428571429,
+    "corrected_precursor_n_used":32,
+    "corrected_precursor_median_s":2.305,
+    "corrected_precursor_frac_ge2s":0.5625,
+    "corrected_precursor_frac_ge3s":0.375,
+    "corrected_precursor_frac_ge4s":0.3125,
+    "corrected_precursor_frac_ge5s":0.15625,
+    "median_8_to_16_s":2.265,
+    "median_12_to_16_s":0.865,
+    "small_margin_crossing_rate_pct":6.2857142857,
+    "classification_counts":{
+      "gradual_monotonic_low_gamma":36,
+      "runaway_extreme":4
+    },
+    "n_gradual_monotonic_low_gamma":36
+  }
+]

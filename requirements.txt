@@ -1,0 +1,17 @@
+numpy>=1.24
+matplotlib>=3.7
+pytest>=7.4
+
+# Added in Stage 2 (dataset generation/auditing): tabular storage and
+# analysis for the trajectory dataset. Not used by the core physics
+# engine (aeroguard/), only by aeroguard_dataset/ and scripts/generate_dataset.py.
+pandas>=2.0
+pyarrow>=14.0
+
+# Added in Stage 3 (ML experiment): baselines, Logistic Regression,
+# Random Forest, and gradient boosting (sklearn's HistGradientBoosting --
+# no xgboost/lightgbm installed in this environment, and sklearn's own
+# implementation is well-supported and fast enough for this dataset size,
+# so no extra boosting library was added). Only used by ml/ and
+# scripts/run_ml_experiment.py.
+scikit-learn>=1.3

@@ -1,0 +1,248 @@
+{
+  "dataset_version": "stage2-v0.2-calibration",
+  "ml_dataset_version": "ml_v2.0",
+  "stall_boundary_alpha_rad": 0.28044009791924895,
+  "stall_boundary_alpha_deg": 16.068034017008504,
+  "identifiers": {
+    "trajectory_id": {
+      "description": "unique flight identifier; join key only",
+      "allowed_as_ml_input": false
+    },
+    "time": {
+      "description": "seconds since trajectory start",
+      "allowed_as_ml_input": false,
+      "reason_excluded": "causal (no leakage) but excluded from the baseline input set: risks the model learning WHEN control pulses tend to start in the synthetic generator, not real physics -- a dataset-generation-process artifact, not a physical precursor."
+    },
+    "split": {
+      "description": "train/val/test assignment",
+      "allowed_as_ml_input": false
+    }
+  },
+  "input_features": {
+    "V": {
+      "physical_meaning": "airspeed",
+      "units": "m/s",
+      "source_columns": [
+        "V"
+      ],
+      "causal": true,
+      "derived": false,
+      "derivation_formula": null,
+      "history_window": null,
+      "allowed_as_ml_input": true
+    },
+    "alpha": {
+      "physical_meaning": "angle of attack = theta - gamma",
+      "units": "rad",
+      "source_columns": [
+        "alpha"
+      ],
+      "causal": true,
+      "derived": false,
+      "derivation_formula": null,
+      "history_window": null,
+      "allowed_as_ml_input": true
+    },
+    "gamma": {
+      "physical_meaning": "flight-path angle",
+      "units": "rad",
+      "source_columns": [
+        "gamma"
+      ],
+      "causal": true,
+      "derived": false,
+      "derivation_formula": null,
+      "history_window": null,
+      "allowed_as_ml_input": true
+    },
+    "pitch_rate": {
+      "physical_meaning": "pitch rate q",
+      "units": "rad/s",
+      "source_columns": [
+        "pitch_rate"
+      ],
+      "causal": true,
+      "derived": false,
+      "derivation_formula": null,
+      "history_window": null,
+      "allowed_as_ml_input": true
+    },
+    "altitude": {
+      "physical_meaning": "altitude h",
+      "units": "m",
+      "source_columns": [
+        "altitude"
+      ],
+      "causal": true,
+      "derived": false,
+      "derivation_formula": null,
+      "history_window": null,
+      "allowed_as_ml_input": true,
+      "caveat": "This simplified physics model uses a CONSTANT air density (rho) everywhere -- altitude never feeds back into lift/drag/thrust (verified by inspecting aerodynamics.py). Measured correlation with future_stall_5s: 0.023 (~0). Included for completeness / as a feature-importance sanity check (a correctly-behaving model should assign it near-zero importance), NOT because it is expected to help."
+    },
+    "elevator": {
+      "physical_meaning": "commanded elevator deflection",
+      "units": "rad",
+      "source_columns": [
+        "elevator"
+      ],
+      "causal": true,
+      "derived": false,
+      "derivation_formula": null,
+      "history_window": null,
+      "allowed_as_ml_input": true
+    },
+    "throttle": {
+      "physical_meaning": "commanded throttle",
+      "units": "dimensionless [0-1]",
+      "source_columns": [
+        "throttle"
+      ],
+      "causal": true,
+      "derived": false,
+      "derivation_formula": null,
+      "history_window": null,
+      "allowed_as_ml_input": true
+    },
+    "stall_margin": {
+      "physical_meaning": "alpha_at_cl_peak - alpha",
+      "units": "rad",
+      "source_columns": [
+        "stall_margin"
+      ],
+      "causal": true,
+      "derived": false,
+      "derivation_formula": "stall_margin = alpha_at_cl_peak - alpha",
+      "history_window": null,
+      "allowed_as_ml_input": true,
+      "caveat": "EXACT algebraic duplicate of alpha (verified: stall_margin = 0.28044 - alpha, residual 0.0, correlation with alpha = -1.0000 exactly). Included for interpretability (directly reads as 'degrees of margin left'), but do not feed both alpha and stall_margin to a linear model -- pick one. Tree models are insensitive to this redundancy."
+    },
+    "dV_dt": {
+      "physical_meaning": "causal backward-difference dV/dt",
+      "units": "m/s^2",
+      "source_columns": [
+        "V"
+      ],
+      "causal": true,
+      "derived": true,
+      "derivation_formula": "(V[t]-V[t-1])/dt",
+      "history_window": "1 step (0.01s), same-trajectory",
+      "allowed_as_ml_input": true
+    },
+    "dalpha_dt": {
+      "physical_meaning": "causal backward-difference dalpha/dt",
+      "units": "rad/s",
+      "source_columns": [
+        "alpha"
+      ],
+      "causal": true,
+      "derived": true,
+      "derivation_formula": "(alpha[t]-alpha[t-1])/dt",
+      "history_window": "1 step (0.01s), same-trajectory",
+      "allowed_as_ml_input": true
+    },
+    "dgamma_dt": {
+      "physical_meaning": "causal backward-difference dgamma/dt",
+      "units": "rad/s",
+      "source_columns": [
+        "gamma"
+      ],
+      "causal": true,
+      "derived": true,
+      "derivation_formula": "(gamma[t]-gamma[t-1])/dt",
+      "history_window": "1 step (0.01s), same-trajectory",
+      "allowed_as_ml_input": true,
+      "note": "NEW in this stage; computed with the same validated causal_backward_difference() function already used for dV_dt/dalpha_dt in Stage 2."
+    },
+    "dq_dt": {
+      "physical_meaning": "causal backward-difference d(pitch_rate)/dt",
+      "units": "rad/s^2",
+      "source_columns": [
+        "pitch_rate"
+      ],
+      "causal": true,
+      "derived": true,
+      "derivation_formula": "(q[t]-q[t-1])/dt",
+      "history_window": "1 step (0.01s), same-trajectory",
+      "allowed_as_ml_input": true,
+      "note": "NEW in this stage; same function as dV_dt/dalpha_dt."
+    },
+    "alpha_trend_1s": {
+      "physical_meaning": "causal alpha trend over the last 1 second",
+      "units": "rad/s",
+      "source_columns": [
+        "alpha"
+      ],
+      "causal": true,
+      "derived": true,
+      "derivation_formula": "(alpha[t]-alpha[t-1.0s])/1.0",
+      "history_window": "100 steps (1.0s), same-trajectory",
+      "allowed_as_ml_input": true,
+      "note": "Evidence-based addition: correlation with future_stall_5s = 0.242 (vs. 0.127 for the 1-step dalpha_dt).",
+      "nullable": true,
+      "nullable_reason": "NaN for the first 1.0s of every trajectory (insufficient history)."
+    },
+    "alpha_trend_2s": {
+      "physical_meaning": "causal alpha trend over the last 2 seconds",
+      "units": "rad/s",
+      "source_columns": [
+        "alpha"
+      ],
+      "causal": true,
+      "derived": true,
+      "derivation_formula": "(alpha[t]-alpha[t-2.0s])/2.0",
+      "history_window": "200 steps (2.0s), same-trajectory",
+      "allowed_as_ml_input": true,
+      "note": "correlation with future_stall_5s = 0.338.",
+      "nullable": true,
+      "nullable_reason": "NaN for the first 2.0s of every trajectory (insufficient history)."
+    },
+    "alpha_trend_3s": {
+      "physical_meaning": "causal alpha trend over the last 3 seconds",
+      "units": "rad/s",
+      "source_columns": [
+        "alpha"
+      ],
+      "causal": true,
+      "derived": true,
+      "derivation_formula": "(alpha[t]-alpha[t-3.0s])/3.0",
+      "history_window": "300 steps (3.0s), same-trajectory",
+      "allowed_as_ml_input": true,
+      "note": "correlation with future_stall_5s = 0.422, the strongest of any tested window/variable combination.",
+      "nullable": true,
+      "nullable_reason": "NaN for the first 3.0s of every trajectory. IMPORTANT: this is NOT included in the 'usable row' filter, unlike every other input feature -- requiring it would combine with the 5s future-label requirement to impose an implicit ~8s minimum trajectory duration, which was found to disproportionately erase the fastest 'stall'-regime departures (138/250 stall trajectories entirely excluded, vs 14/250 near_boundary, 0/500 normal). Rows/trajectories in ml_dataset_v2.parquet may have this column as NaN; filter on alpha_trend_3s.notna() yourself if your model needs it."
+    }
+  },
+  "targets": {
+    "future_stall_5s": {
+      "description": "1.0 if is_unsafe is True for any sample strictly after t and up to t+5s within the SAME trajectory; 0.0 if not; NaN if fewer than 5s of future telemetry remain in that (possibly early-terminated) trajectory.",
+      "type": "binary classification target (primary)",
+      "window": "(t, t+5s], same trajectory only",
+      "unavailable_representation": "NaN in future_stall_5s; future_stall_5s_available=False",
+      "independently_re_derived": "Yes -- rebuilt from raw telemetry with a fresh implementation (no shared code with the original), 0 mismatches across all 1000 trajectories / 1,753,615 rows.",
+      "allowed_as_ml_input": false
+    },
+    "future_stall_5s_available": {
+      "description": "boolean mask: whether future_stall_5s is defined for this row. Used only to select trainable rows, never as a model input.",
+      "allowed_as_ml_input": false
+    },
+    "time_to_stall": {
+      "description": "time (s) until the first future is_unsafe==True row in the SAME trajectory; NaN if no such row exists in the trajectory's remaining recorded telemetry.",
+      "type": "continuous secondary target (auxiliary)",
+      "note": "Unlike future_stall_5s, always fully determined (every trajectory is simulated to its actual end) -- no 'insufficient future data' case. Useful for lead-time-style analysis (e.g. bucketing into >5s/3-5s/1-3s/<1s/after-crossing), but is NOT capped at 5s, so it is not a drop-in replacement for future_stall_5s.",
+      "allowed_as_ml_input": false
+    }
+  },
+  "excluded_columns_and_reasons": {
+    "theta": "EXACT duplicate: theta = alpha + gamma (verified, residual 2e-16). Redundant once alpha and gamma are both present.",
+    "vertical_speed": "EXACT duplicate: vertical_speed = V*sin(gamma) (verified, residual 0.0).",
+    "thrust": "EXACT duplicate: thrust = clip(throttle,0,1)*thrust_max (verified, residual 0.0, correlation 1.0 with throttle).",
+    "is_unsafe": "Redundant with alpha (deterministic function of alpha) AND conceptually circular for a 'predict before it happens' framing (it IS the current-instant version of the event being predicted).",
+    "generation_mode (regime)": "Not physically observable to a real aircraft -- it is a label of HOW this synthetic trajectory was generated (normal/near_boundary/stall), not a measurable physical quantity. Using it would let a model key on the synthetic-data-generation process rather than physics.",
+    "termination_reason, whether_validity_envelope_was_exceeded, whether_stall_occurred, time_of_first_stall": "Computed from (or reveal) the trajectory's FUTURE/eventual outcome. Severe leakage if used as inputs.",
+    "maximum_alpha, minimum_alpha, minimum_airspeed, maximum_airspeed, maximum_abs_gamma": "Aggregated over the ENTIRE trajectory including rows after t. Severe leakage.",
+    "n_steps, duration_actual_s": "Reveal the eventual total trajectory length / whether-and-when it terminates early. Leakage.",
+    "random_seed": "Constant across the whole dataset; zero information.",
+    "initial_airspeed, initial_altitude, initial_alpha, trim_throttle, trim_elevator": "Causal (t=0 facts) but static per-trajectory; current state already captures what matters physically, and including them in a row-level model risks the model keying on trajectory identity rather than current physics."
+  }
+}

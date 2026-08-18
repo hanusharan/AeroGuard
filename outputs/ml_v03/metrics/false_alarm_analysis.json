@@ -1,0 +1,58 @@
+{
+  "episode_level": {
+    "n_warning_episodes": 121,
+    "n_true_warning_episodes": 93,
+    "n_false_alarm_episodes": 28,
+    "n_undetermined_episodes": 0,
+    "false_warning_rate": 0.23140495867768596,
+    "precision_at_operating_point_episode_level": 0.768595041322314,
+    "warnings_per_trajectory": 0.26535087719298245
+  },
+  "row_level_false_positive_rate": 0.00481839529139093,
+  "false_alarms_per_minute": 0.3125127888418053,
+  "total_test_trajectory_seconds": 5375.78,
+  "warning_composition_by_time_to_nearest_crossing": [
+    {
+      "time_to_nearest_crossing_bucket": "0-0.5s",
+      "true_positive_by_construction": true,
+      "n_warned_rows": 19967,
+      "fraction_of_all_warnings": 0.5492229404483565
+    },
+    {
+      "time_to_nearest_crossing_bucket": "0.5-1s",
+      "true_positive_by_construction": true,
+      "n_warned_rows": 2593,
+      "fraction_of_all_warnings": 0.07132443955439417
+    },
+    {
+      "time_to_nearest_crossing_bucket": "1-2s",
+      "true_positive_by_construction": true,
+      "n_warned_rows": 4199,
+      "fraction_of_all_warnings": 0.115499931233668
+    },
+    {
+      "time_to_nearest_crossing_bucket": "2-3s",
+      "true_positive_by_construction": true,
+      "n_warned_rows": 2709,
+      "fraction_of_all_warnings": 0.07451519735937286
+    },
+    {
+      "time_to_nearest_crossing_bucket": "3-4s",
+      "true_positive_by_construction": true,
+      "n_warned_rows": 2397,
+      "fraction_of_all_warnings": 0.06593315912529225
+    },
+    {
+      "time_to_nearest_crossing_bucket": "4-5s",
+      "true_positive_by_construction": true,
+      "n_warned_rows": 2117,
+      "fraction_of_all_warnings": 0.05823132994086096
+    },
+    {
+      "time_to_nearest_crossing_bucket": ">5s_or_no_future_crossing",
+      "true_positive_by_construction": false,
+      "n_warned_rows": 2373,
+      "fraction_of_all_warnings": 0.06527300233805529
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+experiment,pr_auc,event_recall,median_lead_time_s,warning_coverage_ge2s,warning_coverage_ge4s
+"v0.3 in-distribution (primary model, own test population)",0.8902774777010881,0.9605263157894737,4.72,0.6447368421052632,0.5526315789473685
+"v0.3 regime-exclusion check (gradual_approach_v3 excluded from TRAIN, full TEST)",0.5523443234012876,0.6447368421052632,0.7300000000000004,0.2236842105263158,0.11842105263157894
+FORWARD: frozen v0.3 model -> novel alt-mechanism trajectories,0.8353337948244025,1.0,2.955,0.8913043478260869,0.3695652173913043
+REVERSE: alt-mechanism-trained model -> held-out gradual_approach_v3,0.7075340845474946,0.8703703703703703,5.0,0.7222222222222222,0.46296296296296297

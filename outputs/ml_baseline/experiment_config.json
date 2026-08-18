@@ -1,0 +1,71 @@
+{
+  "seed": 20260817,
+  "core_features": [
+    "V",
+    "alpha",
+    "gamma",
+    "pitch_rate",
+    "altitude",
+    "elevator",
+    "throttle",
+    "stall_margin",
+    "dV_dt",
+    "dalpha_dt",
+    "dgamma_dt",
+    "dq_dt"
+  ],
+  "ablation_conditions": {
+    "A_state_only": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin"
+    ],
+    "B_state_plus_derivatives": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "dV_dt",
+      "dalpha_dt",
+      "dgamma_dt",
+      "dq_dt"
+    ],
+    "C_state_derivatives_history": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "dV_dt",
+      "dalpha_dt",
+      "dgamma_dt",
+      "dq_dt",
+      "alpha_trend_1s",
+      "alpha_trend_2s",
+      "alpha_trend_3s"
+    ]
+  },
+  "best_model": "random_forest",
+  "random_forest_hyperparameters": {
+    "n_estimators": 200,
+    "max_depth": 12,
+    "min_samples_leaf": 5,
+    "class_weight": "balanced_subsample"
+  },
+  "random_forest_threshold": 0.8221727982762517,
+  "logistic_regression_threshold": 0.35593190986352463,
+  "dataset_version": "stage2-v0.2-calibration",
+  "ml_dataset_version": "ml_v2.0"
+}

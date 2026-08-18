@@ -1,0 +1,35 @@
+{
+  "raw_physics_observations": {
+    "description": "Recorded directly from the RK4-simulated state and controls at each timestep. Never derived from other rows.",
+    "columns": {
+      "trajectory_id": "unique identifier for the trajectory this row belongs to",
+      "time": "seconds since trajectory start",
+      "V": "airspeed [m/s]",
+      "alpha": "angle of attack [rad] = theta - gamma",
+      "theta": "pitch angle [rad]",
+      "gamma": "flight-path angle [rad]",
+      "altitude": "altitude h [m]",
+      "pitch_rate": "pitch rate q [rad/s]",
+      "vertical_speed": "dh/dt = V*sin(gamma) [m/s]",
+      "thrust": "thrust force T [N], from aerodynamics.thrust_force(throttle, aircraft)",
+      "elevator": "commanded elevator deflection [rad] (raw command; thrust/lift/drag equations use aircraft's own internal clamping where applicable)",
+      "throttle": "commanded throttle [dimensionless, nominally 0-1] (raw command; thrust_force() clamps internally for the physics)"
+    }
+  },
+  "derived_features": {
+    "description": "Computed in aeroguard_dataset/features.py from the raw columns above, using ONLY current and past samples of the SAME trajectory (causal). See features.causal_backward_difference.",
+    "columns": {
+      "dV_dt": "backward-difference dV/dt [m/s^2]; NaN on each trajectory's first row",
+      "dalpha_dt": "backward-difference dalpha/dt [rad/s]; NaN on each trajectory's first row",
+      "stall_margin": "alpha_at_cl_peak - alpha [rad] (signed; see features.py docstring for the negative-alpha caveat)",
+      "is_unsafe": "boolean ground-truth event flag: |alpha| > alpha_at_cl_peak (the model's own CL(alpha) peak, numerically located -- see events.py). This IS the physics-defined stall/unsafe event, not a feature meant to be used as model input for predicting itself."
+    }
+  },
+  "future_outcome_label": {
+    "description": "Computed in aeroguard_dataset/labeling.py from EACH TRAJECTORY'S OWN future simulated is_unsafe values. Must never be used as an input feature.",
+    "columns": {
+      "future_stall_5s": "1.0 if is_unsafe is True for any sample in (t, t+5s] within this trajectory, 0.0 if not, NaN if fewer than 5s of future data remain in this (possibly early-terminated) trajectory",
+      "future_stall_5s_available": "boolean twin of future_stall_5s being non-NaN"
+    }
+  }
+}

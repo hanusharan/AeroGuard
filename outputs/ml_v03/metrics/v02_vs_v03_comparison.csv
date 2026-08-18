@@ -1,0 +1,25 @@
+metric,v0.2,v0.3,change
+"crossing count (test split, from metadata)",27.0,67.0,40.0
+usable crossing count (primary model's own event population),14.0,76.0,62.0
+"median physical precursor duration, dip-aware (dataset-scale, own regime)",0.54,4.38,3.84
+">=2s precursor coverage (physical, dataset-scale)",0.04,0.66,0.62
+">=3s precursor coverage (physical, dataset-scale)",0.0,0.593,0.593
+">=4s precursor coverage (physical, dataset-scale)",0.0,0.557,0.557
+">=5s precursor coverage (physical, dataset-scale)",0.0,0.134,0.134
+"baseline PR-AUC (Model A, common-subset population)",0.93285148480315,0.9027349897929564,-0.030116495010193645
+"temporal PR-AUC (Model D primary window, common-subset population)",0.9338406340802714,0.9177406232536937,-0.01610001082657775
+temporal improvement over baseline (common-subset PR-AUC delta),0.0009891492771213484,0.015005633460737244,0.014016484183615896
+primary model PR-AUC (own realistic-scale population),0.8132743054971092,0.8902774777010881,0.0770031722039789
+primary model precision,0.8998343123964453,0.9348095172603493,0.03497520486390404
+primary model recall,0.7011737089201878,0.7360999805064004,0.03492627158621253
+row-level false positive rate,0.004002600185383587,0.00481839529139093,0.0008157951060073429
+episode-level false-alarm precision,0.6764705882352942,0.768595041322314,0.09212445308701989
+"recall 0-0.5s (primary model, own population)",0.9884974838245866,0.9717720348469363,-0.01672544897765027
+"recall 0.5-1s (primary model, own population)",0.17901234567901234,0.6961073825503356,0.5170950368713232
+"recall 1-2s (primary model, own population)",0.17695099818511797,0.6184094256259205,0.44145842744080255
+"recall 2-3s (primary model, own population)",0.259567387687188,0.48194271481942713,0.22237532713223912
+"recall 3-4s (primary model, own population)",0.023255813953488372,0.46917204932472106,0.4459162353712327
+"recall 4-5s (primary model, own population)",0.0,0.48421774931381517,0.48421774931381517
+event-level recall,1.0,0.9605263157894737,-0.03947368421052633
+median credited lead time (s),0.5249999999999999,4.72,4.195
+mean credited lead time (s),0.8128571428571428,3.4243835616438356,2.611526418786693

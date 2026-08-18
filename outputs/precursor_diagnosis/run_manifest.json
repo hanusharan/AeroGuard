@@ -1,0 +1,13 @@
+{
+  "inputs": [
+    "data/processed/processed_dataset_v2.parquet (read-only)",
+    "data/metadata/trajectory_metadata_v2.csv (read-only)",
+    "data/ml_temporal/temporal_{train,val,test}.parquet (read-only, cached)"
+  ],
+  "n_crossing_trajectories_total": 192,
+  "n_crossing_by_regime": {
+    "near_boundary": 31,
+    "normal": 0,
+    "stall": 161
+  }
+}

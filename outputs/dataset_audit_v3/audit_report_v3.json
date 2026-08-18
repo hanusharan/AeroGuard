@@ -1,0 +1,122 @@
+{
+  "A_trajectory_counts": {
+    "total_trajectories": 3150,
+    "valid_trajectories": 3150,
+    "invalid_trajectories": 0,
+    "terminated_early_trajectories": 877,
+    "completed_full_duration_trajectories": 2273
+  },
+  "B_generation_mode_distribution": {
+    "counts": {
+      "gradual_approach_v3": 2400,
+      "normal": 500,
+      "stall": 250
+    },
+    "fractions": {
+      "gradual_approach_v3": 0.7619047619047619,
+      "normal": 0.15873015873015872,
+      "stall": 0.07936507936507936
+    },
+    "target_fractions": {
+      "normal": 0.15873015873015872,
+      "stall": 0.07936507936507936,
+      "gradual_approach_v3": 0.7619047619047619
+    }
+  },
+  "C_event_distribution": {
+    "trajectories_with_stall": 470,
+    "trajectories_without_stall": 2680,
+    "fraction_with_stall": 0.1492063492063492
+  },
+  "D_supervised_label_distribution": {
+    "future_stall_5s_negative_0": 3467445,
+    "future_stall_5s_positive_1": 310404,
+    "future_stall_5s_unavailable_NaN": 1563016,
+    "positive_fraction_of_available": 0.08216421566875753,
+    "total_rows": 5340865
+  },
+  "E_physical_ranges": {
+    "V_m_s": {
+      "min": 13.718037311323496,
+      "max": 132.4658392734946
+    },
+    "alpha_deg": {
+      "min": -41.22029063271912,
+      "max": 76.19281406317653
+    },
+    "altitude_m": {
+      "min": 0.019859062746743095,
+      "max": 2205.7104379373236
+    },
+    "gamma_deg": {
+      "min": -45.45072287892953,
+      "max": 45.3977728577171
+    },
+    "thrust_N": {
+      "min": 408.77145192291965,
+      "max": 1958.8259359181493
+    },
+    "elevator_rad": {
+      "min": -0.31530897672443664,
+      "max": 0.36591796405844806
+    }
+  },
+  "F_validity_envelope_events": {
+    "n_exceeded_low_airspeed": 0,
+    "n_exceeded_gamma": 858,
+    "n_ground_contact": 19,
+    "n_numerical_instability": 0,
+    "n_invalid_control": 0,
+    "termination_reason_counts": {
+      "completed_normally": 2273,
+      "validity_envelope_gamma_exceeded": 858,
+      "ground_contact": 19
+    },
+    "v_stall_m_s": 26.140289984056395,
+    "v_floor_m_s": 13.070144992028197,
+    "gamma_max_deg": 45.0
+  },
+  "G_data_integrity": {
+    "raw_missing_values_per_column": {},
+    "raw_infinite_values_per_column": {},
+    "processed_missing_values_per_column": {
+      "dV_dt": 3150,
+      "dalpha_dt": 3150,
+      "future_stall_5s": 1563016
+    },
+    "processed_missing_values_note": "dV_dt/dalpha_dt are NaN on the first row of every trajectory by design (no prior sample for a causal derivative). future_stall_5s and future_stall_5s_available are NaN/False on the final 5.0s of every trajectory by design (insufficient future data within the simulated trajectory -- see Section 10).",
+    "duplicate_rows_raw": 0,
+    "duplicate_rows_processed": 0,
+    "duplicate_trajectory_ids_in_metadata": 0,
+    "duplicate_trajectory_ids_in_split_manifest": 0,
+    "trajectory_ids_in_multiple_splits": 0,
+    "metadata_manifest_id_set_equal": true,
+    "future_label_leakage_check": {
+      "n_trajectories_checked": 25,
+      "mismatches": [],
+      "passed": true
+    },
+    "causal_derivative_check": {
+      "n_trajectories_checked": 25,
+      "mismatches": [],
+      "passed": true
+    }
+  },
+  "H_temporal_correctness": {
+    "monotonic_timestamps_check": {
+      "n_trajectories_checked": 3150,
+      "non_monotonic_trajectory_ids": [],
+      "passed": true
+    },
+    "causal_derivative_check": {
+      "n_trajectories_checked": 25,
+      "mismatches": [],
+      "passed": true
+    },
+    "future_label_check": {
+      "n_trajectories_checked": 25,
+      "mismatches": [],
+      "passed": true
+    }
+  }
+}

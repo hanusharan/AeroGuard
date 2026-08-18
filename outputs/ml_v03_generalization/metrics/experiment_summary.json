@@ -1,0 +1,43 @@
+{
+  "window_s": 1.0,
+  "feature_columns": [
+    "V",
+    "alpha",
+    "gamma",
+    "pitch_rate",
+    "altitude",
+    "elevator",
+    "throttle",
+    "stall_margin",
+    "dV_dt",
+    "dalpha_dt",
+    "dgamma_dt",
+    "dq_dt",
+    "d2alpha_dt2",
+    "alpha_mean_1s",
+    "alpha_min_1s",
+    "alpha_max_1s",
+    "alpha_range_1s",
+    "alpha_slope_1s",
+    "alpha_trend_1s",
+    "V_slope_1s",
+    "gamma_slope_1s",
+    "pitch_rate_slope_1s",
+    "elevator_change_1s"
+  ],
+  "forward_check_holdout_population": {
+    "n_trajectories": 300,
+    "n_crossing_trajectories": 47,
+    "n_usable_rows": 259025,
+    "n_events": 46
+  },
+  "reverse_check_train_population": {
+    "n_rows": 248362,
+    "n_trajectories": 273
+  },
+  "reverse_check_test_population": {
+    "n_trajectories": 346,
+    "n_usable_rows": 396207,
+    "n_events": 54
+  }
+}

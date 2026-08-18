@@ -1,0 +1,28 @@
+{
+  "grid": [
+    {
+      "params": {
+        "n_estimators": 200,
+        "max_depth": 12,
+        "min_samples_leaf": 5,
+        "class_weight": "balanced_subsample"
+      },
+      "val_pr_auc": 0.9264412844603922
+    },
+    {
+      "params": {
+        "n_estimators": 200,
+        "max_depth": 20,
+        "min_samples_leaf": 5,
+        "class_weight": "balanced_subsample"
+      },
+      "val_pr_auc": 0.9006349492992117
+    }
+  ],
+  "selected": {
+    "n_estimators": 200,
+    "max_depth": 12,
+    "min_samples_leaf": 5,
+    "class_weight": "balanced_subsample"
+  }
+}

@@ -1,0 +1,4 @@
+Model,Feature Set,PR-AUC,Precision,Recall,F1,Accuracy,Event Recall,Median Lead Time (s),Mean Lead Time (s),False Warning Rate
+A_alpha_only,A_alpha_only,0.5715,0.9171,0.5119,0.6571,0.972,1.0,0.115,0.326,
+B_state,B_state,0.7371,0.6225,0.6262,0.6243,0.9605,1.0,0.58,0.946,
+C_state_dynamics,C_state_dynamics,0.7501,0.7443,0.6516,0.6949,0.97,1.0,0.59,1.123,

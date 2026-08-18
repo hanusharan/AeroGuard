@@ -1,0 +1,26 @@
+{
+  "gradual_approach_v3": {
+    "n_test_crossings": 42,
+    "n_usable_for_ml": 40,
+    "n_with_physical_precursor_estimate": 25,
+    "n_ml_warned": 37,
+    "median_physical_precursor_s": 4.389999999999999,
+    "median_ml_credited_lead_time_s_warned_only": 4.895,
+    "mean_physical_precursor_s": 3.3643999999999994,
+    "mean_ml_credited_lead_time_s_warned_only": 4.72,
+    "pearson_r_physical_vs_credited_lead_time": 0.33723022255727186,
+    "n_paired_for_correlation": 22
+  },
+  "stall": {
+    "n_test_crossings": 25,
+    "n_usable_for_ml": 17,
+    "n_with_physical_precursor_estimate": 16,
+    "n_ml_warned": 17,
+    "median_physical_precursor_s": 0.2850000000000001,
+    "median_ml_credited_lead_time_s_warned_only": 0.6700000000000002,
+    "mean_physical_precursor_s": 0.3081249999999999,
+    "mean_ml_credited_lead_time_s_warned_only": 0.6456250000000001,
+    "pearson_r_physical_vs_credited_lead_time": 0.8285269225205648,
+    "n_paired_for_correlation": 16
+  }
+}

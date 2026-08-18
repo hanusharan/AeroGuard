@@ -1,0 +1,75 @@
+{
+  "description": "Model D retrained with ALL 'stall'-regime trajectories removed from TRAIN (val/test unchanged); tests whether temporal patterns generalize to a regime never seen in training, or merely memorize regime-specific trajectory shapes.",
+  "train_population": {
+    "n_rows": 737513,
+    "n_trajectories": 530
+  },
+  "excluded_regime": "stall",
+  "threshold": 0.9511967292583244,
+  "test_metrics": {
+    "pr_auc": 0.6449366296651514,
+    "roc_auc": 0.9174021347370536,
+    "precision": 0.9630177514792899,
+    "recall": 0.07640845070422535,
+    "f1": 0.14158329708568942,
+    "accuracy": 0.9548041359883661,
+    "confusion_matrix": {
+      "tn": 166117,
+      "fp": 25,
+      "fn": 7869,
+      "tp": 651
+    },
+    "n_positive": 8520,
+    "n_negative": 166142
+  },
+  "event_level": {
+    "n_events": 14,
+    "n_warned": 4,
+    "n_missed": 10,
+    "event_recall": 0.2857142857142857,
+    "median_lead_time_s": 0.2250000000000003,
+    "mean_lead_time_s": 0.22250000000000025,
+    "std_lead_time_s": 0.20265426223003577,
+    "min_lead_time_s": 0.009999999999999787,
+    "max_lead_time_s": 0.4300000000000006,
+    "lead_times_s": [
+      0.4300000000000006,
+      0.009999999999999787,
+      0.4200000000000004,
+      0.03000000000000025
+    ]
+  },
+  "fraction_of_events_detected_at_least": {
+    ">=1s": 0.0,
+    ">=2s": 0.0,
+    ">=3s": 0.0,
+    ">=4s": 0.0,
+    ">=5s": 0.0
+  },
+  "regime_breakdown": [
+    {
+      "regime": "near_boundary",
+      "n_rows": 37337,
+      "n_positive": 824,
+      "recall": 0.20145631067961164,
+      "precision": 0.8691099476439791,
+      "f1": 0.3270935960591133
+    },
+    {
+      "regime": "normal",
+      "n_rows": 110679,
+      "n_positive": 0,
+      "recall": NaN,
+      "precision": 0.0,
+      "f1": 0.0
+    },
+    {
+      "regime": "stall",
+      "n_rows": 26646,
+      "n_positive": 7696,
+      "recall": 0.06301975051975052,
+      "precision": 1.0,
+      "f1": 0.11856741229678523
+    }
+  ]
+}

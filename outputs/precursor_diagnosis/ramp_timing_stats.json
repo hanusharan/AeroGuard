@@ -1,0 +1,14 @@
+{
+  "n_crossing_trajectories": 192,
+  "n_with_8_16_ramp": 139,
+  "median_alpha_8_to_16_deg_s": 0.3700000000000001,
+  "mean_alpha_8_to_16_deg_s": 1.031294964028777,
+  "p25_alpha_8_to_16_deg_s": 0.29499999999999993,
+  "p75_alpha_8_to_16_deg_s": 0.5700000000000001,
+  "n_with_12_to_cross": 139,
+  "median_alpha_12_to_crossing_s": 0.17999999999999972,
+  "mean_alpha_12_to_crossing_s": 0.23489208633093525,
+  "p25_alpha_12_to_crossing_s": 0.14,
+  "p75_alpha_12_to_crossing_s": 0.2549999999999999,
+  "boundary_deg": 16.068034017008504
+}
