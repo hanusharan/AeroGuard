@@ -48,6 +48,18 @@ export interface Metrics {
     windowS: number;
     threshold: number;
   };
+  /**
+   * Physical precursor: the measured alpha 8°→16° transition time in the
+   * dataset itself, independent of any model. Distinct from lead time, which
+   * is what the model actually credited.
+   */
+  precursor: {
+    v01MedianS: number;
+    v02MedianS: number;
+    v03MedianS: number;
+    v02Coverage: { ">=2s": number; ">=3s": number };
+    v03Coverage: { ">=2s": number; ">=3s": number; ">=4s": number };
+  };
   generalization: {
     forward: {
       prAuc: number;

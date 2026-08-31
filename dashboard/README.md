@@ -57,6 +57,27 @@ python dashboard/data_export/export_flight_replay.py    # -> src/data/flightRepl
 Re-run both scripts any time the underlying research outputs are regenerated, then
 `npm run dev`/`npm run build` again to pick up the refreshed JSON.
 
+## The stall simulator's physics
+
+The `06 — Stall Simulator` section is the one place on the site that *computes* rather
+than reports: it lets a visitor enter an airframe and a maneuver and tells them where
+the stall warning belongs. It does that by running the project's real physics engine
+live in the browser — `src/lib/physics.ts` is a direct port of `aeroguard/aerodynamics.py`,
+`aeroguard/dynamics.py`, `aeroguard/integrator.py`, the `scripts/simulate.py` trim solver,
+the `aeroguard_dataset/events.py` stall boundary, and the `aeroguard_dataset/control_profiles.py`
+pulse shape. Same nonlinear CL(alpha), same emergent stall, same fixed-step RK4, same
+validity envelope, same numerically-located CL peak.
+
+Because a port can silently drift from its original, `parity/` compares the two engines
+value by value across three airframes and full 20s trajectories — 420 checks, currently
+agreeing to a relative difference of 4.5e-14. See [`parity/README.md`](parity/README.md)
+for what is covered and how to re-run it.
+
+No ML model runs in the browser. The simulator's two warning triggers (a fixed
+angle-of-attack margin and a rate-based time-to-boundary projection) are explicit
+engineering rules applied to the simulated physics — they are not the trained model's
+output, and the section says so on the page.
+
 ## `public/docs/`
 
 Static copies of `README.md`, `PROVENANCE.md`, and

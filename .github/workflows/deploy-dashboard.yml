@@ -37,6 +37,18 @@ jobs:
         working-directory: dashboard
         run: npm run build
 
+      # `paper/` is the source of truth; `paper/build_paper.py` publishes the
+      # rendered HTML/PDF/figures into dashboard/public/paper/, which Vite
+      # copies into dist/ verbatim. That keeps `npm run dev` and the deployed
+      # site serving the same files, so nothing is copied here -- this step
+      # only fails the build if the published copy is missing or stale.
+      - name: Verify published research paper
+        run: |
+          test -f dashboard/dist/paper/AeroGuard_Research_Paper.html
+          test -f dashboard/dist/paper/AeroGuard_Research_Paper.pdf
+          test -f dashboard/dist/paper/figures/fig1_pipeline.png
+          test -f dashboard/dist/paper/figures/fig4_generalization.png
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

@@ -4,10 +4,12 @@ const LINKS = [
   { id: "problem", label: "Problem" },
   { id: "physics", label: "Physics" },
   { id: "pipeline", label: "Pipeline" },
+  { id: "intervention", label: "Intervention" },
   { id: "results", label: "Results" },
   { id: "replay", label: "Replay" },
+  { id: "simulator", label: "Simulator" },
   { id: "generalization", label: "Generalization" },
-  { id: "limitations", label: "Limitations" },
+  { id: "limitations", label: "Scope" },
   { id: "timeline", label: "Timeline" },
 ];
 
@@ -39,12 +41,14 @@ export function Nav() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        {/* Adding an "Intervention" link left no slack at 1280px, so the gap and
+            letter-spacing tighten below xl rather than pushing the CTA off-screen. */}
+        <nav className="mx-4 hidden items-center gap-4 lg:flex xl:mx-6 xl:gap-6">
           {LINKS.map((l) => (
             <a
               key={l.id}
               href={`#${l.id}`}
-              className="font-mono-tab text-[11px] uppercase tracking-[0.16em] text-(--color-ink-soft) transition-colors hover:text-(--color-ink)"
+              className="font-mono-tab whitespace-nowrap text-[11px] uppercase tracking-[0.1em] text-(--color-ink-soft) transition-colors hover:text-(--color-ink) xl:tracking-[0.14em]"
             >
               {l.label}
             </a>

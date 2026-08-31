@@ -1,5 +1,5 @@
 import { Reveal } from "../ui/Reveal";
-import { Section, SectionTitle } from "../ui/Primitives";
+import { Section, SectionTitle, SourceNote } from "../ui/Primitives";
 
 const STAGES = [
   { label: "Physics Model", detail: "5-state RK4 longitudinal simulator, emergent stall" },
@@ -16,7 +16,7 @@ export function Timeline() {
   return (
     <Section id="timeline">
       <SectionTitle
-        kicker="08 — Research Timeline"
+        kicker="10 — Research Timeline"
         title="Eight stages, one continuous line of evidence."
       />
 
@@ -43,6 +43,11 @@ export function Timeline() {
           ))}
         </ol>
       </div>
+
+      <SourceNote>
+        PROVENANCE.md — canonical, superseded-historical, and rejected-candidate artifacts for
+        every stage above, with the script and seed that produced each.
+      </SourceNote>
     </Section>
   );
 }

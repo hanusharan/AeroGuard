@@ -1,5 +1,5 @@
 import { Reveal } from "../ui/Reveal";
-import { Section, SectionTitle, GlassPanel, Pill } from "../ui/Primitives";
+import { Section, SectionTitle, GlassPanel, Pill, SourceNote } from "../ui/Primitives";
 
 export function Problem() {
   return (
@@ -43,12 +43,25 @@ export function Problem() {
       </div>
 
       <Reveal delay={0.2}>
-        <p className="mt-8 max-w-2xl text-sm leading-relaxed text-(--color-ink-faint)">
-          Early datasets in this project produced crossings with a physical precursor of only
-          0.37–0.54 seconds — too short for any model to learn a genuine early warning from. A
-          central finding of this research (see Timeline) is that this was a control-input
-          timing artifact, not a limit of the underlying flight dynamics.
-        </p>
+        <div className="mt-8 max-w-2xl">
+          <p className="text-sm leading-relaxed text-(--color-ink-faint)">
+            Early datasets in this project produced crossings with a physical precursor of only
+            0.37–0.54 seconds — too short for any model to learn a genuine early warning from. A
+            central finding of this research is that this was a control-input timing artifact, not
+            a limit of the underlying flight dynamics —{" "}
+            <a
+              href="#intervention"
+              className="text-(--color-signal) underline decoration-(--color-signal)/40 underline-offset-2 hover:decoration-(--color-signal)"
+            >
+              see The Intervention
+            </a>
+            .
+          </p>
+          <SourceNote>
+            outputs/precursor_diagnosis/precursor_diagnosis_report.md,
+            outputs/dataset_audit_v3/v03_generation_report.md
+          </SourceNote>
+        </div>
       </Reveal>
     </Section>
   );

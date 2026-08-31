@@ -16,16 +16,32 @@ export function FlightReplay() {
   const warningActive = current.t >= replay.firstWarningTimeS;
   const crossed = current.t >= replay.crossingTimeS;
 
+  // Seconds remaining until the boundary; the number the whole result is about.
+  const toBoundary = replay.crossingTimeS - current.t;
+  // "Approach" begins where alpha has clearly left trim and is climbing — one
+  // credited lead time ahead of the first warning, so the phase strip shows the
+  // model firing inside a run-up the viewer can already see on the chart.
+  const approachStart = Math.max(0, replay.firstWarningTimeS - replay.creditedLeadTimeS);
+  const phase: PhaseId = crossed
+    ? "stall"
+    : warningActive
+      ? "warning"
+      : current.t >= approachStart
+        ? "approach"
+        : "normal";
+
   return (
     <Section id="replay">
       <SectionTitle
-        kicker="05 — Interactive Flight Replay"
+        kicker="06 — Interactive Flight Replay"
         title="One real held-out trajectory, scored by the frozen model."
         lede={
           <>
-            Trajectory <code className="font-mono-tab text-(--color-ink)">{replay.trajectoryId}</code> —
-            a v0.3 TEST-split flight the model never trained on. Its model-credited lead time
-            ({replay.creditedLeadTimeS.toFixed(2)}s) matches the reported event-level median almost
+            Play it through the four phases — normal flight, approach, model warning, stall
+            boundary — and watch the countdown at the moment the warning fires. Trajectory{" "}
+            <code className="font-mono-tab text-(--color-ink)">{replay.trajectoryId}</code> is a v0.3
+            TEST-split flight the model never trained on; its model-credited lead time (
+            {replay.creditedLeadTimeS.toFixed(2)}s) matches the reported event-level median almost
             exactly, so this is a representative example, not a cherry-picked best case.
           </>
         }
@@ -62,6 +78,8 @@ export function FlightReplay() {
               {!warningActive && <Pill tone="safe">Nominal</Pill>}
             </div>
           </div>
+
+          <PhaseStrip phase={phase} toBoundary={toBoundary} crossed={crossed} />
 
           <div className="mt-6 grid gap-5 lg:grid-cols-[1.4fr_1fr]">
             <div className="h-64 sm:h-72">
@@ -163,6 +181,80 @@ export function FlightReplay() {
         </GlassPanel>
       </Reveal>
     </Section>
+  );
+}
+
+type PhaseId = "normal" | "approach" | "warning" | "stall";
+
+const PHASES: { id: PhaseId; label: string; color: string }[] = [
+  { id: "normal", label: "Normal flight", color: "var(--color-safe)" },
+  { id: "approach", label: "Approach", color: "var(--color-ink-soft)" },
+  { id: "warning", label: "Model warning", color: "var(--color-caution)" },
+  { id: "stall", label: "Stall boundary", color: "var(--color-critical)" },
+];
+
+/**
+ * Turns the credited lead time into something the eye reads directly: which of
+ * the four phases the flight is in right now, and how many seconds are left
+ * before the boundary. The countdown is what makes 4.72s feel like a duration
+ * rather than a table cell.
+ */
+function PhaseStrip({
+  phase,
+  toBoundary,
+  crossed,
+}: {
+  phase: PhaseId;
+  toBoundary: number;
+  crossed: boolean;
+}) {
+  const activeIndex = PHASES.findIndex((p) => p.id === phase);
+
+  return (
+    <div className="mt-6 rounded-2xl border border-(--color-line) bg-white/[0.02] p-4 sm:p-5">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-1 items-center">
+          {PHASES.map((p, i) => {
+            const active = i === activeIndex;
+            const passed = i < activeIndex;
+            return (
+              <div key={p.id} className="flex flex-1 items-center">
+                <div className="flex flex-1 flex-col gap-1.5">
+                  <div
+                    className="h-[3px] rounded-full transition-colors duration-300"
+                    style={{
+                      background: active || passed ? p.color : "rgba(255,255,255,0.08)",
+                      opacity: passed ? 0.45 : 1,
+                    }}
+                  />
+                  <span
+                    className="font-mono-tab text-[9px] uppercase leading-tight tracking-[0.1em] transition-colors duration-300 sm:text-[10px]"
+                    style={{
+                      color: active ? p.color : "var(--color-ink-faint)",
+                      fontWeight: active ? 600 : 400,
+                    }}
+                  >
+                    {p.label}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="shrink-0 text-right sm:w-[132px]">
+          <div className="font-mono-tab text-[9px] uppercase tracking-[0.14em] text-(--color-ink-faint)">
+            {crossed ? "Boundary" : "To boundary"}
+          </div>
+          <div
+            className="font-mono-tab text-2xl font-bold tabular-nums"
+            style={{ color: crossed ? "var(--color-critical)" : "var(--color-ink)" }}
+          >
+            {crossed ? "STALL" : `T − ${toBoundary.toFixed(2)}s`}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

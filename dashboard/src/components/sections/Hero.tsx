@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { HeroTrajectory } from "../HeroTrajectory";
 import { Pill } from "../ui/Primitives";
+import { FULL_REPORT } from "../../lib/links";
 
 export function Hero() {
   return (
@@ -36,17 +37,28 @@ export function Hero() {
           Physics-informed machine learning for early aircraft stall warning.
         </motion.p>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.26, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-(--color-ink-soft)"
+          className="mx-auto mt-9 max-w-3xl"
         >
-          AeroGuard investigates whether temporal flight-state information — angle of attack,
-          airspeed, pitch rate, and control input, observed over a short causal window — can
-          provide a genuine, multi-second warning before an aerodynamic stall, rather than a
-          detector that only reacts once the stall boundary is already reached.
-        </motion.p>
+          <div className="glass rounded-2xl border-l-2 border-l-(--color-signal) px-6 py-7 text-left sm:px-9 sm:py-8">
+            <span className="font-mono-tab text-[11px] font-medium uppercase tracking-[0.28em] text-(--color-signal)">
+              Research question
+            </span>
+            <p className="mt-4 text-lg leading-relaxed font-medium text-(--color-ink) sm:text-xl">
+              Can a temporal ML model detect a physically meaningful approach-to-stall precursor{" "}
+              <em className="not-italic text-(--color-signal)">seconds</em> before the stall
+              boundary — and transfer that warning to a structurally different control mechanism?
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-(--color-ink-soft)">
+              Answered end to end inside this repository: a 2D longitudinal flight-dynamics
+              simulator, three versioned trajectory datasets, and a temporal early-warning model
+              evaluated once on a held-out, trajectory-level TEST split.
+            </p>
+          </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 14 }}
@@ -61,12 +73,12 @@ export function Hero() {
             Explore the Research
           </a>
           <a
-            href="/docs/AEROGUARD_FINAL_RESEARCH_REPORT.md"
+            href={FULL_REPORT}
             target="_blank"
             rel="noreferrer"
             className="rounded-full border border-(--color-line-strong) bg-white/[0.03] px-6 py-3 font-mono-tab text-[12px] font-semibold uppercase tracking-[0.14em] text-(--color-ink) transition-colors hover:border-(--color-signal)/50 hover:text-(--color-signal)"
           >
-            Read the Paper
+            Read the Full Research Report
           </a>
         </motion.div>
       </div>

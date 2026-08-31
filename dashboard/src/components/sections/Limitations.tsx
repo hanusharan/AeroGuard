@@ -1,5 +1,5 @@
 import { Reveal } from "../ui/Reveal";
-import { Section, SectionTitle, GlassPanel } from "../ui/Primitives";
+import { Section, SectionTitle, GlassPanel, SourceNote } from "../ui/Primitives";
 
 const LIMITATIONS = [
   {
@@ -28,7 +28,7 @@ export function Limitations() {
   return (
     <Section id="limitations">
       <SectionTitle
-        kicker="07 — Scientific Scope"
+        kicker="09 — Scientific Scope"
         title="What this research does and does not establish."
         lede="Stated as scope, not apology — every claim on this page is precisely bounded by what was actually measured."
       />
@@ -48,6 +48,11 @@ export function Limitations() {
           </Reveal>
         ))}
       </div>
+
+      <SourceNote>
+        outputs/final/AEROGUARD_FINAL_RESEARCH_REPORT.md §20–21 (limitations and threats to
+        validity), §17–19 (generalization interpretation)
+      </SourceNote>
     </Section>
   );
 }

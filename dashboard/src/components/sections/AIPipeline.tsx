@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Reveal } from "../ui/Reveal";
-import { Section, SectionTitle, GlassPanel, Pill } from "../ui/Primitives";
+import { Section, SectionTitle, GlassPanel, Pill, SourceNote } from "../ui/Primitives";
 
 const STAGES = [
   { label: "Flight Dynamics", desc: "5-state RK4 physics simulation" },
@@ -75,6 +75,10 @@ export function AIPipeline() {
             set.
           </p>
         </div>
+        <SourceNote>
+          ml/temporal/, tests/ (leakage and causality guards),
+          outputs/ml_v03/v03_temporal_ml_report.md
+        </SourceNote>
       </Reveal>
     </Section>
   );

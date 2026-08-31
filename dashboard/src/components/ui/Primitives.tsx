@@ -118,7 +118,9 @@ export function Pill({
 
 export function SourceNote({ children }: { children: ReactNode }) {
   return (
-    <p className="mt-3 font-mono-tab text-[11px] leading-relaxed text-(--color-ink-faint)">
+    // Source paths are long unbreakable tokens; without break-words their
+    // min-content width stretches whatever grid or panel contains them.
+    <p className="mt-3 break-words font-mono-tab text-[11px] leading-relaxed text-(--color-ink-faint)">
       {children}
     </p>
   );

@@ -26,7 +26,7 @@ export function KeyResults() {
   return (
     <Section id="results">
       <SectionTitle
-        kicker="04 — Key Results"
+        kicker="05 — Key Results"
         title="From an imminent-event detector to a multi-second early warning."
         lede="v0.3 introduced a re-timed control-input regime producing a genuine multi-second stall precursor. The same model family, features, and evaluation methodology as v0.2 — only the underlying precursor changed."
       />
@@ -67,7 +67,9 @@ export function KeyResults() {
             <div className="mt-4 grid grid-cols-2 gap-4">
               <div>
                 <div className="font-mono-tab text-5xl font-bold text-(--color-ink)">
-                  <Counter to={m.v03.eventRecall * 100} decimals={1} suffix="%" />
+                  {/* From the counts, not the stored rounded rate: 73/76 is
+                      96.1% in the source report, but 0.9605 renders as 96.0. */}
+                  <Counter to={(m.v03.nWarned / m.v03.nEvents) * 100} decimals={1} suffix="%" />
                 </div>
                 <div className="mt-1 text-[11px] text-(--color-ink-faint)">
                   event recall ({m.v03.nWarned}/{m.v03.nEvents} events)
@@ -145,7 +147,49 @@ export function KeyResults() {
           </SourceNote>
         </GlassPanel>
       </Reveal>
+
+      <Reveal delay={0.15}>
+        <div className="mt-5 rounded-2xl border border-(--color-line-strong) bg-white/[0.02] p-6 sm:p-7">
+          <div className="flex items-center gap-2.5">
+            <NotIcon />
+            <span className="font-mono-tab text-[11px] font-medium uppercase tracking-[0.2em] text-(--color-ink)">
+              What this does not establish
+            </span>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {NOT_ESTABLISHED.map((n) => (
+              <span
+                key={n}
+                className="rounded-full border border-(--color-line) bg-white/[0.03] px-3 py-1.5 font-mono-tab text-[11px] text-(--color-ink-soft)"
+              >
+                {n}
+              </span>
+            ))}
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-(--color-ink-soft)">
+            Every number above is simulation-internal, measured on a simplified 2D longitudinal
+            model that is explicitly not a validated model of any real aircraft. Full scope and
+            threats to validity are in <a href="#limitations" className="text-(--color-signal) underline decoration-(--color-signal)/40 underline-offset-2 hover:decoration-(--color-signal)">Scientific Scope</a>.
+          </p>
+        </div>
+      </Reveal>
     </Section>
+  );
+}
+
+const NOT_ESTABLISHED = [
+  "Universal stall prediction",
+  "Real-aircraft safety",
+  "Real-flight performance",
+  "Zero-shot generalization to arbitrary regimes",
+];
+
+function NotIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" className="shrink-0 text-(--color-ink-faint)">
+      <circle cx="8" cy="8" r="6.3" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M3.6 3.6l8.8 8.8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
   );
 }
 

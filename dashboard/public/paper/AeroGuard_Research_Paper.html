@@ -1,0 +1,225 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Physics-Informed Machine Learning for Multi-Second Aircraft Stall Early Warning and Cross-Mechanism Generalization</title><style>
+@page { size: letter; margin: 0.54in 0.55in 0.46in 0.55in; }
+@page { @bottom-center { content: counter(page); } }
+
+:root {
+  --ink: #101418;
+  --ink-soft: #3d454e;
+  --rule: #c8cdd4;
+  --accent: #7a2020;
+  --serif: "Charter", "Palatino Linotype", "Palatino", "Georgia", "Times New Roman", serif;
+  --sans: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --mono: "SFMono-Regular", "Menlo", "Consolas", monospace;
+}
+
+html { font-size: 8.2pt; }
+body {
+  font-family: var(--serif);
+  color: var(--ink);
+  line-height: 1.235;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  margin: 0;
+}
+
+/* ---------- masthead (spans both columns) ---------- */
+.masthead { text-align: center; margin: 0 0 9pt; }
+h1.title {
+  font-family: var(--sans);
+  font-size: 16.4pt;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  margin: 0 0 7pt;
+  text-align: center;
+  hyphens: none;
+}
+.authors { font-family: var(--sans); font-size: 9.2pt; line-height: 1.45; color: var(--ink-soft); }
+.authors .name { font-size: 10.5pt; color: var(--ink); font-weight: 600; }
+.authors code { font-family: var(--mono); font-size: 8.2pt; }
+
+.abstract {
+  margin: 9pt auto 0;
+  padding: 6.5pt 9pt;
+  border-top: 1.1pt solid var(--ink);
+  border-bottom: 0.5pt solid var(--rule);
+  font-size: 8.25pt;
+  line-height: 1.26;
+  text-align: justify;
+}
+.abstract p { margin: 0 0 5pt; }
+.abstract p:last-child { margin-bottom: 0; }
+.abstract .idx { font-size: 8.4pt; }
+
+/* ---------- two-column body ---------- */
+.body {
+  column-count: 2;
+  column-gap: 0.26in;
+  column-fill: balance;
+  margin-top: 9pt;
+}
+
+h2 {
+  font-family: var(--sans);
+  font-size: 9.9pt;
+  font-weight: 700;
+  margin: 7pt 0 2.5pt;
+  text-align: left;
+  hyphens: none;
+  break-after: avoid;
+}
+h3 {
+  font-family: var(--sans);
+  font-size: 9.0pt;
+  font-weight: 600;
+  font-style: italic;
+  margin: 7pt 0 2.5pt;
+  text-align: left;
+  hyphens: none;
+  break-after: avoid;
+}
+h2:first-child, h3:first-child { margin-top: 0; }
+
+p { margin: 0 0 4.8pt; orphans: 2; widows: 2; }
+p + p { text-indent: 0; }
+strong { font-weight: 700; }
+code { font-family: var(--mono); font-size: 0.87em; background: #f2f3f5; padding: 0 1.5px; border-radius: 2px; }
+.nw { white-space: nowrap; }
+sub, sup { line-height: 0; font-size: 0.72em; }
+
+/* ---------- equations ---------- */
+.eq {
+  margin: 5pt 0 6pt;
+  font-family: var(--serif);
+  font-size: 9.1pt;
+  break-inside: avoid;
+}
+.eq .line { display: flex; align-items: baseline; margin: 2pt 0; }
+.eq .expr { flex: 1; text-align: center; }
+.eq .num { width: 2.2em; text-align: right; font-style: normal; font-size: 8.6pt; }
+
+/* ---------- figures ---------- */
+figure {
+  margin: 7pt 0 8pt;
+  break-inside: avoid;
+  text-align: center;
+}
+figure img { max-width: 100%; height: auto; }
+figcaption {
+  font-family: var(--sans);
+  font-size: 7.3pt;
+  line-height: 1.28;
+  color: var(--ink-soft);
+  text-align: justify;
+  margin-top: 3pt;
+}
+figure.span, .tablewrap.span {
+  column-span: all;
+  margin: 8pt 0 9pt;
+}
+
+/* ---------- tables ---------- */
+.tablewrap { break-inside: avoid; margin: 9pt 0 10pt; }
+.tablewrap .caption {
+  font-family: var(--sans);
+  font-size: 7.3pt;
+  line-height: 1.28;
+  color: var(--ink-soft);
+  text-align: justify;
+  margin-bottom: 3pt;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 6.9pt;
+  table-layout: fixed;
+}
+th, td {
+  padding: 2.2pt 2.2pt;
+  text-align: right;
+  vertical-align: top;
+  hyphens: none;
+}
+th:first-child, td:first-child { text-align: left; width: 30%; }
+td, th { overflow-wrap: anywhere; }
+thead th { border-top: 1.1pt solid var(--ink); border-bottom: 0.6pt solid var(--ink); font-weight: 600; }
+tbody tr:last-child td { border-bottom: 1.1pt solid var(--ink); }
+tbody tr + tr td { border-top: 0.35pt solid #e2e5e9; }
+
+/* ---------- references ---------- */
+.refs {
+  font-size: 6.95pt;
+  line-height: 1.22;
+  text-align: left;
+  hyphens: none;
+  column-span: all;
+  column-count: 3;
+  column-gap: 0.2in;
+}
+.refs .ref {
+  padding-left: 1.85em;
+  text-indent: -1.85em;
+  margin: 0 0 2.4pt;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.refs code { font-size: 0.9em; background: none; padding: 0; overflow-wrap: anywhere; }
+
+.sources {
+  column-span: all;
+  margin-top: 5pt;
+  font-size: 6.95pt;
+  line-height: 1.235;
+  text-align: justify;
+  hyphens: none;
+  overflow-wrap: anywhere;
+}
+.sources code { font-size: 0.93em; background: none; padding: 0; }
+.sources .disclaimer { display: block; margin-top: 4pt; padding-top: 3.5pt; border-top: 0.5pt solid var(--rule); text-align: center; }
+
+/* ---------- on-screen reading view ----------
+   The two-column measure is right for print but hostile on screen (scroll
+   down one column, back up for the next). For screen the document collapses
+   to a single readable column on a paper-like sheet; print keeps the
+   two-column layout above verbatim. */
+@media screen {
+  html { font-size: 11.5pt; background: #eceff3; }
+  body {
+    max-width: 46em;
+    margin: 0 auto;
+    padding: 3.2em 2.2em 4em;
+    background: #fff;
+    line-height: 1.5;
+  }
+  .body { column-count: 1; }
+  h1.title { font-size: 2.05em; }
+  .abstract { font-size: 0.94em; line-height: 1.5; }
+  .refs { column-count: 2; font-size: 0.8em; line-height: 1.45; }
+  .sources { font-size: 0.78em; line-height: 1.5; }
+  figure.fig, .tablewrap { margin: 1.6em 0; }
+  figure img { max-width: min(100%, 34em); }
+  figcaption, .tablewrap .caption { font-size: 0.8em; line-height: 1.45; }
+  table { font-size: 0.82em; }
+  .eq { font-size: 1em; }
+}
+@media screen and (max-width: 640px) {
+  html { font-size: 11pt; }
+  body { padding: 2em 1.1em 3em; }
+  .refs { column-count: 1; }
+  .tablewrap { overflow-x: auto; }
+}
+
+.footer {
+  column-span: all;
+  margin-top: 6pt;
+  padding-top: 4pt;
+  border-top: 0.5pt solid var(--rule);
+  font-family: var(--sans);
+  font-size: 7.6pt;
+  line-height: 1.35;
+  color: var(--ink-soft);
+  text-align: center;
+}
+</style></head><body><div class="masthead"><h1 class="title">Physics-Informed Machine Learning for Multi-Second Aircraft Stall Early Warning and Cross-Mechanism Generalization</h1><div class="authors"><div class="name">Bulusu Hanu Sharan</div><div>AeroGuard Project · Independent Research</div><div><code>github.com/BulusuHanuSharan/AeroGuard</code></div></div><div class="abstract"><p><strong>Abstract</strong> — Aerodynamic stall is preceded in principle by a measurable approach to the critical angle of attack, but whether that approach leaves a <em>learnable, multi-second</em> signature depends on how the aircraft is flown into it. We investigate this inside a self-contained simulation study: a 2-D longitudinal point-mass flight-dynamics model with an emergent, smooth <span class="nw"><i>C</i><sub>L</sub>(α)</span> stall, three generations of synthetic trajectory datasets, and a temporal machine-learning early-warning model. The first evaluated dataset generation (v0.2; 1,000 trajectories, 1,753,615 rows) gave a median <em>physical</em> precursor — the direction-aligned transit from α = 8° to the 16.07° stall boundary — of only 0.54 s, and a model trained on it behaved accordingly: 100% event recall but a 0.53 s median credited lead time, with no event warned ≥4 s ahead. A physics diagnosis attributed the short precursor to control-input timing rather than to the dynamics. Leaving the physics engine untouched and re-timing only the elevator profile produced v0.3 (3,150 trajectories, 5,340,865 rows), median physical precursor 4.38 s; the same frozen model family then reached PR-AUC 0.890, 96.1% event recall and a 4.72 s median lead. A zero-exposure regime-exclusion control collapsed to PR-AUC 0.552 and 0.73 s median lead, so we tested transfer to a structurally distinct single-pulse mechanism: the frozen model retained PR-AUC 0.835 with 100% event recall (46/46) and a 2.96 s median lead. The evidence supports family-level generalization across control-input mechanisms producing the same slow approach to the boundary — not universal zero-shot stall prediction, and not a claim about any real aircraft.</p><p class="idx"><strong>Index terms</strong> — flight dynamics, aerodynamic stall, early warning, time-series classification, generalization, simulation.</p></div></div><div class="body"><figure class="fig span" id="fig1"><img src="figures/fig1_pipeline.png" alt=""><figcaption><strong>Figure 1.</strong> AeroGuard end-to-end architecture. The physics engine (top left) is fixed after Stage 1; every subsequent dataset generation changes only the control-input profile. The v0.3 primary model is frozen before any transfer test. Compact redraw of the schematic at <code>outputs/final/figures/01_aeroguard_pipeline.png</code> — same stages, same flow [A1].</figcaption></figure><h2>1. Introduction</h2><p>Aerodynamic stall occurs when the angle of attack α exceeds the value at which the lift coefficient peaks, after which lift falls with further increases in α [1]. Operationally the hazard is not the stall itself but how little time separates a recoverable state from an unrecoverable one. Conventional stall-warning devices are by construction <em>imminent-event detectors</em>: they fire when a measured quantity crosses a fixed margin ahead of the critical angle [10]. A system that instead recognised the multi-second <em>approach</em> would sit closer to the early-warning-signal literature on slow approaches to critical transitions [2] than to threshold alarms.</p><p>Whether such a system is learnable is contingent on a fact that is easy to overlook: <strong>the precursor must exist in the data before a model can learn it.</strong> A trajectory commanded abruptly through the boundary carries no multi-second signature, whatever model is applied — and that contingency became this investigation's central finding rather than a preliminary detail.</p><p>We ask two questions. First: <em>can a physics-based flight simulator produce trajectories with a genuine, multi-second precursor to aerodynamic stall, and — if so — can a machine-learning model learn to detect that precursor early enough to constitute a useful early-warning system, rather than an imminent-event detector reacting inside the final half-second before the event?</em> Second, reachable only once the first is answered affirmatively: <em>is the learned skill a transferable understanding of rising α with shrinking stall margin over several seconds, or a memorized fingerprint of one control-input shape?</em></p><p>The contributions are a pipeline that measures the physical precursor duration directly rather than assuming it; a diagnosis attributing an early dataset's sub-second precursor to control-profile timing rather than to the dynamics, with an intervention that changed only the control input; and a two-direction transfer test that separates <em>family-level</em> generalization from the zero-shot claim the headline numbers might otherwise invite. All of it is simulation-internal: no real flight, wind-tunnel or validated-airframe data was used, and no claim about real aircraft is made or implied.</p><h2>2. Methods</h2><h3>2.1 Flight-Dynamics Model</h3><p>The simulator (<code>aeroguard/</code>) integrates a 2-D longitudinal point-mass model with the five-element state <span class="nw"><b>x</b> = [<i>V</i>, γ, θ, <i>h</i>, <i>q</i>]</span> — airspeed, flight-path angle, pitch angle, altitude, pitch rate — by fixed-step fourth-order Runge–Kutta at Δ<i>t</i> = 0.01 s over a 20 s horizon. Angle of attack is derived, not stored: α = θ − γ. The equations of motion take the standard longitudinal form [3], [4]:</p><div class="eq"><div class="line"><span class="expr"><i>m</i> d<i>V</i>/d<i>t</i> = <i>T</i> cos α − <i>D</i> − <i>m g</i> sin γ</span><span class="num">(1)</span></div><div class="line"><span class="expr"><i>m V</i> dγ/d<i>t</i> = <i>L</i> + <i>T</i> sin α − <i>m g</i> cos γ</span><span class="num">(2)</span></div><div class="line"><span class="expr">d<i>h</i>/d<i>t</i> = <i>V</i> sin γ,   dθ/d<i>t</i> = <i>q</i></span><span class="num">(3)</span></div><div class="line"><span class="expr"><i>I</i><sub>yy</sub> d<i>q</i>/d<i>t</i> = <i>M</i><sub>δ</sub> δ<sub>e</sub> − <i>M</i><sub>q</sub> <i>q</i> − <i>M</i><sub>α</sub> α</span><span class="num">(4)</span></div></div><p>Equation (4) is a <strong>linear short-period surrogate</strong> for the pitching-moment equation, not a full aerodynamic moment model: the elevator has authority over pitch rate, damped by <i>q</i> and weakly restored by α. Drag follows the polar <span class="nw"><i>C</i><sub>D</sub> = <i>C</i><sub>D0</sub> + <i>k C</i><sub>L</sub><sup>2</sup></span>; thrust is linear in throttle.</p><p>Stall is emergent, not rule-based. The lift coefficient is a sigmoid blend — the technique standard for small fixed-wing UAV models [5] — between a linear pre-stall curve <span class="nw"><i>C</i><sub>L</sub> = <i>C</i><sub>L0</sub> + <i>C</i><sub>Lα</sub> α</span> and a post-stall branch decaying exponentially from that curve's value at α<sub>stall</sub>; no <code>if alpha &gt; threshold</code> branch exists anywhere in the aerodynamics module. The <strong>stall boundary</strong> used for labeling is therefore not a hand-set constant but the numerically located argmax of the live <i>C</i><sub>L</sub>(α) function, α* ≈ 16.07°. Air density is constant at sea level (ρ = 1.225 kg m<sup>−3</sup>), as is mass; the coefficients (<i>m</i> = 1200 kg, <i>S</i> = 16.2 m², <i>I</i><sub>yy</sub> = 1285 kg m²) are plausible defaults for a generic small fixed-wing aircraft, <strong>not</strong> values measured or fitted for any real airframe. Critically for what follows, the physics engine was frozen after Stage 1 and never modified again.</p><h3>2.2 Dataset Generation and Labeling</h3><p>Each dataset version simulates trajectories under randomized initial conditions and regime-specific elevator/throttle profiles. v0.2 comprises 1,000 trajectories (500 <code>normal</code>, 250 <code>stall</code>, 250 <code>near_boundary</code>; 1,753,615 rows; 19.2% crossing the boundary); v0.3 comprises 3,150 (500 <code>normal</code>, 250 <code>stall</code>, 2,400 <code>gradual_approach_v3</code>; 5,340,865 rows; 470 crossings), the last count sized from the Wilson 95% lower bound on the calibrated crossing rate so as to guarantee at least v0.2's crossing count.</p><p>Per-timestep features are the state and controls, causal one-step derivatives, and <span class="nw"><code>stall_margin</code> = α* − α</span>. The target is <code>future_stall_5s</code>: 1 if |α| exceeds α* anywhere in the half-open window (<i>t</i>, <i>t</i> + 5 s], 0 if not, undefined where that window is incomplete — strictly causal, never inspecting the current row. Splitting is at the <strong>trajectory</strong> level with verified zero trajectory-ID overlap across train, validation and test, and integrity audits (no NaN/Inf, no duplicate IDs, monotonic timestamps, causal-derivative re-derivation, no sub-zero altitudes) passed at every version.</p><h3>2.3 Machine-Learning Method</h3><p>The primary model is a random forest [6] built with scikit-learn [7] over 23 features at a 1 s history window: 8 instantaneous state/control channels (<i>V</i>, α, γ, <i>q</i>, <i>h</i>, δ<sub>e</sub>, throttle, <code>stall_margin</code>), 5 causal derivatives, and 10 windowed summaries of the preceding second (α mean/min/max/range/slope/trend, and <i>V</i>, γ, <i>q</i> slopes plus elevator change). Hyperparameters, feature definitions, threshold selection and the event definition were fixed on v0.2 and reused <strong>unchanged</strong> for v0.3, the regime-exclusion control and the cross-mechanism experiment. The threshold is chosen on validation only; the test split is scored once.</p><h3>2.4 Evaluation Protocol</h3><p>Because positives are rare and the negative class dominates, we report <strong>PR-AUC</strong> as the primary row-level metric, precision–recall curves being more informative than ROC curves under class imbalance [8], [9]. Row-level metrics alone cannot support an early-warning claim, so we add two event-level measures: a discrete stall <strong>event</strong> counts as warned if an alarm is raised anywhere in the 5 s label horizon preceding the crossing, the <strong>credited lead time</strong> is the earliest such alarm's distance to the crossing (capped at that horizon), and <strong>warning coverage at τ</strong> is the fraction of events warned at least τ seconds ahead.</p><p>Separately from the model, we measure each crossing's <strong>physical precursor duration</strong> from the trajectory itself: the direction-aligned, dip-aware time from an α = 8° onset to the crossing. This model-independent metric makes the diagnosis of §3.2 possible, since it bounds what any model could achieve on a given dataset.</p><h2>3. Experimental Design and Results</h2><h3>3.1 v0.2: The Short-Precursor Problem</h3><p>v0.1 (1,000 trajectories, 1,565,280 rows) established the generation machinery; v0.2 regenerated it with a recalibrated near-boundary regime and explicit ground-contact termination, and is the first version evaluated end to end. An instantaneous-state baseline on v0.2 set the reference point: a random forest on point-in-time features reached test PR-AUC 0.742 (precision 0.814, recall 0.604), against 0.599 for a tuned α-threshold rule. Adding temporal context improved row-level performance to PR-AUC 0.813 — but the early-warning picture told a different story. Row-level recall was 98.8% within 0.5 s of the crossing and then fell off a cliff, never exceeding 26% in any later bucket and reaching 0.0% at 4–5 s (Fig. 3a). All 14 discrete crossings in the usable test population were warned, but the <strong>median credited lead time was 0.53 s</strong> (Table 1). By the definition adopted in §1, this is an imminent-event detector, not an early-warning system.</p><h3>3.2 Physics-Based Precursor Diagnosis</h3><p>We next asked whether this ceiling was a property of the model or of the data. A direction-aligned analysis of the 5 s preceding every v0.2 crossing (Fig. 2a) showed median α essentially flat from <i>t</i> − 5 s to about <i>t</i> − 1 s in both regimes that ever cross, rising sharply only inside the final second: the median 8°→16° transit was 0.54 s in <code>near_boundary</code> and 0.33 s in <code>stall</code>. Single-variable separability between soon-to-cross and safe rows sat near chance (AUC 0.51–0.65) at every lead time beyond ~1 s in <code>stall</code>, and <code>near_boundary</code>'s higher separability traced to a <em>level</em> effect — crossing trajectories start at higher α — not a <em>trend</em> effect. Physical precursor coverage was ~4% at ≥2 s and 0% at ≥3 s (Fig. 2b).</p><p>The conclusion was therefore not "the model is too weak" but "<strong>the precursor is not in the data</strong>." The proximate cause was v0.2's large-magnitude, long-hold elevator pulses, aimed at an equilibrium α far past the boundary, which drove a fast transit through the precursor region — a control-profile timing artifact, not evidence that the dynamics cannot support a slower approach.</p><figure class="fig" id="fig2"><img src="figures/fig2_precursor.png" alt=""><figcaption><strong>Figure 2.</strong> The precursor is a property of the control profile, not of the physics. <strong>(a)</strong> Direction-aligned median α in the 5 s before a v0.2 stall crossing, by regime: α is flat until roughly the final second in both. <strong>(b)</strong> Physical precursor coverage at dataset scale for v0.2 (median 0.54 s) versus v0.3 (median 4.38 s, <i>n</i> = 194 usable crossings). Composed from recorded outputs only [A2], [A3]; no experiment was re-run.</figcaption></figure><h3>3.3 v0.3 Control-Profile Intervention</h3><p>The intervention is deliberately narrow: <strong>the physics engine, the aircraft parameters, the <i>C</i><sub>L</sub>(α) curve and the stall boundary were not modified</strong>, nor were the features, the model family, the label definition or the evaluation procedure. Only the elevator input's timing and shape changed, introducing a new <code>gradual_approach_v3</code> regime.</p><p>That asymmetry is what makes the change a test of the hypothesis rather than a way of making the task easier. The classification problem is not relaxed — boundary, label horizon and metrics are identical, and a slow approach spends <em>longer</em> in the ambiguous region near the boundary — so what changes is only whether a multi-second precursor is physically present to detect. If §3.2's diagnosis holds, re-timing should lengthen the measured physical precursor and the model's lead time should follow; if the sub-second ceiling were intrinsic to the dynamics, re-timing would move neither.</p><p>The first attempt failed informatively: five single-pulse candidates with lengthened rise times only tripled the median transit to 0.90–1.76 s while flight-path-angle envelope terminations rose from 22.7% to 57–80%, and <strong>none produced a single ≥3 s precursor event</strong>. A two-stage, two-pulse design ("Candidate D") did far better, though its first-reported ≥3 s rate proved inflated ≈2.5× by a metric crediting dive-then-zoom recovery as precursor time (corrected: 33.3%). Two further rounds fixed the remainder: same-sign, zero-gap pulse sequencing eliminated dive/zoom-climb crossings (0/40), and a 7.0 s pulse-duration cap trimming hold time only cut non-crossing γ-termination to 28.6%, below the original 31.4% baseline.</p><p>At full scale, v0.3 delivered 194 usable crossings with a <strong>median physical precursor of 4.38 s</strong>: 66.0% ≥2 s, 59.3% ≥3 s, 55.7% ≥4 s. Physical classification of the 317 <code>gradual_approach_v3</code> crossings was 99.1% clean gradual/monotonic low-γ approaches, 0.9% runaway, and 0% dive-then-zoom.</p><h3>3.4 Temporal ML Results</h3><p>Re-running the <em>unchanged</em> v0.2 temporal procedure on v0.3 (538,034 test rows, 456 test trajectories) produced PR-AUC <strong>0.890</strong> (precision 0.935, recall 0.736), event recall <strong>96.1% (73/76)</strong> and a <strong>median credited lead time of 4.72 s</strong> — roughly nine times v0.2's. Warning coverage at ≥4 s rose from 0.0% to 55.3%, and row-level recall in the 4–5 s bucket from 0.0% to 48.4% (Fig. 3, Table 1).</p><p>Two observations temper this. First, the false-positive <em>character</em> changed: in v0.2 every false positive lay on a trajectory that never stalls, whereas in v0.3 70% of unique false-positive trajectories do cross the boundary elsewhere in their own telemetry — ambiguous early rows on genuine approach shapes. Second, the population-median ML lead time (4.90 s) tracks the median physical precursor (4.39 s) closely, but the <em>per-event</em> correlation is only moderate (Pearson <i>r</i> = 0.337, <i>n</i> = 22): the model behaves more like "this resembles a gradual approach, warn now" than a per-trajectory timer.</p><figure class="fig" id="fig3"><img src="figures/fig3_temporal_ml.png" alt=""><figcaption><strong>Figure 3.</strong> Temporal early-warning performance, v0.2 versus v0.3, same model family and evaluation procedure throughout. <strong>(a)</strong> Row-level recall by time-to-crossing. <strong>(b)</strong> Event-level warning coverage at increasing lead-time thresholds. Composed from the two experiments' recorded metrics [A2], [A4].</figcaption></figure><h2>4. Cross-Mechanism Generalization</h2><h3>4.1 Regime-Exclusion Experiment</h3><p>A model that has learned only "the <code>gradual_approach_v3</code> shape" and one that has learned "α rising toward a shrinking margin" are indistinguishable in distribution. Our first probe was a regime-exclusion control: retrain the identical model with <strong>all 1,691</strong> <code>gradual_approach_v3</code> training trajectories removed, then evaluate unchanged on the full test split.</p><p>The multi-second capability collapsed. PR-AUC fell 0.890 → <strong>0.552</strong>, event recall 96.1% → <strong>64.5%</strong>, median credited lead time 4.72 s → <strong>0.73 s</strong>, coverage at ≥4 s 55.3% → <strong>11.8%</strong>. Near-immediate (0–0.5 s) detection degraded only modestly, 97.2% → 81.2%, but every bucket beyond ~0.5 s fell by a factor of 20–40 (Fig. 4a) — a dataset-shift failure [11] consistent with a meaningful share of the headline capability being regime-shape memorization.</p><h3>4.2 Alternative Mechanism (Candidate F)</h3><p>The exclusion control answers a blunt question — "can the model learn a multi-second precursor from <em>zero</em> exposure to any slow approach?" (no) — but cannot separate memorizing Candidate D's two-pulse <em>staircase</em> from learning something transferable. We therefore built a structurally distinct mechanism, "<strong>Candidate F</strong>": a <strong>single</strong>, duration-capped elevator pulse (cap 6.0 s) giving one smooth monotonic α rise to a single plateau, against Candidate D's staircase of rise → partial fall → rise → fall. Both reach the same physics-defined boundary through the same aircraft and pitch model by a different temporal path, and the new module touches neither the physics engine, the shared configuration, nor either Candidate D module. Its 150-trajectory calibration passed cleanly: 0% dive-then-zoom, 0% runaway, 100% clean crossings, 100% ≥2 s and 62.5% ≥3 s precursor coverage.</p><h3>4.3 Forward and Reverse Transfer</h3><p><strong>Forward.</strong> The frozen v0.3 model — never refit — was evaluated on 259,025 usable rows from 293 held-out Candidate F trajectories (46 events), none seen during training in any form. It retained PR-AUC <strong>0.835</strong>, 94% of its in-distribution value, with <strong>100% event recall (46/46)</strong> and a <strong>2.96 s</strong> median credited lead time; ≥2 s coverage, at 89.1%, exceeds the in-distribution figure itself.</p><p><strong>Reverse.</strong> One fresh forest, trained only on Candidate F trajectories and never shown a single <code>gradual_approach_v3</code> example, was evaluated on the frozen v0.3 test split's held-out <code>gradual_approach_v3</code> rows: PR-AUC <strong>0.708</strong>, event recall <strong>87.0% (47/54)</strong>, median credited lead time <strong>5.00 s</strong> (at the horizon cap).</p><p>Table 1 places all five evaluation conditions side by side.</p><div class="tablewrap" id="tab1"><div class="caption"><strong>Table 1.</strong> The five evaluation conditions. "Cov. ≥τ" is the fraction of stall events warned at least τ s before the crossing; lead times are capped at the 5 s label horizon. All values reproduced from the frozen experiment reports [A2], [A4], [A5].</div><table><thead><tr><th>Condition</th><th>PR-AUC</th><th>Event recall</th><th>Lead (s)</th><th>≥2 s</th><th>≥4 s</th></tr></thead><tbody><tr><td>v0.2 temporal</td><td>0.813</td><td>100.0% (14/14)</td><td>0.53</td><td>14.3%</td><td>0.0%</td></tr><tr><td>v0.3 in-distribution</td><td><strong>0.890</strong></td><td>96.1% (73/76)</td><td><strong>4.72</strong></td><td>64.5%</td><td><strong>55.3%</strong></td></tr><tr><td>Regime exclusion</td><td>0.552</td><td>64.5% (49/76)</td><td>0.73</td><td>22.4%</td><td>11.8%</td></tr><tr><td>Forward D → F</td><td>0.835</td><td><strong>100%</strong> (46/46)</td><td>2.96</td><td><strong>89.1%</strong></td><td>37.0%</td></tr><tr><td>Reverse F → D</td><td>0.708</td><td>87.0% (47/54)</td><td>5.00</td><td>72.2%</td><td>46.3%</td></tr></tbody></table></div><figure class="fig" id="fig4"><img src="figures/fig4_generalization.png" alt=""><figcaption><strong>Figure 4.</strong> Cross-mechanism generalization. <strong>(a)</strong> Row-level recall by time-to-crossing for the in-distribution model, the same frozen model on the novel Candidate F mechanism, and the zero-exposure regime-exclusion control. <strong>(b)</strong> Headline metrics across all four learned conditions. Transfer to a structurally distinct mechanism preserves multi-second performance; removing the phenomenon class from training does not. Composed from recorded outputs [A2], [A5].</figcaption></figure><h2>5. Discussion</h2><p>Two capabilities must be kept apart. The first is <strong>multi-second early warning</strong>: on v0.3 the model warns 96.1% of events at a 4.72 s median lead against 0.53 s on v0.2, under an identical procedure. Because only the control-input timing differed, the gain is attributable to a physical precursor now being present in the data, not to a stronger model or a relaxed task (§3.3).</p><p>The second is <strong>generalization</strong>, where the two probes answer different questions and must not be conflated. The zero-exposure check (§4.1) shows the capability is not inferred from the dynamics: a model that has never seen a slow approach does not derive one from "α rising, margin shrinking," and its lead time falls back to the sub-second regime (0.73 s). Removing the phenomenon class removes the skill. Against that, the frozen model transfers to Candidate F — whose α trajectory is a single smooth hump, not a staircase — retaining 94% of in-distribution PR-AUC and warning 46 of 46 events, with the reverse direction also holding (PR-AUC 0.708, 87.0% recall).</p><p>These bound the claim on both sides. What the model learned is not a memorized fingerprint of one control-input shape, since a structurally distinct shape transfers; but neither is it a shape-independent grasp of approach-to-stall physics, since zero exposure collapses it. The defensible description is <strong>family-level generalization</strong> across realizations of a slow α-rise toward the boundary — <strong>not zero-shot generalization</strong> to arbitrary unseen regimes, which this work neither tests nor claims.</p><h2>6. Limitations and Threats to Validity</h2><p><strong>Simulation only.</strong> The model is a simplified 2-D longitudinal point-mass simulator: no roll, yaw or sideslip, constant sea-level air density, a linear pitch-response surrogate (Eq. 4), a linear throttle-to-thrust map. It is <strong>not a validated model of any real aircraft</strong> — every coefficient is a plausible default, not measured or fitted data — and nothing here supports a claim about real-aircraft behaviour or about deployment in any aviation system.</p><p><strong>Family-level, not zero-shot, generalization.</strong> §4.3's transfer required prior exposure to some slow-approach mechanism; §4.1 shows the capability does not emerge without it. Candidate F, though structurally distinct from Candidate D, reuses an already-calibrated elevator specification and the same duration-cap concept, so it tests transfer <em>within</em> the broad slow, elevator-driven approach family — not to a qualitatively different stall-inducing mechanism (turbulence-induced, asymmetric or non-elevator-driven), none of which this simulator models.</p><p><strong>The <code>stall</code> regime remains an imminent-only detector.</strong> Its physical precursor is ≈0.3 s in both dataset versions and recall beyond ~1 s is 0% in both; nothing here extended its warning time.</p><p><strong>Weak per-event timing calibration.</strong> Population-median lead time tracks the population-median physical precursor closely, but the per-event correlation is only <i>r</i> = 0.337 (<i>n</i> = 22); warning times are not per-trajectory time-to-stall estimates.</p><p><strong>Small absolute event counts.</strong> 76 events in the v0.3 primary test population, 46 and 54 in the two transfer directions. The percentages support the qualitative conclusions but carry real sampling uncertainty; small differences between conditions should not be over-read.</p><p><strong>Limited regime coverage.</strong> Only three broad regimes (<code>normal</code>, <code>stall</code>, slow approach) and one aircraft configuration were simulated; behaviour outside them is untested.</p><p><strong>Process threats.</strong> Conflicting v0.3 calibration results arose partway through the project and were reconciled with a corrected, direction-aligned precursor metric; this paper cites the reconciled figures throughout [A1].</p><h2>7. Conclusion</h2><p>Answering §1 directly: within this simulator a multi-second stall precursor is achievable through control-input timing alone (median 0.54 s → 4.38 s), a standard temporal model learns to exploit it (96.1% event recall, 4.72 s median lead), and that skill transfers in both directions to a structurally distinct control mechanism — but does not survive removal of the phenomenon class from training. Stated precisely: <strong>the evidence supports multi-second stall early warning and transfer across structurally distinct control-input mechanisms producing the same underlying physical phenomenon, but does not establish universal zero-shot stall prediction across arbitrary unseen flight regimes.</strong></p><p>The methodological takeaway cost the most to learn: the dominant constraint on lead time was a property of the <em>data-generating process</em>, measurable independently of any model, and measuring it first turned an apparent modelling ceiling into a dataset-design problem. Natural extensions, none pursued here, are transfer to a non-elevator-driven stall mechanism, better per-event lead-time calibration, and dynamics beyond 2-D longitudinal motion — a prerequisite before any real-aircraft-relevant claim.</p><h2>References</h2><div class="refs"><div class="ref">[1] J. D. Anderson, <em>Fundamentals of Aerodynamics</em>, 6th ed. New York, NY, USA: McGraw-Hill Education, 2017.</div><div class="ref">[2] M. Scheffer <em>et al.</em>, "Early-warning signals for critical transitions," <em>Nature</em>, vol. 461, no. 7260, pp. 53–59, 2009, doi: 10.1038/nature08227.</div><div class="ref">[3] B. Etkin and L. D. Reid, <em>Dynamics of Flight: Stability and Control</em>, 3rd ed. New York, NY, USA: Wiley, 1996.</div><div class="ref">[4] B. L. Stevens, F. L. Lewis, and E. N. Johnson, <em>Aircraft Control and Simulation: Dynamics, Controls Design, and Autonomous Systems</em>, 3rd ed. Hoboken, NJ, USA: Wiley, 2015.</div><div class="ref">[5] R. W. Beard and T. W. McLain, <em>Small Unmanned Aircraft: Theory and Practice</em>. Princeton, NJ, USA: Princeton Univ. Press, 2012.</div><div class="ref">[6] L. Breiman, "Random forests," <em>Machine Learning</em>, vol. 45, no. 1, pp. 5–32, 2001, doi: 10.1023/A:1010933404324.</div><div class="ref">[7] F. Pedregosa <em>et al.</em>, "Scikit-learn: Machine learning in Python," <em>J. Machine Learning Research</em>, vol. 12, pp. 2825–2830, 2011.</div><div class="ref">[8] J. Davis and M. Goadrich, "The relationship between precision-recall and ROC curves," in <em>Proc. 23rd Int. Conf. Machine Learning (ICML)</em>, 2006, pp. 233–240, doi: 10.1145/1143844.1143874.</div><div class="ref">[9] T. Saito and M. Rehmsmeier, "The precision-recall plot is more informative than the ROC plot when evaluating binary classifiers on imbalanced datasets," <em>PLoS ONE</em>, vol. 10, no. 3, e0118432, 2015, doi: 10.1371/journal.pone.0118432.</div><div class="ref">[10] Federal Aviation Administration, <em>Airplane Flying Handbook</em>, FAA-H-8083-3C. Washington, DC, USA: U.S. Dept. of Transportation, 2021.</div><div class="ref">[11] J. Quiñonero-Candela, M. Sugiyama, A. Schwaighofer, and N. D. Lawrence, Eds., <em>Dataset Shift in Machine Learning</em>. Cambridge, MA, USA: MIT Press, 2009.</div></div><div class="sources"><strong>Primary sources (this repository).</strong> Every AeroGuard-specific number above is reproduced from these frozen artifacts; none was recomputed for this paper. <strong>[A1]</strong> <em>AeroGuard — Final Research Report</em> (frozen), <code>outputs/final/</code>, with <code>PROVENANCE.md</code>, <code>REPRODUCIBILITY.md</code>. <strong>[A2]</strong> v0.2 temporal experiment, <code>outputs/ml_temporal/</code>. <strong>[A3]</strong> Precursor diagnosis, v0.3 generation, audit and calibration: <code>outputs/precursor_diagnosis/</code>, <code>outputs/dataset_audit_v3/</code>, <code>outputs/v03_calibration/</code>. <strong>[A4]</strong> v0.3 temporal ML and regime exclusion, <code>outputs/ml_v03/</code>. <strong>[A5]</strong> Cross-mechanism transfer, <code>outputs/ml_v03_generalization/</code>. <span class="disclaimer">Published on the AeroGuard project website. <b>Not peer-reviewed, not flight-tested, and not a certified aviation safety tool.</b> All results are internal to the simulator described in §2.1.</span></div></div></body></html>

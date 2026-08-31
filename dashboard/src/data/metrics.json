@@ -86,6 +86,20 @@
     "windowS": 1.0,
     "threshold": 0.8586
   },
+  "precursor": {
+    "v01MedianS": 0.37,
+    "v02MedianS": 0.54,
+    "v03MedianS": 4.38,
+    "v02Coverage": {
+      ">=2s": 0.04,
+      ">=3s": 0.0
+    },
+    "v03Coverage": {
+      ">=2s": 0.66,
+      ">=3s": 0.593,
+      ">=4s": 0.557
+    }
+  },
   "generalization": {
     "forward": {
       "prAuc": 0.8353,
