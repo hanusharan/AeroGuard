@@ -1,5 +1,12 @@
 # AeroGuard
 
+[![Live dashboard](https://img.shields.io/badge/live%20dashboard-open-2ea44f)](https://hanusharan.github.io/AeroGuard/)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
+[![Tests](https://img.shields.io/badge/tests-190%2F190%20passing-brightgreen)](#testing)
+[![Stage: simulation research](https://img.shields.io/badge/stage-simulation%20research-orange)](#limitations)
+
+**Physics-informed machine learning for early aircraft stall warning.**
+
 A self-contained research pipeline asking one question: **can a physically
 credible, multi-second precursor to an aerodynamic stall be predicted by a
 machine-learning model before the stall occurs — and does that skill transfer
@@ -11,6 +18,7 @@ evaluated end to end in this repository. **This is a simplified, educational
 physics model — it is NOT a validated model of any real aircraft**, and no
 result here should be read as a claim about real-aircraft behavior or safety.
 
+**Live dashboard:** [hanusharan.github.io/AeroGuard](https://hanusharan.github.io/AeroGuard/) — interactive walkthrough of the datasets, models, and results.
 **Full synthesis:** [`outputs/final/AEROGUARD_FINAL_RESEARCH_REPORT.md`](outputs/final/AEROGUARD_FINAL_RESEARCH_REPORT.md)
 **Project status:** [`outputs/final/FINAL_STATUS.md`](outputs/final/FINAL_STATUS.md)
 **File provenance (canonical vs. historical vs. rejected-candidate):** [`PROVENANCE.md`](PROVENANCE.md)
