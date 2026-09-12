@@ -18,6 +18,10 @@ evaluated end to end in this repository. **This is a simplified, educational
 physics model — it is NOT a validated model of any real aircraft**, and no
 result here should be read as a claim about real-aircraft behavior or safety.
 
+[![Research DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22724022.svg)](https://doi.org/10.5281/zenodo.22724022)
+
+**Research paper / DOI:** https://doi.org/10.5281/zenodo.22724022
+**Experiment log:** [`experiments/EXPERIMENT_LOG.md`](experiments/EXPERIMENT_LOG.md)
 **Live dashboard:** [hanusharan.github.io/AeroGuard](https://hanusharan.github.io/AeroGuard/) — interactive walkthrough of the datasets, models, and results.
 **Full synthesis:** [`outputs/final/AEROGUARD_FINAL_RESEARCH_REPORT.md`](outputs/final/AEROGUARD_FINAL_RESEARCH_REPORT.md)
 **Project status:** [`outputs/final/FINAL_STATUS.md`](outputs/final/FINAL_STATUS.md)
