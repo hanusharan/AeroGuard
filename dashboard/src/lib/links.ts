@@ -19,3 +19,8 @@ export const PAPER_PDF = assetUrl("paper/AeroGuard_Research_Paper.pdf");
 /** The internal, frozen end-to-end report the paper is synthesized from. */
 export const FULL_REPORT = assetUrl("docs/AEROGUARD_FINAL_RESEARCH_REPORT.md");
 export const PROVENANCE = assetUrl("docs/PROVENANCE.md");
+
+/** Persistent public research record. */
+export const DOI_URL = "https://doi.org/10.5281/zenodo.22724022";
+export const GITHUB_URL = "https://github.com/hanusharan/AeroGuard";
+export const EXPERIMENT_LOG = "https://github.com/hanusharan/AeroGuard/blob/main/experiments/EXPERIMENT_LOG.md";
