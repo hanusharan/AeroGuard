@@ -1,6 +1,6 @@
 import { Reveal } from "../ui/Reveal";
 import { Pill } from "../ui/Primitives";
-import { PAPER_HTML, PAPER_PDF, FULL_REPORT, PROVENANCE } from "../../lib/links";
+import { PAPER_HTML, PAPER_PDF, FULL_REPORT, PROVENANCE, DOI_URL, GITHUB_URL, EXPERIMENT_LOG } from "../../lib/links";
 
 export function FinalCTA() {
   return (
@@ -56,7 +56,27 @@ export function FinalCTA() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.28}>
+        <Reveal delay={0.26}>
+          <div className="mx-auto mt-7 max-w-xl rounded-2xl border border-(--color-line) bg-white/[0.025] p-6 text-left">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <div className="font-mono-tab text-[11px] uppercase tracking-[0.2em] text-(--color-signal)">Research record</div>
+                <div className="mt-2 text-sm font-medium text-(--color-ink)">Persistent publication trail</div>
+              </div>
+              <span className="font-mono-tab text-[11px] text-(--color-ink-faint)">DOI 10.5281/zenodo.22724022</span>
+            </div>
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              <a href={PAPER_PDF} target="_blank" rel="noreferrer" className="rounded-xl border border-(--color-line-strong) px-4 py-3 font-mono-tab text-[11px] font-semibold uppercase tracking-[0.1em] text-(--color-ink) hover:border-(--color-signal)/50 hover:text-(--color-signal)">Read paper</a>
+              <a href={GITHUB_URL} target="_blank" rel="noreferrer" className="rounded-xl border border-(--color-line-strong) px-4 py-3 font-mono-tab text-[11px] font-semibold uppercase tracking-[0.1em] text-(--color-ink) hover:border-(--color-signal)/50 hover:text-(--color-signal)">View GitHub</a>
+              <a href={DOI_URL} target="_blank" rel="noreferrer" className="rounded-xl border border-(--color-line-strong) px-4 py-3 font-mono-tab text-[11px] font-semibold uppercase tracking-[0.1em] text-(--color-ink) hover:border-(--color-signal)/50 hover:text-(--color-signal)">DOI</a>
+            </div>
+            <div className="mt-3 text-center">
+              <a href={EXPERIMENT_LOG} target="_blank" rel="noreferrer" className="font-mono-tab text-[10px] uppercase tracking-[0.12em] text-(--color-ink-faint) hover:text-(--color-signal)">Chronological experiment log →</a>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.30}>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
             <a
               href={FULL_REPORT}
