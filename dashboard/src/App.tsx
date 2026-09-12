@@ -12,6 +12,8 @@ import { Generalization } from "./components/sections/Generalization";
 import { Limitations } from "./components/sections/Limitations";
 import { Timeline } from "./components/sections/Timeline";
 import { FinalCTA } from "./components/sections/FinalCTA";
+import { FutureWork } from "./components/sections/FutureWork";
+
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
         <Generalization />
         <Limitations />
         <Timeline />
+        <FutureWork />
       </main>
       <FinalCTA />
     </div>
