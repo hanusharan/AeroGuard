@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use or refer to this work, please cite it as below."
+title: "AeroGuard: Physics-Informed Machine Learning for Multi-Second Aircraft Stall Early Warning and Cross-Mechanism Generalization"
+type: software
+authors:
+  - family-names: "Bulusu"
+    given-names: "Hanusharan"
+version: "1.0"
+date-released: "2026-09-12"
+doi: "10.5281/zenodo.22724022"
+repository-code: "https://github.com/hanusharan/AeroGuard"
+url: "https://hanusharan.github.io/AeroGuard/"
+license: MIT
+abstract: >-
+  A simulation-only research pipeline (2D longitudinal flight-dynamics simulator,
+  versioned trajectory datasets, temporal ML early-warning model) testing whether
+  a multi-second stall precursor can be predicted and whether that skill transfers
+  across control-input mechanisms. Preprint; not peer-reviewed, not flight-tested.
+keywords:
+  - stall warning
+  - machine learning
+  - flight dynamics
+  - early warning
+  - simulation

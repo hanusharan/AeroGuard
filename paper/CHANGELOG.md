@@ -151,3 +151,13 @@ Every claim is scoped to "within this simulator."
 
 Published on the AeroGuard project website. **Not peer-reviewed, not submitted
 to any venue, not flight-tested, and not validated against any real aircraft.**
+
+---
+
+## v1.1 (correction release, unreleased draft)
+
+- Fixed the repository link in the paper: `github.com/BulusuHanuSharan/AeroGuard`
+  → `github.com/hanusharan/AeroGuard` (the old link did not resolve to this repository).
+- No results, numbers, figures or conclusions changed. The v1.0 Zenodo record
+  (DOI 10.5281/zenodo.22724022) remains the frozen reference for those results.
+- PDF must be rebuilt with `python paper/build_paper.py` before release.

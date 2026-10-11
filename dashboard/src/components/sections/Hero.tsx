@@ -37,6 +37,15 @@ export function Hero() {
           Physics-informed machine learning for early aircraft stall warning.
         </motion.p>
 
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto mt-3 max-w-2xl text-sm text-(--color-ink-soft)"
+        >
+          Independent research by Hanusharan Bulusu · Simulation-only preprint, not peer-reviewed
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}

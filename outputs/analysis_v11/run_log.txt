@@ -1,0 +1,49 @@
+STEP 0: load v0.3 temporal splits
+Loading full v0.3 processed dataset (./data/processed/processed_dataset_v3.parquet)...
+  5,340,865 rows, 3150 trajectories
+Building v0.3 temporal panel (windows=[0.5, 1.0, 2.0])...
+  -> ./data/ml_temporal_v03/temporal_train.parquet (3,749,572 rows, 52 columns)
+  -> ./data/ml_temporal_v03/temporal_val.parquet (771,995 rows, 52 columns)
+  -> ./data/ml_temporal_v03/temporal_test.parquet (819,298 rows, 52 columns)
+STEP 1: reproduce frozen-model TEST metrics
+  pr_auc: published=0.8902774777010881 reproduced=0.8902774777010881
+  event_recall: published=0.9605263157894737 reproduced=0.9605263157894737
+  n_events: published=76 reproduced=76
+  median_lead_time_s: published=4.72 reproduced=4.72
+  test_rows: published=538034 reproduced=538034
+STEP 2: rule baselines (fit on TRAIN/VAL, same TEST rows)
+  temporal_rf_frozen: {'pr_auc': 0.8902774777010881, 'event_recall': 0.9605263157894737, 'n_warned': 73, 'n_events': 76, 'median_lead_time_s': 4.72, 'false_alarms_per_hour': 18.750767330508317}
+  aoa_threshold_rule: {'pr_auc': 0.709466351978561, 'event_recall': 1.0, 'n_warned': 76, 'n_events': 76, 'median_lead_time_s': 2.0800000000000005, 'false_alarms_per_hour': 23.4384591631354}
+  margin_trend_rule: {'pr_auc': 0.6880021242396495, 'event_recall': 1.0, 'n_warned': 76, 'n_events': 76, 'median_lead_time_s': 3.9099999999999997, 'false_alarms_per_hour': 54.912961467917214}
+STEP 3: bootstrap over TEST trajectories (n_boot=1000)
+  bootstrap 100/1000
+  bootstrap 200/1000
+  bootstrap 300/1000
+  bootstrap 400/1000
+  bootstrap 500/1000
+  bootstrap 600/1000
+  bootstrap 700/1000
+  bootstrap 800/1000
+  bootstrap 900/1000
+  bootstrap 1000/1000
+             model  pr_auc    pr_auc_ci95   event_recall event_recall_ci95  median_lead_s median_lead_ci95_s  false_alarms_per_hour
+temporal_rf_frozen   0.890 [0.852, 0.920]  73/76 (96.1%)   [91.2%, 100.0%]           4.72       [3.35, 4.98]                  18.75
+aoa_threshold_rule   0.709 [0.668, 0.746] 76/76 (100.0%)  [100.0%, 100.0%]           2.08       [0.91, 3.37]                  23.44
+ margin_trend_rule   0.688 [0.650, 0.721] 76/76 (100.0%)  [100.0%, 100.0%]           3.91       [3.22, 4.05]                  54.91
+{
+  "temporal_rf_minus_aoa_threshold_rule": {
+    "pr_auc_diff_point": 0.1808111257225271,
+    "pr_auc_diff_ci95": [
+      0.14766456715121978,
+      0.21672724057643752
+    ]
+  },
+  "temporal_rf_minus_margin_trend_rule": {
+    "pr_auc_diff_point": 0.20227535346143866,
+    "pr_auc_diff_ci95": [
+      0.17369575727304407,
+      0.23406161353484695
+    ]
+  }
+}
+done in 429s -> ./outputs/analysis_v11

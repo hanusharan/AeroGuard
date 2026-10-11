@@ -2,7 +2,7 @@
 
 [![Live dashboard](https://img.shields.io/badge/live%20dashboard-open-2ea44f)](https://hanusharan.github.io/AeroGuard/)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-190%2F190%20passing-brightgreen)](#testing)
+[![Tests](https://github.com/hanusharan/AeroGuard/actions/workflows/tests.yml/badge.svg)](https://github.com/hanusharan/AeroGuard/actions/workflows/tests.yml)
 [![Stage: simulation research](https://img.shields.io/badge/stage-simulation%20research-orange)](#limitations)
 
 **Physics-informed machine learning for early aircraft stall warning.**
@@ -126,6 +126,35 @@ Cross-mechanism transfer (forward/reverse) retains the large majority of
 in-distribution performance; zero-exposure exclusion collapses it. See
 §17–19 of the final report for full interpretation.
 
+## v1.1 check: reproduction, rule baselines and confidence intervals
+
+Added after v1.0, without retraining or changing the frozen model
+(`scripts/analysis_v11_baselines_and_ci.py`, outputs in `outputs/analysis_v11/`).
+
+**Reproduction.** Regenerating the v0.3 dataset from code and scoring it with the
+frozen model reproduces the published TEST results exactly: PR-AUC 0.8903,
+73/76 events warned, median lead 4.72 s, 538,034 test rows.
+
+**Baselines and 95% confidence intervals** (bootstrap over the 456 TEST
+trajectories, 1,000 resamples; all three evaluated on the same TEST rows; rule
+thresholds chosen on TRAIN/VAL only):
+
+| Model | PR-AUC [95% CI] | Event recall [95% CI] | Median lead [95% CI] | False alarms per simulated flight hour |
+|---|---|---|---|---|
+| Temporal RandomForest (frozen v1.0) | 0.890 [0.852, 0.920] | 73/76, 96.1% [91.2%, 100%] | 4.72 s [3.35, 4.98] | 18.8 |
+| Angle-of-attack threshold rule | 0.709 [0.668, 0.746] | 76/76, 100% | 2.08 s [0.91, 3.37] | 23.4 |
+| Stall-margin + alpha-rate trend rule | 0.688 [0.650, 0.721] | 76/76, 100% | 3.91 s [3.22, 4.05] | 54.9 |
+
+The model's PR-AUC advantage over the rules is clear (+0.18 [0.15, 0.22] over the
+angle-of-attack rule; +0.20 [0.17, 0.23] over the trend rule). At their chosen
+operating points the rules warn on every event, but later (angle-of-attack rule)
+or with about three times as many false alarms (trend rule). Caveats: the
+operating points differ, so a comparison at matched false-alarm rates is still
+to do; the lead-time interval is capped by the 5 s labeling horizon; and the
+false-alarm rate is measured on simulated test flights, many of which approach
+a stall, so it is not a real-flight rate. 18.8 false alarms per hour would be
+too many for a cockpit system.
+
 ## Repository structure
 
 See the tree in [Architecture](#architecture) above and
@@ -165,7 +194,8 @@ pip install -r requirements.txt
 pytest tests/ -v
 ```
 
-Current state: **190/190 tests passing**, covering the physics engine, dataset
+The test suite runs automatically on every push via GitHub Actions (see the
+Tests badge above). At v1.0 packaging, **190/190 tests passed** locally, covering the physics engine, dataset
 generation (all three versions, including leakage/integrity guards), the ML
 pipelines, and the final generalization experiment's control-profile mechanism.
 
@@ -179,10 +209,28 @@ zero-shot result across arbitrary unseen regimes. All results are
 simulation-internal — no real flight or wind-tunnel data was used at any
 stage. Full limitations and threats to validity: §20–21 of the final report.
 
+## How this was built
+
+> **Draft — Hanusharan to complete in his own words before publishing.**
+
+- **Origin:** the idea came from conversations with my uncle, an aeronautical
+  engineer (IIT Kharagpur), about why aircraft stall. [one or two sentences]
+- **What I designed and decided myself:** [e.g. the research question, the
+  decision to treat the short v0.2 precursor as a control-profile artifact,
+  the cross-mechanism transfer test, the evaluation metrics]
+- **Tools used, including AI assistants:** [name each tool and what it was
+  used for, e.g. "AI coding assistants helped write and refactor parts of the
+  pipeline and documentation; I reviewed, ran and checked every result"]
+- **What I verified myself:** [e.g. re-ran tests, checked metrics against
+  output files, inspected trajectories and plots]
+- **Version history:** this repository was put under version control when the
+  v1.0 work was packaged (September 2026), so earlier development is not in the
+  git history. All work after v1.0 is committed incrementally.
+
 ## Research note / citation
 
 This is an internal/independent research project, not peer-reviewed, not
 flight-tested, and not a certified aviation safety tool. If referencing this
-work, cite the repository and, for specific claims, the specific dated report
+work, use the "Cite this repository" button (generated from `CITATION.cff`) and, for specific claims, cite the specific dated report
 under `outputs/` that measured them — every number in the final report is
 traceable to its source report and the exact script/seed that produced it.
