@@ -1,0 +1,58 @@
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-pinned.txt
+
+      - name: Install pinned dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-pinned.txt
+
+      # Full suite on a clean checkout. data/processed/ and the cached ML
+      # parquet files are gitignored (regenerable, multi-GB), so they are not
+      # available in CI and CI must not regenerate them. Eleven tests have no
+      # skip guard and hard-fail on missing data: ten need
+      # data/processed/processed_dataset_v2.parquet, and
+      # test_feature_schema_matches_actual_columns needs
+      # data/ml/ml_dataset_v2.parquet. They are deselected explicitly (not edited or removed) below. The 24
+      # tests guarded by skipif on cached parquet files report as SKIPPED.
+      # A green run therefore does NOT reproduce the historical "190 passing"
+      # claim or any research result. See REPRODUCIBILITY.md.
+      - name: Run test suite
+        run: |
+          python -m pytest tests -v -rs -p no:cacheprovider \
+            --deselect tests/test_ml_dataset_prep.py::test_build_ml_table_is_deterministic \
+            --deselect tests/test_ml_dataset_prep.py::test_feature_schema_matches_actual_columns \
+            --deselect tests/test_ml_pipeline.py::test_load_dataset_basic \
+            --deselect tests/test_ml_pipeline.py::test_dataset_version_matches_frozen_v2 \
+            --deselect tests/test_ml_pipeline.py::test_train_val_test_separation \
+            --deselect tests/test_ml_pipeline.py::test_get_xy_matches_requested_feature_columns \
+            --deselect tests/test_ml_pipeline.py::test_target_available_mask_excludes_nan \
+            --deselect tests/test_ml_pipeline.py::test_common_subset_excludes_first_row_derivative_nans \
+            --deselect tests/test_ml_pipeline.py::test_get_xy_never_returns_nan_features_or_targets \
+            --deselect tests/test_ml_pipeline.py::test_derivatives_are_causal_backward_difference \
+            --deselect tests/test_ml_pipeline.py::test_logistic_regression_is_deterministic

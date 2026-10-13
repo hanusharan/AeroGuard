@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the AeroGuard research paper (preferred reference below). This is a simulation-only research project, not a validated aircraft model."
+title: "AeroGuard: Physics-Informed Machine Learning for Aircraft Stall Early Warning"
+type: software
+authors:
+  - family-names: "Sharan"
+    given-names: "Bulusu Hanu"
+repository-code: "https://github.com/hanusharan/AeroGuard"
+url: "https://hanusharan.github.io/AeroGuard/"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Physics-Informed Machine Learning for Multi-Second Aircraft Stall Early Warning and Cross-Mechanism Generalization"
+  authors:
+    - family-names: "Sharan"
+      given-names: "Bulusu Hanu"
+  doi: "10.5281/zenodo.22724022"
+  url: "https://doi.org/10.5281/zenodo.22724022"

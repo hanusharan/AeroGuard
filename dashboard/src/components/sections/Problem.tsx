@@ -36,7 +36,7 @@ export function Problem() {
               carries a genuine physical precursor.
             </p>
             <div className="mt-6 flex items-center gap-2 font-mono-tab text-[11px] uppercase tracking-[0.16em] text-(--color-signal)">
-              <TimelineIcon /> Warning at T − 4.72s (median, v0.3)
+              <TimelineIcon /> Warning at T − 4.72s (median of warned events, v0.3)
             </div>
           </GlassPanel>
         </Reveal>

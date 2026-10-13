@@ -41,8 +41,8 @@ export function FlightReplay() {
             boundary — and watch the countdown at the moment the warning fires. Trajectory{" "}
             <code className="font-mono-tab text-(--color-ink)">{replay.trajectoryId}</code> is a v0.3
             TEST-split flight the model never trained on; its model-credited lead time (
-            {replay.creditedLeadTimeS.toFixed(2)}s) matches the reported event-level median almost
-            exactly, so this is a representative example, not a cherry-picked best case.
+            {replay.creditedLeadTimeS.toFixed(2)}s) matches the reported event-level median (over warned
+            events) almost exactly, so this is a representative example, not a cherry-picked best case.
           </>
         }
       />

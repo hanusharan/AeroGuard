@@ -53,8 +53,9 @@ export function KeyResults() {
               </div>
             </div>
             <p className="mt-6 text-sm leading-relaxed text-(--color-ink-soft)">
-              Event-level median credited lead time before the stall-boundary crossing, on the
-              primary temporal model's held-out TEST population.
+              Median credited lead time before the stall-boundary crossing, over the{" "}
+              {m.v03.nWarned} warned events (of {m.v03.nEvents} evaluated), capped at the 5s
+              label horizon. Missed events have no lead time and are not included.
             </p>
           </GlassPanel>
         </Reveal>
@@ -72,7 +73,7 @@ export function KeyResults() {
                   <Counter to={(m.v03.nWarned / m.v03.nEvents) * 100} decimals={1} suffix="%" />
                 </div>
                 <div className="mt-1 text-[11px] text-(--color-ink-faint)">
-                  event recall ({m.v03.nWarned}/{m.v03.nEvents} events)
+                  event recall ({m.v03.nWarned}/{m.v03.nEvents} evaluated events)
                 </div>
               </div>
               <div>
@@ -144,6 +145,41 @@ export function KeyResults() {
           <SourceNote>
             outputs/ml_v03/metrics/v02_vs_v03_warning_coverage.csv,
             outputs/ml_v03/metrics/primary_model_metrics.json
+          </SourceNote>
+        </GlassPanel>
+      </Reveal>
+
+      <Reveal delay={0.12}>
+        <GlassPanel className="mt-5 p-6 sm:p-8">
+          <span className="font-mono-tab text-[11px] uppercase tracking-[0.18em] text-(--color-ink-faint)">
+            Reading the event metrics
+          </span>
+          <ul className="mt-4 space-y-3 text-sm leading-relaxed text-(--color-ink-soft)">
+            <li>
+              <span className="font-semibold text-(--color-ink)">Evaluated events.</span> The{" "}
+              {m.v03.nEvents} events are 57 first crossings plus 19 second episodes in trajectories
+              that re-enter the unsafe region. They come from the 456 of {m.dataset.testTrajectories}{" "}
+              test trajectories that have rows with a complete 5s future window and a full 1s
+              feature window.
+            </li>
+            <li>
+              <span className="font-semibold text-(--color-ink)">Outside the evaluated rows.</span>{" "}
+              Ten first crossings, each in a different test trajectory, fall in the last 5s of
+              their trajectory. They are counted neither as warned nor as missed, and their effect
+              on recall has not been measured. Later episodes in these trajectories also fall
+              outside the evaluated rows, but the available metadata does not establish how many
+              such episodes there are.
+            </li>
+            <li>
+              <span className="font-semibold text-(--color-ink)">Lead time.</span> The median covers
+              warned events only. Coverage by threshold is measured over all {m.v03.nEvents}{" "}
+              evaluated events.
+            </li>
+          </ul>
+          <SourceNote>
+            Counts of 456, 57, 19 and 10 are from outputs/ml_v03/metrics/primary_model_metrics.json,
+            physics_vs_ml_summary.json and data/metadata/trajectory_metadata_v3.csv; definitions in
+            ml/events.py and the README ("What the event metrics cover").
           </SourceNote>
         </GlassPanel>
       </Reveal>

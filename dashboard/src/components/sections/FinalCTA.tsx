@@ -27,8 +27,8 @@ export function FinalCTA() {
               The paper
             </span>
             <h3 className="mt-3 text-[17px] font-semibold leading-snug text-(--color-ink)">
-              A Physics-Informed Machine Learning Approach to Multi-Second Aircraft Stall Early
-              Warning and Cross-Mechanism Generalization
+              Physics-Informed Machine Learning for Multi-Second Aircraft Stall Early Warning and
+              Cross-Mechanism Generalization
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-(--color-ink-soft)">
               The full write-up of everything on this page — methods, the precursor diagnosis, the
@@ -104,11 +104,33 @@ export function FinalCTA() {
         </Reveal>
 
         <Reveal delay={0.3}>
-          <p className="mx-auto mt-14 max-w-xl font-mono-tab text-[11px] leading-relaxed text-(--color-ink-faint)">
-            Not peer-reviewed. Not flight-tested. Not a certified aviation safety tool. Every
-            number on this page is sourced from outputs/final/AEROGUARD_FINAL_RESEARCH_REPORT.md
-            and the frozen metrics files it cites.
-          </p>
+          <div className="mx-auto mt-14 max-w-xl space-y-3 font-mono-tab text-[11px] leading-relaxed text-(--color-ink-faint)">
+            <p>
+              AeroGuard is an experimental research platform evaluated in simulation. It has not
+              been validated using real-aircraft flight data or flight tests and is not approved or
+              intended for operational flight-safety decisions. Not peer-reviewed. Not a certified
+              aviation safety tool.
+            </p>
+            <p>
+              Every number on this page is sourced from
+              outputs/final/AEROGUARD_FINAL_RESEARCH_REPORT.md and the frozen metrics files it
+              cites.
+            </p>
+            <p>
+              An independent research project conceived by Bulusu Hanu Sharan and built with the
+              assistance of Claude Code; no institutional affiliation or endorsement is claimed.
+              See the{" "}
+              <a
+                href={`${GITHUB_URL}#ai-assistance`}
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-(--color-line-strong) underline-offset-2 hover:text-(--color-signal)"
+              >
+                disclosure
+              </a>
+              .
+            </p>
+          </div>
         </Reveal>
       </div>
     </section>

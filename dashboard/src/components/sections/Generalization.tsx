@@ -159,7 +159,8 @@ export function Generalization() {
             </ResponsiveContainer>
           </div>
           <SourceNote>
-            outputs/ml_v03/metrics/generalization_check.json,
+            Median lead times are over warned events only, capped at the 5s label horizon.
+            Sources: outputs/ml_v03/metrics/generalization_check.json,
             outputs/ml_v03_generalization/metrics/{"{forward_check_frozen_model_on_alt_mechanism,reverse_check_alt_model_on_v03_gradual}"}.json
           </SourceNote>
         </GlassPanel>

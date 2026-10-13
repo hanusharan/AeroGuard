@@ -1,0 +1,30 @@
+# Exact, newly tested environment for AeroGuard (see REPRODUCIBILITY.md,
+# "Pinned environment"). This is NOT a reconstruction of the original research
+# environment: the only version recorded in the repository's evidence is
+# scikit-learn 1.9.0 (embedded in outputs/ml_v03/models/primary_model_D_1s.joblib
+# and outputs/ml/metrics/test_lock.json). All other versions were resolved and
+# tested on 2026-10-12 with CPython 3.12 on Linux x86_64.
+# requirements.txt (loose lower bounds) is kept unchanged.
+cloudpickle==3.1.2
+contourpy==1.4.0
+cycler==0.12.1
+fonttools==4.66.1
+iniconfig==2.3.1
+joblib==1.6.0
+kiwisolver==1.5.1
+matplotlib==3.11.2
+narwhals==2.27.1
+numpy==2.5.4
+packaging==26.3
+pandas==3.0.6
+pillow==12.3.0
+pluggy==1.6.0
+pyarrow==26.0.0
+Pygments==2.21.0
+pyparsing==3.3.3
+pytest==9.1.1
+python-dateutil==2.9.0.post0
+scikit-learn==1.9.0
+scipy==1.18.1
+six==1.17.0
+threadpoolctl==3.7.0
