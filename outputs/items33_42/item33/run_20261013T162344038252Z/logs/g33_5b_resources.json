@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/tmp/claude-0/-home-user-AeroGuard/1d37592f-2dfd-5c3e-8f4f-959f6d01ce75/scratchpad/phase3-venv/bin/python",
+    "-B",
+    "-m",
+    "item33.driver",
+    "G33-5b",
+    "--confirm-gate",
+    "G33-5b",
+    "--root",
+    "/tmp/claude-0/-home-user-AeroGuard/1d37592f-2dfd-5c3e-8f4f-959f6d01ce75/scratchpad/item33-exec",
+    "--run-dir",
+    "/tmp/claude-0/-home-user-AeroGuard/1d37592f-2dfd-5c3e-8f4f-959f6d01ce75/scratchpad/item33-exec/outputs/items33_42/item33/run_20261013T162344038252Z",
+    "--git-commit",
+    "c6ad770d77d5d9ba2378aaaeb18df701bc3c0a74"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 43.10752534866333,
+  "user_cpu_seconds": 100.578276,
+  "sys_cpu_seconds": 13.86371,
+  "max_rss_mb": 1419.1953125,
+  "utc_end": "2026-10-13T20:02:51Z"
+}

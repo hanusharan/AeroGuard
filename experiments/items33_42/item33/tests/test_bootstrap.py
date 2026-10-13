@@ -192,3 +192,68 @@ def test_stratification_refuses_a_trajectory_without_a_stratum():
     uniq = list(dict.fromkeys(traj.tolist()))
     with pytest.raises(ValueError):
         bs.bootstrap_replicates(traj, y, scores, B=2, seed=1, strata={t: "A" for t in uniq[:-1]})
+
+
+# --- the pre-sorted weighted fast path is exactly equivalent to re-sorting the repeated rows with scikit-learn ----------------------------
+
+def _tied_scores(traj, y, seed, levels=7):
+    rng = np.random.default_rng(seed)
+    return np.round((y * 0.6 + rng.random(len(traj))) * levels) / levels            # many exact ties
+
+
+def test_weighted_curves_equal_scikit_learn_on_explicitly_repeated_rows_including_ties():
+    traj, y, _ = make(n_traj=10, seed=21)
+    s = _tied_scores(traj, y, 1)
+    starts, ends, codes = trajectory_blocks(traj)
+    fc = bs._FastCurves(y, s, codes)
+    rng = np.random.default_rng(0)
+    for _ in range(50):
+        draw = rng.integers(0, len(starts), size=len(starts))
+        rows = draw_rows(draw, starts, ends)
+        tp, fp = fc.curves(np.bincount(draw, minlength=len(starts)))
+        if y[rows].sum() > 0:
+            assert bs._FastCurves.ap(tp, fp) == pytest.approx(average_precision_score(y[rows], s[rows]), abs=1e-12)
+        else:
+            assert np.isnan(bs._FastCurves.ap(tp, fp))
+        if 0 < y[rows].sum() < len(rows):
+            assert bs._FastCurves.roc_auc(tp, fp) == pytest.approx(roc_auc_score(y[rows], s[rows]), abs=1e-12)
+
+
+def test_the_runtime_equivalence_check_passes_on_tied_and_continuous_scores_and_detects_a_wrong_path(monkeypatch):
+    traj, y, scores = make(n_traj=12, seed=22)
+    scores = {**scores, "tied": _tied_scores(traj, y, 2)}
+    out = bs.verify_fast_replicates(traj, y, scores, seed=5, n=25)
+    assert out["max_abs_difference"] < 1e-12 and out["replicates_checked"] == 25 and out["n_methods"] == len(scores)
+    uniq = list(dict.fromkeys(traj.tolist()))
+    strata = {t: ("A" if i % 3 else "B") for i, t in enumerate(uniq)}
+    assert bs.verify_fast_replicates(traj, y, scores, seed=5, n=10, strata=strata)["max_abs_difference"] < 1e-12
+    monkeypatch.setattr(bs._FastCurves, "ap", staticmethod(lambda tp, fp: 0.5))
+    with pytest.raises(AssertionError):
+        bs.verify_fast_replicates(traj, y, scores, seed=5, n=3)
+
+
+def test_the_fast_path_keeps_undefined_replicates_undefined():
+    rng = np.random.default_rng(0)
+    traj = np.concatenate([["pos"] * 40, ["neg_a"] * 40, ["neg_b"] * 40])
+    y = np.concatenate([(rng.random(40) < 0.5).astype(int), np.zeros(80, dtype=int)]); y[0] = 1
+    out = bs.verify_fast_replicates(traj, y, {"m": rng.random(120)}, seed=3, n=60)
+    assert out["max_abs_difference"] < 1e-12                                          # NaN positions agree with scikit-learn
+    reps = bs.bootstrap_replicates(traj, y, {"m": rng.random(120)}, B=60, seed=3, metrics=("pr_auc", "roc_auc"))
+    assert np.isnan(reps["m|pr_auc"]).sum() > 0 and np.array_equal(np.isnan(reps["m|pr_auc"]), np.isnan(reps["m|roc_auc"]))
+
+
+def test_event_bootstrap_reproduces_the_phase3_event_logic_exactly():
+    from phase3.analysis import trajectory_bootstrap
+    traj, y, scores = make(n_traj=15, seed=23)
+    uniq = list(dict.fromkeys(traj.tolist()))
+    sc = {"a": scores[bs.method_key("C0", 11)], "b": scores[bs.method_key("C1", 11)]}
+    rng = np.random.default_rng(4)
+    events = {m: {t: [(bool(rng.random() < 0.7), float(rng.uniform(0.1, 5.0))) for _ in range(int(rng.integers(1, 3)))]
+                  for t in uniq if rng.random() < 0.5} for m in sc}
+    mine = bs.event_bootstrap(traj, y, sc, events, B=40, seed=9)["per_method"]
+    ref, _ = trajectory_bootstrap(traj, y, sc, [], B=40, seed=9, events=events)
+    for key, r in ref["per_method"].items():
+        m = mine[key]
+        assert m["point"] == pytest.approx(r["point"], nan_ok=True) and m["n_undefined_replicates"] == r["n_undefined_replicates"]
+        for lim in ("ci_lo", "ci_hi"):
+            assert (m[lim] is None and r[lim] is None) or m[lim] == pytest.approx(r[lim], abs=1e-12)

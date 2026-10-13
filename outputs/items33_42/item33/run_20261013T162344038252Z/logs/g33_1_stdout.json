@@ -1,0 +1,15 @@
+{
+  "gate": "G33-1",
+  "status": "PASS",
+  "run_dir": "/tmp/claude-0/-home-user-AeroGuard/1d37592f-2dfd-5c3e-8f4f-959f6d01ce75/scratchpad/item33-exec/outputs/items33_42/item33/run_20261013T162344038252Z",
+  "payload": {
+    "protocol_sha256": "742f55a9cc4e5da0474de84bf40cc6ffcb63a4ed46f12c3d2536ac57b21c4dc7",
+    "test_key_hash": "806ab81b786ec70406d4b4036f65dce4a4794bda3842fb1c32b7ce940917c030",
+    "stratum_sizes": {
+      "gradual_approach_v3": 346,
+      "normal": 81,
+      "stall": 29
+    },
+    "n_rows_test": 538034
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "medians": {
+    "elevator": 0.01808791474534591,
+    "elevator_change_1s": 0.0,
+    "throttle": 0.35929437166688094
+  },
+  "source": "training usable rows only"
+}

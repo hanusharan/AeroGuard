@@ -1,0 +1,44 @@
+{
+  "banner": "Computed on a regenerated copy of the v0.3 data (Item 26); the original v0.3 dataset is absent. The test split was exposed by earlier analyses. These results are a controlled re-evaluation of previously exposed data: they are not blind, not independent replication, and say nothing about real aircraft. Ablation shows dependence of predictive information, not causal effects.",
+  "data_files": [
+    {
+      "expected": "a533f9e940c16ab8bfddf3a4ca98d4326a17655247274142d98280ed03b4a38e",
+      "observed": "a533f9e940c16ab8bfddf3a4ca98d4326a17655247274142d98280ed03b4a38e",
+      "ok": true,
+      "path": "processed/processed_dataset_v3.parquet",
+      "size_bytes": 449345877
+    },
+    {
+      "expected": "1a39472881280e084f3cab5d94fa4c80382d65a7075df59cd7a45fd4d5af4b43",
+      "observed": "1a39472881280e084f3cab5d94fa4c80382d65a7075df59cd7a45fd4d5af4b43",
+      "ok": true,
+      "path": "ml_temporal_v03/temporal_train.parquet",
+      "size_bytes": 1188953925
+    },
+    {
+      "expected": "9416fc8005b206eefbcdbeeb0d043a45036e8b2d6251ae3850b176765565a0e0",
+      "observed": "9416fc8005b206eefbcdbeeb0d043a45036e8b2d6251ae3850b176765565a0e0",
+      "ok": true,
+      "path": "ml_temporal_v03/temporal_val.parquet",
+      "size_bytes": 246442707
+    },
+    {
+      "expected": "c03634b4cc793c57bbe065e710a4a98bfe2bf69fdf5a55beb56a1c0ba33241b8",
+      "observed": "c03634b4cc793c57bbe065e710a4a98bfe2bf69fdf5a55beb56a1c0ba33241b8",
+      "ok": true,
+      "path": "ml_temporal_v03/temporal_test.parquet",
+      "size_bytes": 261347990
+    }
+  ],
+  "original_dataset": "absent; no hash found; regenerated copy is not shown to be byte-identical",
+  "phase3_row_keys": "equal",
+  "schema_missing": {
+    "test": [],
+    "train": [],
+    "val": []
+  },
+  "tracked_identifiers": {
+    "data/metadata/trajectory_metadata_v3.csv": "924e0df6ccb303a264579c3f9ba6a5c84e69e0d14bbb58feaa6e0b66abdde05d",
+    "data/splits/split_manifest_v3.csv": "d7d6eb825d10c6acd870e4c418f2a552ec82dc60e5e12e723f12ada11e4202fb"
+  }
+}

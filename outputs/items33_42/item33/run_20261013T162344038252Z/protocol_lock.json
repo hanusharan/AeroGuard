@@ -1,0 +1,8 @@
+{
+  "banner": "Computed on a regenerated copy of the v0.3 data (Item 26); the original v0.3 dataset is absent. The test split was exposed by earlier analyses. These results are a controlled re-evaluation of previously exposed data: they are not blind, not independent replication, and say nothing about real aircraft. Ablation shows dependence of predictive information, not causal effects.",
+  "created_utc": "2026-10-13T16:25:02Z",
+  "git_commit": "c6ad770d77d5d9ba2378aaaeb18df701bc3c0a74",
+  "lock_record": "experiments/items33_42/item33/PROTOCOL_LOCK.json",
+  "protocol_sha256": "742f55a9cc4e5da0474de84bf40cc6ffcb63a4ed46f12c3d2536ac57b21c4dc7",
+  "tree_root": "/tmp/claude-0/-home-user-AeroGuard/1d37592f-2dfd-5c3e-8f4f-959f6d01ce75/scratchpad/item33-exec"
+}

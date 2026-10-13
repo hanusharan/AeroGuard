@@ -1,0 +1,13 @@
+{
+  "gate": "G33-5a",
+  "status": "PASS",
+  "run_dir": "/tmp/claude-0/-home-user-AeroGuard/1d37592f-2dfd-5c3e-8f4f-959f6d01ce75/scratchpad/item33-exec/outputs/items33_42/item33/run_20261013T162344038252Z",
+  "payload": {
+    "scored": 25,
+    "population_id": "test_usable_1s:806ab81b786ec704",
+    "frozen_anchor": {
+      "source": "Phase 3 scores (E1)",
+      "sha256": "37801481115a4632590df95d1f5f88ac487c28e8c452d5a6540431920d61f6e9"
+    }
+  }
+}

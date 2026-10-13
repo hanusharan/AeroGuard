@@ -1,0 +1,11 @@
+{
+  "anchor": "scores_FROZEN_phase3.npy",
+  "bit_identical": false,
+  "ci_hi": 0.0015895836938230646,
+  "ci_lo": -0.0004179436581903839,
+  "level": "R1",
+  "max_abs_score_diff": 0.07029479267679761,
+  "n_undefined_replicates": 0,
+  "pr_auc_diff": 0.00043590194967535467,
+  "threshold_diff": 0.0024458979007332404
+}

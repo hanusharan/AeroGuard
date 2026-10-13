@@ -28,7 +28,7 @@ import pandas as pd
 from sklearn.metrics import average_precision_score, roc_auc_score
 
 from ml.events import compute_event_level_results  # reused unchanged
-from phase3.analysis import events_by_trajectory, operating_point, trajectory_bootstrap  # reused unchanged
+from phase3.analysis import events_by_trajectory, operating_point  # reused unchanged
 from phase3.instantaneous import library_versions  # reused unchanged
 from phase3.population import schema_missing_columns, verify_baseline_manifest  # reused unchanged
 
@@ -381,24 +381,46 @@ def gate_g33_4a(cfg: RunConfig, run_dir: Path, deps: Deps) -> dict:
             "next": "G33-4b fits the remaining models only after separate authorization"}
 
 
+def _fit_state(rd: Path, c: str, s: int) -> str:
+    """'complete' when all four artifacts of a fit exist, 'absent' when none does, otherwise 'partial'."""
+    name = f"{c}_{s}"
+    present = [(Path(rd) / f).is_file() for f in (f"model_{name}.joblib", f"fit_record_{name}.json", f"threshold_{name}.json", f"val_scores_{name}.npy")]
+    return "complete" if all(present) else ("absent" if not any(present) else "partial")
+
+
 def gate_g33_4b(cfg: RunConfig, run_dir: Path, deps: Deps) -> dict:
+    """Fit every remaining (condition, seed). The gate is resumable: a fit whose four artifacts all exist and whose model hash
+    matches its record is kept and skipped (it is never refitted); a partially written fit stops the gate. Settings are identical
+    on a resumed invocation, so an interruption (for example a background time limit) does not change any result."""
     verify_protocol_lock(cfg.root)
     train = _load(cfg, deps, "train", LOAD_COLUMNS, ("train", "val"))
     val = _load(cfg, deps, "val", LOAD_COLUMNS, ("train", "val"))
     y_val = _val_labels(cfg, run_dir, val)
-    failures, done = [], []
+    failures, done, kept = [], [], []
     for c, s in _fit_order(cfg)[1:]:
+        state = _fit_state(run_dir, c, s)
+        name = f"{c}_{s}"
+        if state == "partial":
+            raise DataIntegrityError(f"fit {name} has partial artifacts; it was interrupted mid-write and needs a recorded decision")
+        if state == "complete":
+            rec = read_json(Path(run_dir) / f"fit_record_{name}.json")
+            if sha256_file(Path(run_dir) / f"model_{name}.joblib") != rec["model_sha256"]:
+                raise DataIntegrityError(f"model file for {name} differs from its fit record")
+            kept.append(name)
+            continue
         out = fitting.try_fit(c, s, train, val, builder=deps.builder)
         if isinstance(out, fitting.FitFailure):
             failures.append(out.record())
             continue
         _persist_fit(cfg, run_dir, out, y_val)
-        done.append(f"{c}_{s}")
+        done.append(name)
         del out
     W(cfg, run_dir, "failures.json", failures)
+    W(cfg, run_dir, "fit_progress.json", {"fitted_in_this_invocation": done, "kept_from_an_earlier_invocation": kept,
+                                          "note": "kept fits were hash-verified and not refitted; settings are identical across invocations"})
     if failures:
         raise RuntimeError(f"{len(failures)} fit(s) failed; recorded in failures.json; none was retried or dropped")
-    return {"fitted_here": len(done), "total_fits": len(_fit_order(cfg)), "failures": 0}
+    return {"fitted_in_this_invocation": len(done), "kept_from_an_earlier_invocation": len(kept), "total_fits": len(_fit_order(cfg)), "failures": 0}
 
 
 # ---------------------------------------------------------------------------------------------
@@ -522,6 +544,7 @@ def gate_g33_6(cfg: RunConfig, run_dir: Path, deps: Deps) -> dict:
     metrics_both = ("pr_auc", "roc_auc")
 
     point = bs.point_estimates(y, scores, metrics_both)
+    fast_check = bs.verify_fast_replicates(traj, y, scores, seed=BOOTSTRAP_SEED, n=2)     # fast path vs scikit-learn, first replicates
     reps = bs.bootstrap_replicates(traj, y, scores, B=B, seed=BOOTSTRAP_SEED, metrics=metrics_both)
     save_npz(cfg, rd, "bootstrap_replicates.npz", **{k.replace("|", "__"): v for k, v in reps.items()})
 
@@ -607,7 +630,7 @@ def gate_g33_6(cfg: RunConfig, run_dir: Path, deps: Deps) -> dict:
         if c != "C0":
             ev_scores[f"{c}|matched"] = scores[k]
             ev_map[f"{c}|matched"] = _events_for(elig, scores[k], event_files[f"{c}_{PRIMARY_SEED}"]["matched"]["threshold"])
-    ev_summary, _ = trajectory_bootstrap(traj, y, ev_scores, [], B=B, seed=BOOTSTRAP_SEED, events=ev_map)
+    ev_summary = bs.event_bootstrap(traj, y, ev_scores, ev_map, B=B, seed=BOOTSTRAP_SEED)
 
     # frozen-model masking (separate family), if scored
     masking_rows = []
@@ -652,6 +675,7 @@ def gate_g33_6(cfg: RunConfig, run_dir: Path, deps: Deps) -> dict:
     W(cfg, rd, "bootstrap.json", {"config": {"unit": "trajectory", "B": B, "seed": BOOTSTRAP_SEED, "pct": list(BOOTSTRAP_INTERVAL_PCT),
                                              "pairing": "one draw per replicate shared by every condition and seed"},
                                   "n_trajectories": int(pd.unique(traj).size), "n_rows": int(len(y)), "undefined_replicates": undefined,
+                                  "fast_path_check": fast_check,
                                   "event_level_seed_primary": ev_summary})
     W(cfg, rd, "paired_contrasts.json", {"contrasts": contrasts, "single_seed_view": sec1})
     W(cfg, rd, "seed_panel.json", panels)

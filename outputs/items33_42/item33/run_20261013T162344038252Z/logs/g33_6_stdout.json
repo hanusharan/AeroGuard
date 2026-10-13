@@ -1,0 +1,10 @@
+{
+  "gate": "G33-6",
+  "status": "PASS",
+  "run_dir": "/tmp/claude-0/-home-user-AeroGuard/1d37592f-2dfd-5c3e-8f4f-959f6d01ce75/scratchpad/item33-exec/outputs/items33_42/item33/run_20261013T162344038252Z",
+  "payload": {
+    "contrasts": 7,
+    "report": "REPORT.md",
+    "reproduction_level": "R1"
+  }
+}

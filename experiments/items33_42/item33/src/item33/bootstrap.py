@@ -10,7 +10,7 @@ from typing import Dict, List, Mapping, Optional, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
-from sklearn.metrics import average_precision_score, roc_auc_score
+from sklearn.metrics import average_precision_score, roc_auc_score  # noqa: F401  (verification path)
 
 from phase3.analysis import draw_rows, threshold_free_metrics  # reused unchanged
 from phase3.population import trajectory_blocks  # reused unchanged
@@ -66,9 +66,51 @@ def _draw(rng: np.random.Generator, n_traj: int, groups) -> np.ndarray:
     return np.concatenate(parts)
 
 
-def bootstrap_replicates(traj_ids, y, scores: Mapping[str, np.ndarray], B: int, seed: int,
-                         strata: Optional[Mapping[object, str]] = None, metrics: Sequence[str] = ("pr_auc",)) -> Dict[str, np.ndarray]:
-    """Replicate arrays ``reps["<method>|<metric>"]`` of length B. One shared draw per replicate."""
+class _FastCurves:
+    """Pre-sorted weighted precision-recall / ROC curves for the trajectory bootstrap.
+
+    A bootstrap replicate repeats whole trajectories, which is the same as giving every row of trajectory ``t`` the weight
+    ``counts[t]`` (the number of times it was drawn). Sorting the scores once and taking weighted cumulative sums at the
+    ends of the tied-score groups gives exactly the curve scikit-learn builds from the repeated rows (the cumulative
+    counts are exact integers), without re-sorting 538,034 rows 100,000 times. ``verify_fast_replicates`` checks the
+    equivalence against scikit-learn on the first replicates of every run.
+    """
+
+    def __init__(self, y: np.ndarray, score: np.ndarray, codes: np.ndarray):
+        order = np.argsort(-np.asarray(score, dtype=float), kind="stable")
+        s = np.asarray(score, dtype=float)[order]
+        self.y = np.asarray(y, dtype=np.float64)[order]
+        self.neg = 1.0 - self.y
+        self.codes = np.asarray(codes)[order].astype(np.int32)
+        change = np.flatnonzero(s[1:] != s[:-1])
+        self.ends = np.concatenate([change, [len(s) - 1]]).astype(np.int64)
+
+    def curves(self, counts: np.ndarray):
+        w = counts[self.codes].astype(np.float64)
+        tp = np.cumsum(w * self.y)[self.ends]
+        fp = np.cumsum(w * self.neg)[self.ends]
+        return tp, fp
+
+    @staticmethod
+    def ap(tp: np.ndarray, fp: np.ndarray) -> float:
+        p_total = tp[-1]
+        if p_total <= 0:
+            return float("nan")
+        den = tp + fp
+        # a tied-score group made only of undrawn trajectories has zero weight: its recall step is 0, so its precision is irrelevant
+        precision = np.divide(tp, den, out=np.zeros_like(tp), where=den > 0)
+        recall = tp / p_total
+        return float(np.sum(np.diff(np.concatenate([[0.0], recall])) * precision))
+
+    @staticmethod
+    def roc_auc(tp: np.ndarray, fp: np.ndarray) -> float:
+        p_total, n_total = tp[-1], fp[-1]
+        if p_total <= 0 or n_total <= 0:
+            return float("nan")
+        return float(np.trapezoid(np.concatenate([[0.0], tp / p_total]), np.concatenate([[0.0], fp / n_total])))
+
+
+def _check_inputs(traj_ids, y, scores, metrics):
     y = np.asarray(y).astype(int)
     for nm, s in scores.items():
         if len(s) != len(y):
@@ -78,23 +120,111 @@ def bootstrap_replicates(traj_ids, y, scores: Mapping[str, np.ndarray], B: int, 
     unknown = [m for m in metrics if m not in METRICS]
     if unknown:
         raise ValueError(f"unknown metric(s) {unknown}")
+    return y
+
+
+def bootstrap_replicates(traj_ids, y, scores: Mapping[str, np.ndarray], B: int, seed: int,
+                         strata: Optional[Mapping[object, str]] = None, metrics: Sequence[str] = ("pr_auc",)) -> Dict[str, np.ndarray]:
+    """Replicate arrays ``reps["<method>|<metric>"]`` of length B. One shared draw per replicate (same RNG stream as
+    before: ``rng.integers`` per replicate, or per stratum when stratified)."""
+    y = _check_inputs(traj_ids, y, scores, metrics)
     starts, ends, n_traj, groups = _draw_plan(traj_ids, strata)
+    _, _, codes = trajectory_blocks(np.asarray(traj_ids))
     names = list(scores)
     reps = {f"{nm}|{mt}": np.full(B, np.nan) for nm in names for mt in metrics}
+    fast = {nm: _FastCurves(y, scores[nm], codes) for nm in names}
     rng = np.random.default_rng(seed)
-    arrays = {nm: np.asarray(scores[nm], dtype=float) for nm in names}
     for b in range(B):
+        draw = _draw(rng, n_traj, groups)
+        counts = np.bincount(draw, minlength=n_traj)
+        for nm in names:
+            tp, fp = fast[nm].curves(counts)
+            if "pr_auc" in metrics:
+                reps[f"{nm}|pr_auc"][b] = _FastCurves.ap(tp, fp)
+            if "roc_auc" in metrics:
+                reps[f"{nm}|roc_auc"][b] = _FastCurves.roc_auc(tp, fp)
+    return reps
+
+
+def verify_fast_replicates(traj_ids, y, scores: Mapping[str, np.ndarray], seed: int, n: int = 2, tol: float = 1e-10,
+                           strata: Optional[Mapping[object, str]] = None) -> Dict[str, object]:
+    """Recompute the first ``n`` replicates with scikit-learn on the explicitly repeated rows and compare with the
+    pre-sorted weighted computation. Raises if any difference exceeds ``tol``."""
+    y = _check_inputs(traj_ids, y, scores, ("pr_auc", "roc_auc"))
+    starts, ends, n_traj, groups = _draw_plan(traj_ids, strata)
+    fast = bootstrap_replicates(traj_ids, y, scores, B=n, seed=seed, strata=strata, metrics=("pr_auc", "roc_auc"))
+    rng = np.random.default_rng(seed)
+    worst = 0.0
+    for b in range(n):
         draw = _draw(rng, n_traj, groups)
         rows = draw_rows(draw, starts, ends)
         yb = y[rows]
-        n_pos = int(yb.sum())
+        for nm in scores:
+            sb = np.asarray(scores[nm], dtype=float)[rows]
+            ref_ap = average_precision_score(yb, sb) if yb.sum() > 0 else float("nan")
+            ref_roc = roc_auc_score(yb, sb) if 0 < yb.sum() < len(yb) else float("nan")
+            for key, ref in ((f"{nm}|pr_auc", ref_ap), (f"{nm}|roc_auc", ref_roc)):
+                got = fast[key][b]
+                if np.isnan(ref) != np.isnan(got):
+                    raise AssertionError(f"fast path disagrees on definedness for {key}, replicate {b}")
+                if not np.isnan(ref):
+                    worst = max(worst, abs(got - ref))
+    if worst > tol:
+        raise AssertionError(f"fast bootstrap path differs from scikit-learn by {worst:.3e} (> {tol:.1e})")
+    return {"replicates_checked": int(n), "n_methods": len(scores), "max_abs_difference": worst, "tolerance": tol}
+
+
+def event_bootstrap(traj_ids, y, scores: Mapping[str, np.ndarray], events: Mapping[str, Mapping[object, list]], B: int, seed: int) -> Dict[str, object]:
+    """Per-method bootstrap of PR-AUC, ROC-AUC, event recall and median lead time with the same trajectory draw
+    (same RNG stream as ``phase3.analysis.trajectory_bootstrap``, whose event logic this reproduces)."""
+    y = _check_inputs(traj_ids, y, scores, ("pr_auc", "roc_auc"))
+    traj_ids = np.asarray(traj_ids)
+    starts, ends, codes = trajectory_blocks(traj_ids)
+    uniques = pd.unique(traj_ids)
+    n_traj = len(starts)
+    if n_traj != len(uniques):
+        raise ValueError("rows of a trajectory are not contiguous")
+    names = list(scores)
+    prep = {}
+    for nm in names:
+        n_ev = np.zeros(n_traj, dtype=np.int64); n_w = np.zeros(n_traj, dtype=np.int64); leads = []
+        for t, tid in enumerate(uniques):
+            lst = events[nm].get(tid, [])
+            n_ev[t] = len(lst)
+            w = [lead for warned, lead in lst if warned]
+            n_w[t] = len(w)
+            leads.append(np.asarray(w, dtype=float))
+        prep[nm] = (n_ev, n_w, leads)
+    fast = {nm: _FastCurves(y, scores[nm], codes) for nm in names}
+    keys = ("pr_auc", "roc_auc", "event_recall", "median_lead_s")
+    reps = {f"{nm}|{k}": np.full(B, np.nan) for nm in names for k in keys}
+    rng = np.random.default_rng(seed)
+    for b in range(B):
+        draw = rng.integers(0, n_traj, size=n_traj)
+        counts = np.bincount(draw, minlength=n_traj)
         for nm in names:
-            sb = arrays[nm][rows]
-            if "pr_auc" in metrics and n_pos > 0:
-                reps[f"{nm}|pr_auc"][b] = average_precision_score(yb, sb)
-            if "roc_auc" in metrics and 0 < n_pos < len(yb):
-                reps[f"{nm}|roc_auc"][b] = roc_auc_score(yb, sb)
-    return reps
+            tp, fp = fast[nm].curves(counts)
+            reps[f"{nm}|pr_auc"][b] = _FastCurves.ap(tp, fp)
+            reps[f"{nm}|roc_auc"][b] = _FastCurves.roc_auc(tp, fp)
+            n_ev, n_w, leads = prep[nm]
+            tot, warned = int((n_ev * counts).sum()), int((n_w * counts).sum())
+            if tot > 0:
+                reps[f"{nm}|event_recall"][b] = warned / tot
+            if warned > 0:
+                reps[f"{nm}|median_lead_s"][b] = float(np.median(np.concatenate([leads[t] for t in draw])))
+    per_method = {}
+    for nm in names:
+        pt = threshold_free_metrics(y, scores[nm])
+        n_ev, n_w, leads = prep[nm]
+        all_leads = np.concatenate(leads) if leads else np.zeros(0)
+        point = {"pr_auc": pt["pr_auc"], "roc_auc": pt["roc_auc"],
+                 "event_recall": float(n_w.sum() / n_ev.sum()) if n_ev.sum() > 0 else float("nan"),
+                 "median_lead_s": float(np.median(all_leads)) if all_leads.size else float("nan")}
+        for k in keys:
+            lo, hi, nu = percentile_interval(reps[f"{nm}|{k}"])
+            per_method[f"{nm}|{k}"] = {"point": point[k], "ci_lo": lo, "ci_hi": hi, "n_undefined_replicates": nu}
+    return {"config": {"unit": "trajectory", "B": int(B), "seed": int(seed), "pairing": "one trajectory draw per replicate, shared by every method"},
+            "per_method": per_method}
 
 
 def point_estimates(y, scores: Mapping[str, np.ndarray], metrics: Sequence[str] = ("pr_auc",)) -> Dict[str, float]:

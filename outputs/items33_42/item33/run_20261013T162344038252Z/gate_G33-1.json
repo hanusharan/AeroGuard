@@ -1,0 +1,16 @@
+{
+  "dry_run": false,
+  "gate": "G33-1",
+  "payload": {
+    "n_rows_test": 538034,
+    "protocol_sha256": "742f55a9cc4e5da0474de84bf40cc6ffcb63a4ed46f12c3d2536ac57b21c4dc7",
+    "stratum_sizes": {
+      "gradual_approach_v3": 346,
+      "normal": 81,
+      "stall": 29
+    },
+    "test_key_hash": "806ab81b786ec70406d4b4036f65dce4a4794bda3842fb1c32b7ce940917c030"
+  },
+  "status": "PASS",
+  "utc": "2026-10-13T16:24:05Z"
+}

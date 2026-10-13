@@ -1,0 +1,156 @@
+{
+  "C0": {
+    "features": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "dV_dt",
+      "dalpha_dt",
+      "dgamma_dt",
+      "dq_dt",
+      "d2alpha_dt2",
+      "alpha_mean_1s",
+      "alpha_min_1s",
+      "alpha_max_1s",
+      "alpha_range_1s",
+      "alpha_slope_1s",
+      "alpha_trend_1s",
+      "V_slope_1s",
+      "gamma_slope_1s",
+      "pitch_rate_slope_1s",
+      "elevator_change_1s"
+    ],
+    "n_features": 23,
+    "removed": [],
+    "status": "baseline"
+  },
+  "C1": {
+    "features": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "stall_margin",
+      "dV_dt",
+      "dalpha_dt",
+      "dgamma_dt",
+      "dq_dt",
+      "d2alpha_dt2",
+      "alpha_mean_1s",
+      "alpha_min_1s",
+      "alpha_max_1s",
+      "alpha_range_1s",
+      "alpha_slope_1s",
+      "alpha_trend_1s",
+      "V_slope_1s",
+      "gamma_slope_1s",
+      "pitch_rate_slope_1s",
+      "elevator_change_1s"
+    ],
+    "n_features": 21,
+    "removed": [
+      "elevator",
+      "throttle"
+    ],
+    "status": "primary"
+  },
+  "C2": {
+    "features": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "stall_margin",
+      "dV_dt",
+      "dalpha_dt",
+      "dgamma_dt",
+      "dq_dt",
+      "d2alpha_dt2",
+      "alpha_mean_1s",
+      "alpha_min_1s",
+      "alpha_max_1s",
+      "alpha_range_1s",
+      "alpha_slope_1s",
+      "alpha_trend_1s",
+      "V_slope_1s",
+      "gamma_slope_1s",
+      "pitch_rate_slope_1s"
+    ],
+    "n_features": 20,
+    "removed": [
+      "elevator",
+      "throttle",
+      "elevator_change_1s"
+    ],
+    "status": "primary"
+  },
+  "C3": {
+    "features": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "stall_margin",
+      "dalpha_dt",
+      "dgamma_dt",
+      "d2alpha_dt2",
+      "alpha_mean_1s",
+      "alpha_min_1s",
+      "alpha_max_1s",
+      "alpha_range_1s",
+      "alpha_slope_1s",
+      "alpha_trend_1s",
+      "gamma_slope_1s"
+    ],
+    "n_features": 16,
+    "removed": [
+      "elevator",
+      "throttle",
+      "elevator_change_1s",
+      "dq_dt",
+      "dV_dt",
+      "pitch_rate_slope_1s",
+      "V_slope_1s"
+    ],
+    "status": "exploratory"
+  },
+  "X1": {
+    "features": [
+      "V",
+      "alpha",
+      "gamma",
+      "pitch_rate",
+      "altitude",
+      "elevator",
+      "throttle",
+      "stall_margin",
+      "dV_dt",
+      "dalpha_dt",
+      "dgamma_dt",
+      "dq_dt",
+      "d2alpha_dt2",
+      "alpha_mean_1s",
+      "alpha_min_1s",
+      "alpha_max_1s",
+      "alpha_range_1s",
+      "alpha_slope_1s",
+      "alpha_trend_1s",
+      "V_slope_1s",
+      "gamma_slope_1s",
+      "pitch_rate_slope_1s"
+    ],
+    "n_features": 22,
+    "removed": [
+      "elevator_change_1s"
+    ],
+    "status": "exploratory"
+  }
+}

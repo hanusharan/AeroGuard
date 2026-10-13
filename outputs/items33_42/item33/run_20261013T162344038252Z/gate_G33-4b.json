@@ -1,0 +1,12 @@
+{
+  "dry_run": false,
+  "gate": "G33-4b",
+  "payload": {
+    "failures": 0,
+    "fitted_in_this_invocation": 10,
+    "kept_from_an_earlier_invocation": 14,
+    "total_fits": 25
+  },
+  "status": "PASS",
+  "utc": "2026-10-13T20:01:16Z"
+}

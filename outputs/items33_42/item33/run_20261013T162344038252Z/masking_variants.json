@@ -1,0 +1,204 @@
+{
+  "analysis_family": "frozen_model_masking",
+  "note": "perturbation of the frozen model's inputs; not retrained ablation",
+  "variants": [
+    {
+      "label": "M-A-MS1",
+      "mask_set": "M-A",
+      "method": "MS1",
+      "seed": null
+    },
+    {
+      "label": "M-A-MS2-20261201",
+      "mask_set": "M-A",
+      "method": "MS2",
+      "seed": 20261201
+    },
+    {
+      "label": "M-A-MS2-20261202",
+      "mask_set": "M-A",
+      "method": "MS2",
+      "seed": 20261202
+    },
+    {
+      "label": "M-A-MS2-20261203",
+      "mask_set": "M-A",
+      "method": "MS2",
+      "seed": 20261203
+    },
+    {
+      "label": "M-A-MS2-20261204",
+      "mask_set": "M-A",
+      "method": "MS2",
+      "seed": 20261204
+    },
+    {
+      "label": "M-A-MS2-20261205",
+      "mask_set": "M-A",
+      "method": "MS2",
+      "seed": 20261205
+    },
+    {
+      "label": "M-A-MS3-20261201",
+      "mask_set": "M-A",
+      "method": "MS3",
+      "seed": 20261201
+    },
+    {
+      "label": "M-A-MS3-20261202",
+      "mask_set": "M-A",
+      "method": "MS3",
+      "seed": 20261202
+    },
+    {
+      "label": "M-A-MS3-20261203",
+      "mask_set": "M-A",
+      "method": "MS3",
+      "seed": 20261203
+    },
+    {
+      "label": "M-A-MS3-20261204",
+      "mask_set": "M-A",
+      "method": "MS3",
+      "seed": 20261204
+    },
+    {
+      "label": "M-A-MS3-20261205",
+      "mask_set": "M-A",
+      "method": "MS3",
+      "seed": 20261205
+    },
+    {
+      "label": "M-B-MS1",
+      "mask_set": "M-B",
+      "method": "MS1",
+      "seed": null
+    },
+    {
+      "label": "M-B-MS2-20261201",
+      "mask_set": "M-B",
+      "method": "MS2",
+      "seed": 20261201
+    },
+    {
+      "label": "M-B-MS2-20261202",
+      "mask_set": "M-B",
+      "method": "MS2",
+      "seed": 20261202
+    },
+    {
+      "label": "M-B-MS2-20261203",
+      "mask_set": "M-B",
+      "method": "MS2",
+      "seed": 20261203
+    },
+    {
+      "label": "M-B-MS2-20261204",
+      "mask_set": "M-B",
+      "method": "MS2",
+      "seed": 20261204
+    },
+    {
+      "label": "M-B-MS2-20261205",
+      "mask_set": "M-B",
+      "method": "MS2",
+      "seed": 20261205
+    },
+    {
+      "label": "M-B-MS3-20261201",
+      "mask_set": "M-B",
+      "method": "MS3",
+      "seed": 20261201
+    },
+    {
+      "label": "M-B-MS3-20261202",
+      "mask_set": "M-B",
+      "method": "MS3",
+      "seed": 20261202
+    },
+    {
+      "label": "M-B-MS3-20261203",
+      "mask_set": "M-B",
+      "method": "MS3",
+      "seed": 20261203
+    },
+    {
+      "label": "M-B-MS3-20261204",
+      "mask_set": "M-B",
+      "method": "MS3",
+      "seed": 20261204
+    },
+    {
+      "label": "M-B-MS3-20261205",
+      "mask_set": "M-B",
+      "method": "MS3",
+      "seed": 20261205
+    },
+    {
+      "label": "M-C-MS1",
+      "mask_set": "M-C",
+      "method": "MS1",
+      "seed": null
+    },
+    {
+      "label": "M-C-MS2-20261201",
+      "mask_set": "M-C",
+      "method": "MS2",
+      "seed": 20261201
+    },
+    {
+      "label": "M-C-MS2-20261202",
+      "mask_set": "M-C",
+      "method": "MS2",
+      "seed": 20261202
+    },
+    {
+      "label": "M-C-MS2-20261203",
+      "mask_set": "M-C",
+      "method": "MS2",
+      "seed": 20261203
+    },
+    {
+      "label": "M-C-MS2-20261204",
+      "mask_set": "M-C",
+      "method": "MS2",
+      "seed": 20261204
+    },
+    {
+      "label": "M-C-MS2-20261205",
+      "mask_set": "M-C",
+      "method": "MS2",
+      "seed": 20261205
+    },
+    {
+      "label": "M-C-MS3-20261201",
+      "mask_set": "M-C",
+      "method": "MS3",
+      "seed": 20261201
+    },
+    {
+      "label": "M-C-MS3-20261202",
+      "mask_set": "M-C",
+      "method": "MS3",
+      "seed": 20261202
+    },
+    {
+      "label": "M-C-MS3-20261203",
+      "mask_set": "M-C",
+      "method": "MS3",
+      "seed": 20261203
+    },
+    {
+      "label": "M-C-MS3-20261204",
+      "mask_set": "M-C",
+      "method": "MS3",
+      "seed": 20261204
+    },
+    {
+      "label": "M-C-MS3-20261205",
+      "mask_set": "M-C",
+      "method": "MS3",
+      "seed": 20261205
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "C0": {
+    "max": 0.891625438493857,
+    "mean": 0.8909057453724116,
+    "median": 0.8907133796507635,
+    "min": 0.8904915379331468,
+    "n_seeds": 5,
+    "note": "descriptive spread over training seeds; not a confidence interval and not combined with bootstrap uncertainty",
+    "sd_ddof1": 0.0004443821567055349
+  },
+  "C1": {
+    "max": 0.8914402075646899,
+    "mean": 0.890712825110778,
+    "median": 0.890672048740796,
+    "min": 0.8900628619987544,
+    "n_seeds": 5,
+    "note": "descriptive spread over training seeds; not a confidence interval and not combined with bootstrap uncertainty",
+    "sd_ddof1": 0.0004914374221421337
+  },
+  "C2": {
+    "max": 0.8910950190598166,
+    "mean": 0.8903864961092213,
+    "median": 0.8904941807706388,
+    "min": 0.8896890211329667,
+    "n_seeds": 5,
+    "note": "descriptive spread over training seeds; not a confidence interval and not combined with bootstrap uncertainty",
+    "sd_ddof1": 0.0005283347995488207
+  },
+  "C3": {
+    "max": 0.8896424817549542,
+    "mean": 0.8887896981555825,
+    "median": 0.8890060821669151,
+    "min": 0.8874088838056864,
+    "n_seeds": 5,
+    "note": "descriptive spread over training seeds; not a confidence interval and not combined with bootstrap uncertainty",
+    "sd_ddof1": 0.0008711007414676212
+  },
+  "X1": {
+    "max": 0.891990276851672,
+    "mean": 0.8908036529350462,
+    "median": 0.8909990324849998,
+    "min": 0.8897796762164174,
+    "n_seeds": 5,
+    "note": "descriptive spread over training seeds; not a confidence interval and not combined with bootstrap uncertainty",
+    "sd_ddof1": 0.0008813651863305619
+  }
+}

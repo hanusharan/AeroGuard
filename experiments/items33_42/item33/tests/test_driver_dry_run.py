@@ -299,3 +299,56 @@ def test_phase3_row_keys_that_differ_from_the_panel_stop_g33_1(tree, splits, tmp
     cfg = driver.RunConfig(root=tree, dry_run=True, bootstrap_B=B, expected_counts=expected_counts(splits), phase3_dir=p3)
     st, payload, _ = go(cfg, make_deps(splits), "G33-1")
     assert st == "FAIL" and ("differ" in payload["error"] or "different number of rows" in payload["error"])
+
+
+# --- an interrupted fitting gate can be resumed with identical settings ---------------------------------------------------------------------
+
+def test_an_interrupted_fitting_gate_resumes_without_refitting_or_changing_completed_fits(tree, splits):
+    cfg = cfg_for(tree, splits)
+    calls = []
+    def dying(seed):
+        calls.append(seed)
+        if len(calls) == 8:
+            raise KeyboardInterrupt            # stands for a killed process: no gate record is written
+        return StubForest(seed)
+    deps = make_deps(splits, builder=dying)
+    _, _, rd = go(cfg, deps, "G33-1"); go(cfg, deps, "G33-2", rd); go(cfg, deps, "G33-4a", rd)
+    with pytest.raises(KeyboardInterrupt):
+        go(cfg, deps, "G33-4b", rd)
+    assert not (rd / "gate_G33-4b.json").exists() and len(list(rd.glob("fit_record_*"))) == 7      # the first fit plus 6 completed (call 8 was killed)
+    first = {p.name: p.read_bytes() for p in rd.glob("fit_record_*")}
+    calls2 = []
+    def fine(seed):
+        calls2.append(seed); return StubForest(seed)
+    st, payload, _ = go(cfg, make_deps(splits, builder=fine), "G33-4b", rd)
+    assert st == "PASS" and payload["kept_from_an_earlier_invocation"] == 6 and payload["fitted_in_this_invocation"] == 18
+    assert len(calls2) == 18 and len(list(rd.glob("fit_record_*"))) == 25
+    assert all((rd / n).read_bytes() == b for n, b in first.items())                               # completed fits untouched
+    prog = json.loads((rd / "fit_progress.json").read_text())
+    assert len(prog["kept_from_an_earlier_invocation"]) == 6 and json.loads((rd / "failures.json").read_text()) == []
+
+
+def test_a_partially_written_fit_stops_the_resumed_gate(tree, splits):
+    cfg = cfg_for(tree, splits)
+    deps = make_deps(splits)
+    _, _, rd = go(cfg, deps, "G33-1"); go(cfg, deps, "G33-2", rd); go(cfg, deps, "G33-4a", rd)
+    (rd / "model_C1_20260817.joblib").write_bytes(b"x")                                            # a model file without its record
+    st, payload, _ = go(cfg, deps, "G33-4b", rd)
+    assert st == "FAIL" and "partial artifacts" in payload["error"]
+
+
+def test_a_kept_model_whose_hash_changed_stops_the_resumed_gate(tree, splits):
+    cfg = cfg_for(tree, splits)
+    calls = []
+    def dying(seed):
+        calls.append(seed)
+        if len(calls) == 4:
+            raise KeyboardInterrupt
+        return StubForest(seed)
+    _, _, rd = go(cfg, make_deps(splits), "G33-1"); go(cfg, make_deps(splits), "G33-2", rd); go(cfg, make_deps(splits), "G33-4a", rd)
+    with pytest.raises(KeyboardInterrupt):
+        go(cfg, make_deps(splits, builder=dying), "G33-4b", rd)
+    with open(rd / "model_C1_20260817.joblib", "ab") as f:
+        f.write(b"tamper")
+    st, payload, _ = go(cfg, make_deps(splits), "G33-4b", rd)
+    assert st == "FAIL" and "differs from its fit record" in payload["error"]
