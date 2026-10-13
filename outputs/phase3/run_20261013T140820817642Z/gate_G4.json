@@ -1,0 +1,10 @@
+{
+  "gate": "G4",
+  "status": "PASS",
+  "utc": "2026-10-13T14:11:06Z",
+  "payload": {
+    "run_two_sided": true,
+    "q3": 461,
+    "data_files_verified": 4
+  }
+}

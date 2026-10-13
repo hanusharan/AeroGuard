@@ -1,0 +1,102 @@
+{
+  "banner": "Computed on regenerated v0.3 data (Item 26 copy; hashes in the protocol lock). Not independent replication. Simulation only: nothing here establishes real-aircraft safety.",
+  "observed_counts": {
+    "trajectories_train": 2205,
+    "panel_rows_train": 3749572,
+    "usable_rows_train": 2443881,
+    "trajectories_val": 472,
+    "panel_rows_val": 771995,
+    "usable_rows_val": 491322,
+    "trajectories_test": 473,
+    "panel_rows_test": 819298,
+    "usable_rows_test": 538034,
+    "test_trajectories_with_usable_rows": 456,
+    "test_positive_rows": 46169,
+    "test_negative_rows": 491865,
+    "test_trajectories_with_any_unsafe_run": 67,
+    "test_events": 76,
+    "test_first_events": 57,
+    "test_later_events": 19,
+    "test_trajectories_with_events": 57,
+    "dataset_rows": 5340865,
+    "dataset_trajectories": 3150
+  },
+  "expected_counts": {
+    "dataset_rows": 5340865,
+    "dataset_trajectories": 3150,
+    "trajectories_train": 2205,
+    "trajectories_val": 472,
+    "trajectories_test": 473,
+    "panel_rows_train": 3749572,
+    "panel_rows_val": 771995,
+    "panel_rows_test": 819298,
+    "usable_rows_train": 2443881,
+    "usable_rows_val": 491322,
+    "usable_rows_test": 538034,
+    "test_trajectories_with_usable_rows": 456,
+    "test_positive_rows": 46169,
+    "test_negative_rows": 491865,
+    "test_events": 76,
+    "test_first_events": 57,
+    "test_later_events": 19,
+    "test_trajectories_with_events": 57,
+    "test_trajectories_with_any_unsafe_run": 67
+  },
+  "count_mismatches": [],
+  "eligible_time_test": {
+    "n_rows": 538034,
+    "n_trajectories": 456,
+    "span_seconds": 5375.78,
+    "rows_times_dt_seconds": 5380.34
+  },
+  "eligible_span_matches_stored": true,
+  "split_manifest_matches": true,
+  "item26_cross_check": {
+    "keys_equal": true,
+    "labels_equal": true,
+    "n_item26": 538034,
+    "n_phase3": 538034
+  },
+  "schema_missing_columns": {
+    "train": [],
+    "val": [],
+    "test": []
+  },
+  "events": {
+    "events": 76,
+    "first_events": 57,
+    "later_events": 19,
+    "trajectories_with_events": 57
+  },
+  "data_files": [
+    {
+      "path": "processed/processed_dataset_v3.parquet",
+      "expected": "a533f9e940c16ab8bfddf3a4ca98d4326a17655247274142d98280ed03b4a38e",
+      "observed": "a533f9e940c16ab8bfddf3a4ca98d4326a17655247274142d98280ed03b4a38e",
+      "size_bytes": 449345877,
+      "ok": true
+    },
+    {
+      "path": "ml_temporal_v03/temporal_train.parquet",
+      "expected": "1a39472881280e084f3cab5d94fa4c80382d65a7075df59cd7a45fd4d5af4b43",
+      "observed": "1a39472881280e084f3cab5d94fa4c80382d65a7075df59cd7a45fd4d5af4b43",
+      "size_bytes": 1188953925,
+      "ok": true
+    },
+    {
+      "path": "ml_temporal_v03/temporal_val.parquet",
+      "expected": "9416fc8005b206eefbcdbeeb0d043a45036e8b2d6251ae3850b176765565a0e0",
+      "observed": "9416fc8005b206eefbcdbeeb0d043a45036e8b2d6251ae3850b176765565a0e0",
+      "size_bytes": 246442707,
+      "ok": true
+    },
+    {
+      "path": "ml_temporal_v03/temporal_test.parquet",
+      "expected": "c03634b4cc793c57bbe065e710a4a98bfe2bf69fdf5a55beb56a1c0ba33241b8",
+      "observed": "c03634b4cc793c57bbe065e710a4a98bfe2bf69fdf5a55beb56a1c0ba33241b8",
+      "size_bytes": 261347990,
+      "ok": true
+    }
+  ],
+  "problems": []
+}

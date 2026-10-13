@@ -1,0 +1,12 @@
+{
+  "gate": "G6",
+  "status": "PASS",
+  "utc": "2026-10-13T14:15:58Z",
+  "payload": {
+    "aoa_threshold_rad": 0.21723935451615506,
+    "n_candidates": 10,
+    "model_a_threshold": 0.8194871320017539,
+    "two_sided_fitted": true,
+    "data_files_verified": 4
+  }
+}

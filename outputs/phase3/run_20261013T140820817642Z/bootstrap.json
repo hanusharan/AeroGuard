@@ -1,0 +1,154 @@
+{
+  "config": {
+    "unit": "trajectory",
+    "n_trajectories": 456,
+    "n_rows": 538034,
+    "B": 1000,
+    "seed": 20261013,
+    "interval": "percentile 2.5/97.5",
+    "pairing": "one trajectory draw per replicate, shared by every method",
+    "undefined_replicates": "counted, not dropped silently"
+  },
+  "per_method": {
+    "aoa_signed|pr_auc": {
+      "point": 0.709466351978561,
+      "ci_lo": 0.6670020240388116,
+      "ci_hi": 0.7447633088135145,
+      "n_undefined_replicates": 0
+    },
+    "aoa_signed|roc_auc": {
+      "point": 0.905031060073511,
+      "ci_lo": 0.8761596451009636,
+      "ci_hi": 0.9310434274422612,
+      "n_undefined_replicates": 0
+    },
+    "instantaneous_model_a|pr_auc": {
+      "point": 0.8754338390816084,
+      "ci_lo": 0.834490057869655,
+      "ci_hi": 0.9114109013678999,
+      "n_undefined_replicates": 0
+    },
+    "instantaneous_model_a|roc_auc": {
+      "point": 0.9714130746576215,
+      "ci_lo": 0.9588613485640226,
+      "ci_hi": 0.9822133753793594,
+      "n_undefined_replicates": 0
+    },
+    "frozen_temporal|pr_auc": {
+      "point": 0.8902774777010881,
+      "ci_lo": 0.8534819002081667,
+      "ci_hi": 0.9224327527808177,
+      "n_undefined_replicates": 0
+    },
+    "frozen_temporal|roc_auc": {
+      "point": 0.9775387048062552,
+      "ci_lo": 0.968982102455962,
+      "ci_hi": 0.9856860935092929,
+      "n_undefined_replicates": 0
+    },
+    "aoa_two_sided|pr_auc": {
+      "point": 0.7088678301461928,
+      "ci_lo": 0.6663680606469996,
+      "ci_hi": 0.7444596937983963,
+      "n_undefined_replicates": 0
+    },
+    "aoa_two_sided|roc_auc": {
+      "point": 0.901266983969318,
+      "ci_lo": 0.870858087025714,
+      "ci_hi": 0.929653080580361,
+      "n_undefined_replicates": 0
+    },
+    "aoa_signed|event_recall": {
+      "point": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0,
+      "n_undefined_replicates": 0
+    },
+    "aoa_signed|median_lead_s": {
+      "point": 2.0800000000000005,
+      "ci_lo": 0.9100000000000001,
+      "ci_hi": 3.369999999999999,
+      "n_undefined_replicates": 0
+    },
+    "instantaneous_model_a|event_recall": {
+      "point": 0.9868421052631579,
+      "ci_lo": 0.9540229885057471,
+      "ci_hi": 1.0,
+      "n_undefined_replicates": 0
+    },
+    "instantaneous_model_a|median_lead_s": {
+      "point": 4.6499999999999995,
+      "ci_lo": 3.4450000000000003,
+      "ci_hi": 4.850125,
+      "n_undefined_replicates": 0
+    },
+    "frozen_temporal|event_recall": {
+      "point": 0.9605263157894737,
+      "ci_lo": 0.9090909090909091,
+      "ci_hi": 1.0,
+      "n_undefined_replicates": 0
+    },
+    "frozen_temporal|median_lead_s": {
+      "point": 4.72,
+      "ci_lo": 3.309,
+      "ci_hi": 4.9799999999999995,
+      "n_undefined_replicates": 0
+    },
+    "aoa_two_sided|event_recall": {
+      "point": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0,
+      "n_undefined_replicates": 0
+    },
+    "aoa_two_sided|median_lead_s": {
+      "point": 2.0800000000000005,
+      "ci_lo": 0.9100000000000001,
+      "ci_hi": 3.369999999999999,
+      "n_undefined_replicates": 0
+    }
+  },
+  "paired_differences": {
+    "frozen_temporal - instantaneous_model_a | pr_auc": {
+      "point": 0.014843638619479682,
+      "ci_lo": 0.007926567722612726,
+      "ci_hi": 0.023023972498221884,
+      "n_undefined_replicates": 0,
+      "ci_includes_zero": false
+    },
+    "frozen_temporal - instantaneous_model_a | roc_auc": {
+      "point": 0.006125630148633654,
+      "ci_lo": 0.002323164912967854,
+      "ci_hi": 0.01089941681710412,
+      "n_undefined_replicates": 0,
+      "ci_includes_zero": false
+    },
+    "frozen_temporal - aoa_signed | pr_auc": {
+      "point": 0.1808111257225271,
+      "ci_lo": 0.15048450493713073,
+      "ci_hi": 0.21922867284816946,
+      "n_undefined_replicates": 0,
+      "ci_includes_zero": false
+    },
+    "frozen_temporal - aoa_signed | roc_auc": {
+      "point": 0.07250764473274418,
+      "ci_lo": 0.05117350080008626,
+      "ci_hi": 0.09460775434968424,
+      "n_undefined_replicates": 0,
+      "ci_includes_zero": false
+    },
+    "instantaneous_model_a - aoa_signed | pr_auc": {
+      "point": 0.16596748710304743,
+      "ci_lo": 0.1341012650027732,
+      "ci_hi": 0.20472431261922,
+      "n_undefined_replicates": 0,
+      "ci_includes_zero": false
+    },
+    "instantaneous_model_a - aoa_signed | roc_auc": {
+      "point": 0.06638201458411053,
+      "ci_lo": 0.04637420018412183,
+      "ci_hi": 0.08638709251902242,
+      "n_undefined_replicates": 0,
+      "ci_includes_zero": false
+    }
+  }
+}

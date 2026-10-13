@@ -1,0 +1,27 @@
+{
+  "tau_alpha_rad": 0.21723935451615506,
+  "by_split": {
+    "train": {
+      "n_rows": 2443881,
+      "n_disagree": 1,
+      "n_disagree_exactly_at_threshold": 1,
+      "n_disagree_elsewhere": 0,
+      "n_rows_exactly_at_threshold": 1
+    },
+    "val": {
+      "n_rows": 491322,
+      "n_disagree": 0,
+      "n_disagree_exactly_at_threshold": 0,
+      "n_disagree_elsewhere": 0,
+      "n_rows_exactly_at_threshold": 0
+    },
+    "test": {
+      "n_rows": 538034,
+      "n_disagree": 0,
+      "n_disagree_exactly_at_threshold": 0,
+      "n_disagree_elsewhere": 0,
+      "n_rows_exactly_at_threshold": 0
+    }
+  },
+  "note": "Item 30 is mathematically equivalent to Item 28; decision counts only, not evaluated as a separate method"
+}

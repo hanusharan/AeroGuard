@@ -1,0 +1,52 @@
+{
+  "banner": "Computed on regenerated v0.3 data (Item 26 copy; hashes in the protocol lock). Not independent replication. Simulation only: nothing here establishes real-aircraft safety.",
+  "data_files": [
+    {
+      "path": "processed/processed_dataset_v3.parquet",
+      "expected": "a533f9e940c16ab8bfddf3a4ca98d4326a17655247274142d98280ed03b4a38e",
+      "observed": "a533f9e940c16ab8bfddf3a4ca98d4326a17655247274142d98280ed03b4a38e",
+      "size_bytes": 449345877,
+      "ok": true
+    },
+    {
+      "path": "ml_temporal_v03/temporal_train.parquet",
+      "expected": "1a39472881280e084f3cab5d94fa4c80382d65a7075df59cd7a45fd4d5af4b43",
+      "observed": "1a39472881280e084f3cab5d94fa4c80382d65a7075df59cd7a45fd4d5af4b43",
+      "size_bytes": 1188953925,
+      "ok": true
+    },
+    {
+      "path": "ml_temporal_v03/temporal_val.parquet",
+      "expected": "9416fc8005b206eefbcdbeeb0d043a45036e8b2d6251ae3850b176765565a0e0",
+      "observed": "9416fc8005b206eefbcdbeeb0d043a45036e8b2d6251ae3850b176765565a0e0",
+      "size_bytes": 246442707,
+      "ok": true
+    },
+    {
+      "path": "ml_temporal_v03/temporal_test.parquet",
+      "expected": "c03634b4cc793c57bbe065e710a4a98bfe2bf69fdf5a55beb56a1c0ba33241b8",
+      "observed": "c03634b4cc793c57bbe065e710a4a98bfe2bf69fdf5a55beb56a1c0ba33241b8",
+      "size_bytes": 261347990,
+      "ok": true
+    }
+  ],
+  "item26_records": {
+    "gate_A": {
+      "all_gate_A_pass": true,
+      "processed_rows": 5340865,
+      "processed_trajectories": 3150,
+      "metadata_max_relative_difference": 8.927913756937265e-13
+    },
+    "gate_B": {
+      "train_rows": 3749572,
+      "val_rows": 771995,
+      "test_rows": 819298,
+      "usable_test": 538034,
+      "usable_test_positives": 46169,
+      "usable_test_negatives": 491865,
+      "test_trajectories": 473,
+      "test_trajectories_with_usable_rows": 456,
+      "all_gate_B_pass": true
+    }
+  }
+}

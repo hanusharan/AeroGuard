@@ -1,0 +1,8 @@
+{
+  "split": "train",
+  "tau_rad": 0.21723935451615506,
+  "q4_usable_rows_alpha_below_minus_tau": 0,
+  "q4_of_which_label_1": 0,
+  "q4_of_which_label_0": 0,
+  "influences_q3_decision": false
+}

@@ -1,0 +1,55 @@
+{
+  "protocol": {
+    "path": "experiments/phase3/PROTOCOL.md",
+    "sha256": "da9c62fa1d41beef6ae53aabaedda0eecb623fa5ee06c237c21191011d2a97f2"
+  },
+  "frozen_model": {
+    "path": "outputs/ml_v03/models/primary_model_D_1s.joblib",
+    "sha256": "707d4c61a791af940549f81520a0c8429edaa8ef8d67eb0f02c3174c5fe603f3"
+  },
+  "seeds": {
+    "forest_random_state": 20260817,
+    "bootstrap_seed": 20261013,
+    "bootstrap_B": 1000
+  },
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Linux-6.18.44-fc-v114-x86_64-with-glibc2.39",
+    "cpu_count": "4",
+    "scikit-learn": "1.9.0",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "pyarrow": "26.0.0",
+    "scipy": "1.18.1",
+    "joblib": "1.6.0",
+    "pip_freeze": [
+      "cloudpickle==3.1.2",
+      "contourpy==1.4.0",
+      "cycler==0.12.1",
+      "fonttools==4.66.1",
+      "iniconfig==2.3.1",
+      "joblib==1.6.0",
+      "kiwisolver==1.5.1",
+      "matplotlib==3.11.2",
+      "narwhals==2.27.1",
+      "numpy==2.5.4",
+      "packaging==26.3",
+      "pandas==3.0.6",
+      "pillow==12.3.0",
+      "pluggy==1.6.0",
+      "pyarrow==26.0.0",
+      "Pygments==2.21.0",
+      "pyparsing==3.3.3",
+      "pytest==9.1.1",
+      "python-dateutil==2.9.0.post0",
+      "scikit-learn==1.9.0",
+      "scipy==1.18.1",
+      "six==1.17.0",
+      "threadpoolctl==3.7.0"
+    ]
+  },
+  "git_commit_of_execution_tree": "3544448fe3560fbb119e3e0c83194911808ba41c",
+  "created_utc": "2026-10-13T14:11:02Z",
+  "tree_root": "/tmp/claude-0/-home-user-AeroGuard/1d37592f-2dfd-5c3e-8f4f-959f6d01ce75/scratchpad/phase3-final",
+  "banner": "Computed on regenerated v0.3 data (Item 26 copy; hashes in the protocol lock). Not independent replication. Simulation only: nothing here establishes real-aircraft safety."
+}

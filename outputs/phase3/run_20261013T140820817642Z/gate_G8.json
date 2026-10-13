@@ -1,0 +1,10 @@
+{
+  "gate": "G8",
+  "status": "PASS",
+  "utc": "2026-10-13T14:32:21Z",
+  "payload": {
+    "B": 1000,
+    "seed": 20261013,
+    "baseline_ok": 79
+  }
+}
