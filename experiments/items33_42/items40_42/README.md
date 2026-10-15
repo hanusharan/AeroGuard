@@ -20,5 +20,5 @@ python -B -m pytest -p no:cacheprovider experiments/items33_42/items40_42/tests
 - **Results of the checks.**
   - L1–L5 and M1–M5: all PASS.
   - Leakage screen (L3): the best single feature reaches PR-AUC 0.709 (`stall_margin`, the same as alpha), against 0.890 for the full model. No leakage pattern was found.
-  - C1: PASS, 28 headline statements re-derived independently.
+  - C1: PASS, 26 headline statements re-derived independently.
   - C2: 4 lines flagged; all were reviewed and found acceptable (see `C2_REVIEW.md`).
