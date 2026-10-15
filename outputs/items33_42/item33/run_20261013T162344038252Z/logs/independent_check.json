@@ -1,0 +1,17 @@
+{
+  "point_estimates_recomputed_with_scikit_learn": {
+    "n": 50,
+    "max_abs_difference_vs_recorded": 0.0
+  },
+  "per_seed_deltas_mean_median_recomputed": {
+    "max_abs_difference_vs_recorded": 0.0
+  },
+  "bootstrap_fast_path_vs_scikit_learn_on_real_scores": {
+    "replicates_checked": 40,
+    "n_methods": 25,
+    "max_abs_difference": 3.3306690738754696e-16,
+    "tolerance": 1e-10,
+    "seconds": 219.33730268478394
+  },
+  "all_checks_within_1e-10": true
+}

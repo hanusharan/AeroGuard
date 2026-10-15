@@ -1,0 +1,73 @@
+{
+  "condition": "C2",
+  "dry_run": false,
+  "features": [
+    "V",
+    "alpha",
+    "gamma",
+    "pitch_rate",
+    "altitude",
+    "stall_margin",
+    "dV_dt",
+    "dalpha_dt",
+    "dgamma_dt",
+    "dq_dt",
+    "d2alpha_dt2",
+    "alpha_mean_1s",
+    "alpha_min_1s",
+    "alpha_max_1s",
+    "alpha_range_1s",
+    "alpha_slope_1s",
+    "alpha_trend_1s",
+    "V_slope_1s",
+    "gamma_slope_1s",
+    "pitch_rate_slope_1s"
+  ],
+  "fit_seconds": 535.1327777139995,
+  "model_sha256": "c6434e8ca804d7e577d2656156a7526c5aa6c208cd4bbd11f2efd815c206e9a5",
+  "n_features": 20,
+  "n_train_rows": 2443881,
+  "n_val_rows": 491322,
+  "operator": "strict >",
+  "peak_rss_mb": 3486.87890625,
+  "resolved_max_features": 4,
+  "rf_params": {
+    "class_weight": "balanced_subsample",
+    "max_depth": 12,
+    "min_samples_leaf": 5,
+    "n_estimators": 200
+  },
+  "seed": 20261103,
+  "status": "FITTED",
+  "threshold": 0.7923365127038465,
+  "threshold_info": {
+    "candidate_thresholds": [
+      0.7925390403204495,
+      0.7925315021746802,
+      0.7924709456273176,
+      0.7923365127038465,
+      0.7925231808750054,
+      0.792701065960578,
+      0.7925505122912796,
+      0.792449841236111,
+      0.7925633643530026,
+      0.7924773224204124
+    ],
+    "candidate_val_f1": [
+      0.8212795549374131,
+      0.8212676566461427,
+      0.8212728352673592,
+      0.8213069869185415,
+      0.8212557586996204,
+      0.8212914535734466,
+      0.8212795549374131,
+      0.8212728352673592,
+      0.8212795549374131,
+      0.8212728352673592
+    ],
+    "method": "top_k_train_f1_then_best_val_f1",
+    "selected_threshold": 0.7923365127038465,
+    "selected_val_f1": 0.8213069869185415,
+    "top_k": 10
+  }
+}

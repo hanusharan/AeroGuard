@@ -32,8 +32,10 @@ a memorized fingerprint of one specific control-input shape?
 Slowing and re-timing the elevator control profile — without touching the
 validated aircraft physics or stall boundary — produced a dataset (v0.3) with a
 median 4.38s physical precursor (vs. v0.2's 0.54s). A temporal ML model trained
-on it achieved **96.1% event recall at a median 4.72s lead time** (vs. v0.2's
-100% recall at 0.53s). A final experiment tested whether this skill transfers
+on it achieved **96.1% event recall** (73 of 76 evaluated events) **at a median
+4.72s lead time among the warned events** (vs. v0.2's 100% recall at 0.53s; the
+event population and these definitions are explained under
+[Headline metrics](#headline-metrics)). A final experiment tested whether this skill transfers
 to a *structurally different* slow-approach control-input mechanism the model
 never trained on: it retained **94% of its in-distribution PR-AUC and 100%
 event recall** on the novel mechanism.
@@ -58,8 +60,9 @@ ml/                      baseline (instantaneous) + temporal (windowed
                          state+derivative) ML pipelines: RandomForest,
                          logistic regression, rule-based baselines.
 scripts/                 one script per pipeline stage.
-tests/                   190 tests covering physics, dataset generation, ML
-                         pipelines, and leakage/integrity guards.
+tests/                   226 tests (the original 190 plus 36 research-audit
+                         tests) covering physics, dataset generation, ML
+                         pipelines, leakage/integrity guards and audit checks.
 data/                    versioned trajectory datasets (v1/v2/v3) — large
                          binary files excluded from git, regenerable (see
                          REPRODUCIBILITY.md).
@@ -96,14 +99,50 @@ lead-time definition, unchanged across every dataset version for comparability.
 | Metric | v0.2 (baseline) | v0.3 (final) |
 |---|---|---|
 | PR-AUC (primary model) | 0.813 | **0.890** |
-| Event recall | 100.0% (14/14) | 96.1% (73/76) |
-| Median credited lead time | 0.53s | **4.72s** |
+| Event recall (evaluated events) | 100.0% (14/14) | 96.1% (73/76) |
+| Median credited lead time (warned events only) | 0.53s | **4.72s** |
 | Warning coverage ≥2s | 14.3% | **64.5%** |
 | Warning coverage ≥4s | 0.0% | **55.3%** |
 
+### What the event metrics cover
+
+The event metrics above describe the **evaluated test events**, not every stall
+crossing in the test split (definitions in `ml/events.py`; counts from
+`outputs/ml_v03/metrics/primary_model_metrics.json`,
+`physics_vs_ml_summary.json` and `data/metadata/trajectory_metadata_v3.csv`).
+
+- **Evaluated population.** Predictions are scored only on rows whose
+  `future_stall_5s` label exists (the last 5 s of every trajectory has no
+  complete future window) and that have a full 1 s feature window. 456 of the 473
+  test trajectories have at least one such row. An "event" is a maximal run of
+  unsafe samples, so the 76 events are 57 first crossings (one per trajectory)
+  plus 19 second episodes in trajectories that re-enter the unsafe region.
+- **Events outside the evaluated rows.** The frozen report lists 67 test
+  crossings, of which 57 are in the evaluated rows. The other 10 are first
+  crossings in 10 different test trajectories (8 `stall`, 2
+  `gradual_approach_v3`) that occur in the last 5 s of the trajectory, so they
+  fall outside the evaluated rows. They are counted neither as warned nor as
+  missed. Later episodes in these trajectories also fall outside the evaluated
+  rows, but the available metadata does not establish how many such episodes
+  there are. The effect of these events on the reported recall has not been
+  measured.
+- **Recall.** 73 of the 76 evaluated events were warned and 3 were missed.
+  The frozen per-regime summary counts 54 of the 57 first crossings as warned
+  (37 of 40 in `gradual_approach_v3`, 17 of 17 in `stall`), so, by subtraction,
+  all three misses are `gradual_approach_v3` first crossings and all 19 second
+  episodes were warned. A warning that is still active when a trajectory re-enters the unsafe
+  region can be credited to both events; the stored results do not show how often
+  that happened.
+- **Lead time.** The 4.72s median is taken over the 73 warned events only;
+  missed events have no lead time and are not included (mean 3.42s, range
+  0.14–5.0s, 29 of the 73 at the 5s cap). Lead time is capped at the 5s label
+  horizon, and any warning that starts before the crossing and is active within
+  the 5s window counts, with no minimum duration. Warning coverage ≥τ is measured
+  over all 76 evaluated events.
+
 ## Generalization result
 
-| Check | PR-AUC | Event recall | Median lead |
+| Check | PR-AUC | Event recall | Median lead (warned events) |
 |---|---|---|---|
 | v0.3 in-distribution | 0.890 | 96.1% | 4.72s |
 | Zero-exposure exclusion (regime removed from TRAIN) | 0.552 | 64.5% | 0.73s |
@@ -153,9 +192,16 @@ pip install -r requirements.txt
 pytest tests/ -v
 ```
 
-Current state: **190/190 tests passing**, covering the physics engine, dataset
-generation (all three versions, including leakage/integrity guards), the ML
-pipelines, and the final generalization experiment's control-profile mechanism.
+The suite now collects 226 tests: the original 190-test suite plus 36
+research-audit tests added after the v1.0 packaging. The "190/190" figure below
+refers only to the original suite.
+
+Historical claim (not currently verified): the original packaging pass recorded
+"190/190 passing" in a working copy that held the locally generated (gitignored)
+datasets. On a clean checkout, 11 tests fail because gitignored data is missing
+and 24 data-conditional tests skip; passing tests do not by themselves reproduce
+any research result. See the canonical `README.md` and `REPRODUCIBILITY.md` in
+the repository for the current test policy.
 
 ## Limitations
 

@@ -1,0 +1,15 @@
+{
+  "gate": "G33-4a",
+  "status": "PASS",
+  "run_dir": "/tmp/claude-0/-home-user-AeroGuard/1d37592f-2dfd-5c3e-8f4f-959f6d01ce75/scratchpad/item33-exec/outputs/items33_42/item33/run_20261013T162344038252Z",
+  "payload": {
+    "stopped_for_cost_reconfirmation": true,
+    "condition": "C0",
+    "seed": 20260817,
+    "fit_seconds": 519.0317531430001,
+    "peak_rss_mb": 3162.50390625,
+    "n_train_rows": 2443881,
+    "threshold": 0.8609993568262826,
+    "next": "G33-4b fits the remaining models only after separate authorization"
+  }
+}

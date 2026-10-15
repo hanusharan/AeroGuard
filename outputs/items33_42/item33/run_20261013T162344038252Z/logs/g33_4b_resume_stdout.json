@@ -1,0 +1,11 @@
+{
+  "gate": "G33-4b",
+  "status": "PASS",
+  "run_dir": "/tmp/claude-0/-home-user-AeroGuard/1d37592f-2dfd-5c3e-8f4f-959f6d01ce75/scratchpad/item33-exec/outputs/items33_42/item33/run_20261013T162344038252Z",
+  "payload": {
+    "fitted_in_this_invocation": 10,
+    "kept_from_an_earlier_invocation": 14,
+    "total_fits": 25,
+    "failures": 0
+  }
+}

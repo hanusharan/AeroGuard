@@ -1,0 +1,29 @@
+{
+  "checked": true,
+  "feature_names_in": [
+    "V",
+    "alpha",
+    "gamma",
+    "pitch_rate",
+    "altitude",
+    "elevator",
+    "throttle",
+    "stall_margin",
+    "dV_dt",
+    "dalpha_dt",
+    "dgamma_dt",
+    "dq_dt",
+    "d2alpha_dt2",
+    "alpha_mean_1s",
+    "alpha_min_1s",
+    "alpha_max_1s",
+    "alpha_range_1s",
+    "alpha_slope_1s",
+    "alpha_trend_1s",
+    "V_slope_1s",
+    "gamma_slope_1s",
+    "pitch_rate_slope_1s",
+    "elevator_change_1s"
+  ],
+  "n_features_in": 23
+}

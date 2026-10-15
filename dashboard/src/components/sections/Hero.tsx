@@ -81,6 +81,18 @@ export function Hero() {
             Read the Full Research Report
           </a>
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          role="note"
+          className="mx-auto mt-8 max-w-2xl rounded-xl border border-(--color-line) bg-white/[0.02] px-5 py-3 text-xs leading-relaxed text-(--color-ink-soft)"
+        >
+          AeroGuard is an experimental research platform evaluated in simulation. It has not been
+          validated using real-aircraft flight data or flight tests and is not approved or intended
+          for operational flight-safety decisions.
+        </motion.p>
       </div>
 
       <motion.div

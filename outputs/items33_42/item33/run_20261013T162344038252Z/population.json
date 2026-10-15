@@ -1,0 +1,86 @@
+{
+  "banner": "Computed on a regenerated copy of the v0.3 data (Item 26); the original v0.3 dataset is absent. The test split was exposed by earlier analyses. These results are a controlled re-evaluation of previously exposed data: they are not blind, not independent replication, and say nothing about real aircraft. Ablation shows dependence of predictive information, not causal effects.",
+  "count_mismatches": [],
+  "eligible_time_test": {
+    "n_rows": 538034,
+    "n_trajectories": 456,
+    "rows_times_dt_seconds": 5380.34,
+    "span_seconds": 5375.78
+  },
+  "expected_counts": {
+    "panel_rows_test": 819298,
+    "panel_rows_train": 3749572,
+    "panel_rows_val": 771995,
+    "test_events": 76,
+    "test_first_events": 57,
+    "test_later_events": 19,
+    "test_negative_rows": 491865,
+    "test_positive_rows": 46169,
+    "test_trajectories_with_any_unsafe_run": 67,
+    "test_trajectories_with_events": 57,
+    "test_trajectories_with_usable_rows": 456,
+    "trajectories_test": 473,
+    "trajectories_train": 2205,
+    "trajectories_val": 472,
+    "usable_rows_test": 538034,
+    "usable_rows_train": 2443881,
+    "usable_rows_val": 491322
+  },
+  "n_rows": 538034,
+  "n_trajectories": 456,
+  "observed_counts": {
+    "panel_rows_test": 819298,
+    "panel_rows_train": 3749572,
+    "panel_rows_val": 771995,
+    "test_events": 76,
+    "test_first_events": 57,
+    "test_later_events": 19,
+    "test_negative_rows": 491865,
+    "test_positive_rows": 46169,
+    "test_trajectories_with_any_unsafe_run": 67,
+    "test_trajectories_with_events": 57,
+    "test_trajectories_with_usable_rows": 456,
+    "trajectories_test": 473,
+    "trajectories_train": 2205,
+    "trajectories_val": 472,
+    "usable_rows_test": 538034,
+    "usable_rows_train": 2443881,
+    "usable_rows_val": 491322
+  },
+  "summaries": {
+    "test": {
+      "negatives": 491865,
+      "positives": 46169,
+      "rows_total": 819298,
+      "rows_usable": 538034,
+      "trajectories_total": 473,
+      "trajectories_with_any_unsafe_run": 67,
+      "trajectories_with_usable_rows": 456
+    },
+    "train": {
+      "negatives": 2226148,
+      "positives": 217733,
+      "rows_total": 3749572,
+      "rows_usable": 2443881,
+      "trajectories_total": 2205,
+      "trajectories_with_any_unsafe_run": 342,
+      "trajectories_with_usable_rows": 2118
+    },
+    "val": {
+      "negatives": 456240,
+      "positives": 35082,
+      "rows_total": 771995,
+      "rows_usable": 491322,
+      "trajectories_total": 472,
+      "trajectories_with_any_unsafe_run": 61,
+      "trajectories_with_usable_rows": 459
+    }
+  },
+  "test_events": {
+    "events": 76,
+    "first_events": 57,
+    "later_events": 19,
+    "trajectories_with_events": 57
+  },
+  "test_key_hash": "806ab81b786ec70406d4b4036f65dce4a4794bda3842fb1c32b7ce940917c030"
+}

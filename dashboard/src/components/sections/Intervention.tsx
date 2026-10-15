@@ -62,7 +62,7 @@ const CHAIN: Step[] = [
     value: `${m.v03.medianLeadTimeS.toFixed(2)}s`,
     // Derived from the counts rather than the stored rounded rate, so this
     // reads 96.1% like the source report and not 96.0%.
-    detail: `median credited lead time, ${((m.v03.nWarned / m.v03.nEvents) * 100).toFixed(1)}% event recall (${m.v03.nWarned}/${m.v03.nEvents}) on held-out TEST`,
+    detail: `median credited lead time over warned events, ${((m.v03.nWarned / m.v03.nEvents) * 100).toFixed(1)}% event recall (${m.v03.nWarned}/${m.v03.nEvents} evaluated events) on held-out TEST`,
   },
 ];
 

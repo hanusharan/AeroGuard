@@ -1,0 +1,30 @@
+{
+  "features": [
+    "V",
+    "alpha",
+    "gamma",
+    "pitch_rate",
+    "altitude",
+    "elevator",
+    "throttle",
+    "stall_margin"
+  ],
+  "excluded": [
+    "d2alpha_dt2",
+    "dV_dt",
+    "dalpha_dt",
+    "dgamma_dt",
+    "dq_dt",
+    "future_stall_5s",
+    "future_stall_5s_available",
+    "is_unsafe",
+    "split",
+    "theta",
+    "thrust",
+    "time",
+    "time_to_stall",
+    "trajectory_id",
+    "vertical_speed"
+  ],
+  "banner": "Computed on regenerated v0.3 data (Item 26 copy; hashes in the protocol lock). Not independent replication. Simulation only: nothing here establishes real-aircraft safety."
+}

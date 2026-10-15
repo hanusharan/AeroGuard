@@ -1,0 +1,321 @@
+{
+  "frozen_before_any_scoring": true,
+  "specification": {
+    "bootstrap": {
+      "B": 1000,
+      "pct": [
+        2.5,
+        97.5
+      ],
+      "seed": 20261013
+    },
+    "conditions": {
+      "C0": {
+        "features": [
+          "V",
+          "alpha",
+          "gamma",
+          "pitch_rate",
+          "altitude",
+          "elevator",
+          "throttle",
+          "stall_margin",
+          "dV_dt",
+          "dalpha_dt",
+          "dgamma_dt",
+          "dq_dt",
+          "d2alpha_dt2",
+          "alpha_mean_1s",
+          "alpha_min_1s",
+          "alpha_max_1s",
+          "alpha_range_1s",
+          "alpha_slope_1s",
+          "alpha_trend_1s",
+          "V_slope_1s",
+          "gamma_slope_1s",
+          "pitch_rate_slope_1s",
+          "elevator_change_1s"
+        ],
+        "n_features": 23,
+        "removed": [],
+        "status": "baseline"
+      },
+      "C1": {
+        "features": [
+          "V",
+          "alpha",
+          "gamma",
+          "pitch_rate",
+          "altitude",
+          "stall_margin",
+          "dV_dt",
+          "dalpha_dt",
+          "dgamma_dt",
+          "dq_dt",
+          "d2alpha_dt2",
+          "alpha_mean_1s",
+          "alpha_min_1s",
+          "alpha_max_1s",
+          "alpha_range_1s",
+          "alpha_slope_1s",
+          "alpha_trend_1s",
+          "V_slope_1s",
+          "gamma_slope_1s",
+          "pitch_rate_slope_1s",
+          "elevator_change_1s"
+        ],
+        "n_features": 21,
+        "removed": [
+          "elevator",
+          "throttle"
+        ],
+        "status": "primary"
+      },
+      "C2": {
+        "features": [
+          "V",
+          "alpha",
+          "gamma",
+          "pitch_rate",
+          "altitude",
+          "stall_margin",
+          "dV_dt",
+          "dalpha_dt",
+          "dgamma_dt",
+          "dq_dt",
+          "d2alpha_dt2",
+          "alpha_mean_1s",
+          "alpha_min_1s",
+          "alpha_max_1s",
+          "alpha_range_1s",
+          "alpha_slope_1s",
+          "alpha_trend_1s",
+          "V_slope_1s",
+          "gamma_slope_1s",
+          "pitch_rate_slope_1s"
+        ],
+        "n_features": 20,
+        "removed": [
+          "elevator",
+          "throttle",
+          "elevator_change_1s"
+        ],
+        "status": "primary"
+      },
+      "C3": {
+        "features": [
+          "V",
+          "alpha",
+          "gamma",
+          "pitch_rate",
+          "altitude",
+          "stall_margin",
+          "dalpha_dt",
+          "dgamma_dt",
+          "d2alpha_dt2",
+          "alpha_mean_1s",
+          "alpha_min_1s",
+          "alpha_max_1s",
+          "alpha_range_1s",
+          "alpha_slope_1s",
+          "alpha_trend_1s",
+          "gamma_slope_1s"
+        ],
+        "n_features": 16,
+        "removed": [
+          "elevator",
+          "throttle",
+          "elevator_change_1s",
+          "dq_dt",
+          "dV_dt",
+          "pitch_rate_slope_1s",
+          "V_slope_1s"
+        ],
+        "status": "exploratory"
+      },
+      "X1": {
+        "features": [
+          "V",
+          "alpha",
+          "gamma",
+          "pitch_rate",
+          "altitude",
+          "elevator",
+          "throttle",
+          "stall_margin",
+          "dV_dt",
+          "dalpha_dt",
+          "dgamma_dt",
+          "dq_dt",
+          "d2alpha_dt2",
+          "alpha_mean_1s",
+          "alpha_min_1s",
+          "alpha_max_1s",
+          "alpha_range_1s",
+          "alpha_slope_1s",
+          "alpha_trend_1s",
+          "V_slope_1s",
+          "gamma_slope_1s",
+          "pitch_rate_slope_1s"
+        ],
+        "n_features": 22,
+        "removed": [
+          "elevator_change_1s"
+        ],
+        "status": "exploratory"
+      }
+    },
+    "frozen_threshold": 0.8585534589255494,
+    "masking": {
+      "methods": [
+        "MS1",
+        "MS2",
+        "MS3"
+      ],
+      "seeds": [
+        20261201,
+        20261202,
+        20261203,
+        20261204,
+        20261205
+      ],
+      "sets": {
+        "M-A": [
+          "elevator",
+          "throttle"
+        ],
+        "M-B": [
+          "elevator_change_1s"
+        ],
+        "M-C": [
+          "elevator",
+          "throttle",
+          "elevator_change_1s"
+        ]
+      }
+    },
+    "primary_seed": 20260817,
+    "protocol_sha256": "742f55a9cc4e5da0474de84bf40cc6ffcb63a4ed46f12c3d2536ac57b21c4dc7",
+    "register": [
+      {
+        "adjustment": "Bonferroni sensitivity (m=2)",
+        "comparison": "C0 - C1",
+        "estimand": "seed-mean delta",
+        "id": "D1",
+        "interval": "percentile 95%",
+        "status": "primary"
+      },
+      {
+        "adjustment": "Bonferroni sensitivity (m=2)",
+        "comparison": "C0 - C2",
+        "estimand": "seed-mean delta",
+        "id": "D2",
+        "interval": "percentile 95%",
+        "status": "primary"
+      },
+      {
+        "adjustment": "none",
+        "comparison": "D1, D2 at seed 20260817",
+        "estimand": "single-seed delta",
+        "id": "SEC-1",
+        "interval": "percentile 95%",
+        "status": "secondary"
+      },
+      {
+        "adjustment": "none",
+        "comparison": "C1 - C2",
+        "estimand": "seed-mean delta",
+        "id": "SEC-2",
+        "interval": "percentile 95%",
+        "status": "secondary"
+      },
+      {
+        "adjustment": "none",
+        "comparison": "ROC-AUC analogues of D1, D2",
+        "estimand": "seed-mean delta",
+        "id": "SEC-3",
+        "interval": "percentile 95%",
+        "status": "secondary"
+      },
+      {
+        "adjustment": "none",
+        "comparison": "C0(seed 20260817) vs frozen model",
+        "estimand": "reproduction level R0/R1/R2",
+        "id": "T1",
+        "interval": "percentile 95%",
+        "status": "technical"
+      },
+      {
+        "adjustment": "none",
+        "comparison": "D1, D2 under regime-stratified resampling",
+        "estimand": "seed-mean delta",
+        "id": "SR",
+        "interval": "stratified percentile 95%",
+        "status": "sensitivity"
+      },
+      {
+        "adjustment": "none",
+        "comparison": "C0 - C3",
+        "estimand": "seed-mean delta",
+        "id": "X-a",
+        "interval": "percentile 95%",
+        "status": "exploratory"
+      },
+      {
+        "adjustment": "none",
+        "comparison": "C0 - X1",
+        "estimand": "seed-mean delta",
+        "id": "X-b",
+        "interval": "percentile 95%",
+        "status": "exploratory"
+      },
+      {
+        "adjustment": "none",
+        "comparison": "matched operating point (validation-defined)",
+        "estimand": "descriptive differences",
+        "id": "X-c",
+        "interval": "seed by seed",
+        "status": "exploratory"
+      },
+      {
+        "adjustment": "none",
+        "comparison": "own-threshold and event metrics",
+        "estimand": "descriptive",
+        "id": "X-d",
+        "interval": "none",
+        "status": "descriptive"
+      },
+      {
+        "adjustment": "none",
+        "comparison": "per-condition per-seed point estimates (not a comparison)",
+        "estimand": "A_c(s)",
+        "id": "EST",
+        "interval": "none",
+        "status": "descriptive"
+      },
+      {
+        "adjustment": "none",
+        "comparison": "frozen-model masking (separate family)",
+        "estimand": "PR-AUC change of the frozen model",
+        "id": "M",
+        "interval": "bootstrap for 9 variants",
+        "status": "descriptive"
+      }
+    ],
+    "rf_params": {
+      "class_weight": "balanced_subsample",
+      "max_depth": 12,
+      "min_samples_leaf": 5,
+      "n_estimators": 200
+    },
+    "seeds": [
+      20260817,
+      20261101,
+      20261102,
+      20261103,
+      20261104
+    ]
+  },
+  "specification_sha256": "781d7c9e0130167fa4e68e9903621ba56000aaae4730b3143ec42cf9d66b5d46",
+  "utc": "2026-10-13T16:25:01Z"
+}

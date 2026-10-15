@@ -6,6 +6,7 @@ import { AIPipeline } from "./components/sections/AIPipeline";
 import { Intervention } from "./components/sections/Intervention";
 import { Scale } from "./components/sections/Scale";
 import { KeyResults } from "./components/sections/KeyResults";
+import { Evaluation } from "./components/sections/Evaluation";
 import { FlightReplay } from "./components/sections/FlightReplay";
 import { Simulator } from "./components/sections/Simulator";
 import { Generalization } from "./components/sections/Generalization";
@@ -27,6 +28,7 @@ function App() {
         <AIPipeline />
         <Intervention />
         <KeyResults />
+        <Evaluation />
         <FlightReplay />
         <Simulator />
         <Generalization />

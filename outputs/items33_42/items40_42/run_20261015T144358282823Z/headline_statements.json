@@ -1,0 +1,262 @@
+[
+  {
+    "ci_hi": 0.023023972498221884,
+    "ci_lo": 0.007926567722612726,
+    "id": "P3:frozen_temporal - instantaneous_model_a | pr_auc",
+    "includes_zero": false,
+    "point": 0.014843638619479682,
+    "sign": "positive",
+    "source": "outputs/phase3/run_20261013T140820817642Z/bootstrap.json",
+    "text": "Phase 3 frozen_temporal - instantaneous_model_a | pr_auc: 0.01484 [0.007927, 0.02302]; interval excludes 0."
+  },
+  {
+    "ci_hi": 0.21922867284816946,
+    "ci_lo": 0.15048450493713073,
+    "id": "P3:frozen_temporal - aoa_signed | pr_auc",
+    "includes_zero": false,
+    "point": 0.1808111257225271,
+    "sign": "positive",
+    "source": "outputs/phase3/run_20261013T140820817642Z/bootstrap.json",
+    "text": "Phase 3 frozen_temporal - aoa_signed | pr_auc: 0.1808 [0.1505, 0.2192]; interval excludes 0."
+  },
+  {
+    "ci_hi": 0.20472431261922,
+    "ci_lo": 0.1341012650027732,
+    "id": "P3:instantaneous_model_a - aoa_signed | pr_auc",
+    "includes_zero": false,
+    "point": 0.16596748710304743,
+    "sign": "positive",
+    "source": "outputs/phase3/run_20261013T140820817642Z/bootstrap.json",
+    "text": "Phase 3 instantaneous_model_a - aoa_signed | pr_auc: 0.166 [0.1341, 0.2047]; interval excludes 0."
+  },
+  {
+    "ci_hi": 0.0035538885237737755,
+    "ci_lo": -0.0038995655216084884,
+    "id": "I33:D1",
+    "includes_zero": true,
+    "point": 0.0001929202616336889,
+    "sign": "positive",
+    "source": "outputs/items33_42/item33/run_20261013T162344038252Z/paired_contrasts.json",
+    "text": "Item 33 D1 (primary) PR-AUC C0 - C1: 0.0001929 [-0.0039, 0.003554]; interval includes 0."
+  },
+  {
+    "ci_hi": 0.004087314845223404,
+    "ci_lo": -0.0036043566346653884,
+    "id": "I33:D2",
+    "includes_zero": true,
+    "point": 0.0005192492631904023,
+    "sign": "positive",
+    "source": "outputs/items33_42/item33/run_20261013T162344038252Z/paired_contrasts.json",
+    "text": "Item 33 D2 (primary) PR-AUC C0 - C2: 0.0005192 [-0.003604, 0.004087]; interval includes 0."
+  },
+  {
+    "ci_hi": 0.0009728611717005006,
+    "ci_lo": -0.0003743266886015206,
+    "id": "I33:SEC-2",
+    "includes_zero": true,
+    "point": 0.0003263290015567133,
+    "sign": "positive",
+    "source": "outputs/items33_42/item33/run_20261013T162344038252Z/paired_contrasts.json",
+    "text": "Item 33 SEC-2 (secondary) PR-AUC C1 - C2: 0.0003263 [-0.0003743, 0.0009729]; interval includes 0."
+  },
+  {
+    "ci_hi": 0.0057295376242213845,
+    "ci_lo": -0.0018034895072367196,
+    "id": "I33:X-a",
+    "includes_zero": true,
+    "point": 0.002116047216829298,
+    "sign": "positive",
+    "source": "outputs/items33_42/item33/run_20261013T162344038252Z/paired_contrasts.json",
+    "text": "Item 33 X-a (exploratory) PR-AUC C0 - C3: 0.002116 [-0.001803, 0.00573]; interval includes 0."
+  },
+  {
+    "ci_hi": 0.001047618291806731,
+    "ci_lo": -0.001005131018925343,
+    "id": "I33:X-b",
+    "includes_zero": true,
+    "point": 0.00010209243736551965,
+    "sign": "positive",
+    "source": "outputs/items33_42/item33/run_20261013T162344038252Z/paired_contrasts.json",
+    "text": "Item 33 X-b (exploratory) PR-AUC C0 - X1: 0.0001021 [-0.001005, 0.001048]; interval includes 0."
+  },
+  {
+    "ci_hi": 0.09093228200371054,
+    "ci_lo": -0.033912916423144375,
+    "id": "I40:frozen_temporal - instantaneous_model_a | R=10 | coverage_2s",
+    "includes_zero": true,
+    "point": 0.027027027027026973,
+    "sign": "positive",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - instantaneous_model_a | R=10 | coverage_2s: 0.02703 [-0.03391, 0.09093]; interval includes 0."
+  },
+  {
+    "ci_hi": 0.20346381490449286,
+    "ci_lo": 0.03702020202020202,
+    "id": "I40:frozen_temporal - instantaneous_model_a | R=10 | coverage_4s",
+    "includes_zero": false,
+    "point": 0.11940298507462688,
+    "sign": "positive",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - instantaneous_model_a | R=10 | coverage_4s: 0.1194 [0.03702, 0.2035]; interval excludes 0."
+  },
+  {
+    "ci_hi": 7.9111971907970124,
+    "ci_lo": -1.3812809943664042,
+    "id": "I40:frozen_temporal - instantaneous_model_a | R=10 | false_per_sim_hour",
+    "includes_zero": true,
+    "point": 2.678681047215474,
+    "sign": "positive",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - instantaneous_model_a | R=10 | false_per_sim_hour: 2.679 [-1.381, 7.911]; interval includes 0."
+  },
+  {
+    "ci_hi": 0.1466764705882353,
+    "ci_lo": 0.027388004442798965,
+    "id": "I40:frozen_temporal - instantaneous_model_a | R=20 | coverage_2s",
+    "includes_zero": false,
+    "point": 0.08108108108108114,
+    "sign": "positive",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - instantaneous_model_a | R=20 | coverage_2s: 0.08108 [0.02739, 0.1467]; interval excludes 0."
+  },
+  {
+    "ci_hi": 0.16883116883116883,
+    "ci_lo": 0.02664935064935071,
+    "id": "I40:frozen_temporal - instantaneous_model_a | R=20 | coverage_4s",
+    "includes_zero": false,
+    "point": 0.08955223880597007,
+    "sign": "positive",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - instantaneous_model_a | R=20 | coverage_4s: 0.08955 [0.02665, 0.1688]; interval excludes 0."
+  },
+  {
+    "ci_hi": 10.905252869019973,
+    "ci_lo": -14.694357550649691,
+    "id": "I40:frozen_temporal - instantaneous_model_a | R=20 | false_per_sim_hour",
+    "includes_zero": true,
+    "point": -0.6696702618038692,
+    "sign": "negative",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - instantaneous_model_a | R=20 | false_per_sim_hour: -0.6697 [-14.69, 10.91]; interval includes 0."
+  },
+  {
+    "ci_hi": 0.06781402368237754,
+    "ci_lo": 0.0,
+    "id": "I40:frozen_temporal - instantaneous_model_a | R=40 | coverage_2s",
+    "includes_zero": true,
+    "point": 0.027027027027027084,
+    "sign": "positive",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - instantaneous_model_a | R=40 | coverage_2s: 0.02703 [0, 0.06781]; interval includes 0."
+  },
+  {
+    "ci_hi": 0.10171664493698396,
+    "ci_lo": 0.0,
+    "id": "I40:frozen_temporal - instantaneous_model_a | R=40 | coverage_4s",
+    "includes_zero": true,
+    "point": 0.04477611940298509,
+    "sign": "positive",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - instantaneous_model_a | R=40 | coverage_4s: 0.04478 [0, 0.1017]; interval includes 0."
+  },
+  {
+    "ci_hi": 9.348535077141616,
+    "ci_lo": -20.543447341802707,
+    "id": "I40:frozen_temporal - instantaneous_model_a | R=40 | false_per_sim_hour",
+    "includes_zero": true,
+    "point": -4.018021570823215,
+    "sign": "negative",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - instantaneous_model_a | R=40 | false_per_sim_hour: -4.018 [-20.54, 9.349]; interval includes 0."
+  },
+  {
+    "ci_hi": 0.22671428571428567,
+    "ci_lo": 0.053547932330827046,
+    "id": "I40:frozen_temporal - aoa_signed | R=10 | coverage_2s",
+    "includes_zero": false,
+    "point": 0.1351351351351351,
+    "sign": "positive",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - aoa_signed | R=10 | coverage_2s: 0.1351 [0.05355, 0.2267]; interval excludes 0."
+  },
+  {
+    "ci_hi": 0.4576271186440678,
+    "ci_lo": 0.2393829076151826,
+    "id": "I40:frozen_temporal - aoa_signed | R=10 | coverage_4s",
+    "includes_zero": false,
+    "point": 0.34328358208955223,
+    "sign": "positive",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - aoa_signed | R=10 | coverage_4s: 0.3433 [0.2394, 0.4576]; interval excludes 0."
+  },
+  {
+    "ci_hi": 4.750729595184326,
+    "ci_lo": -7.998917925123904,
+    "id": "I40:frozen_temporal - aoa_signed | R=10 | false_per_sim_hour",
+    "includes_zero": true,
+    "point": -2.009010785411606,
+    "sign": "negative",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - aoa_signed | R=10 | false_per_sim_hour: -2.009 [-7.999, 4.751]; interval includes 0."
+  },
+  {
+    "ci_hi": 0.3,
+    "ci_lo": 0.11647684839432412,
+    "id": "I40:frozen_temporal - aoa_signed | R=20 | coverage_2s",
+    "includes_zero": false,
+    "point": 0.20270270270270274,
+    "sign": "positive",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - aoa_signed | R=20 | coverage_2s: 0.2027 [0.1165, 0.3]; interval excludes 0."
+  },
+  {
+    "ci_hi": 0.5737780813600486,
+    "ci_lo": 0.3283523787313432,
+    "id": "I40:frozen_temporal - aoa_signed | R=20 | coverage_4s",
+    "includes_zero": false,
+    "point": 0.4477611940298507,
+    "sign": "positive",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - aoa_signed | R=20 | coverage_4s: 0.4478 [0.3284, 0.5738]; interval excludes 0."
+  },
+  {
+    "ci_hi": 5.545541335540874,
+    "ci_lo": -11.674395308556823,
+    "id": "I40:frozen_temporal - aoa_signed | R=20 | false_per_sim_hour",
+    "includes_zero": true,
+    "point": -3.3483513090193444,
+    "sign": "negative",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - aoa_signed | R=20 | false_per_sim_hour: -3.348 [-11.67, 5.546]; interval includes 0."
+  },
+  {
+    "ci_hi": 0.22081529581529585,
+    "ci_lo": 0.058806429548563625,
+    "id": "I40:frozen_temporal - aoa_signed | R=40 | coverage_2s",
+    "includes_zero": false,
+    "point": 0.1351351351351352,
+    "sign": "positive",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - aoa_signed | R=40 | coverage_2s: 0.1351 [0.05881, 0.2208]; interval excludes 0."
+  },
+  {
+    "ci_hi": 0.5484098137210358,
+    "ci_lo": 0.2816478873239437,
+    "id": "I40:frozen_temporal - aoa_signed | R=40 | coverage_4s",
+    "includes_zero": false,
+    "point": 0.4029850746268657,
+    "sign": "positive",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - aoa_signed | R=40 | coverage_4s: 0.403 [0.2816, 0.5484]; interval excludes 0."
+  },
+  {
+    "ci_hi": 1.9942923085623365,
+    "ci_lo": -22.551533207930614,
+    "id": "I40:frozen_temporal - aoa_signed | R=40 | false_per_sim_hour",
+    "includes_zero": true,
+    "point": -10.045053927058028,
+    "sign": "negative",
+    "source": "outputs/items33_42/items40_42/run_20261015T144358282823Z/item40_matched_operating_points.json",
+    "text": "Item 40 frozen_temporal - aoa_signed | R=40 | false_per_sim_hour: -10.05 [-22.55, 1.994]; interval includes 0."
+  }
+]

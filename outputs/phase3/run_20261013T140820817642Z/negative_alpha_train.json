@@ -1,0 +1,12 @@
+{
+  "split": "train",
+  "q1_unsafe_rows_alpha_positive": 81290,
+  "q1_unsafe_rows_alpha_negative": 2320,
+  "q2_trajectories_with_negative_side_unsafe_row": 40,
+  "q3_negative_only_positive_rows": 461,
+  "n_usable_rows": 2443881,
+  "n_usable_positive_rows": 217733,
+  "n_trajectories": 2205,
+  "decision_criterion": "run two-sided sensitivity analysis iff Q3 > 0",
+  "run_two_sided": true
+}

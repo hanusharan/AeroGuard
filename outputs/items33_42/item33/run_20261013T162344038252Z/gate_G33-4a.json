@@ -1,0 +1,16 @@
+{
+  "dry_run": false,
+  "gate": "G33-4a",
+  "payload": {
+    "condition": "C0",
+    "fit_seconds": 519.0317531430001,
+    "n_train_rows": 2443881,
+    "next": "G33-4b fits the remaining models only after separate authorization",
+    "peak_rss_mb": 3162.50390625,
+    "seed": 20260817,
+    "stopped_for_cost_reconfirmation": true,
+    "threshold": 0.8609993568262826
+  },
+  "status": "PASS",
+  "utc": "2026-10-13T16:34:09Z"
+}

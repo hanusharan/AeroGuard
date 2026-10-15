@@ -1,0 +1,180 @@
+{
+  "rows": [
+    {
+      "achieved_fpr": 0.006579870243731369,
+      "condition": "C0",
+      "seed": 20260817,
+      "target_fpr": 0.006579870243731369,
+      "threshold": 0.8605622674597196
+    },
+    {
+      "achieved_fpr": 0.006448360512011222,
+      "condition": "C1",
+      "seed": 20260817,
+      "target_fpr": 0.006579870243731369,
+      "threshold": 0.8532364351431356
+    },
+    {
+      "achieved_fpr": 0.006251095914431001,
+      "condition": "C2",
+      "seed": 20260817,
+      "target_fpr": 0.006579870243731369,
+      "threshold": 0.8602902734459432
+    },
+    {
+      "achieved_fpr": 0.006134928984744871,
+      "condition": "C3",
+      "seed": 20260817,
+      "target_fpr": 0.006579870243731369,
+      "threshold": 0.859069766879445
+    },
+    {
+      "achieved_fpr": 0.0062817815184990355,
+      "condition": "X1",
+      "seed": 20260817,
+      "target_fpr": 0.006579870243731369,
+      "threshold": 0.860553134826695
+    },
+    {
+      "achieved_fpr": 0.006323426266877082,
+      "condition": "C0",
+      "seed": 20261101,
+      "target_fpr": 0.006323426266877082,
+      "threshold": 0.8610225727450692
+    },
+    {
+      "achieved_fpr": 0.006229177625810977,
+      "condition": "C1",
+      "seed": 20261101,
+      "target_fpr": 0.006323426266877082,
+      "threshold": 0.8569272446870788
+    },
+    {
+      "achieved_fpr": 0.006268630545327021,
+      "condition": "C2",
+      "seed": 20261101,
+      "target_fpr": 0.006323426266877082,
+      "threshold": 0.8596808469679661
+    },
+    {
+      "achieved_fpr": 0.005988076450990707,
+      "condition": "C3",
+      "seed": 20261101,
+      "target_fpr": 0.006323426266877082,
+      "threshold": 0.8612767406498639
+    },
+    {
+      "achieved_fpr": 0.006323426266877082,
+      "condition": "X1",
+      "seed": 20261101,
+      "target_fpr": 0.006323426266877082,
+      "threshold": 0.8628425858592038
+    },
+    {
+      "achieved_fpr": 0.006091092407504822,
+      "condition": "C0",
+      "seed": 20261102,
+      "target_fpr": 0.006091092407504822,
+      "threshold": 0.8570144471278277
+    },
+    {
+      "achieved_fpr": 0.006091092407504822,
+      "condition": "C1",
+      "seed": 20261102,
+      "target_fpr": 0.006091092407504822,
+      "threshold": 0.8640587440857229
+    },
+    {
+      "achieved_fpr": 0.006091092407504822,
+      "condition": "C2",
+      "seed": 20261102,
+      "target_fpr": 0.006091092407504822,
+      "threshold": 0.8637454166704595
+    },
+    {
+      "achieved_fpr": 0.006031913028230756,
+      "condition": "C3",
+      "seed": 20261102,
+      "target_fpr": 0.006091092407504822,
+      "threshold": 0.8614118313277258
+    },
+    {
+      "achieved_fpr": 0.0059595826757846745,
+      "condition": "X1",
+      "seed": 20261102,
+      "target_fpr": 0.006091092407504822,
+      "threshold": 0.8690972818406019
+    },
+    {
+      "achieved_fpr": 0.006165614588812905,
+      "condition": "C0",
+      "seed": 20261103,
+      "target_fpr": 0.006165614588812905,
+      "threshold": 0.8644032359753893
+    },
+    {
+      "achieved_fpr": 0.0060604068034367875,
+      "condition": "C1",
+      "seed": 20261103,
+      "target_fpr": 0.006165614588812905,
+      "threshold": 0.860141223225579
+    },
+    {
+      "achieved_fpr": 0.006165614588812905,
+      "condition": "C2",
+      "seed": 20261103,
+      "target_fpr": 0.006165614588812905,
+      "threshold": 0.8638532430464834
+    },
+    {
+      "achieved_fpr": 0.006099859722952832,
+      "condition": "C3",
+      "seed": 20261103,
+      "target_fpr": 0.006165614588812905,
+      "threshold": 0.8611567604395057
+    },
+    {
+      "achieved_fpr": 0.006165614588812905,
+      "condition": "X1",
+      "seed": 20261103,
+      "target_fpr": 0.006165614588812905,
+      "threshold": 0.8681462616718693
+    },
+    {
+      "achieved_fpr": 0.006042872172540768,
+      "condition": "C0",
+      "seed": 20261104,
+      "target_fpr": 0.006042872172540768,
+      "threshold": 0.8689972772395965
+    },
+    {
+      "achieved_fpr": 0.006042872172540768,
+      "condition": "C1",
+      "seed": 20261104,
+      "target_fpr": 0.006042872172540768,
+      "threshold": 0.8636036045598027
+    },
+    {
+      "achieved_fpr": 0.006038488514816763,
+      "condition": "C2",
+      "seed": 20261104,
+      "target_fpr": 0.006042872172540768,
+      "threshold": 0.8669287443872352
+    },
+    {
+      "achieved_fpr": 0.005990268279852709,
+      "condition": "C3",
+      "seed": 20261104,
+      "target_fpr": 0.006042872172540768,
+      "threshold": 0.8644423900206406
+    },
+    {
+      "achieved_fpr": 0.0060275293705067505,
+      "condition": "X1",
+      "seed": 20261104,
+      "target_fpr": 0.006042872172540768,
+      "threshold": 0.8712371725414282
+    }
+  ],
+  "rule": "validation-only; target = C0 validation FPR at its own threshold"
+}

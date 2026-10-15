@@ -1,0 +1,565 @@
+{
+  "contrasts": [
+    {
+      "register_id": "D1",
+      "statement": {
+        "label": "no_difference_demonstrated",
+        "marginal_level_only": false,
+        "status": "primary",
+        "text": "No difference was demonstrated under this protocol (the interval includes 0). This does not show that the two conditions perform alike."
+      },
+      "status": "primary",
+      "summary": {
+        "bootstrap_seed_mean": {
+          "ci_hi": 0.0035538885237737755,
+          "ci_lo": -0.0038995655216084884,
+          "includes_zero": true,
+          "n_undefined_replicates": 0,
+          "note": "test-trajectory sampling uncertainty conditional on the fitted models; not combined with seed variability",
+          "pct": [
+            2.5,
+            97.5
+          ],
+          "point": 0.0001929202616336889
+        },
+        "bootstrap_seed_mean_bonferroni": {
+          "ci_hi": 0.0040029538471497705,
+          "ci_lo": -0.004556313294522974,
+          "includes_zero": true,
+          "m": 2,
+          "n_undefined_replicates": 0,
+          "pct": [
+            1.25,
+            98.75
+          ]
+        },
+        "comparison": "C1",
+        "metric": "pr_auc",
+        "per_seed": {
+          "20260817": {
+            "ci_hi": 0.0024742102668957543,
+            "ci_lo": -0.004822431535712429,
+            "n_undefined_replicates": 0,
+            "point": -0.00072682791392642
+          },
+          "20261101": {
+            "ci_hi": 0.004648875684292433,
+            "ci_lo": -0.0028592644429096007,
+            "n_undefined_replicates": 0,
+            "point": 0.0010089464458413744
+          },
+          "20261102": {
+            "ci_hi": 0.004331246708351763,
+            "ci_lo": -0.0029540369075340355,
+            "n_undefined_replicates": 0,
+            "point": 0.0009551033972341472
+          },
+          "20261103": {
+            "ci_hi": 0.004586247904380042,
+            "ci_lo": -0.0059291899168854995,
+            "n_undefined_replicates": 0,
+            "point": -9.210981333152013e-05
+          },
+          "20261104": {
+            "ci_hi": 0.003401369456520783,
+            "ci_lo": -0.004332429520763276,
+            "n_undefined_replicates": 0,
+            "point": -0.00018051080764913685
+          }
+        },
+        "reference": "C0",
+        "seed_estimates": {
+          "max": 0.0010089464458413744,
+          "mean": 0.0001929202616336889,
+          "median": -9.210981333152013e-05,
+          "min": -0.00072682791392642,
+          "note": "descriptive only; no interval across seeds is computed",
+          "sd_ddof1": 0.0007605017223998966,
+          "sign_consistent": false
+        },
+        "seeds": [
+          20260817,
+          20261101,
+          20261102,
+          20261103,
+          20261104
+        ]
+      }
+    },
+    {
+      "register_id": "D2",
+      "statement": {
+        "label": "no_difference_demonstrated",
+        "marginal_level_only": false,
+        "status": "primary",
+        "text": "No difference was demonstrated under this protocol (the interval includes 0). This does not show that the two conditions perform alike."
+      },
+      "status": "primary",
+      "summary": {
+        "bootstrap_seed_mean": {
+          "ci_hi": 0.004087314845223404,
+          "ci_lo": -0.0036043566346653884,
+          "includes_zero": true,
+          "n_undefined_replicates": 0,
+          "note": "test-trajectory sampling uncertainty conditional on the fitted models; not combined with seed variability",
+          "pct": [
+            2.5,
+            97.5
+          ],
+          "point": 0.0005192492631904023
+        },
+        "bootstrap_seed_mean_bonferroni": {
+          "ci_hi": 0.004577598626071619,
+          "ci_lo": -0.004352144396073351,
+          "includes_zero": true,
+          "m": 2,
+          "n_undefined_replicates": 0,
+          "pct": [
+            1.25,
+            98.75
+          ]
+        },
+        "comparison": "C2",
+        "metric": "pr_auc",
+        "per_seed": {
+          "20260817": {
+            "ci_hi": 0.004222961984997686,
+            "ci_lo": -0.0038379521447840597,
+            "n_undefined_replicates": 0,
+            "point": 0.0006201620458650137
+          },
+          "20261101": {
+            "ci_hi": 0.0062126587325404235,
+            "ci_lo": -0.00261098472507377,
+            "n_undefined_replicates": 0,
+            "point": 0.0019364173608903412
+          },
+          "20261102": {
+            "ci_hi": 0.003842531183184,
+            "ci_lo": -0.002746330050002829,
+            "n_undefined_replicates": 0,
+            "point": 0.0005237846253497436
+          },
+          "20261103": {
+            "ci_hi": 0.004597290530786298,
+            "ci_lo": -0.005315780576026233,
+            "n_undefined_replicates": 0,
+            "point": 0.00011936341051665966
+          },
+          "20261104": {
+            "ci_hi": 0.002800057814660682,
+            "ci_lo": -0.00457483688003196,
+            "n_undefined_replicates": 0,
+            "point": -0.0006034811266697471
+          }
+        },
+        "reference": "C0",
+        "seed_estimates": {
+          "max": 0.0019364173608903412,
+          "mean": 0.0005192492631904023,
+          "median": 0.0005237846253497436,
+          "min": -0.0006034811266697471,
+          "note": "descriptive only; no interval across seeds is computed",
+          "sd_ddof1": 0.0009272272644610438,
+          "sign_consistent": false
+        },
+        "seeds": [
+          20260817,
+          20261101,
+          20261102,
+          20261103,
+          20261104
+        ]
+      }
+    },
+    {
+      "register_id": "SEC-2",
+      "statement": {
+        "label": "no_difference_observed",
+        "marginal_level_only": false,
+        "status": "secondary",
+        "text": "No difference was observed (secondary, unadjusted; the interval includes 0)."
+      },
+      "status": "secondary",
+      "summary": {
+        "bootstrap_seed_mean": {
+          "ci_hi": 0.0009728611717005006,
+          "ci_lo": -0.0003743266886015206,
+          "includes_zero": true,
+          "n_undefined_replicates": 0,
+          "note": "test-trajectory sampling uncertainty conditional on the fitted models; not combined with seed variability",
+          "pct": [
+            2.5,
+            97.5
+          ],
+          "point": 0.0003263290015567133
+        },
+        "comparison": "C2",
+        "metric": "pr_auc",
+        "per_seed": {
+          "20260817": {
+            "ci_hi": 0.003553042745613571,
+            "ci_lo": -0.0005584948430571391,
+            "n_undefined_replicates": 0,
+            "point": 0.0013469899597914337
+          },
+          "20261101": {
+            "ci_hi": 0.002642914151831804,
+            "ci_lo": -0.0007340676237578281,
+            "n_undefined_replicates": 0,
+            "point": 0.0009274709150489668
+          },
+          "20261102": {
+            "ci_hi": 0.0014290884418512533,
+            "ci_lo": -0.002426012753981799,
+            "n_undefined_replicates": 0,
+            "point": -0.0004313187718844036
+          },
+          "20261103": {
+            "ci_hi": 0.001824185332065631,
+            "ci_lo": -0.0014700439049050522,
+            "n_undefined_replicates": 0,
+            "point": 0.0002114732238481798
+          },
+          "20261104": {
+            "ci_hi": 0.0009836300084589938,
+            "ci_lo": -0.001993227275850684,
+            "n_undefined_replicates": 0,
+            "point": -0.0004229703190206102
+          }
+        },
+        "reference": "C1",
+        "seed_estimates": {
+          "max": 0.0013469899597914337,
+          "mean": 0.0003263290015567133,
+          "median": 0.0002114732238481798,
+          "min": -0.0004313187718844036,
+          "note": "descriptive only; no interval across seeds is computed",
+          "sd_ddof1": 0.0007987164487339514,
+          "sign_consistent": false
+        },
+        "seeds": [
+          20260817,
+          20261101,
+          20261102,
+          20261103,
+          20261104
+        ]
+      }
+    },
+    {
+      "register_id": "SEC-3",
+      "statement": {
+        "label": "no_difference_observed",
+        "marginal_level_only": false,
+        "status": "secondary",
+        "text": "No difference was observed (secondary, unadjusted; the interval includes 0)."
+      },
+      "status": "secondary",
+      "summary": {
+        "bootstrap_seed_mean": {
+          "ci_hi": 0.00305219317053369,
+          "ci_lo": -0.0012268364226456095,
+          "includes_zero": true,
+          "n_undefined_replicates": 0,
+          "note": "test-trajectory sampling uncertainty conditional on the fitted models; not combined with seed variability",
+          "pct": [
+            2.5,
+            97.5
+          ],
+          "point": 0.0006317461526949674
+        },
+        "comparison": "C1",
+        "metric": "roc_auc",
+        "per_seed": {
+          "20260817": {
+            "ci_hi": 0.001624618716970621,
+            "ci_lo": -0.0014346135713117548,
+            "n_undefined_replicates": 0,
+            "point": 8.727109964767887e-05
+          },
+          "20261101": {
+            "ci_hi": 0.0027016597344735353,
+            "ci_lo": -0.0010446604787178126,
+            "n_undefined_replicates": 0,
+            "point": 0.0005639061970014181
+          },
+          "20261102": {
+            "ci_hi": 0.00433722983097379,
+            "ci_lo": -0.0006362690237203067,
+            "n_undefined_replicates": 0,
+            "point": 0.001358658207521124
+          },
+          "20261103": {
+            "ci_hi": 0.005066183655457101,
+            "ci_lo": -0.002446918650220531,
+            "n_undefined_replicates": 0,
+            "point": 0.0008163981347838467
+          },
+          "20261104": {
+            "ci_hi": 0.0022190302449550297,
+            "ci_lo": -0.00149416869182436,
+            "n_undefined_replicates": 0,
+            "point": 0.00033249712452076974
+          }
+        },
+        "reference": "C0",
+        "seed_estimates": {
+          "max": 0.001358658207521124,
+          "mean": 0.0006317461526949674,
+          "median": 0.0005639061970014181,
+          "min": 8.727109964767887e-05,
+          "note": "descriptive only; no interval across seeds is computed",
+          "sd_ddof1": 0.00048813492340322496,
+          "sign_consistent": true
+        },
+        "seeds": [
+          20260817,
+          20261101,
+          20261102,
+          20261103,
+          20261104
+        ]
+      }
+    },
+    {
+      "register_id": "SEC-3",
+      "statement": {
+        "label": "no_difference_observed",
+        "marginal_level_only": false,
+        "status": "secondary",
+        "text": "No difference was observed (secondary, unadjusted; the interval includes 0)."
+      },
+      "status": "secondary",
+      "summary": {
+        "bootstrap_seed_mean": {
+          "ci_hi": 0.0030568916692782023,
+          "ci_lo": -0.0011239318195293856,
+          "includes_zero": true,
+          "n_undefined_replicates": 0,
+          "note": "test-trajectory sampling uncertainty conditional on the fitted models; not combined with seed variability",
+          "pct": [
+            2.5,
+            97.5
+          ],
+          "point": 0.0006931732965561377
+        },
+        "comparison": "C2",
+        "metric": "roc_auc",
+        "per_seed": {
+          "20260817": {
+            "ci_hi": 0.0027867230430785256,
+            "ci_lo": -0.0008878427456717964,
+            "n_undefined_replicates": 0,
+            "point": 0.000797337272718357
+          },
+          "20261101": {
+            "ci_hi": 0.005277932785955036,
+            "ci_lo": -0.0010562850546217335,
+            "n_undefined_replicates": 0,
+            "point": 0.0014951797883514528
+          },
+          "20261102": {
+            "ci_hi": 0.002169352694647158,
+            "ci_lo": -0.0008964965697862842,
+            "n_undefined_replicates": 0,
+            "point": 0.00042433940245489854
+          },
+          "20261103": {
+            "ci_hi": 0.004553443528245434,
+            "ci_lo": -0.0021340303721571253,
+            "n_undefined_replicates": 0,
+            "point": 0.0008072317788261341
+          },
+          "20261104": {
+            "ci_hi": 0.0013524057351534473,
+            "ci_lo": -0.0016414801925647398,
+            "n_undefined_replicates": 0,
+            "point": -5.8221759570153964e-05
+          }
+        },
+        "reference": "C0",
+        "seed_estimates": {
+          "max": 0.0014951797883514528,
+          "mean": 0.0006931732965561377,
+          "median": 0.000797337272718357,
+          "min": -5.8221759570153964e-05,
+          "note": "descriptive only; no interval across seeds is computed",
+          "sd_ddof1": 0.0005709509780134711,
+          "sign_consistent": false
+        },
+        "seeds": [
+          20260817,
+          20261101,
+          20261102,
+          20261103,
+          20261104
+        ]
+      }
+    },
+    {
+      "register_id": "X-a",
+      "statement": {
+        "label": "no_difference_observed",
+        "marginal_level_only": false,
+        "status": "exploratory",
+        "text": "No difference was observed (exploratory, unadjusted; the interval includes 0)."
+      },
+      "status": "exploratory",
+      "summary": {
+        "bootstrap_seed_mean": {
+          "ci_hi": 0.0057295376242213845,
+          "ci_lo": -0.0018034895072367196,
+          "includes_zero": true,
+          "n_undefined_replicates": 0,
+          "note": "test-trajectory sampling uncertainty conditional on the fitted models; not combined with seed variability",
+          "pct": [
+            2.5,
+            97.5
+          ],
+          "point": 0.002116047216829298
+        },
+        "comparison": "C3",
+        "metric": "pr_auc",
+        "per_seed": {
+          "20260817": {
+            "ci_hi": 0.00564851560126513,
+            "ci_lo": -0.003266702296727028,
+            "n_undefined_replicates": 0,
+            "point": 0.0013767098253711918
+          },
+          "20261101": {
+            "ci_hi": 0.008018883807425827,
+            "ci_lo": 0.00023775807246008426,
+            "n_undefined_replicates": 0,
+            "point": 0.004216554688170615
+          },
+          "20261102": {
+            "ci_hi": 0.005623834978302546,
+            "ci_lo": -0.0016193033619270269,
+            "n_undefined_replicates": 0,
+            "point": 0.002011883229073419
+          },
+          "20261103": {
+            "ci_hi": 0.006423241499493129,
+            "ci_lo": -0.002528737686455193,
+            "n_undefined_replicates": 0,
+            "point": 0.0021260321633386203
+          },
+          "20261104": {
+            "ci_hi": 0.0047426321845614045,
+            "ci_lo": -0.0033980210381609976,
+            "n_undefined_replicates": 0,
+            "point": 0.000849056178192642
+          }
+        },
+        "reference": "C0",
+        "seed_estimates": {
+          "max": 0.004216554688170615,
+          "mean": 0.002116047216829298,
+          "median": 0.002011883229073419,
+          "min": 0.000849056178192642,
+          "note": "descriptive only; no interval across seeds is computed",
+          "sd_ddof1": 0.0012820849760308759,
+          "sign_consistent": true
+        },
+        "seeds": [
+          20260817,
+          20261101,
+          20261102,
+          20261103,
+          20261104
+        ]
+      }
+    },
+    {
+      "register_id": "X-b",
+      "statement": {
+        "label": "no_difference_observed",
+        "marginal_level_only": false,
+        "status": "exploratory",
+        "text": "No difference was observed (exploratory, unadjusted; the interval includes 0)."
+      },
+      "status": "exploratory",
+      "summary": {
+        "bootstrap_seed_mean": {
+          "ci_hi": 0.001047618291806731,
+          "ci_lo": -0.001005131018925343,
+          "includes_zero": true,
+          "n_undefined_replicates": 0,
+          "note": "test-trajectory sampling uncertainty conditional on the fitted models; not combined with seed variability",
+          "pct": [
+            2.5,
+            97.5
+          ],
+          "point": 0.00010209243736551965
+        },
+        "comparison": "X1",
+        "metric": "pr_auc",
+        "per_seed": {
+          "20260817": {
+            "ci_hi": 0.0015274258363022234,
+            "ci_lo": -0.001988015205796223,
+            "n_undefined_replicates": 0,
+            "point": -0.00028565283423631627
+          },
+          "20261101": {
+            "ci_hi": 0.0016235434122790187,
+            "ci_lo": -0.0025410476990885915,
+            "n_undefined_replicates": 0,
+            "point": -0.0003648383578149783
+          },
+          "20261102": {
+            "ci_hi": 0.001294664561144623,
+            "ci_lo": -0.0017561195951875858,
+            "n_undefined_replicates": 0,
+            "point": -0.00013029090576011093
+          },
+          "20261103": {
+            "ci_hi": 0.003140226565374973,
+            "ci_lo": -0.0024980562716506423,
+            "n_undefined_replicates": 0,
+            "point": 0.0005793825679095699
+          },
+          "20261104": {
+            "ci_hi": 0.001963512530533054,
+            "ci_lo": -0.0006664588505296387,
+            "n_undefined_replicates": 0,
+            "point": 0.0007118617167294339
+          }
+        },
+        "reference": "C0",
+        "seed_estimates": {
+          "max": 0.0007118617167294339,
+          "mean": 0.00010209243736551965,
+          "median": -0.00013029090576011093,
+          "min": -0.0003648383578149783,
+          "note": "descriptive only; no interval across seeds is computed",
+          "sd_ddof1": 0.0005054693917712679,
+          "sign_consistent": false
+        },
+        "seeds": [
+          20260817,
+          20261101,
+          20261102,
+          20261103,
+          20261104
+        ]
+      }
+    }
+  ],
+  "single_seed_view": {
+    "D1": {
+      "ci_hi": 0.0024742102668957543,
+      "ci_lo": -0.004822431535712429,
+      "n_undefined_replicates": 0,
+      "point": -0.00072682791392642
+    },
+    "D2": {
+      "ci_hi": 0.004222961984997686,
+      "ci_lo": -0.0038379521447840597,
+      "n_undefined_replicates": 0,
+      "point": 0.0006201620458650137
+    }
+  }
+}

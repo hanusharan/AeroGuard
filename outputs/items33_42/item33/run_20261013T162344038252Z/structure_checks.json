@@ -1,0 +1,16 @@
+{
+  "elevator": {
+    "column": "elevator",
+    "fraction_constant": 0.08687440982058546,
+    "n_constant_within_trajectory": 184,
+    "n_distinct_constant_values": 184,
+    "n_trajectories": 2118
+  },
+  "throttle": {
+    "column": "throttle",
+    "fraction_constant": 0.8687440982058546,
+    "n_constant_within_trajectory": 1840,
+    "n_distinct_constant_values": 1840,
+    "n_trajectories": 2118
+  }
+}

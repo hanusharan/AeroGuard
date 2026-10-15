@@ -1,0 +1,14 @@
+{
+  "dry_run": false,
+  "gate": "G33-5a",
+  "payload": {
+    "frozen_anchor": {
+      "sha256": "37801481115a4632590df95d1f5f88ac487c28e8c452d5a6540431920d61f6e9",
+      "source": "Phase 3 scores (E1)"
+    },
+    "population_id": "test_usable_1s:806ab81b786ec704",
+    "scored": 25
+  },
+  "status": "PASS",
+  "utc": "2026-10-13T20:01:56Z"
+}

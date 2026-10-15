@@ -1,0 +1,22 @@
+{
+  "D1": {
+    "agrees_on_zero_inclusion": true,
+    "ci_hi": 0.0033730609676139835,
+    "ci_lo": -0.003991234487612829,
+    "includes_zero": true,
+    "n_undefined_replicates": 0,
+    "primary_ci_hi": 0.0035538885237737755,
+    "primary_ci_lo": -0.0038995655216084884,
+    "primary_includes_zero": true
+  },
+  "D2": {
+    "agrees_on_zero_inclusion": true,
+    "ci_hi": 0.0037581562498745493,
+    "ci_lo": -0.0038164731829274942,
+    "includes_zero": true,
+    "n_undefined_replicates": 0,
+    "primary_ci_hi": 0.004087314845223404,
+    "primary_ci_lo": -0.0036043566346653884,
+    "primary_includes_zero": true
+  }
+}

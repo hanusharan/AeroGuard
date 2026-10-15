@@ -3,7 +3,7 @@
 :::authors
 Bulusu Hanu Sharan
 AeroGuard Project · Independent Research
-`github.com/BulusuHanuSharan/AeroGuard`
+`github.com/hanusharan/AeroGuard`
 :::
 
 :::abstract

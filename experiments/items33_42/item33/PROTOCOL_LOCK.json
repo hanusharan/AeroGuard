@@ -1,0 +1,43 @@
+{
+  "record": "Item 33 protocol lock (gate G33-0)",
+  "protocol_path": "experiments/items33_42/item33/PROTOCOL.md",
+  "protocol_version": "v0.3",
+  "protocol_sha256": "742f55a9cc4e5da0474de84bf40cc6ffcb63a4ed46f12c3d2536ac57b21c4dc7",
+  "hash_verification": "Recomputed SHA-256 of PROTOCOL.md equals the hash approved by the researcher in the G33-0 authorization message.",
+  "locked_utc": "2026-10-13T15:58:58Z",
+  "locked_at_head": "4320b3904f92b78cfcd9d5c8739fda6ec287bd9b",
+  "branch": "claude/loving-fermi-ql3cyo",
+  "status": "LOCKED. Any change to PROTOCOL.md changes its hash and invalidates this lock; a changed protocol needs a new review and a new approval of its new hash.",
+  "protocol_section_19_note": "PROTOCOL.md section 19 (Approval record) is intentionally left unchanged so that the approved hash is preserved. This file is the approval and lock record.",
+  "researcher_decisions": {
+    "G33-0": "approved (protocol lock)",
+    "D1": "five-seed panel 20260817, 20261101, 20261102, 20261103, 20261104; cost confirmed at the first-fit gate (G33-4a) before any further fit",
+    "D2": "frozen-model inference-time masking included as a separate, secondary, descriptive analysis",
+    "D3": "C3 exploratory",
+    "D4": "X1 added as exploratory",
+    "D5": "No meaningful-effect margin delta is specified and none will be invented. Effects and uncertainty are reported without declaring equivalence or negligible effects."
+  },
+  "authorizations_granted_with_this_lock": {
+    "G33-3": {
+      "granted": true,
+      "scope": "Implement Item 33 source code and the synthetic-fixture tests specified in PROTOCOL.md section 14. Run only tests that do not load research data, load the frozen model, train models, score test data or perform bootstrap analysis on test results.",
+      "synthetic_fit_group": "excluded for now (not run)"
+    }
+  },
+  "authorizations_not_granted": [
+    "G33-1 (data-dependent checks; panel reads; frozen-model load)",
+    "G33-2 (freeze)",
+    "G33-4a (first fit)",
+    "G33-4b (remaining fits)",
+    "G33-5a (test scoring)",
+    "G33-5b (masking scoring)",
+    "G33-6 (test-set bootstrap and analyses)",
+    "G33-7 (independent audit)",
+    "G33-8 (commit, push, preservation)"
+  ],
+  "protected_artifact_hashes_at_lock": {
+    "outputs/ml_v03/models/primary_model_D_1s.joblib": "707d4c61a791af940549f81520a0c8429edaa8ef8d67eb0f02c3174c5fe603f3",
+    "experiments/phase3/PROTOCOL.md": "da9c62fa1d41beef6ae53aabaedda0eecb623fa5ee06c237c21191011d2a97f2"
+  },
+  "simulation_only": "Nothing in Item 33 can establish performance, safety or suitability for any real aircraft."
+}

@@ -1,0 +1,10 @@
+{
+  "gate": "G33-2",
+  "status": "PASS",
+  "run_dir": "/tmp/claude-0/-home-user-AeroGuard/1d37592f-2dfd-5c3e-8f4f-959f6d01ce75/scratchpad/item33-exec/outputs/items33_42/item33/run_20261013T162344038252Z",
+  "payload": {
+    "specification_sha256": "781d7c9e0130167fa4e68e9903621ba56000aaae4730b3143ec42cf9d66b5d46",
+    "frozen_before_any_scoring": true,
+    "utc": "2026-10-13T16:25:01Z"
+  }
+}
