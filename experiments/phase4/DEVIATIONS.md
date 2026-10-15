@@ -23,3 +23,8 @@ Each entry: what changed, why, and what had been seen when the change was made. 
 
 - **Protocol:** 300 JSBSim trajectories (80/60/160), split 70/15/15; cross-simulator models evaluated on the test split only.
 - **Change:** 1,000 trajectories with the same regime proportions (267 normal, 200 stall, 533 gradual), same split fractions. Reason: at the observed crossing rates 300 trajectories would give about 8 stall events in the test split, too few for any event metric. Cross-simulator models (`X_D`, `X_D_noSM`, rules) are reported on the test split (the population shared with the native reference, primary) **and** on all 1,000 trajectories (secondary; legitimate because these models never see JSBSim data).
+
+### P4-D5 — Novelty score for JSBSim abstention in the actuator-free feature space (2026-10-15)
+
+- **Protocol (section 11):** abstention rate under `U_nov` "(τ from section 6)", whose novelty space is the 23 `M_D` features.
+- **Change:** for JSBSim, `U_nov` is computed in the 20-feature `X_D` space (no `elevator`, `throttle`, `elevator_change_1s`) with its own τ, set the same way (5% of TRAIN-configuration validation rows). Reason: the actuator features have different units and meaning in JSBSim (section 11 already removes them from the cross-simulator models), so including them would make every JSBSim row novel by construction. Written before any JSBSim row was scored.

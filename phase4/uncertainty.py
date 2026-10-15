@@ -30,7 +30,7 @@ class Novelty:
         self.mu = train_X.mean(axis=0); self.sd = train_X.std(axis=0); self.sd[self.sd == 0] = 1.0
         idx = np.random.default_rng(seed).choice(len(train_X), size=min(n_ref, len(train_X)), replace=False)
         self.k = k
-        self.nn = NearestNeighbors(n_neighbors=k, n_jobs=-1).fit(((train_X[idx] - self.mu) / self.sd).astype(np.float32))
+        self.nn = NearestNeighbors(n_neighbors=k, algorithm="brute", n_jobs=-1).fit(((train_X[idx] - self.mu) / self.sd).astype(np.float32))
 
     def __call__(self, X: np.ndarray, batch: int = 200_000) -> np.ndarray:
         out = np.empty(len(X))

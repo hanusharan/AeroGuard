@@ -72,8 +72,12 @@ def traj_codes(traj) -> tuple:
     return codes, uniq
 
 
+EVENT_COLUMNS = ["trajectory_id", "crossing_time", "first_event", "left_censored", "warned", "lead_s", "sustained_rows", "history_rows"]
+
+
 def event_table(traj, times, unsafe, score, threshold) -> pd.DataFrame:
-    return i3739.event_table(traj, times, unsafe, score, threshold)
+    ev = i3739.event_table(traj, times, unsafe, score, threshold)
+    return ev if len(ev) else pd.DataFrame({c: pd.Series(dtype=bool if c in ("first_event", "left_censored", "warned") else float) for c in EVENT_COLUMNS})
 
 
 def event_summary(ev: pd.DataFrame, dt_eff: float = DT) -> Dict[str, float]:
@@ -126,7 +130,8 @@ def weighted_median(x, w) -> float:
 
 
 def evaluate(df: pd.DataFrame, score: np.ndarray, threshold: float, prob: Optional[np.ndarray] = None,
-             boot: bool = True, B: int = BOOT_B, dt_eff: float = DT) -> Dict[str, object]:
+             boot: bool = True, B: int = BOOT_B, dt_eff: float = DT, seed: int = BOOT_SEED,
+             return_reps: bool = False) -> Dict[str, object]:
     """All section-3 metrics for one model on one evaluation population (rows sorted by trajectory, time).
     ``dt_eff`` is the row spacing; false-warning rates (defined on consecutive 0.01 s rows) are computed only at full resolution."""
     full_resolution = abs(dt_eff - DT) < 1e-12
@@ -150,7 +155,7 @@ def evaluate(df: pd.DataFrame, score: np.ndarray, threshold: float, prob: Option
     if full_resolution:
         reps["false_per_hour"] = []
         pf, ps = fw["_per_traj_false"], fw["_per_traj_span"]
-    for w_t in boot_weights(T, B):
+    for w_t in boot_weights(T, B, seed):
         reps["pr_auc"].append(ss.ap(w_t[codes]))
         we = w_t[ev_code] if len(ev) else np.array([])
         reps["event_recall"].append((we * warned).sum() / we.sum() if we.sum() > 0 else np.nan)
@@ -160,6 +165,8 @@ def evaluate(df: pd.DataFrame, score: np.ndarray, threshold: float, prob: Option
             reps["false_per_hour"].append((w_t * pf).sum() / hrs if hrs > 0 else np.nan)
     out["ci95"] = {k: ci(v) for k, v in reps.items()}
     out["n_trajectories"] = int(T)
+    if return_reps:
+        out["_reps"] = {k: np.asarray(v, dtype=float) for k, v in reps.items()}
     return out
 
 
