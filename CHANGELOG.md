@@ -15,6 +15,13 @@ build notes in [`paper/CHANGELOG.md`](paper/CHANGELOG.md).
 
 ## [Unreleased]
 
+### Added — Phase 4 (Items 43–53), 2026-10-15
+
+- **Protocol and deviations:** `experiments/phase4/PROTOCOL.md` (committed before any data), `DEVIATIONS.md` (P4-D1 to P4-D5, written before the affected data were scored), `PARAMETER_RANGES.md`, `SIMULATOR_ASSUMPTIONS.md`, `published_reference.json`.
+- **Code:** `phase4/` package (configuration design, density-aware simulation tested bit-identical to the original at sea-level density, models, metrics with trajectory bootstrap, abstention and conformal tools, JSBSim harness); `scripts/phase4_generate.py`, `scripts/phase4_generate_jsbsim.py`, `scripts/run_phase4.py`, `scripts/phase4_item50.py`; `tests/test_phase4_core.py` (20 synthetic tests). No frozen module, dataset, model or stored result was changed.
+- **Dependency:** `jsbsim` 1.3.2 is needed only for the JSBSim stage; it is not added to `requirements.txt`.
+- **Results:** `outputs/phase4/run_20261015T152932Z/` (report and machine-readable results; datasets, fitted models and score arrays are not committed). Interpretation in `RESEARCH_LOG.md` RL-008.
+
 Local, **uncommitted** working-tree changes. Nothing here has been committed,
 pushed, deployed, merged or published. These are documentation and engineering
 safeguards only: no scientific method, dataset, experimental result or trained

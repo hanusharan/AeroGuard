@@ -1,0 +1,62 @@
+{
+ "note": "References are J (JSBSim model file, not experimental) or S (secondary). No P-level (primary, checked) reference was available, so no result here is agreement or disagreement with experimental evidence.",
+ "comparisons": [
+  {
+   "quantity": "slope|c172p_CLwbh_0-12deg",
+   "aeroguard": 5.75974018657881,
+   "reference": 4.970182265088065,
+   "difference": 0.15885894709270898,
+   "difference_kind": "relative",
+   "band": 0.15,
+   "reference_level": "J",
+   "result": "outside band"
+  },
+  {
+   "quantity": "clmax|c172p_CLwbh",
+   "aeroguard": 1.7362343483416827,
+   "reference": 1.47,
+   "difference": 0.18111180159298143,
+   "difference_kind": "relative",
+   "band": 0.1,
+   "reference_level": "J",
+   "result": "outside band"
+  },
+  {
+   "quantity": "alpha_peak_deg|c172p_CLwbh",
+   "aeroguard": 16.068034017008504,
+   "reference": 16.04281826366305,
+   "difference": 0.025215753345452896,
+   "difference_kind": "absolute",
+   "band": 2.0,
+   "reference_level": "J",
+   "result": "within band"
+  },
+  {
+   "quantity": "clmax|implied_by_C172R_51KCAS_2450lb",
+   "aeroguard": 1.7362343483416827,
+   "reference": 1.5955648992217093,
+   "difference": 0.08816278747958772,
+   "difference_kind": "relative",
+   "band": 0.1,
+   "reference_level": "S",
+   "result": "within band"
+  },
+  {
+   "quantity": "stall_speed|C172R_51KCAS_2450lb",
+   "aeroguard": 25.151352703116498,
+   "reference": 26.236644000000002,
+   "difference": -0.04136547711222152,
+   "difference_kind": "relative",
+   "band": 0.1,
+   "reference_level": "S",
+   "result": "within band"
+  }
+ ],
+ "aeroguard_stall_speed_at_1111kg_m_s": 25.151352703116498,
+ "reference_stall_speed_m_s": 26.236644000000002,
+ "caveats": [
+  "The POH figure is a whole-aircraft, trimmed, power-off value; AeroGuard CLmax is a wing-body model value.",
+  "KCAS is treated as equivalent airspeed at sea level.",
+  "The c172p table is itself a community approximation, not measured data."
+ ]
+}
