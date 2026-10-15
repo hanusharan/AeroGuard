@@ -1,0 +1,29 @@
+{
+  "bootstrap": {
+    "B": 1000,
+    "pct": [
+      2.5,
+      97.5
+    ],
+    "seed": 20261013,
+    "unit": "trajectory"
+  },
+  "code": {
+    "items40_42.py": "04426d5fa7df83fba66d10e6509a8826a30cae81425420d699d868461bc90264",
+    "run_items40_42.py": "1781a67b428561f65a1ce679baed7eb90b5e72f3823b97a575ddd6b3af5c83dd"
+  },
+  "frozen_model_sha256": "707d4c61a791af940549f81520a0c8429edaa8ef8d67eb0f02c3174c5fe603f3",
+  "instantaneous_model_sha256": "e923530c09cca78229c4a73f50590b16f0ce111a008f3fe5188d86a87fb6bcec",
+  "panels": {
+    "test": "c03634b4cc793c57bbe065e710a4a98bfe2bf69fdf5a55beb56a1c0ba33241b8",
+    "train": "1a39472881280e084f3cab5d94fa4c80382d65a7075df59cd7a45fd4d5af4b43",
+    "val": "9416fc8005b206eefbcdbeeb0d043a45036e8b2d6251ae3850b176765565a0e0"
+  },
+  "protocol_sha256": "9076e0aca72ff90e830a8932e8bca3128c6c882bb0b330e629cb7a2cdeef7242",
+  "utc": "20261015T144358282823Z",
+  "validation_score_array_sha256": {
+    "aoa_signed": "03486c1bdac7b6ee0b4ce9ad13e5f4af4780f1f5f677c147b422f7383772f042",
+    "frozen_temporal": "99255ca800cb8e1ae924a545c291b2f8e91a7505b406392cd62d2fff49323605",
+    "instantaneous_model_a": "76bdb73721523381c3dd1b4a29104579ecba2decc63de57fe5eaf2caf573484c"
+  }
+}

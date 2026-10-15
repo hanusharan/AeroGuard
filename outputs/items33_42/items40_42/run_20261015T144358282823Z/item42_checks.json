@@ -1,0 +1,190 @@
+{
+  "banner": "Simulation only; regenerated v0.3 copy; previously exposed test data (not blind, not independent replication).",
+  "checks": {
+    "C1": {
+      "failed": [],
+      "n_statements": 26,
+      "status": "PASS"
+    },
+    "C2": {
+      "flagged": [
+        {
+          "file": "outputs/items33_42/item33/run_20261013T162344038252Z/REPORT_ADDENDUM.md",
+          "flag": true,
+          "line_no": 143,
+          "terms": [
+            "equivalen"
+          ],
+          "text": "- The bootstrap metric computation was changed after the preservation commit from per-replicate scikit-learn calls to an equivalent pre-sorted weighted computation (ISSUES I-33). Equivalence checks: scikit-learn recomputation of all 50 point estimates agrees to 0; per-seed deltas, means and medians "
+        },
+        {
+          "file": "outputs/phase3/run_20261013T140820817642Z/REPORT.md",
+          "flag": true,
+          "line_no": 45,
+          "terms": [
+            "independent"
+          ],
+          "text": "Event-level numbers come from few independent trajectories; see the protocol (section 9.3)."
+        },
+        {
+          "file": "outputs/phase3/run_20261013T140820817642Z/REPORT.md",
+          "flag": true,
+          "line_no": 55,
+          "terms": [
+            "independent"
+          ],
+          "text": "See PROTOCOL.md sections 10, 12 and 20: prior test exposure, regenerated data, one simulated aircraft, few independent event trajectories."
+        },
+        {
+          "file": "outputs/phase3/run_20261013T140820817642Z/REPORT_ADDENDUM.md",
+          "flag": true,
+          "line_no": 4,
+          "terms": [
+            "equivalen"
+          ],
+          "text": "All numbers are in `metrics_primary.json`, `bootstrap.json`, `equivalence_check.json` and `population.json` of this run."
+        }
+      ],
+      "manual_review": "see C2_REVIEW.md (added after the run)",
+      "n_flagged": 4,
+      "n_hits": 35,
+      "status": "FLAG"
+    },
+    "L1": {
+      "manifest_duplicate_ids": 0,
+      "panel_overlap": {
+        "train&test": 0,
+        "train&val": 0,
+        "val&test": 0
+      },
+      "status": "PASS"
+    },
+    "L2": {
+      "forbidden_found": {},
+      "n_feature_lists": 7,
+      "status": "PASS"
+    },
+    "L3": {
+      "all_features": {
+        "V": 0.204295014909051,
+        "V_slope_1s": 0.16351298056247124,
+        "alpha": 0.709466351978561,
+        "alpha_max_1s": 0.657838652509516,
+        "alpha_mean_1s": 0.6337031029175703,
+        "alpha_min_1s": 0.5904707457747804,
+        "alpha_range_1s": 0.4121970867580628,
+        "alpha_slope_1s": 0.4021195535032627,
+        "alpha_trend_1s": 0.4157887444028844,
+        "altitude": 0.10967811507282317,
+        "d2alpha_dt2": 0.2766855641849388,
+        "dV_dt": 0.16327427031669783,
+        "dalpha_dt": 0.36847125576860956,
+        "dgamma_dt": 0.143273329270089,
+        "dq_dt": 0.2662647517369215,
+        "elevator": 0.6709230293265916,
+        "elevator_change_1s": 0.17526662877730664,
+        "gamma": 0.15518903287370306,
+        "gamma_slope_1s": 0.14901346864015408,
+        "pitch_rate": 0.23268088842969592,
+        "pitch_rate_slope_1s": 0.26858321867370555,
+        "stall_margin": 0.709466397599722,
+        "throttle": 0.1308017515920507
+      },
+      "full_model_pr_auc": 0.8902774777010881,
+      "prevalence": 0.08581056215778185,
+      "status": "PASS",
+      "top_single_features": [
+        [
+          "stall_margin",
+          0.709466397599722
+        ],
+        [
+          "alpha",
+          0.709466351978561
+        ],
+        [
+          "elevator",
+          0.6709230293265916
+        ],
+        [
+          "alpha_max_1s",
+          0.657838652509516
+        ],
+        [
+          "alpha_mean_1s",
+          0.6337031029175703
+        ]
+      ]
+    },
+    "L4": {
+      "refit_threshold": 0.21723935451615506,
+      "status": "PASS",
+      "stored_threshold": 0.21723935451615506
+    },
+    "L5": {
+      "signature": [
+        "val_score",
+        "val_first",
+        "val_label",
+        "val_unsafe",
+        "val_hours",
+        "target_rate"
+      ],
+      "status": "PASS",
+      "test_loaded_after_threshold_selection": true
+    },
+    "M1": {
+      "max_abs_difference": 0.0,
+      "n_values_checked": 58,
+      "status": "PASS"
+    },
+    "M2": {
+      "pr_auc_is": "sklearn average_precision_score (step)",
+      "status": "PASS",
+      "trapezoid_for_information": {
+        "aoa_signed": {
+          "average_precision": 0.709466351978561,
+          "trapezoid": 0.7094645344524848
+        },
+        "frozen_temporal": {
+          "average_precision": 0.8902774777010881,
+          "trapezoid": 0.8902412873691348
+        },
+        "instantaneous_model_a": {
+          "average_precision": 0.8754338390816084,
+          "trapezoid": 0.8753239246862315
+        }
+      }
+    },
+    "M3": {
+      "pr_auc": {
+        "aoa_signed": 0.709466351978561,
+        "aoa_two_sided": 0.7088678301461928,
+        "frozen_temporal": 0.8902774777010881,
+        "instantaneous_model_a": 0.8754338390816084
+      },
+      "prevalence": 0.08581056215778185,
+      "status": "PASS"
+    },
+    "M4": {
+      "lower_above_upper": [],
+      "n_intervals": 803,
+      "point_outside_interval": [],
+      "status": "PASS",
+      "total_undefined_replicates": 0
+    },
+    "M5": {
+      "problems": [],
+      "status": "PASS"
+    }
+  },
+  "order_of_operations": [
+    "load validation population",
+    "score validation: aoa_signed, instantaneous_model_a, frozen_temporal",
+    "matched thresholds selected from validation only",
+    "load test population and stored test scores",
+    "evaluate matched thresholds on test",
+    "Item 42 checks",
+    "Item 41 figures and report"
+  ]
+}
