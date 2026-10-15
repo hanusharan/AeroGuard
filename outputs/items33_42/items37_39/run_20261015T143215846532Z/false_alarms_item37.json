@@ -1,0 +1,2122 @@
+{
+  "banner": "Regenerated v0.3 copy; previously exposed test data; not blind or independent; rates are per simulated hour of eligible evaluation time, not operational rates; simulation only.",
+  "methods": {
+    "C0|20260817": {
+      "condition": "C0",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.743801652892562,
+          "episodes_total": 121,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 30.115314741915004,
+            "ci_lo": 12.853522812014514,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 31.0,
+            "point": 20.759778115919925
+          },
+          "false": 31,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 29,
+            "normal": 2,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 30.090348016546283,
+            "ci_lo": 12.842518038396936,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 31.0,
+            "point": 20.74218357947639
+          },
+          "per_hour_span": {
+            "ci_hi": 30.115314741915004,
+            "ci_lo": 12.853522812014514,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 31.0,
+            "point": 20.759778115919925
+          },
+          "trajectories_with_a_false_episode": 24,
+          "true": 90
+        },
+        "gap_1s": {
+          "episodes_total": 73,
+          "false": 22,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 20.950690691344505,
+            "ci_lo": 9.362341499372492,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 22.0,
+            "point": 14.732745759685107
+          },
+          "true": 51
+        },
+        "gap_2s": {
+          "episodes_total": 68,
+          "false": 22,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 20.950690691344505,
+            "ci_lo": 9.362341499372492,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 22.0,
+            "point": 14.732745759685107
+          },
+          "true": 46
+        }
+      },
+      "family": "item33",
+      "seed": 20260817,
+      "threshold": 0.8609993568262826
+    },
+    "C0|20261101": {
+      "condition": "C0",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.7615384615384615,
+          "episodes_total": 130,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 31.69227889390465,
+            "ci_lo": 12.136005711841307,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 31.0,
+            "point": 20.759778115919925
+          },
+          "false": 31,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 29,
+            "normal": 2,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 31.665767259893666,
+            "ci_lo": 12.125650209182016,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 31.0,
+            "point": 20.74218357947639
+          },
+          "per_hour_span": {
+            "ci_hi": 31.69227889390465,
+            "ci_lo": 12.136005711841307,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 31.0,
+            "point": 20.759778115919925
+          },
+          "trajectories_with_a_false_episode": 23,
+          "true": 99
+        },
+        "gap_1s": {
+          "episodes_total": 73,
+          "false": 21,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 19.946940966118433,
+            "ci_lo": 8.560825133359172,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 21.0,
+            "point": 14.063075497881238
+          },
+          "true": 52
+        },
+        "gap_2s": {
+          "episodes_total": 68,
+          "false": 21,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 19.946940966118433,
+            "ci_lo": 8.560825133359172,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 21.0,
+            "point": 14.063075497881238
+          },
+          "true": 47
+        }
+      },
+      "family": "item33",
+      "seed": 20261101,
+      "threshold": 0.8610331602358611
+    },
+    "C0|20261102": {
+      "condition": "C0",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.7964601769911505,
+          "episodes_total": 113,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 21.60438570714497,
+            "ci_lo": 9.819956858506064,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 23.0,
+            "point": 15.402416021488975
+          },
+          "false": 23,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 21,
+            "normal": 2,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 21.5864849124111,
+            "ci_lo": 9.81180615190849,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 23.0,
+            "point": 15.389362010579257
+          },
+          "per_hour_span": {
+            "ci_hi": 21.60438570714497,
+            "ci_lo": 9.819956858506064,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 23.0,
+            "point": 15.402416021488975
+          },
+          "trajectories_with_a_false_episode": 23,
+          "true": 90
+        },
+        "gap_1s": {
+          "episodes_total": 72,
+          "false": 21,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 20.24619751056063,
+            "ci_lo": 8.687496460278979,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 21.0,
+            "point": 14.063075497881238
+          },
+          "true": 51
+        },
+        "gap_2s": {
+          "episodes_total": 67,
+          "false": 21,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 20.24619751056063,
+            "ci_lo": 8.687496460278979,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 21.0,
+            "point": 14.063075497881238
+          },
+          "true": 46
+        }
+      },
+      "family": "item33",
+      "seed": 20261102,
+      "threshold": 0.8570144471278277
+    },
+    "C0|20261103": {
+      "condition": "C0",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.768,
+          "episodes_total": 125,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 29.07697324930736,
+            "ci_lo": 11.076667260194021,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 29.0,
+            "point": 19.420437592312187
+          },
+          "false": 29,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 28,
+            "normal": 1,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 29.052654304511588,
+            "ci_lo": 11.066962584688923,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 29.0,
+            "point": 19.403978187252108
+          },
+          "per_hour_span": {
+            "ci_hi": 29.07697324930736,
+            "ci_lo": 11.076667260194021,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 29.0,
+            "point": 19.420437592312187
+          },
+          "trajectories_with_a_false_episode": 22,
+          "true": 96
+        },
+        "gap_1s": {
+          "episodes_total": 71,
+          "false": 20,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 18.973988864168607,
+            "ci_lo": 8.061483011058348,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 20.0,
+            "point": 13.39340523607737
+          },
+          "true": 51
+        },
+        "gap_2s": {
+          "episodes_total": 66,
+          "false": 20,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 18.973988864168607,
+            "ci_lo": 8.061483011058348,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 20.0,
+            "point": 13.39340523607737
+          },
+          "true": 46
+        }
+      },
+      "family": "item33",
+      "seed": 20261103,
+      "threshold": 0.8644075427227375
+    },
+    "C0|20261104": {
+      "condition": "C0",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.8145161290322581,
+          "episodes_total": 124,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 23.17250728160255,
+            "ci_lo": 8.819725743529316,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 23.0,
+            "point": 15.402416021488975
+          },
+          "false": 23,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 22,
+            "normal": 1,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 23.153075975290484,
+            "ci_lo": 8.812152947423824,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 23.0,
+            "point": 15.389362010579257
+          },
+          "per_hour_span": {
+            "ci_hi": 23.17250728160255,
+            "ci_lo": 8.819725743529316,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 23.0,
+            "point": 15.402416021488975
+          },
+          "trajectories_with_a_false_episode": 20,
+          "true": 101
+        },
+        "gap_1s": {
+          "episodes_total": 70,
+          "false": 18,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 17.499345625037673,
+            "ci_lo": 6.775074131745772,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 18.0,
+            "point": 12.054064712469634
+          },
+          "true": 52
+        },
+        "gap_2s": {
+          "episodes_total": 64,
+          "false": 18,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 17.499345625037673,
+            "ci_lo": 6.775074131745772,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 18.0,
+            "point": 12.054064712469634
+          },
+          "true": 46
+        }
+      },
+      "family": "item33",
+      "seed": 20261104,
+      "threshold": 0.8690789215601333
+    },
+    "C1|20260817": {
+      "condition": "C1",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.8134328358208955,
+          "episodes_total": 134,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 24.65510974109741,
+            "ci_lo": 9.531748739921854,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 25.0,
+            "point": 16.741756545096713
+          },
+          "false": 25,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 23,
+            "normal": 1,
+            "stall": 1
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 24.634302598989176,
+            "ci_lo": 9.523535676181016,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 25.0,
+            "point": 16.72756740280354
+          },
+          "per_hour_span": {
+            "ci_hi": 24.65510974109741,
+            "ci_lo": 9.531748739921854,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 25.0,
+            "point": 16.741756545096713
+          },
+          "trajectories_with_a_false_episode": 21,
+          "true": 109
+        },
+        "gap_1s": {
+          "episodes_total": 70,
+          "false": 18,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 17.499345625037673,
+            "ci_lo": 6.775074131745772,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 18.0,
+            "point": 12.054064712469634
+          },
+          "true": 52
+        },
+        "gap_2s": {
+          "episodes_total": 65,
+          "false": 18,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 17.499345625037673,
+            "ci_lo": 6.775074131745772,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 18.0,
+            "point": 12.054064712469634
+          },
+          "true": 47
+        }
+      },
+      "family": "item33",
+      "seed": 20260817,
+      "threshold": 0.8574409434280024
+    },
+    "C1|20261101": {
+      "condition": "C1",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.6901408450704225,
+          "episodes_total": 142,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 39.324395515616146,
+            "ci_lo": 20.769913249502462,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 44.0,
+            "point": 29.465491519370214
+          },
+          "false": 44,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 33,
+            "normal": 7,
+            "stall": 4
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 39.29125098376738,
+            "ci_lo": 20.75230153492531,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 44.0,
+            "point": 29.44051862893423
+          },
+          "per_hour_span": {
+            "ci_hi": 39.324395515616146,
+            "ci_lo": 20.769913249502462,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 44.0,
+            "point": 29.465491519370214
+          },
+          "trajectories_with_a_false_episode": 38,
+          "true": 98
+        },
+        "gap_1s": {
+          "episodes_total": 84,
+          "false": 35,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 31.164735321685065,
+            "ci_lo": 16.29332799607798,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 35.0,
+            "point": 23.438459163135395
+          },
+          "true": 49
+        },
+        "gap_2s": {
+          "episodes_total": 77,
+          "false": 34,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 29.944731782688688,
+            "ci_lo": 15.936384180323842,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 34.0,
+            "point": 22.76878890133153
+          },
+          "true": 43
+        }
+      },
+      "family": "item33",
+      "seed": 20261101,
+      "threshold": 0.7945971273346583
+    },
+    "C1|20261102": {
+      "condition": "C1",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.7573529411764706,
+          "episodes_total": 136,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 31.025078900787705,
+            "ci_lo": 14.797237155230034,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 33.0,
+            "point": 22.09911863952766
+          },
+          "false": 33,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 26,
+            "normal": 4,
+            "stall": 3
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 30.99802319452411,
+            "ci_lo": 14.784641178015084,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 33.0,
+            "point": 22.08038897170067
+          },
+          "per_hour_span": {
+            "ci_hi": 31.025078900787705,
+            "ci_lo": 14.797237155230034,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 33.0,
+            "point": 22.09911863952766
+          },
+          "trajectories_with_a_false_episode": 30,
+          "true": 103
+        },
+        "gap_1s": {
+          "episodes_total": 78,
+          "false": 28,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 25.788584804383444,
+            "ci_lo": 12.82846397213668,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 28.0,
+            "point": 18.750767330508317
+          },
+          "true": 50
+        },
+        "gap_2s": {
+          "episodes_total": 74,
+          "false": 28,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 25.788584804383444,
+            "ci_lo": 12.82846397213668,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 28.0,
+            "point": 18.750767330508317
+          },
+          "true": 46
+        }
+      },
+      "family": "item33",
+      "seed": 20261102,
+      "threshold": 0.8198107460350011
+    },
+    "C1|20261103": {
+      "condition": "C1",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.8045112781954887,
+          "episodes_total": 133,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 25.94028081362828,
+            "ci_lo": 9.936060156814008,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 26.0,
+            "point": 17.41142680690058
+          },
+          "false": 26,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 23,
+            "normal": 1,
+            "stall": 2
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 25.917884618508765,
+            "ci_lo": 9.927730343444866,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 26.0,
+            "point": 17.39667009891568
+          },
+          "per_hour_span": {
+            "ci_hi": 25.94028081362828,
+            "ci_lo": 9.936060156814008,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 26.0,
+            "point": 17.41142680690058
+          },
+          "trajectories_with_a_false_episode": 21,
+          "true": 107
+        },
+        "gap_1s": {
+          "episodes_total": 71,
+          "false": 18,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 17.640322211836494,
+            "ci_lo": 7.35095854331298,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 18.0,
+            "point": 12.054064712469634
+          },
+          "true": 53
+        },
+        "gap_2s": {
+          "episodes_total": 66,
+          "false": 18,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 17.640322211836494,
+            "ci_lo": 7.35095854331298,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 18.0,
+            "point": 12.054064712469634
+          },
+          "true": 48
+        }
+      },
+      "family": "item33",
+      "seed": 20261103,
+      "threshold": 0.8581459080209818
+    },
+    "C1|20261104": {
+      "condition": "C1",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.8074074074074075,
+          "episodes_total": 135,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 25.575616471579018,
+            "ci_lo": 10.163802642133186,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 26.0,
+            "point": 17.41142680690058
+          },
+          "false": 26,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 22,
+            "normal": 1,
+            "stall": 3
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 25.553257780502047,
+            "ci_lo": 10.155086762989704,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 26.0,
+            "point": 17.39667009891568
+          },
+          "per_hour_span": {
+            "ci_hi": 25.575616471579018,
+            "ci_lo": 10.163802642133186,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 26.0,
+            "point": 17.41142680690058
+          },
+          "trajectories_with_a_false_episode": 21,
+          "true": 109
+        },
+        "gap_1s": {
+          "episodes_total": 71,
+          "false": 17,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 16.781637225228305,
+            "ci_lo": 6.620105081469829,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 17.0,
+            "point": 11.384394450665765
+          },
+          "true": 54
+        },
+        "gap_2s": {
+          "episodes_total": 66,
+          "false": 17,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 16.781637225228305,
+            "ci_lo": 6.620105081469829,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 17.0,
+            "point": 11.384394450665765
+          },
+          "true": 49
+        }
+      },
+      "family": "item33",
+      "seed": 20261104,
+      "threshold": 0.8599065457654663
+    },
+    "C2|20260817": {
+      "condition": "C2",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.8333333333333334,
+          "episodes_total": 132,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 23.69900477760695,
+            "ci_lo": 7.903672868944283,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 22.0,
+            "point": 14.732745759685107
+          },
+          "false": 22,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 20,
+            "normal": 1,
+            "stall": 1
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 23.678696060027203,
+            "ci_lo": 7.897070491532102,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 22.0,
+            "point": 14.720259314467116
+          },
+          "per_hour_span": {
+            "ci_hi": 23.69900477760695,
+            "ci_lo": 7.903672868944283,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 22.0,
+            "point": 14.732745759685107
+          },
+          "trajectories_with_a_false_episode": 18,
+          "true": 110
+        },
+        "gap_1s": {
+          "episodes_total": 70,
+          "false": 15,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 14.931198424974006,
+            "ci_lo": 5.421905495045022,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 15.0,
+            "point": 10.045053927058026
+          },
+          "true": 55
+        },
+        "gap_2s": {
+          "episodes_total": 65,
+          "false": 15,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 14.931198424974006,
+            "ci_lo": 5.421905495045022,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 15.0,
+            "point": 10.045053927058026
+          },
+          "true": 50
+        }
+      },
+      "family": "item33",
+      "seed": 20260817,
+      "threshold": 0.8668248313933669
+    },
+    "C2|20261101": {
+      "condition": "C2",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.824,
+          "episodes_total": 125,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 21.404041170771194,
+            "ci_lo": 8.104022758060053,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 22.0,
+            "point": 14.732745759685107
+          },
+          "false": 22,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 19,
+            "normal": 1,
+            "stall": 2
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 21.38647057863771,
+            "ci_lo": 8.097096300774428,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 22.0,
+            "point": 14.720259314467116
+          },
+          "per_hour_span": {
+            "ci_hi": 21.404041170771194,
+            "ci_lo": 8.104022758060053,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 22.0,
+            "point": 14.732745759685107
+          },
+          "trajectories_with_a_false_episode": 20,
+          "true": 103
+        },
+        "gap_1s": {
+          "episodes_total": 70,
+          "false": 16,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 15.836725079483855,
+            "ci_lo": 5.995696327479903,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 16.0,
+            "point": 10.714724188861895
+          },
+          "true": 54
+        },
+        "gap_2s": {
+          "episodes_total": 65,
+          "false": 16,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 15.836725079483855,
+            "ci_lo": 5.995696327479903,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 16.0,
+            "point": 10.714724188861895
+          },
+          "true": 49
+        }
+      },
+      "family": "item33",
+      "seed": 20261101,
+      "threshold": 0.8649335665220836
+    },
+    "C2|20261102": {
+      "condition": "C2",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.7769230769230769,
+          "episodes_total": 130,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 28.265831187889845,
+            "ci_lo": 11.540417738790206,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 29.0,
+            "point": 19.420437592312187
+          },
+          "false": 29,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 24,
+            "normal": 1,
+            "stall": 4
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 28.241184218012492,
+            "ci_lo": 11.530502951740482,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 29.0,
+            "point": 19.403978187252108
+          },
+          "per_hour_span": {
+            "ci_hi": 28.265831187889845,
+            "ci_lo": 11.540417738790206,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 29.0,
+            "point": 19.420437592312187
+          },
+          "trajectories_with_a_false_episode": 22,
+          "true": 101
+        },
+        "gap_1s": {
+          "episodes_total": 71,
+          "false": 18,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 17.499345625037673,
+            "ci_lo": 6.775074131745772,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 18.0,
+            "point": 12.054064712469634
+          },
+          "true": 53
+        },
+        "gap_2s": {
+          "episodes_total": 64,
+          "false": 18,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 17.499345625037673,
+            "ci_lo": 6.775074131745772,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 18.0,
+            "point": 12.054064712469634
+          },
+          "true": 46
+        }
+      },
+      "family": "item33",
+      "seed": 20261102,
+      "threshold": 0.8608156222456311
+    },
+    "C2|20261103": {
+      "condition": "C2",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.6484375,
+          "episodes_total": 128,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 42.272853813295875,
+            "ci_lo": 19.801233832197592,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 45.0,
+            "point": 30.13516178117408
+          },
+          "false": 45,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 36,
+            "normal": 6,
+            "stall": 3
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 42.238058997574186,
+            "ci_lo": 19.78412291065635,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 45.0,
+            "point": 30.10962132504637
+          },
+          "per_hour_span": {
+            "ci_hi": 42.272853813295875,
+            "ci_lo": 19.801233832197592,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 45.0,
+            "point": 30.13516178117408
+          },
+          "trajectories_with_a_false_episode": 36,
+          "true": 83
+        },
+        "gap_1s": {
+          "episodes_total": 84,
+          "false": 34,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 30.268971720408818,
+            "ci_lo": 16.049939834921275,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 34.0,
+            "point": 22.76878890133153
+          },
+          "true": 50
+        },
+        "gap_2s": {
+          "episodes_total": 77,
+          "false": 34,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 30.268971720408818,
+            "ci_lo": 16.049939834921275,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 34.0,
+            "point": 22.76878890133153
+          },
+          "true": 43
+        }
+      },
+      "family": "item33",
+      "seed": 20261103,
+      "threshold": 0.7923365127038465
+    },
+    "C2|20261104": {
+      "condition": "C2",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.8175182481751825,
+          "episodes_total": 137,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 25.342651451851218,
+            "ci_lo": 9.501458105220694,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 25.0,
+            "point": 16.741756545096713
+          },
+          "false": 25,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 22,
+            "normal": 1,
+            "stall": 2
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 25.321261188629528,
+            "ci_lo": 9.493297137150288,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 25.0,
+            "point": 16.72756740280354
+          },
+          "per_hour_span": {
+            "ci_hi": 25.342651451851218,
+            "ci_lo": 9.501458105220694,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 25.0,
+            "point": 16.741756545096713
+          },
+          "trajectories_with_a_false_episode": 21,
+          "true": 112
+        },
+        "gap_1s": {
+          "episodes_total": 71,
+          "false": 17,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 16.781637225228305,
+            "ci_lo": 6.620105081469829,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 17.0,
+            "point": 11.384394450665765
+          },
+          "true": 54
+        },
+        "gap_2s": {
+          "episodes_total": 66,
+          "false": 17,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 16.781637225228305,
+            "ci_lo": 6.620105081469829,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 17.0,
+            "point": 11.384394450665765
+          },
+          "true": 49
+        }
+      },
+      "family": "item33",
+      "seed": 20261104,
+      "threshold": 0.8589452156671418
+    },
+    "C3|20260817": {
+      "condition": "C3",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.8148148148148148,
+          "episodes_total": 135,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 25.004162338799798,
+            "ci_lo": 9.489034235668688,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 25.0,
+            "point": 16.741756545096713
+          },
+          "false": 25,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 23,
+            "normal": 1,
+            "stall": 1
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 24.98435312490679,
+            "ci_lo": 9.480894584446514,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 25.0,
+            "point": 16.72756740280354
+          },
+          "per_hour_span": {
+            "ci_hi": 25.004162338799798,
+            "ci_lo": 9.489034235668688,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 25.0,
+            "point": 16.741756545096713
+          },
+          "trajectories_with_a_false_episode": 21,
+          "true": 110
+        },
+        "gap_1s": {
+          "episodes_total": 72,
+          "false": 19,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 18.431958765597642,
+            "ci_lo": 7.4507977807658605,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 19.0,
+            "point": 12.723734974273501
+          },
+          "true": 53
+        },
+        "gap_2s": {
+          "episodes_total": 65,
+          "false": 19,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 18.431958765597642,
+            "ci_lo": 7.4507977807658605,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 19.0,
+            "point": 12.723734974273501
+          },
+          "true": 46
+        }
+      },
+      "family": "item33",
+      "seed": 20260817,
+      "threshold": 0.8581080344538319
+    },
+    "C3|20261101": {
+      "condition": "C3",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.8308823529411765,
+          "episodes_total": 136,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 24.679301890483465,
+            "ci_lo": 7.663924287648379,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 23.0,
+            "point": 15.402416021488975
+          },
+          "false": 23,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 22,
+            "normal": 1,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 24.658468500397465,
+            "ci_lo": 7.657166676895741,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 23.0,
+            "point": 15.389362010579257
+          },
+          "per_hour_span": {
+            "ci_hi": 24.679301890483465,
+            "ci_lo": 7.663924287648379,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 23.0,
+            "point": 15.402416021488975
+          },
+          "trajectories_with_a_false_episode": 16,
+          "true": 113
+        },
+        "gap_1s": {
+          "episodes_total": 72,
+          "false": 15,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 15.189634280854406,
+            "ci_lo": 5.358914970328667,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 15.0,
+            "point": 10.045053927058026
+          },
+          "true": 57
+        },
+        "gap_2s": {
+          "episodes_total": 64,
+          "false": 15,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 15.189634280854406,
+            "ci_lo": 5.358914970328667,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 15.0,
+            "point": 10.045053927058026
+          },
+          "true": 49
+        }
+      },
+      "family": "item33",
+      "seed": 20261101,
+      "threshold": 0.861277858923415
+    },
+    "C3|20261102": {
+      "condition": "C3",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.7906976744186046,
+          "episodes_total": 129,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 29.213337734710528,
+            "ci_lo": 9.243616056622205,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 27.0,
+            "point": 18.081097068704448
+          },
+          "false": 27,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 24,
+            "normal": 1,
+            "stall": 2
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 29.188247970167126,
+            "ci_lo": 9.235891762926618,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 27.0,
+            "point": 18.065772795027822
+          },
+          "per_hour_span": {
+            "ci_hi": 29.213337734710528,
+            "ci_lo": 9.243616056622205,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 27.0,
+            "point": 18.081097068704448
+          },
+          "trajectories_with_a_false_episode": 19,
+          "true": 102
+        },
+        "gap_1s": {
+          "episodes_total": 70,
+          "false": 17,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 16.786137426770996,
+            "ci_lo": 6.6806565544298175,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 17.0,
+            "point": 11.384394450665765
+          },
+          "true": 53
+        },
+        "gap_2s": {
+          "episodes_total": 64,
+          "false": 17,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 16.786137426770996,
+            "ci_lo": 6.6806565544298175,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 17.0,
+            "point": 11.384394450665765
+          },
+          "true": 47
+        }
+      },
+      "family": "item33",
+      "seed": 20261102,
+      "threshold": 0.8596129981663699
+    },
+    "C3|20261103": {
+      "condition": "C3",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.8260869565217391,
+          "episodes_total": 138,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 25.525758285723285,
+            "ci_lo": 8.562548894296762,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 24.0,
+            "point": 16.072086283292844
+          },
+          "false": 24,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 23,
+            "normal": 1,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 25.504613893098067,
+            "ci_lo": 8.555411117227049,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 24.0,
+            "point": 16.0584647066914
+          },
+          "per_hour_span": {
+            "ci_hi": 25.525758285723285,
+            "ci_lo": 8.562548894296762,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 24.0,
+            "point": 16.072086283292844
+          },
+          "trajectories_with_a_false_episode": 19,
+          "true": 114
+        },
+        "gap_1s": {
+          "episodes_total": 71,
+          "false": 18,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 17.488950019062937,
+            "ci_lo": 7.299006485258651,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 18.0,
+            "point": 12.054064712469634
+          },
+          "true": 53
+        },
+        "gap_2s": {
+          "episodes_total": 66,
+          "false": 18,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 17.488950019062937,
+            "ci_lo": 7.299006485258651,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 18.0,
+            "point": 12.054064712469634
+          },
+          "true": 48
+        }
+      },
+      "family": "item33",
+      "seed": 20261103,
+      "threshold": 0.8579207463753792
+    },
+    "C3|20261104": {
+      "condition": "C3",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.7794117647058824,
+          "episodes_total": 136,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 34.319639850355244,
+            "ci_lo": 9.061677028445636,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 30.0,
+            "point": 20.090107854116052
+          },
+          "false": 30,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 29,
+            "normal": 1,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 34.290986661863066,
+            "ci_lo": 9.053697473682313,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 30.0,
+            "point": 20.07308088336425
+          },
+          "per_hour_span": {
+            "ci_hi": 34.319639850355244,
+            "ci_lo": 9.061677028445636,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 30.0,
+            "point": 20.090107854116052
+          },
+          "trajectories_with_a_false_episode": 17,
+          "true": 106
+        },
+        "gap_1s": {
+          "episodes_total": 70,
+          "false": 16,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 15.861336691441334,
+            "ci_lo": 6.026598940862773,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 16.0,
+            "point": 10.714724188861895
+          },
+          "true": 54
+        },
+        "gap_2s": {
+          "episodes_total": 64,
+          "false": 16,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 15.861336691441334,
+            "ci_lo": 6.026598940862773,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 16.0,
+            "point": 10.714724188861895
+          },
+          "true": 48
+        }
+      },
+      "family": "item33",
+      "seed": 20261104,
+      "threshold": 0.8619344519227888
+    },
+    "X1|20260817": {
+      "condition": "X1",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.7560975609756098,
+          "episodes_total": 123,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 30.017533157587383,
+            "ci_lo": 11.68724242418724,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 30.0,
+            "point": 20.090107854116052
+          },
+          "false": 30,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 29,
+            "normal": 1,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 29.992177212183915,
+            "ci_lo": 11.67707374082196,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 30.0,
+            "point": 20.07308088336425
+          },
+          "per_hour_span": {
+            "ci_hi": 30.017533157587383,
+            "ci_lo": 11.68724242418724,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 30.0,
+            "point": 20.090107854116052
+          },
+          "trajectories_with_a_false_episode": 22,
+          "true": 93
+        },
+        "gap_1s": {
+          "episodes_total": 72,
+          "false": 20,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 18.973988864168607,
+            "ci_lo": 8.061483011058348,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 20.0,
+            "point": 13.39340523607737
+          },
+          "true": 52
+        },
+        "gap_2s": {
+          "episodes_total": 66,
+          "false": 20,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 18.973988864168607,
+            "ci_lo": 8.061483011058348,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 20.0,
+            "point": 13.39340523607737
+          },
+          "true": 46
+        }
+      },
+      "family": "item33",
+      "seed": 20260817,
+      "threshold": 0.861227806181576
+    },
+    "X1|20261101": {
+      "condition": "X1",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.7984496124031008,
+          "episodes_total": 129,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 24.774753070684802,
+            "ci_lo": 10.990617404237199,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 26.0,
+            "point": 17.41142680690058
+          },
+          "false": 26,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 24,
+            "normal": 2,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 24.753798302152514,
+            "ci_lo": 10.981610698212345,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 26.0,
+            "point": 17.39667009891568
+          },
+          "per_hour_span": {
+            "ci_hi": 24.774753070684802,
+            "ci_lo": 10.990617404237199,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 26.0,
+            "point": 17.41142680690058
+          },
+          "trajectories_with_a_false_episode": 23,
+          "true": 103
+        },
+        "gap_1s": {
+          "episodes_total": 74,
+          "false": 22,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 20.950690691344505,
+            "ci_lo": 9.362341499372492,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 22.0,
+            "point": 14.732745759685107
+          },
+          "true": 52
+        },
+        "gap_2s": {
+          "episodes_total": 68,
+          "false": 22,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 20.950690691344505,
+            "ci_lo": 9.362341499372492,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 22.0,
+            "point": 14.732745759685107
+          },
+          "true": 46
+        }
+      },
+      "family": "item33",
+      "seed": 20261101,
+      "threshold": 0.8543847337413126
+    },
+    "X1|20261102": {
+      "condition": "X1",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.7686567164179104,
+          "episodes_total": 134,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 30.93782401768812,
+            "ci_lo": 12.057074024166205,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 31.0,
+            "point": 20.759778115919925
+          },
+          "false": 31,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 29,
+            "normal": 2,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 30.91147553101185,
+            "ci_lo": 12.046852741357652,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 31.0,
+            "point": 20.74218357947639
+          },
+          "per_hour_span": {
+            "ci_hi": 30.93782401768812,
+            "ci_lo": 12.057074024166205,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 31.0,
+            "point": 20.759778115919925
+          },
+          "trajectories_with_a_false_episode": 23,
+          "true": 103
+        },
+        "gap_1s": {
+          "episodes_total": 74,
+          "false": 21,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 19.858173076665725,
+            "ci_lo": 8.70515743750298,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 21.0,
+            "point": 14.063075497881238
+          },
+          "true": 53
+        },
+        "gap_2s": {
+          "episodes_total": 68,
+          "false": 21,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 19.858173076665725,
+            "ci_lo": 8.70515743750298,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 21.0,
+            "point": 14.063075497881238
+          },
+          "true": 47
+        }
+      },
+      "family": "item33",
+      "seed": 20261102,
+      "threshold": 0.8592210141850464
+    },
+    "X1|20261103": {
+      "condition": "X1",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.788135593220339,
+          "episodes_total": 118,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 24.952225828449116,
+            "ci_lo": 9.78490389684825,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 25.0,
+            "point": 16.741756545096713
+          },
+          "false": 25,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 24,
+            "normal": 1,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 24.93094347680647,
+            "ci_lo": 9.776248818707332,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 25.0,
+            "point": 16.72756740280354
+          },
+          "per_hour_span": {
+            "ci_hi": 24.952225828449116,
+            "ci_lo": 9.78490389684825,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 25.0,
+            "point": 16.741756545096713
+          },
+          "trajectories_with_a_false_episode": 20,
+          "true": 93
+        },
+        "gap_1s": {
+          "episodes_total": 72,
+          "false": 18,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 17.488950019062937,
+            "ci_lo": 7.299006485258651,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 18.0,
+            "point": 12.054064712469634
+          },
+          "true": 54
+        },
+        "gap_2s": {
+          "episodes_total": 66,
+          "false": 18,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 17.488950019062937,
+            "ci_lo": 7.299006485258651,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 18.0,
+            "point": 12.054064712469634
+          },
+          "true": 48
+        }
+      },
+      "family": "item33",
+      "seed": 20261103,
+      "threshold": 0.8661348229171543
+    },
+    "X1|20261104": {
+      "condition": "X1",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.7619047619047619,
+          "episodes_total": 126,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 29.681447380960403,
+            "ci_lo": 11.74365781420165,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 30.0,
+            "point": 20.090107854116052
+          },
+          "false": 30,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 28,
+            "normal": 2,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 29.65554726963418,
+            "ci_lo": 11.733946712598003,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 30.0,
+            "point": 20.07308088336425
+          },
+          "per_hour_span": {
+            "ci_hi": 29.681447380960403,
+            "ci_lo": 11.74365781420165,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 30.0,
+            "point": 20.090107854116052
+          },
+          "trajectories_with_a_false_episode": 22,
+          "true": 96
+        },
+        "gap_1s": {
+          "episodes_total": 74,
+          "false": 21,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 19.859749528714385,
+            "ci_lo": 8.684917916091731,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 21.0,
+            "point": 14.063075497881238
+          },
+          "true": 53
+        },
+        "gap_2s": {
+          "episodes_total": 67,
+          "false": 21,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 19.859749528714385,
+            "ci_lo": 8.684917916091731,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 21.0,
+            "point": 14.063075497881238
+          },
+          "true": 46
+        }
+      },
+      "family": "item33",
+      "seed": 20261104,
+      "threshold": 0.8625308884922088
+    },
+    "aoa_signed": {
+      "condition": "aoa_signed",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.7286821705426356,
+          "episodes_total": 129,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 33.37937168537506,
+            "ci_lo": 14.86551858997447,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 35.0,
+            "point": 23.438459163135395
+          },
+          "false": 35,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 35,
+            "normal": 0,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 33.35060895146094,
+            "ci_lo": 14.852806169669515,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 35.0,
+            "point": 23.418594363924957
+          },
+          "per_hour_span": {
+            "ci_hi": 33.37937168537506,
+            "ci_lo": 14.86551858997447,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 35.0,
+            "point": 23.438459163135395
+          },
+          "trajectories_with_a_false_episode": 26,
+          "true": 94
+        },
+        "gap_1s": {
+          "episodes_total": 110,
+          "false": 33,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 31.794501587695468,
+            "ci_lo": 13.689385039556884,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 33.0,
+            "point": 22.09911863952766
+          },
+          "true": 77
+        },
+        "gap_2s": {
+          "episodes_total": 90,
+          "false": 27,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 26.666142111402845,
+            "ci_lo": 10.927850857662554,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 27.0,
+            "point": 18.081097068704448
+          },
+          "true": 63
+        }
+      },
+      "family": "phase3",
+      "seed": null,
+      "threshold": 0.21723935451615506
+    },
+    "aoa_two_sided": {
+      "condition": "aoa_two_sided",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.7286821705426356,
+          "episodes_total": 129,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 33.37937168537506,
+            "ci_lo": 14.86551858997447,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 35.0,
+            "point": 23.438459163135395
+          },
+          "false": 35,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 35,
+            "normal": 0,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 33.35060895146094,
+            "ci_lo": 14.852806169669515,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 35.0,
+            "point": 23.418594363924957
+          },
+          "per_hour_span": {
+            "ci_hi": 33.37937168537506,
+            "ci_lo": 14.86551858997447,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 35.0,
+            "point": 23.438459163135395
+          },
+          "trajectories_with_a_false_episode": 26,
+          "true": 94
+        },
+        "gap_1s": {
+          "episodes_total": 110,
+          "false": 33,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 31.794501587695468,
+            "ci_lo": 13.689385039556884,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 33.0,
+            "point": 22.09911863952766
+          },
+          "true": 77
+        },
+        "gap_2s": {
+          "episodes_total": 90,
+          "false": 27,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 26.666142111402845,
+            "ci_lo": 10.927850857662554,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 27.0,
+            "point": 18.081097068704448
+          },
+          "true": 63
+        }
+      },
+      "family": "phase3",
+      "seed": null,
+      "threshold": 0.21723935451615506
+    },
+    "frozen_temporal": {
+      "condition": "frozen_temporal",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.768595041322314,
+          "episodes_total": 121,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 26.84135292537853,
+            "ci_lo": 11.565099653939631,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 28.0,
+            "point": 18.750767330508317
+          },
+          "false": 28,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 26,
+            "normal": 2,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 26.819084725510134,
+            "ci_lo": 11.555142433362068,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 28.0,
+            "point": 18.734875491139967
+          },
+          "per_hour_span": {
+            "ci_hi": 26.84135292537853,
+            "ci_lo": 11.565099653939631,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 28.0,
+            "point": 18.750767330508317
+          },
+          "trajectories_with_a_false_episode": 24,
+          "true": 93
+        },
+        "gap_1s": {
+          "episodes_total": 73,
+          "false": 22,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 20.950690691344505,
+            "ci_lo": 9.362341499372492,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 22.0,
+            "point": 14.732745759685107
+          },
+          "true": 51
+        },
+        "gap_2s": {
+          "episodes_total": 68,
+          "false": 22,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 20.950690691344505,
+            "ci_lo": 9.362341499372492,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 22.0,
+            "point": 14.732745759685107
+          },
+          "true": 46
+        }
+      },
+      "family": "phase3",
+      "seed": null,
+      "threshold": 0.8585534589255494
+    },
+    "instantaneous_model_a": {
+      "condition": "instantaneous_model_a",
+      "false_alarms": {
+        "gap_0s": {
+          "episode_precision": 0.6834532374100719,
+          "episodes_total": 139,
+          "existing_definition_false_incl_ongoing_per_hour_span": {
+            "ci_hi": 43.77504167440455,
+            "ci_lo": 17.637842407469183,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 44.0,
+            "point": 29.465491519370214
+          },
+          "false": 44,
+          "false_episodes_by_regime": {
+            "gradual_approach_v3": 41,
+            "normal": 3,
+            "stall": 0
+          },
+          "ongoing": 0,
+          "per_hour_rows_denominator": {
+            "ci_hi": 43.73884393711979,
+            "ci_lo": 17.622699582333357,
+            "denominator": 5380.34,
+            "n_undefined_replicates": 0,
+            "numerator": 44.0,
+            "point": 29.44051862893423
+          },
+          "per_hour_span": {
+            "ci_hi": 43.77504167440455,
+            "ci_lo": 17.637842407469183,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 44.0,
+            "point": 29.465491519370214
+          },
+          "trajectories_with_a_false_episode": 28,
+          "true": 95
+        },
+        "gap_1s": {
+          "episodes_total": 84,
+          "false": 32,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 30.01135569270185,
+            "ci_lo": 13.993383231921108,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 32.0,
+            "point": 21.42944837772379
+          },
+          "true": 52
+        },
+        "gap_2s": {
+          "episodes_total": 78,
+          "false": 31,
+          "ongoing": 0,
+          "per_hour_span": {
+            "ci_hi": 28.921897405658115,
+            "ci_lo": 13.452328201791138,
+            "denominator": 5375.78,
+            "n_undefined_replicates": 0,
+            "numerator": 31.0,
+            "point": 20.759778115919925
+          },
+          "true": 47
+        }
+      },
+      "family": "phase3",
+      "seed": null,
+      "threshold": 0.8194871320017539
+    }
+  }
+}

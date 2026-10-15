@@ -1,0 +1,161 @@
+{
+  "banner": "Regenerated v0.3 copy; previously exposed test data; not blind or independent; rates are per simulated hour of eligible evaluation time, not operational rates; simulation only.",
+  "duplicate_initial_conditions_in_metadata": 0,
+  "independent_units": {
+    "event_bearing_trajectories": 57,
+    "note": "rows within a trajectory are strongly dependent; trajectories are the resampling unit; event metrics rest on the event-bearing trajectories",
+    "rows": 538034,
+    "trajectories": 456
+  },
+  "population_key_hash": "806ab81b786ec70406d4b4036f65dce4a4794bda3842fb1c32b7ce940917c030",
+  "split_overlap": {
+    "train&test": 0,
+    "train&val": 0,
+    "val&test": 0
+  },
+  "splits": {
+    "test": {
+      "duplicate_keys": 0,
+      "eligible_seconds_rows": 5380.34,
+      "eligible_seconds_span": 5375.78,
+      "excluded_reasons": {
+        "n_steps_max_among_excluded": 600,
+        "rule": "a trajectory needs more than 600 steps for any row to have a full 1 s history and a full 5 s label horizon",
+        "termination_reason": {
+          "validity_envelope_gamma_exceeded": 17
+        }
+      },
+      "panel_rows": 819298,
+      "trajectories_excluded": 17,
+      "trajectories_in_manifest": 473,
+      "trajectories_in_panel": 473,
+      "trajectories_with_usable_rows": 456,
+      "usable_rows": 538034
+    },
+    "train": {
+      "duplicate_keys": 0,
+      "eligible_seconds_rows": 24438.81,
+      "eligible_seconds_span": 24417.63,
+      "excluded_reasons": {
+        "n_steps_max_among_excluded": 599,
+        "rule": "a trajectory needs more than 600 steps for any row to have a full 1 s history and a full 5 s label horizon",
+        "termination_reason": {
+          "validity_envelope_gamma_exceeded": 87
+        }
+      },
+      "panel_rows": 3749572,
+      "trajectories_excluded": 87,
+      "trajectories_in_manifest": 2205,
+      "trajectories_in_panel": 2205,
+      "trajectories_with_usable_rows": 2118,
+      "usable_rows": 2443881
+    },
+    "val": {
+      "duplicate_keys": 0,
+      "eligible_seconds_rows": 4913.22,
+      "eligible_seconds_span": 4908.63,
+      "excluded_reasons": {
+        "n_steps_max_among_excluded": 574,
+        "rule": "a trajectory needs more than 600 steps for any row to have a full 1 s history and a full 5 s label horizon",
+        "termination_reason": {
+          "validity_envelope_gamma_exceeded": 13
+        }
+      },
+      "panel_rows": 771995,
+      "trajectories_excluded": 13,
+      "trajectories_in_manifest": 472,
+      "trajectories_in_panel": 472,
+      "trajectories_with_usable_rows": 459,
+      "usable_rows": 491322
+    }
+  },
+  "test_by_regime": [
+    {
+      "event_bearing_trajectories": 40,
+      "events": 54,
+      "positive_rows": 30001,
+      "regime": "gradual_approach_v3",
+      "rows": 396207,
+      "trajectories": 346
+    },
+    {
+      "event_bearing_trajectories": 0,
+      "events": 0,
+      "positive_rows": 0,
+      "regime": "normal",
+      "rows": 113481,
+      "trajectories": 81
+    },
+    {
+      "event_bearing_trajectories": 17,
+      "events": 22,
+      "positive_rows": 16168,
+      "regime": "stall",
+      "rows": 28346,
+      "trajectories": 29
+    }
+  ],
+  "test_events": {
+    "events": 76,
+    "first_events": 57,
+    "later_events": 19,
+    "left_censored_events": 0,
+    "negative_rows": 491865,
+    "positive_rows": 46169,
+    "trajectories_with_any_unsafe_run_in_panel": 67,
+    "trajectories_with_events": 57,
+    "trajectories_with_unsafe_runs_excluded": [
+      {
+        "reason": "trajectory has no usable rows",
+        "regime": "stall",
+        "trajectory_id": "traj_00192"
+      },
+      {
+        "reason": "trajectory has no usable rows",
+        "regime": "stall",
+        "trajectory_id": "traj_00325"
+      },
+      {
+        "reason": "unsafe rows only after the last usable row (final 5 s, no label horizon)",
+        "regime": "stall",
+        "trajectory_id": "traj_00337"
+      },
+      {
+        "reason": "trajectory has no usable rows",
+        "regime": "stall",
+        "trajectory_id": "traj_00343"
+      },
+      {
+        "reason": "unsafe rows only after the last usable row (final 5 s, no label horizon)",
+        "regime": "gradual_approach_v3",
+        "trajectory_id": "traj_00729"
+      },
+      {
+        "reason": "unsafe rows only after the last usable row (final 5 s, no label horizon)",
+        "regime": "stall",
+        "trajectory_id": "traj_01029"
+      },
+      {
+        "reason": "unsafe rows only after the last usable row (final 5 s, no label horizon)",
+        "regime": "gradual_approach_v3",
+        "trajectory_id": "traj_01517"
+      },
+      {
+        "reason": "trajectory has no usable rows",
+        "regime": "stall",
+        "trajectory_id": "traj_02307"
+      },
+      {
+        "reason": "trajectory has no usable rows",
+        "regime": "stall",
+        "trajectory_id": "traj_02342"
+      },
+      {
+        "reason": "trajectory has no usable rows",
+        "regime": "stall",
+        "trajectory_id": "traj_03095"
+      }
+    ],
+    "trajectories_without_events": 399
+  }
+}
