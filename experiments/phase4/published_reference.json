@@ -1,0 +1,10 @@
+{
+  "note": "Primary documents could not be opened from the research environment (network policy). Levels: P primary checked, S secondary, J JSBSim model file (not experimental), U unverified.",
+  "values": [
+    {"quantity": "stall_speed_flaps_up_power_off", "value": 51, "unit": "KCAS", "conditions": "Cessna 172R, 2450 lb", "source": "C172R data summary found by web search 2026-10-15", "level": "S"},
+    {"quantity": "CLwbh_peak", "value": 1.47, "alpha_rad": 0.28, "source": "jsbsim 1.3.2 aircraft/c172p/c172p.xml, aero/coefficient/CLwbh, hysteresis column 0", "level": "J"},
+    {"quantity": "CL_at_alpha_0", "value": 0.25, "source": "same table", "level": "J"},
+    {"quantity": "NACA2412_section_cl_at_alpha_0", "value": 0.25, "alpha_L0_deg": -2.0, "source": "Virginia Tech Aerodynamics open textbook, Appendix A (secondary)", "level": "S"},
+    {"quantity": "NACA2412_section_clmax", "value": null, "source": "NACA TR-824 (Abbott, von Doenhoff, Stivers 1945), not retrievable here", "level": "U"}
+  ]
+}
