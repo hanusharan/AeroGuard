@@ -170,9 +170,25 @@ def run_trajectory(fdm, tid: str, elevator_fn, throttle: float, boundary: StallB
                             elevator=a["elev"], throttle=a["thr"], termination_reason=reason)
 
 
-def elevator_command(profile, gain: float):
-    """AeroGuard pulse sum (rad, nose-up positive) -> JSBSim normalised command (nose-up negative)."""
-    return lambda t: -gain * sum(p.value_at(t) for p in profile.elevator_pulses)
+# P4-D2: physically derived elevator mapping (replaces the tuned single gain of PROTOCOL.md 11).
+# AeroGuard static AoA response per rad of elevator: elevator_effectiveness / alpha_stiffness = 3.2.
+# c172p static response: |Cmde / Cmalpha| = 1.122 / 1.8 (aero/coefficient/Cmde, Cmalpha; propwash factor ignored).
+# c172p elevator travel: -28 deg (cmd -1, nose up) to +23 deg (cmd +1, nose down), zero-centred scaling.
+AG_ALPHA_PER_ELEV = BASE_ALPHA_PER_ELEV = 3.2e4 / 1.0e4
+C172P_ALPHA_PER_ELEV = 1.122 / 1.8
+UP_TRAVEL_RAD, DOWN_TRAVEL_RAD = np.radians(28.0), np.radians(23.0)
+
+
+def ag_to_jsbsim_cmd(ag_elev_rad: float) -> float:
+    """AeroGuard elevator increment (rad, nose-up positive) -> c172p normalised command with the same static AoA change."""
+    d_rad = ag_elev_rad * AG_ALPHA_PER_ELEV / C172P_ALPHA_PER_ELEV   # equivalent c172p deflection magnitude, nose-up positive
+    cmd = -d_rad / UP_TRAVEL_RAD if d_rad >= 0 else -d_rad / DOWN_TRAVEL_RAD
+    return float(np.clip(cmd, -1.0, 1.0))
+
+
+def elevator_command(profile, gain: float = 1.0):
+    """gain is kept only for the earlier pilot record; the P4-D2 mapping uses gain = 1."""
+    return lambda t: ag_to_jsbsim_cmd(gain * sum(p.value_at(t) for p in profile.elevator_pulses))
 
 
 # ----------------------------------------------------------------------------------------------- datasets
@@ -194,7 +210,7 @@ def generate(model: str, data_seed: int, gain: float, counts: Dict[str, int] = N
     h_mid = float(np.mean(ALT_RANGE_M))
     vs = stall_speed(fdm, boundary.alpha_at_cl_peak, h_mid)
     v_lo, v_hi = V0_MULT_LO * vs, V0_MULT_HI * vs
-    v_hi_cap = max_trim_speed_kts(fdm, ALT_RANGE_M[1], v_lo / KT, v_hi / KT) * KT
+    v_hi_cap = min(max_trim_speed_kts(fdm, h, v_lo / KT, v_hi / KT) for h in ALT_RANGE_M) * KT  # P4-D1: cap at every altitude
     rng = np.random.default_rng(np.random.SeedSequence([data_seed, 999]))
     modes = np.array([m for m, n in counts.items() for _ in range(n)]); rng.shuffle(modes)
     splits = split_assignment(len(modes), rng) if with_splits else ["test"] * len(modes)
@@ -203,6 +219,7 @@ def generate(model: str, data_seed: int, gain: float, counts: Dict[str, int] = N
         tid = f"J_{model}_{i:04d}"
         V0 = float(rng.uniform(v_lo, v_hi_cap)); h0 = float(rng.uniform(*ALT_RANGE_M))
         prof = build_profile(regime, rng, 0.0, 0.0, 0.0, DURATION_S)
+        fdm = new_fdm(model)  # fresh instance per trajectory: a reused instance can fail later trims (harness bug, P4-D3)
         tr = try_trim(fdm, V0 / KT, h0)
         if tr is None:
             meta.append({"trajectory_id": tid, "generation_mode": regime, "split": split, "initial_airspeed": V0,
