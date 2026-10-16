@@ -37,7 +37,8 @@ export function Evaluation() {
       />
 
       <Reveal>
-        <GlassPanel className="overflow-x-auto p-6">
+        <GlassPanel className="p-6">
+          <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Method comparison (scrolls sideways on narrow screens)">
           <table className="w-full min-w-[560px] text-left text-sm text-(--color-ink-soft)">
             <thead className="text-(--color-ink)">
               <tr>
@@ -60,8 +61,14 @@ export function Evaluation() {
               ))}
             </tbody>
           </table>
+          </div>
           <p className="mt-3 text-xs text-(--color-ink-faint)">
             Warning and coverage columns use each method's own validation-selected threshold, so they are shown side by side, not ranked.
+          </p>
+          <p className="mt-2 text-xs text-(--color-ink-faint)">
+            Coverage here counts an event only if the evaluated rows include the full L seconds before its crossing (74 of 76
+            events at 2 s, 67 at 4 s), so a warning that early could have been observed. Key Results divides the same warned
+            events by all 76, which is why the temporal model shows 64.5% and 55.3% there.
           </p>
         </GlassPanel>
       </Reveal>
@@ -84,6 +91,7 @@ export function Evaluation() {
 
       <SourceNote>
         outputs/items33_42/items40_42/run_20261015T144358282823Z/REPORT.md (combined comparison report),
+        coverage_item38.json (eligible-event denominators),
         outputs/items33_42/items37_39/…/REPORT.md, outputs/items33_42/item33/…/REPORT.md, outputs/phase3/…/REPORT.md
       </SourceNote>
     </Section>

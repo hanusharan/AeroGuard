@@ -31,13 +31,13 @@ export function KeyResults() {
         lede="v0.3 introduced a re-timed control-input regime producing a genuine multi-second stall precursor. The same model family, features, and evaluation methodology as v0.2 — only the underlying precursor changed."
       />
 
-      <div className="grid gap-5 lg:grid-cols-2">
+      <div className="grid gap-5 lg:grid-cols-2 [&>*]:min-w-0">
         <Reveal>
-          <GlassPanel raised className="p-8">
+          <GlassPanel raised className="p-6 sm:p-8">
             <span className="font-mono-tab text-[11px] uppercase tracking-[0.18em] text-(--color-ink-faint)">
               Median warning lead time
             </span>
-            <div className="mt-4 flex items-end gap-4">
+            <div className="mt-4 flex flex-wrap items-end gap-x-4 gap-y-2">
               <div>
                 <div className="font-mono-tab text-2xl font-medium text-(--color-ink-faint) line-through decoration-(--color-critical)/50">
                   {m.v02.medianLeadTimeS.toFixed(2)}s
@@ -46,7 +46,7 @@ export function KeyResults() {
               </div>
               <ArrowRight />
               <div>
-                <div className="font-mono-tab text-6xl font-bold text-(--color-signal)">
+                <div className="font-mono-tab text-5xl font-bold text-(--color-signal) sm:text-6xl">
                   <Counter to={m.v03.medianLeadTimeS} decimals={2} suffix="s" />
                 </div>
                 <div className="mt-1 text-[11px] text-(--color-signal)">v0.3, final</div>
@@ -61,13 +61,13 @@ export function KeyResults() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <GlassPanel raised className="p-8">
+          <GlassPanel raised className="p-6 sm:p-8">
             <span className="font-mono-tab text-[11px] uppercase tracking-[0.18em] text-(--color-ink-faint)">
               Event recall &amp; PR-AUC
             </span>
             <div className="mt-4 grid grid-cols-2 gap-4">
               <div>
-                <div className="font-mono-tab text-5xl font-bold text-(--color-ink)">
+                <div className="font-mono-tab text-4xl font-bold text-(--color-ink) sm:text-5xl">
                   {/* From the counts, not the stored rounded rate: 73/76 is
                       96.1% in the source report, but 0.9605 renders as 96.0. */}
                   <Counter to={(m.v03.nWarned / m.v03.nEvents) * 100} decimals={1} suffix="%" />
@@ -77,7 +77,7 @@ export function KeyResults() {
                 </div>
               </div>
               <div>
-                <div className="font-mono-tab text-5xl font-bold text-(--color-ink)">
+                <div className="font-mono-tab text-4xl font-bold text-(--color-ink) sm:text-5xl">
                   <Counter to={m.v03.prAuc} decimals={3} />
                 </div>
                 <div className="mt-1 text-[11px] text-(--color-ink-faint)">PR-AUC, primary model</div>
@@ -119,9 +119,9 @@ export function KeyResults() {
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={coverageData} barGap={6} margin={{ left: -12, right: 8 }}>
                 <CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} />
-                <XAxis dataKey="threshold" tick={{ fill: "#5b6672", fontSize: 11 }} stroke="rgba(255,255,255,0.12)" />
+                <XAxis dataKey="threshold" tick={{ fill: "#788796", fontSize: 11 }} stroke="rgba(255,255,255,0.12)" />
                 <YAxis
-                  tick={{ fill: "#5b6672", fontSize: 11 }}
+                  tick={{ fill: "#788796", fontSize: 11 }}
                   tickFormatter={(v) => `${v}%`}
                   stroke="rgba(255,255,255,0.12)"
                   width={40}
@@ -137,7 +137,7 @@ export function KeyResults() {
                   formatter={(v) => `${Number(v).toFixed(1)}%`}
                 />
                 <Legend wrapperStyle={{ fontSize: 11, fontFamily: "var(--font-mono)" }} />
-                <Bar dataKey="v02" name="v0.2" fill="#5b6672" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="v02" name="v0.2" fill="#788796" radius={[4, 4, 0, 0]} />
                 <Bar dataKey="v03" name="v0.3" fill="#4fd6ff" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
