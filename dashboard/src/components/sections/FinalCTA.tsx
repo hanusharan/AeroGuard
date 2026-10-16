@@ -114,7 +114,8 @@ export function FinalCTA() {
             <p>
               Every number on this page is sourced from
               outputs/final/AEROGUARD_FINAL_RESEARCH_REPORT.md and the frozen metrics files it
-              cites.
+              cites, except the Evaluation section, whose figures come from the later Items 33–42
+              reports named beneath it.
             </p>
             <p>
               An independent research project conceived by Bulusu Hanu Sharan and built with the

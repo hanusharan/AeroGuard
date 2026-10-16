@@ -19,7 +19,7 @@
 
   --color-ink: #eef2f5;
   --color-ink-soft: #9aa7b5;
-  --color-ink-faint: #5b6672;
+  --color-ink-faint: #788796; /* >= 4.6:1 on every panel background (was #5b6672, 2.9-3.5:1) */
 
   --color-signal: #4fd6ff;
   --color-signal-soft: #4fd6ff33;
@@ -32,6 +32,20 @@
 
 html {
   scroll-behavior: smooth;
+  /* keep anchor targets clear of the fixed header */
+  scroll-padding-top: 4.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* A visible keyboard focus ring on the dark background; mouse clicks don't trigger it. */
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
 }
 
 body {
@@ -86,4 +100,41 @@ body {
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.12);
   border-radius: 8px;
+}
+
+/* Range inputs: a 4px visual track inside a 24px-tall hit area, with an 18px
+   thumb, so the simulator and replay sliders are usable by touch. */
+.range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 24px;
+  background: transparent;
+  cursor: pointer;
+}
+.range-input::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.range-input::-moz-range-track {
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -7px;
+  border-radius: 9999px;
+  background: var(--color-signal);
+  border: 2px solid var(--color-void);
+}
+.range-input::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: var(--color-signal);
+  border: 2px solid var(--color-void);
 }

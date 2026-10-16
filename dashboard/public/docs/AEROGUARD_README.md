@@ -1,5 +1,13 @@
 # AeroGuard
 
+[![Live dashboard](https://img.shields.io/badge/live%20dashboard-open-2ea44f)](https://hanusharan.github.io/AeroGuard/)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/)
+[![License: MIT (code)](https://img.shields.io/badge/license-MIT%20(code)-blue.svg)](#license)
+[![Tests](https://github.com/hanusharan/AeroGuard/actions/workflows/tests.yml/badge.svg)](https://github.com/hanusharan/AeroGuard/actions/workflows/tests.yml)
+[![Stage: simulation research](https://img.shields.io/badge/stage-simulation%20research-orange)](#limitations)
+
+**Physics-informed machine learning for early aircraft stall warning.**
+
 A self-contained research pipeline asking one question: **can a physically
 credible, multi-second precursor to an aerodynamic stall be predicted by a
 machine-learning model before the stall occurs — and does that skill transfer
@@ -11,6 +19,11 @@ evaluated end to end in this repository. **This is a simplified, educational
 physics model — it is NOT a validated model of any real aircraft**, and no
 result here should be read as a claim about real-aircraft behavior or safety.
 
+[![Research DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22724022.svg)](https://doi.org/10.5281/zenodo.22724022)
+
+**Research paper / DOI:** https://doi.org/10.5281/zenodo.22724022
+**Experiment log:** [`experiments/EXPERIMENT_LOG.md`](experiments/EXPERIMENT_LOG.md)
+**Live dashboard:** [hanusharan.github.io/AeroGuard](https://hanusharan.github.io/AeroGuard/) — interactive walkthrough of the datasets, models, and results.
 **Full synthesis:** [`outputs/final/AEROGUARD_FINAL_RESEARCH_REPORT.md`](outputs/final/AEROGUARD_FINAL_RESEARCH_REPORT.md)
 **Project status:** [`outputs/final/FINAL_STATUS.md`](outputs/final/FINAL_STATUS.md)
 **File provenance (canonical vs. historical vs. rejected-candidate):** [`PROVENANCE.md`](PROVENANCE.md)
@@ -158,24 +171,34 @@ in-distribution performance; zero-exposure exclusion collapses it. See
 See the tree in [Architecture](#architecture) above and
 [`PROVENANCE.md`](PROVENANCE.md) for exactly which files are canonical,
 which are superseded-but-kept historical milestones, and which are rejected
-calibration candidates preserved as part of the documented decision trail (a
-significant part of this repository's history is two concurrent development
-sessions producing genuinely conflicting v0.3 calibration results, later
-reconciled — nothing was ever deleted, only reconciled and documented).
+calibration candidates preserved as part of the documented decision trail.
+During v0.3 calibration, two independent investigations reached conflicting
+results that were later reconciled; nothing was deleted, and the conflict and
+its resolution are documented in `outputs/v03_calibration/reconciliation_report.md`
+and `PROVENANCE.md` §3.
 
 ## Installation
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements-pinned.txt   # exact, tested set (Python 3.12)
+# or: pip install -r requirements.txt    # loose lower bounds
 ```
+
+The pinned set needs Python 3.12 or newer (numpy 2.5.4 requires 3.12; the pinned
+scikit-learn 1.9.0, the version recorded in the frozen v0.3 model, requires 3.11).
+Python 3.11 with the loose `requirements.txt` has not been tested.
+`requirements-pinned.txt` is a newly tested environment, not a reconstruction of
+the original research environment — see
+[`REPRODUCIBILITY.md`](REPRODUCIBILITY.md#pinned-environment).
 
 ## Reproduction commands
 
 Full exact commands, seeds, and expected outputs for every stage are in
-[`REPRODUCIBILITY.md`](REPRODUCIBILITY.md). Quick start (physics demo only,
-seconds to run):
+[`REPRODUCIBILITY.md`](REPRODUCIBILITY.md); what has and has not been reproduced is
+summarized in [`REPRODUCIBILITY_REPORT.md`](REPRODUCIBILITY_REPORT.md). Quick start
+(physics demo only, seconds to run):
 
 ```bash
 python scripts/simulate.py          # one trajectory, saves outputs/trajectory.png
@@ -188,20 +211,25 @@ final v0.3 temporal experiment took ~22 minutes wall-clock on the original run.
 ## Testing
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-pinned.txt
 pytest tests/ -v
 ```
 
-The suite now collects 226 tests: the original 190-test suite plus 36
-research-audit tests added after the v1.0 packaging. The "190/190" figure below
-refers only to the original suite.
-
-Historical claim (not currently verified): the original packaging pass recorded
-"190/190 passing" in a working copy that held the locally generated (gitignored)
-datasets. On a clean checkout, 11 tests fail because gitignored data is missing
-and 24 data-conditional tests skip; passing tests do not by themselves reproduce
-any research result. See the canonical `README.md` and `REPRODUCIBILITY.md` in
-the repository for the current test policy.
+The test suite now collects 226 tests: the original 190-test suite plus 36
+research-audit tests added after the v1.0 packaging
+(`tests/test_audit_labels_features_splits.py` and
+`tests/test_audit_event_metrics.py`). The "190/190" figure below refers only to
+the original suite. The v1.0 status record
+(`outputs/final/FINAL_STATUS.md`) reports "190/190 passing" in a working copy
+that held the locally generated (gitignored) datasets; that is a historical claim and has not been independently
+re-verified. On a clean checkout, 11 tests fail because gitignored data is
+missing (10 need `data/processed/processed_dataset_v2.parquet`; 1,
+`test_feature_schema_matches_actual_columns`, needs
+`data/ml/ml_dataset_v2.parquet`), and 24 data-conditional tests skip. The [Tests workflow](.github/workflows/tests.yml) therefore runs the
+suite with those 11 explicitly deselected (details in `REPRODUCIBILITY.md`); its
+expected result is 191 passed, 24 skipped, 11 deselected (155 original tests plus
+the 36 audit tests passing).
+Passing tests do not by themselves reproduce any research result.
 
 ## Limitations
 
@@ -220,3 +248,64 @@ flight-tested, and not a certified aviation safety tool. If referencing this
 work, cite the repository and, for specific claims, the specific dated report
 under `outputs/` that measured them — every number in the final report is
 traceable to its source report and the exact script/seed that produced it.
+
+## Authorship and contributions
+
+AeroGuard is an independent research project. The research idea is the
+author's own: Bulusu Hanu Sharan conceived the project and is the sole listed
+author of the [paper](https://doi.org/10.5281/zenodo.22724022) and the
+repository owner. No institutional affiliation is claimed. The project was
+built and implemented with the assistance of Claude Code (see
+[AI assistance](#ai-assistance)).
+
+The project's contributions, as stated in the paper (§1) and documented in the
+[final report](outputs/final/AEROGUARD_FINAL_RESEARCH_REPORT.md) and
+[experiment log](experiments/EXPERIMENT_LOG.md), are:
+
+- a simulation and dataset pipeline that measures the physical precursor
+  duration directly instead of assuming it;
+- a diagnosis attributing the short precursor in the v0.2 dataset to
+  control-profile timing rather than to the dynamics;
+- a control-input intervention (v0.3) that changed only the elevator profile
+  and left the physics engine untouched;
+- a two-direction transfer test that separates family-level generalization from
+  zero-shot prediction;
+- the versioned datasets, tests, provenance and reproducibility records in
+  this repository.
+
+The underlying methods (RK4 integration, RandomForest and logistic-regression
+classifiers, standard evaluation metrics) are standard techniques; the
+contribution is their application and the experimental design above. The
+repository record does not show which individual analyses, design decisions or
+passages of text were produced by the author directly and which with Claude
+Code's assistance.
+
+## AI assistance
+
+The research idea for AeroGuard is the author's. Claude Code, an AI coding
+assistant from Anthropic, assisted with building and implementing the project.
+Claude Code did not originate the research question, and its use is not
+independent verification of any result. What the repository documents:
+
+- The v0.3 control-profile calibration was investigated by two concurrent
+  Claude Code sessions whose conflicting verdicts were reconciled (final report
+  §11, §13, §21; `PROVENANCE.md` §3).
+- Claude Code has assisted with repository engineering and documentation,
+  including the licensing, citation, CI, dependency-pinning, dashboard-attribution
+  and documentation changes made after the v1.0 research packaging.
+
+The repository does not record, task by task, which experimental design
+choices, analyses, model-selection decisions or manuscript passages were made
+with Claude Code's assistance, so this document does not claim that any of them
+were made without it. Every quantitative result traces to the frozen reports,
+scripts and seeds cited above.
+
+## License
+
+The software in this repository is released under the [MIT License](LICENSE)
+(Copyright (c) 2026 Bulusu Hanu Sharan). The license is intended to cover the
+source code (`aeroguard/`, `aeroguard_dataset/`, `ml/`, `scripts/`, `tests/`,
+`dashboard/` source). It does **not** grant rights to the research paper, report
+text, figures, or other documents, and it makes no statement about the validity
+of the research or the suitability of the software for any aviation use. Those
+materials have no separate license yet; contact the author for reuse.

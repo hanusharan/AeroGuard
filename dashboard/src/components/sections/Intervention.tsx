@@ -138,7 +138,7 @@ export function Intervention() {
           </GlassPanel>
         </Reveal>
 
-        <div className="grid gap-5">
+        <div className="grid gap-5 [&>*]:min-w-0">
           <Reveal delay={0.1}>
             <GlassPanel className="p-6 sm:p-8">
               <div className="flex items-center justify-between gap-3">

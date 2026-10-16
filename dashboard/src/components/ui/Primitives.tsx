@@ -118,9 +118,10 @@ export function Pill({
 
 export function SourceNote({ children }: { children: ReactNode }) {
   return (
-    // Source paths are long unbreakable tokens; without break-words their
-    // min-content width stretches whatever grid or panel contains them.
-    <p className="mt-3 break-words font-mono-tab text-[11px] leading-relaxed text-(--color-ink-faint)">
+    // Source paths are long unbreakable tokens. overflow-wrap:anywhere (unlike
+    // break-words) also shrinks their min-content width, so they cannot
+    // stretch the grid or panel that contains them.
+    <p className="mt-3 [overflow-wrap:anywhere] font-mono-tab text-[11px] leading-relaxed text-(--color-ink-faint)">
       {children}
     </p>
   );

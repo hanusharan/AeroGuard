@@ -14,30 +14,42 @@ import { Limitations } from "./components/sections/Limitations";
 import { Timeline } from "./components/sections/Timeline";
 import { FinalCTA } from "./components/sections/FinalCTA";
 import { FutureWork } from "./components/sections/FutureWork";
-
+import { MotionConfig } from "framer-motion";
+import { useEffect } from "react";
 
 function App() {
+  // The browser looks for a URL's #section before React has rendered it, so a
+  // shared link such as /AeroGuard/#simulator would otherwise open at the top.
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id) document.getElementById(id)?.scrollIntoView();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-(--color-void)">
-      <Nav />
-      <main>
-        <Hero />
-        <Scale />
-        <Problem />
-        <PhysicsEngine />
-        <AIPipeline />
-        <Intervention />
-        <KeyResults />
-        <Evaluation />
-        <FlightReplay />
-        <Simulator />
-        <Generalization />
-        <Limitations />
-        <Timeline />
-        <FutureWork />
-      </main>
-      <FinalCTA />
-    </div>
+    // reducedMotion="user": honour the OS "reduce motion" setting for every
+    // framer-motion reveal, count-up trigger and looping animation.
+    <MotionConfig reducedMotion="user">
+      <div className="min-h-screen bg-(--color-void)">
+        <Nav />
+        <main id="main" tabIndex={-1} className="outline-none">
+          <Hero />
+          <Scale />
+          <Problem />
+          <PhysicsEngine />
+          <AIPipeline />
+          <Intervention />
+          <KeyResults />
+          <Evaluation />
+          <FlightReplay />
+          <Simulator />
+          <Generalization />
+          <Limitations />
+          <Timeline />
+          <FutureWork />
+        </main>
+        <FinalCTA />
+      </div>
+    </MotionConfig>
   );
 }
 

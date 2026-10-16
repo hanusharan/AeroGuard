@@ -25,7 +25,7 @@ import {
 } from "../../lib/stallSim";
 import type { Aircraft } from "../../lib/physics";
 
-const AXIS_TICK = { fill: "#5b6672", fontSize: 10 };
+const AXIS_TICK = { fill: "#788796", fontSize: 10 };
 const AXIS_STROKE = "rgba(255,255,255,0.12)";
 const TOOLTIP_STYLE = {
   background: "#0a0e15",
@@ -140,7 +140,9 @@ export function Simulator() {
                 {PRESETS.map((p, i) => (
                   <button
                     key={p.name}
+                    type="button"
                     onClick={() => applyPreset(i)}
+                    aria-pressed={activePreset === i}
                     title={p.blurb}
                     className={
                       "rounded-lg border px-2.5 py-2 text-left font-mono-tab text-[10px] uppercase leading-tight tracking-[0.08em] transition-colors " +
@@ -318,7 +320,9 @@ export function Simulator() {
             </FieldGroup>
 
             <button
+              type="button"
               onClick={() => setShowAdvanced((s) => !s)}
+              aria-expanded={showAdvanced}
               className="mt-5 w-full rounded-lg border border-(--color-line) bg-white/[0.02] px-3 py-2 font-mono-tab text-[10px] uppercase tracking-[0.14em] text-(--color-ink-soft) transition-colors hover:border-(--color-line-strong) hover:text-(--color-ink)"
             >
               {showAdvanced ? "− Hide" : "+ Show"} drag & pitch-response terms
@@ -876,9 +880,15 @@ function Field({
   decimals?: number;
   onChange: (v: number) => void;
 }) {
+  // While the box is being typed in, it holds the raw text: clamping on every
+  // keystroke would turn the "1" of "1500" into the 400 kg minimum. In-range
+  // values apply live; out-of-range or partial ones are clamped on blur/Enter.
+  const [draft, setDraft] = useState<string | null>(null);
+  const shown = Number(value.toFixed(decimals));
   const commit = (raw: string) => {
     const n = Number(raw);
-    if (Number.isFinite(n)) onChange(Math.min(Math.max(n, min), max));
+    if (raw.trim() !== "" && Number.isFinite(n)) onChange(Math.min(Math.max(n, min), max));
+    setDraft(null);
   };
 
   return (
@@ -888,11 +898,22 @@ function Field({
         <span className="flex items-baseline gap-1">
           <input
             type="number"
-            value={Number(value.toFixed(decimals))}
+            inputMode="decimal"
+            value={draft ?? shown}
             min={min}
             max={max}
             step={step}
-            onChange={(e) => commit(e.target.value)}
+            onChange={(e) => {
+              const raw = e.target.value;
+              setDraft(raw);
+              const n = Number(raw);
+              if (raw.trim() !== "" && Number.isFinite(n) && n >= min && n <= max) onChange(n);
+            }}
+            onBlur={(e) => commit(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") commit(e.currentTarget.value);
+              if (e.key === "Escape") setDraft(null);
+            }}
             className="w-[68px] rounded border border-(--color-line) bg-white/[0.04] px-1.5 py-0.5 text-right font-mono-tab text-[12px] text-(--color-ink) outline-none focus:border-(--color-signal)/50"
           />
           {unit && (
@@ -909,7 +930,7 @@ function Field({
         max={max}
         step={step}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="mt-1.5 h-1 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-(--color-signal)"
+        className="range-input mt-0.5 w-full"
         aria-label={`${label} (${unit})`}
       />
     </label>

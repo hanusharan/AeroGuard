@@ -64,7 +64,7 @@ export function FlightReplay() {
               max={replay.points.length - 1}
               value={index}
               onChange={(e) => setIndex(Number(e.target.value))}
-              className="h-1 flex-1 min-w-[140px] cursor-pointer appearance-none rounded-full bg-white/10 accent-(--color-signal)"
+              className="range-input flex-1 min-w-[140px]"
               aria-label="Scrub flight replay"
             />
 
@@ -95,13 +95,13 @@ export function FlightReplay() {
                     dataKey="t"
                     type="number"
                     domain={[0, tMax]}
-                    tick={{ fill: "#5b6672", fontSize: 10 }}
+                    tick={{ fill: "#788796", fontSize: 10 }}
                     tickFormatter={(v) => `${v}s`}
                     stroke="rgba(255,255,255,0.12)"
                   />
                   <YAxis
                     domain={[0, 18]}
-                    tick={{ fill: "#5b6672", fontSize: 10 }}
+                    tick={{ fill: "#788796", fontSize: 10 }}
                     tickFormatter={(v) => `${v}°`}
                     stroke="rgba(255,255,255,0.12)"
                     width={34}
@@ -142,7 +142,7 @@ export function FlightReplay() {
                     </linearGradient>
                   </defs>
                   <XAxis dataKey="t" type="number" domain={[0, tMax]} hide />
-                  <YAxis domain={[0, 1]} tick={{ fill: "#5b6672", fontSize: 10 }} stroke="rgba(255,255,255,0.12)" width={30} />
+                  <YAxis domain={[0, 1]} tick={{ fill: "#788796", fontSize: 10 }} stroke="rgba(255,255,255,0.12)" width={30} />
                   <ReferenceLine
                     y={replay.warningThreshold}
                     stroke="#fbbf42"

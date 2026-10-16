@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 
 export function useScrubber(length: number, stepMs = 60) {
   const [index, setIndex] = useState(0);
-  const [playing, setPlaying] = useState(true);
+  // Autoplay only when the visitor has not asked for reduced motion; Play still works.
+  const reduceMotion = useReducedMotion();
+  const [playing, setPlaying] = useState(!reduceMotion);
   const raf = useRef<number | null>(null);
   const last = useRef(0);
 
