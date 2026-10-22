@@ -144,7 +144,7 @@ export function Generalization() {
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={prAucComparison} layout="vertical" margin={{ left: 24, right: 24 }}>
                 <CartesianGrid stroke="rgba(255,255,255,0.06)" horizontal={false} />
-                <XAxis type="number" domain={[0, 100]} tick={{ fill: "#5b6672", fontSize: 10 }} tickFormatter={(v) => `${v}%`} stroke="rgba(255,255,255,0.12)" />
+                <XAxis type="number" domain={[0, 100]} tick={{ fill: "#788796", fontSize: 10 }} tickFormatter={(v) => `${v}%`} stroke="rgba(255,255,255,0.12)" />
                 <YAxis type="category" dataKey="label" tick={{ fill: "#9aa7b5", fontSize: 11 }} width={170} stroke="rgba(255,255,255,0.12)" />
                 <Tooltip
                   contentStyle={{ background: "#0a0e15", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 8, fontSize: 11, fontFamily: "var(--font-mono)" }}

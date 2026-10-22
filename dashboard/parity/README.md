@@ -40,3 +40,19 @@ Any time either engine changes: edits under `aeroguard/`, a change to the trim s
 or the stall-boundary definition, or edits to `src/lib/physics.ts`. Regenerate
 `reference.json` first (it is committed so the check can run without a Python
 environment, but it is only as current as the last dump).
+
+## Displayed metrics
+
+`check_metrics.mjs` is the same idea for the numbers the site *reports*: it
+compares every value in `src/data/metrics.json` against the frozen output files
+it was exported from (`outputs/ml_temporal/`, `outputs/ml_v03/`,
+`outputs/ml_v03_generalization/`, `data/splits/split_manifest_v3.csv`), checks
+each event recall against the warned/evaluated counts shown beside it, and checks
+the Evaluation section's eligible-event coverage figures against
+`coverage_item38.json`. It needs only Node and the committed outputs:
+
+```bash
+node parity/check_metrics.mjs   # from dashboard/
+```
+
+Current result: **99/99 checks pass**.

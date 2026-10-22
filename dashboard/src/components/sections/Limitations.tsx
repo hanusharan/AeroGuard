@@ -19,6 +19,10 @@ const LIMITATIONS = [
     body: "Cross-mechanism transfer was demonstrated within one broad slow-approach phenomenon class — not across arbitrary unseen flight regimes.",
   },
   {
+    title: "No operational or certification claim",
+    body: "Results are simulation-internal and do not establish operational aviation safety. AeroGuard is not certified or flight-ready and has not been shown to protect any real aircraft.",
+  },
+  {
     title: "Performance depends on phenomenon-class exposure",
     body: "A zero-exposure exclusion check shows the model cannot invent multi-second precursor detection without prior training exposure to the broader phenomenon class.",
   },

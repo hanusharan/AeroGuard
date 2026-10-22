@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "../ui/Reveal";
 import { Section, SectionTitle, GlassPanel, Pill, SourceNote } from "../ui/Primitives";
 
@@ -12,6 +12,7 @@ const STAGES = [
 ];
 
 export function AIPipeline() {
+  const reduceMotion = useReducedMotion();
   return (
     <Section id="pipeline">
       <SectionTitle
@@ -48,7 +49,7 @@ export function AIPipeline() {
                   <div className="relative mx-1 h-px w-10 shrink-0 bg-(--color-line-strong) sm:w-14">
                     <motion.span
                       className="absolute -top-[3px] h-[7px] w-[7px] rounded-full bg-(--color-signal) shadow-[0_0_8px_var(--color-signal)]"
-                      animate={{ left: ["0%", "100%"] }}
+                      animate={reduceMotion ? { left: "50%" } : { left: ["0%", "100%"] }}
                       transition={{
                         duration: 1.4,
                         repeat: Infinity,

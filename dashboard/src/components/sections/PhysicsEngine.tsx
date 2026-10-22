@@ -53,13 +53,13 @@ export function PhysicsEngine() {
                     dataKey="t"
                     type="number"
                     domain={[0, replay.points[replay.points.length - 1].t]}
-                    tick={{ fill: "#5b6672", fontSize: 10 }}
+                    tick={{ fill: "#788796", fontSize: 10 }}
                     tickFormatter={(v) => `${v}s`}
                     stroke="rgba(255,255,255,0.12)"
                   />
                   <YAxis
                     domain={[0, 18]}
-                    tick={{ fill: "#5b6672", fontSize: 10 }}
+                    tick={{ fill: "#788796", fontSize: 10 }}
                     tickFormatter={(v) => `${v}°`}
                     stroke="rgba(255,255,255,0.12)"
                     width={34}

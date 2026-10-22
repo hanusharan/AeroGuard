@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 /**
  * Decorative hero visualization: a climbing flight-path vector approaching
@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
  * data-bound version of this idea is the Flight Replay section below.
  */
 export function HeroTrajectory() {
+  const reduceMotion = useReducedMotion();
   const width = 640;
   const height = 380;
   const boundaryY = 108;
@@ -73,15 +74,15 @@ export function HeroTrajectory() {
           stroke="url(#pathGrad)"
           strokeWidth={2.5}
           strokeLinecap="round"
-          initial={{ pathLength: 0 }}
+          initial={reduceMotion ? false : { pathLength: 0 }}
           animate={{ pathLength: 1 }}
           transition={{ duration: 3.2, ease: [0.16, 1, 0.3, 1], repeat: Infinity, repeatDelay: 1.4 }}
         />
 
         {/* AI warning marker, appears partway along the path -- well before the endpoint crosses the boundary line */}
         <motion.g
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 0, 1, 1, 0] }}
+          initial={reduceMotion ? false : { opacity: 0 }}
+          animate={reduceMotion ? { opacity: 1 } : { opacity: [0, 0, 1, 1, 0] }}
           transition={{ duration: 4.6, times: [0, 0.42, 0.5, 0.88, 1], repeat: Infinity, repeatDelay: 0 }}
         >
           <circle cx={352} cy={214} r="22" fill="url(#glow)" />
@@ -93,7 +94,7 @@ export function HeroTrajectory() {
 
         {/* aircraft glyph riding the leading edge of the path */}
         <motion.g
-          initial={{ offsetDistance: "0%" }}
+          initial={reduceMotion ? false : { offsetDistance: "0%" }}
           animate={{ offsetDistance: "100%" }}
           transition={{ duration: 3.2, ease: [0.16, 1, 0.3, 1], repeat: Infinity, repeatDelay: 1.4 }}
           style={{ offsetPath: `path("${pathD}")`, offsetRotate: "auto" }}

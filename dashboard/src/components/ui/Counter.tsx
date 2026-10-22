@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
+import { useInView, useReducedMotion } from "framer-motion";
 
 export function Counter({
   to,
@@ -18,6 +18,7 @@ export function Counter({
   const observerInView = useInView(ref, { once: true, margin: "-60px" });
   const [manualInView, setManualInView] = useState(false);
   const [value, setValue] = useState(0);
+  const reduceMotion = useReducedMotion();
 
   // IntersectionObserver-driven reveal (observerInView) is the primary
   // mechanism. A manual scroll-position fallback covers environments where
@@ -58,8 +59,9 @@ export function Counter({
 
     // Animating a count-up nobody can currently see is pointless, and a
     // backgrounded/hidden document throttles requestAnimationFrame anyway --
-    // just show the final value immediately in that case.
-    if (document.hidden) {
+    // just show the final value immediately in that case. Same when the
+    // visitor has asked for reduced motion.
+    if (document.hidden || reduceMotion) {
       setValue(to);
       return;
     }
@@ -82,7 +84,7 @@ export function Counter({
       cancelAnimationFrame(raf);
       clearTimeout(settle);
     };
-  }, [inView, to, duration]);
+  }, [inView, to, duration, reduceMotion]);
 
   return (
     <span ref={ref} className="font-mono-tab tabular-nums">
