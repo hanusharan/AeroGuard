@@ -1,11 +1,6 @@
 # Proposed amendment: scope of the event-level metrics
 
-**Status: proposal only. Not applied.** The research paper
-(`AeroGuard_Research_Paper.md`, its HTML copies and PDFs) is unchanged and is
-the published record (Zenodo DOI 10.5281/zenodo.22724022). This file is for the
-author to review. Applying it would change wording only; no reported number
-changes. Doing so would require rebuilding the PDF and publishing a new
-Zenodo version, and needs the author's approval.
+**Status: applied in v1.1.0 (2026-10-24).** All six changes below were applied to `AeroGuard_Research_Paper.md`; the HTML and PDF were rebuilt with `paper/build_paper.py`. The v1.0 paper remains the record at Zenodo DOI 10.5281/zenodo.22724022. No reported number changed.
 
 ## Why
 

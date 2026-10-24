@@ -10,6 +10,18 @@ modified** — it is byte-identical to its committed version, verified by SHA-25
 
 ---
 
+## v1.1.0 — 2026-10-24
+
+- Applied the six wording changes in `PROPOSED_AMENDMENT_event_metrics_scope.md`
+  (§2.4, §3, Table 1 caption, abstract, conclusion, limitations): event recall
+  and lead time are now stated as over *evaluated* events and *warned* events,
+  and the ten test crossings outside the evaluated rows are disclosed. No
+  number changed.
+- Rebuilt the HTML and PDF (4 pages). The PDF now shows the correct repository
+  URL, `github.com/hanusharan/AeroGuard`; v1.0 showed `BulusuHanuSharan/AeroGuard`.
+- The v1.0 PDF remains on Zenodo (DOI 10.5281/zenodo.22724022). Publishing this
+  version there is a separate step for the author.
+
 ## What was produced
 
 | Artifact | Path |
