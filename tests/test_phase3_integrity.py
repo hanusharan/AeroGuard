@@ -55,9 +55,38 @@ def test_the_frozen_model_hash_constant_matches_the_tracked_artifact():
     assert pop.sha256_file(ROOT / FROZEN_MODEL_RELPATH) == FROZEN_MODEL_SHA256
 
 
+BASELINE_MANIFEST_SHA256 = "d4d9447c538416e354e8e1a7006318383aadf5521ac7c59470147186d97b1255"
+PAPER_PDF_RELPATH = "paper/AeroGuard_Research_Paper.pdf"
+HISTORICAL_PDF_RELPATH = "paper/archive/AeroGuard_Research_Paper_baseline_v0.3.pdf"
+PAPER_PDF_MANIFEST_RELPATH = "baselines/paper_pdf_v1.1.0.sha256"
+
+
+def _manifest_digests(relpath):
+    out = {}
+    for line in (ROOT / relpath).read_text().splitlines():
+        if line.strip() and not line.startswith("#"):
+            digest, _, rel = line.strip().partition("  ")
+            out[rel.strip().lstrip("*")] = digest
+    return out
+
+
 def test_all_79_baseline_hashes_pass():
+    """Every digest in the frozen v0.3 manifest is verified against real bytes.
+
+    Commit 30e7732 rebuilt the paper PDF (see baselines/README.md). The frozen manifest is not
+    regenerated: its own hash is pinned, the other 78 files are checked in place, and the PDF's
+    historical digest is checked against the byte-identical copy recovered from Git, kept at
+    HISTORICAL_PDF_RELPATH. The current PDF is checked against its own digest in
+    baselines/paper_pdf_v1.1.0.sha256. Any other mismatch fails."""
+    assert pop.sha256_file(ROOT / "baselines/v0.3.sha256") == BASELINE_MANIFEST_SHA256
+    frozen = _manifest_digests("baselines/v0.3.sha256")
+    assert len(frozen) == 79
     result = pop.verify_baseline_manifest(ROOT)
-    assert result["n_ok"] == 79 and result["n_failed"] == 0 and result["failures"] == []
+    assert result["n_ok"] == 78 and result["failures"] == [PAPER_PDF_RELPATH]
+    assert pop.sha256_file(ROOT / HISTORICAL_PDF_RELPATH) == frozen[PAPER_PDF_RELPATH]
+    current = _manifest_digests(PAPER_PDF_MANIFEST_RELPATH)
+    assert current == {HISTORICAL_PDF_RELPATH: frozen[PAPER_PDF_RELPATH], PAPER_PDF_RELPATH: current[PAPER_PDF_RELPATH]}
+    assert pop.sha256_file(ROOT / PAPER_PDF_RELPATH) == current[PAPER_PDF_RELPATH] != frozen[PAPER_PDF_RELPATH]
 
 
 def test_the_protocol_hash_constant_matches_the_locked_file():

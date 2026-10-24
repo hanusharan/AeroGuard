@@ -472,3 +472,30 @@ implementation. None has been started.
 - **Interpretation:** H1 supported. H2 partly supported: a modest loss on unfamiliar configurations, mainly in lead time, without a detectable distance trend. H3 partly supported: novelty detects shift but not errors; probability-based uncertainty stayed informative and conformal coverage held at this degree of shift. H4 supported for PR-AUC only; the lead-time and recall comparisons are confounded by operating point. H5 supported: partial transfer to a second simulator model, with a large gap to what that simulator allows.
 - **Uncertain / limitations:** 30 JSBSim test events; 4 and 6 holdout configurations are a weak basis for configuration-level claims; the protocol's expectation that the stall-margin rule beats the AoA rule on O03/O04 was not testable with PR-AUC (identical ranking within a configuration). Lead time and false-warning rates are compared at different operating points. All assumptions in `experiments/phase4/SIMULATOR_ASSUMPTIONS.md` apply.
 - **Decided / next:** a threshold-matched lead-time comparison across configurations; primary-source values for Item 50 (to be entered by the author); class-conditional conformal prediction; investigating why the frozen single-aircraft model transfers as well as the family-trained model.
+
+### RL-009 — Phase A audit and evidence closure for Phase 4 (Items 43–53)
+
+- **Date:** 2026-10-24 (written after the checks; not preregistered). **Status:** complete (documentation only). LLM-assisted; this does not count as independent validation (rule 4).
+- **Purpose:** to establish what the stored Phase 4 evidence supports before freezing. No experiment, training, dataset generation, scoring or threshold selection.
+- **Done:**
+  - Searched the working tree, the local filesystem, all remote branches (fetched without changing any branch), Git tags and GitHub releases for Phase 4 data, metadata, models, scores and the final Item 50 report. None was found apart from the aggregates in `outputs/phase4/run_20261015T152932Z/`.
+  - Read the metric, event, threshold, bootstrap and uncertainty code.
+  - Ran the website parity check (176/176) and `tests/test_phase4_core.py` (20 passed) from the repository root. Bytecode and pytest caches were disabled, extra packages came from a scratch directory, and nothing was written to the repository.
+  - Compared the custom weighted AP with scikit-learn (largest difference 2.2e-16 over 300 synthetic cases).
+  - Ran synthetic event-rule checks.
+  - Regenerated the configuration design from the committed code (23 configurations, 0 mismatches against `per_config.csv`).
+- **Observed (from code and stored aggregates):**
+  - Row PR-AUC includes rows already inside an unsafe run.
+  - Event metrics count only crossings followed by at least 5 s of trajectory, and 23.6–29.6% of counted events are repeat crossings.
+  - `left_censored` is recorded but unused.
+  - A warning episode can earn a 5 s lead and also be counted as a false warning.
+  - Evaluated trajectory counts fall short of the design (SEEN 505/540, IDH 1,107/1,200, OOD 1,650/1,800, C00 268/300, JSBSim 906/1,000). By code logic the only cause is trajectories with no usable rows; the per-trajectory causes are unverifiable without metadata.
+  - M_A/M_D false-warning ratios are 3.15 / 1.67 / 4.15 / 2.36, so "3–4 times" (`REPORT.md:35`) is inaccurate for IDH and C00.
+  - The 20 robustness runs come from 6 partition × data combinations.
+  - The bootstrap resamples trajectories within fixed configurations.
+  - The baseline check fails on the paper PDF since `30e7732`. The manifest hash `c893914b…` is the pre-`30e7732` PDF; the current PDF is `7ac9e2e9…`.
+  - No v1.1.0 tag or GitHub release exists, although `CHANGELOG.md` and `CITATION.cff` described one.
+  - Because of the rebuilt PDF, `tests/test_phase3_integrity.py::test_all_79_baseline_hashes_pass` fails. CI on `main` gives 1 failed, 326 passed, 24 skipped, 11 deselected (GitHub runs 8–11; reproduced locally and on a clean `HEAD` copy), while the README promised 191 passed.
+- **Interpretation:** the Phase 4 numbers are traceable to stored aggregates, and the code implements its stated definitions. They cannot be reproduced from data. They describe a selected event population and the tested configurations only. JSBSim shows transfer to one second simulator model.
+- **Uncertain:** the size of the in-stall-row effect on PR-AUC; the excluded and left-censored event counts; lead credited through false episodes; determinism; the final Item 50 result.
+- **Decided:** active wording qualified (README, public README copy, website `Phase4.tsx`, `REPRODUCIBILITY.md`, `baselines/README.md` note with both PDF hashes). v1.1.0 is described as prepared, not released, and `version` and `date-released` were removed from `CITATION.cff` until a tag exists. The CI failure was then resolved without editing `v0.3.sha256`: the baseline PDF was recovered from Git (blob `865a8042`) into `paper/archive/`, both PDFs are recorded in `baselines/paper_pdf_v1.1.0.sha256`, and the baseline-hash test now verifies all 79 historical digests (the PDF via the recovered copy) plus the current PDF. CI selection: 327 passed, 24 skipped, 11 deselected (local run). Frozen outputs, protocol and code not edited; corrections to them are listed in `reports/PHASE_A_FINAL_AUDIT.md` §6. Details and release decision in that report and in `reports/PHASE_A_STATUS.md`.

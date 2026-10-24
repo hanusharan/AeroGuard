@@ -227,8 +227,13 @@ missing (10 need `data/processed/processed_dataset_v2.parquet`; 1,
 `test_feature_schema_matches_actual_columns`, needs
 `data/ml/ml_dataset_v2.parquet`), and 24 data-conditional tests skip. The [Tests workflow](.github/workflows/tests.yml) therefore runs the
 suite with those 11 explicitly deselected (details in `REPRODUCIBILITY.md`); its
-expected result is 191 passed, 24 skipped, 11 deselected (155 original tests plus
-the 36 audit tests passing).
+result was 191 passed, 24 skipped, 11 deselected when the 36 audit tests were added
+(155 original tests plus 36). With the tests added since, CI on `main` gave
+326 passed, 1 failed, 24 skipped, 11 deselected after commit `30e7732` rebuilt the
+paper PDF (`test_all_79_baseline_hashes_pass` failed). That test now checks the
+PDF's historical digest against a copy recovered from Git and the current PDF
+against its own manifest (see [`baselines/README.md`](baselines/README.md)); the
+selection then gives 327 passed, 24 skipped, 11 deselected (local run, 2026-10-24).
 Passing tests do not by themselves reproduce any research result.
 
 ## Evaluation after v1.0 (baselines, uncertainty, generalisation)
@@ -243,9 +248,11 @@ not independent replication.
 | Does the temporal model beat simple baselines? | PR-AUC 0.890 [0.854, 0.922] vs instantaneous model 0.875 [0.835, 0.911] and angle-of-attack rule 0.709 [0.667, 0.745]; paired differences +0.015 [0.008, 0.023] and +0.181 [0.150, 0.219]. | Phase 3, Items 40–42 |
 | Is the model just reading the pilot's control inputs? | Retraining without elevator/throttle inputs: every PR-AUC difference interval includes 0 (5 seeds). No difference demonstrated, which does not show the inputs are irrelevant. | Items 33–34 |
 | How often does it warn falsely? | 18.8 [11.6, 26.8] false-warning episodes per **simulated** hour (1.49 h, 76 events), at its validation-selected threshold. | Items 37–39 |
-| Does it generalise to other simulated aircraft? | No loss detected on held-out configurations inside the training envelope; a modest loss (mainly lead time) on unfamiliar ones; large differences between regimes (gradual 4.6 s vs abrupt 0.7 s median lead). | Phase 4, Items 43–45, 52 |
-| Does it transfer to an independent simulator? | Partial skill on the JSBSim `c172p` model: PR-AUC 0.78 vs 0.94 native; median lead 1.2 s vs 4.8 s. | Phase 4, Items 48–49 |
-| Is the advantage over the instantaneous model robust? | The PR-AUC advantage persisted in 20 of 20 configuration × seed runs; lead-time and recall advantages at each model's own threshold were **not** supported. | Phase 4, Item 53 |
+| Does it generalise to other simulated aircraft? | No loss detected on 4 held-out configurations inside the training envelope; a modest loss (mainly lead time) on 6 unfamiliar ones; large differences between regimes (gradual 4.6 s vs abrupt 0.7 s median lead). The intervals resample flights within these configurations, not aircraft, so they do not describe performance on other aircraft. | Phase 4, Items 43–45, 52 |
+| Does it transfer to a second simulator model? | Partial skill on one JSBSim aircraft model (`c172p`), using a model without control inputs: PR-AUC 0.78 vs 0.94 native; median lead 1.2 s vs 4.8 s (30 test events). Stall labels, features and input profiles are shared with AeroGuard, so this is transfer to that model, not across simulators or to real flight. | Phase 4, Items 48–49 |
+| Is the advantage over the instantaneous model robust? | The PR-AUC advantage held in all 20 model fits (3 configuration partitions × 2 data seeds; not independent replications). Lead-time and recall advantages at each model's own threshold were **not** supported: at those thresholds the instantaneous model warned earlier but raised 1.7–4.2× as many false warnings, so lead time was not compared at a matched operating point. | Phase 4, Item 53 |
+
+Phase 4 scope: row PR-AUC is computed over every evaluated time step, including steps already past the stall boundary; event recall and lead time count only stalls followed by at least 5 s of flight, about a quarter of them repeat crossings within a flight, and lead time is over warned stalls only. Phase 4 datasets and score arrays were not archived, so these figures are traceable to stored aggregates but cannot be recomputed from data (Phase A audit, `reports/PHASE_A_FINAL_AUDIT.md`).
 
 Reports: [`outputs/phase3/`](outputs/phase3/),
 [`outputs/items33_42/`](outputs/items33_42/) (combined comparison in
