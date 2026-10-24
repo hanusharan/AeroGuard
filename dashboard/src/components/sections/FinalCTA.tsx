@@ -10,7 +10,7 @@ export function FinalCTA() {
 
       <div className="mx-auto max-w-3xl px-6 text-center sm:px-8">
         <Reveal>
-          <Pill tone="neutral">Frozen Research · v1.0</Pill>
+          <Pill tone="neutral">Simulation Research · v1.1</Pill>
         </Reveal>
         <Reveal delay={0.08}>
           <h2 className="mt-6 font-mono-tab text-4xl font-bold tracking-tight text-(--color-ink) sm:text-5xl">
@@ -114,8 +114,8 @@ export function FinalCTA() {
             <p>
               Every number on this page is sourced from
               outputs/final/AEROGUARD_FINAL_RESEARCH_REPORT.md and the frozen metrics files it
-              cites, except the Evaluation section, whose figures come from the later Items 33–42
-              reports named beneath it.
+              cites, except the Evaluation and Generalisation Study sections, whose figures come from the
+              later Items 33–42 and Phase 4 reports named beneath them.
             </p>
             <p>
               An independent research project conceived by Bulusu Hanu Sharan and built with the

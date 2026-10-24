@@ -19,6 +19,10 @@ const LIMITATIONS = [
     body: "Cross-mechanism transfer was demonstrated within one broad slow-approach phenomenon class — not across arbitrary unseen flight regimes.",
   },
   {
+    title: "Simulator comparisons are not validation",
+    body: "Transfer to the JSBSim Cessna 172 model and comparison with its lift table test one simulator against another. Neither is evidence about real aircraft or wind-tunnel behaviour.",
+  },
+  {
     title: "No operational or certification claim",
     body: "Results are simulation-internal and do not establish operational aviation safety. AeroGuard is not certified or flight-ready and has not been shown to protect any real aircraft.",
   },
@@ -32,7 +36,7 @@ export function Limitations() {
   return (
     <Section id="limitations">
       <SectionTitle
-        kicker="09 — Scientific Scope"
+        kicker="11 — Scientific Scope"
         title="What this research does and does not establish."
         lede="Stated as scope, not apology — every claim on this page is precisely bounded by what was actually measured."
       />

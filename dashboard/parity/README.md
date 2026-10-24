@@ -55,4 +55,5 @@ the Evaluation section's eligible-event coverage figures against
 node parity/check_metrics.mjs   # from dashboard/
 ```
 
-Current result: **99/99 checks pass**.
+It also checks every Phase 4 value shown on the site (`src/data/phase4.json`)
+against `outputs/phase4/run_20261015T152932Z/`. Current result: **176/176 checks pass**.

@@ -16,7 +16,8 @@ const LINKS = [
 // The desktop bar has no room for these, but the mobile menu does.
 const MOBILE_ONLY_AFTER: Record<string, { id: string; label: string }> = {
   results: { id: "evaluation", label: "Evaluation" },
-  timeline: { id: "future-work", label: "Future Work" },
+  generalization: { id: "phase4", label: "Phase 4" },
+  timeline: { id: "future-work", label: "Open Questions" },
 };
 
 const MOBILE_LINKS = LINKS.flatMap((l) => (MOBILE_ONLY_AFTER[l.id] ? [l, MOBILE_ONLY_AFTER[l.id]] : [l]));
@@ -41,8 +42,8 @@ export function Nav() {
       if (document.getElementById("mobile-nav")?.contains(document.activeElement)) toggleRef.current?.focus();
       setMenuOpen(false);
     };
-    // The menu is only rendered below lg; close it if the viewport grows past that.
-    const mq = window.matchMedia("(min-width: 1024px)");
+    // The menu is only rendered below xl; close it if the viewport grows past that.
+    const mq = window.matchMedia("(min-width: 1280px)");
     const onMq = () => mq.matches && setMenuOpen(false);
     window.addEventListener("keydown", onKey);
     mq.addEventListener("change", onMq);
@@ -76,9 +77,9 @@ export function Nav() {
           </span>
         </a>
 
-        {/* Adding an "Intervention" link left no slack at 1280px, so the gap and
-            letter-spacing tighten below xl rather than pushing the CTA off-screen. */}
-        <nav aria-label="Sections" className="mx-4 hidden items-center gap-4 lg:flex xl:mx-6 xl:gap-6">
+        {/* The full link bar needs about 1,260px, so it appears from xl (1280px);
+            narrower screens use the menu button. */}
+        <nav aria-label="Sections" className="mx-4 hidden items-center gap-4 xl:flex xl:mx-6 xl:gap-6">
           {LINKS.map((l) => (
             <a
               key={l.id}
@@ -101,7 +102,7 @@ export function Nav() {
           <button
             ref={toggleRef}
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-(--color-line-strong) bg-white/[0.04] text-(--color-ink) transition-colors hover:border-(--color-signal)/50 hover:text-(--color-signal) lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-(--color-line-strong) bg-white/[0.04] text-(--color-ink) transition-colors hover:border-(--color-signal)/50 hover:text-(--color-signal) xl:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             aria-label={menuOpen ? "Close section menu" : "Open section menu"}
@@ -122,7 +123,7 @@ export function Nav() {
         <nav
           id="mobile-nav"
           aria-label="Sections"
-          className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-(--color-line) bg-(--color-void) lg:hidden"
+          className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-(--color-line) bg-(--color-void) xl:hidden"
         >
           <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-1 px-4 py-3 sm:grid-cols-3 sm:px-6">
             {MOBILE_LINKS.map((l) => (

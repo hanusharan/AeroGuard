@@ -17,7 +17,7 @@ export function Generalization() {
   return (
     <Section id="generalization">
       <SectionTitle
-        kicker="08 — Generalization"
+        kicker="09 — Generalization"
         title="Does the warning signal transfer to a mechanism the model never trained on?"
         lede="Candidate D's two-pulse control profile produced v0.3's training data. A structurally distinct single-pulse mechanism — reaching the same physical stall boundary by a genuinely different temporal path — tests whether the model learned a transferable pattern or memorized one shape."
       />

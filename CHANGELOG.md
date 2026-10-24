@@ -28,7 +28,16 @@ work listed in the dated entries below. No v1.0 result was changed.
 - **Evaluation after v1.0:** Phase 3 baselines, Items 33–42 and the Phase 4
   generalisation study (Items 43–53, merged from PR #4) are summarised in the
   README section "Evaluation after v1.0".
-- **Dashboard:** launch-readiness and accessibility fixes (PR #3).
+- **Dashboard:** launch-readiness and accessibility fixes (PR #3); a Phase 4
+  "Generalisation Study" section (values exported by
+  `dashboard/data_export/export_phase4.py` and checked by
+  `parity/check_metrics.mjs`, 176/176); the stale "Next Research Stage" section
+  replaced by "Open Questions"; sections renumbered (two were numbered 10);
+  timeline extended to ten stages; a "simulator comparisons are not
+  validation" limitation; the causal-claim sentence qualified to the
+  simulator; desktop navigation moved to 1280 px and wider, because between
+  1024 and about 1074 px it clipped the "Key Result" button.
+- **CITATION.cff:** version 1.1.0 and release date.
 - **Not yet in this release:** the Item 50 final report (to be added by the
   author), and the author's own contribution statement (`AUTHOR_STATEMENT.md`,
   to be written by the author).
