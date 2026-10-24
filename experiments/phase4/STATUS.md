@@ -1,5 +1,10 @@
 # Phase 4 status (2026-10-15)
 
+> **Superseded.** This file was written when the session paused mid-way. All items have since been run; results are in
+> [`outputs/phase4/run_20261015T152932Z/REPORT.md`](../../outputs/phase4/run_20261015T152932Z/REPORT.md). It is kept unchanged below
+> as the record of that point, except for this note. **Correction:** the AeroGuard stall speed at 1,111 kg given below (24.7 m/s) is wrong;
+> the correct value is 25.2 m/s (report §9).
+
 Protocol: `PROTOCOL.md` (committed before any data). This file records exactly what is built, what was run, and what is still open. Work stopped early because the session's compute budget ran low.
 
 | Item | State | Notes |
