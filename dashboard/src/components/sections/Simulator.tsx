@@ -119,7 +119,7 @@ export function Simulator() {
   return (
     <Section id="simulator">
       <SectionTitle
-        kicker="07 — Stall Simulator"
+        kicker="08 — Stall Simulator"
         title="Enter an airframe. Find out where its stall warning belongs."
         lede={
           <>

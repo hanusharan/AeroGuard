@@ -1,7 +1,8 @@
 // Checks every number in src/data/metrics.json against the frozen research
 // outputs it was exported from (see data_export/export_metrics.py), and the
 // eligible-event coverage figures hard-coded in the Evaluation section against
-// the Item 38 output. Read-only; no Python environment needed.
+// the Item 38 output, and src/data/phase4.json against the Phase 4 run.
+// Read-only; no Python environment needed.
 //
 //   node parity/check_metrics.mjs        (from dashboard/)
 //
@@ -89,6 +90,39 @@ eq("evaluation eligible events at 4s (shown 67)", 67, ft["4s"].primary_all_event
 // Same warned events as Key Results' all-event coverage, different denominator.
 eq("≥2s numerator matches Key Results", ft["2s"].primary_all_events.numerator, Math.round(site.v03.warningCoverage[">=2s"] * site.v03.nEvents));
 eq("≥4s numerator matches Key Results", ft["4s"].primary_all_events.numerator, Math.round(site.v03.warningCoverage[">=4s"] * site.v03.nEvents));
+
+// Phase 4 section: src/data/phase4.json against the Phase 4 run.
+const P4 = "outputs/phase4/run_20261015T152932Z/";
+const p4 = JSON.parse(readFileSync(join(here, "..", "src", "data", "phase4.json"), "utf8"));
+const prim = json(P4 + "primary.json");
+const jsb = json(P4 + "jsbsim.json").results;
+const rob = json(P4 + "robustness.json");
+const p4group = (label, s, src) => {
+  eq(`${label}.nTrajectories`, s.nTrajectories, src.n_trajectories);
+  eq(`${label}.prAuc`, s.prAuc, src.row.pr_auc, 0);
+  s.prAucCi.forEach((v, i) => eq(`${label}.prAucCi[${i}]`, v, src.ci95.pr_auc[i], 0));
+  eq(`${label}.nEvents`, s.nEvents, src.event.n_events);
+  eq(`${label}.nWarned`, s.nWarned, src.event.n_warned);
+  eq(`${label}.medianLeadS`, s.medianLeadS, src.event.median_lead_s, 0);
+  eq(`${label}.ece`, s.ece, src.row.ece, 0);
+};
+for (const g of ["SEEN", "IDH", "OOD", "C00"]) p4group(`phase4.${g}`, p4.groups[g], prim.group_metrics[g].M_D);
+p4group("phase4.jsbsim.cross", p4.jsbsim.cross, jsb["cross|X_D|20260817|JSB_test"]);
+p4group("phase4.jsbsim.native", p4.jsbsim.native, jsb["native|X_D|20260817|JSB_test"]);
+eq("phase4.nConfigurations", p4.nConfigurations, Object.values(prim.partition).reduce((n, v) => n + v.length, 0));
+eq("phase4.frozenZeroShotOOD.prAuc", p4.frozenZeroShotOOD.prAuc, prim.group_metrics.OOD.F_v03.row.pr_auc, 0);
+eq("phase4.item44.delta", p4.item44.delta, prim.item44.pr_auc.delta, 0);
+eq("phase4.item45.rho", p4.item45.rho, prim.item45.spearman_pr_auc_drop_vs_d_ood.rho, 0);
+for (const [name, key] of [["gradual", "gradual_approach_v3"], ["abrupt", "stall"]]) {
+  const src = prim.item52.ALL.regime[key].M_D.event;
+  eq(`phase4.regimes.${name}.nEvents`, p4.regimes[name].nEvents, src.n_events);
+  eq(`phase4.regimes.${name}.medianLeadS`, p4.regimes[name].medianLeadS, src.median_lead_s, 0);
+}
+for (const [k, v] of Object.entries(rob)) {
+  eq(`phase4.robustness.${k}.signHolds`, p4.robustness[k].signHolds, Math.round(v.sign_holds_fraction * v.n_runs));
+  eq(`phase4.robustness.${k}.diff`, p4.robustness[k].diff, v.primary_diff, 0);
+  eq(`phase4.robustness.${k}.verdict`, p4.robustness[k].verdict, v.verdict);
+}
 
 console.log(`${checked - failed}/${checked} checks passed`);
 process.exit(failed ? 1 : 0);

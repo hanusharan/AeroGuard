@@ -82,7 +82,7 @@ export function Intervention() {
       <SectionTitle
         kicker="04 — The Intervention"
         title="One change to the dataset turned a 0.54s detector into a 4.72s warning."
-        lede="This is the central result of the research, and it is a causal claim rather than a correlational one: everything that could explain the improvement was held fixed except a single, deliberate change to how control inputs were generated."
+        lede="This is the central result of the research, and within this simulator it is a causal claim rather than a correlational one: everything that could explain the improvement was held fixed except a single, deliberate change to how control inputs were generated."
       />
 
       {/* min-w-0 so a long source path inside a column can't widen the track. */}

@@ -9,15 +9,17 @@ const STAGES = [
   { label: "Precursor Diagnosis", detail: "Root cause: control-input timing, not physics" },
   { label: "v0.3", detail: "3,150 trajectories, engineered multi-second precursor" },
   { label: "Generalization", detail: "Cross-mechanism transfer, CASE A" },
-  { label: "Final Research", detail: "190/190 tests, frozen, packaged" },
+  { label: "v1.0 Research Record", detail: "190/190 tests at the time, frozen, packaged, DOI" },
+  { label: "Reproduction & Baselines", detail: "v0.3 evaluation reproduced; compared with instantaneous and angle-of-attack baselines" },
+  { label: "Generalisation Study", detail: "23 simulated aircraft and the JSBSim c172p; pre-specified pass/fail rules" },
 ];
 
 export function Timeline() {
   return (
     <Section id="timeline">
       <SectionTitle
-        kicker="10 — Research Timeline"
-        title="Eight stages, one continuous line of evidence."
+        kicker="12 — Research Timeline"
+        title="Ten stages, one continuous line of evidence."
       />
 
       <div className="relative">
@@ -45,8 +47,8 @@ export function Timeline() {
       </div>
 
       <SourceNote>
-        PROVENANCE.md — canonical, superseded-historical, and rejected-candidate artifacts for
-        every stage above, with the script and seed that produced each.
+        PROVENANCE.md (stages 1–8), REPRODUCIBILITY_REPORT.md and outputs/items33_42/ (stage 9),
+        outputs/phase4/ (stage 10); dated reasoning in RESEARCH_LOG.md.
       </SourceNote>
     </Section>
   );

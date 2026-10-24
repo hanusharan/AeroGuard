@@ -31,7 +31,7 @@ export function Evaluation() {
   return (
     <Section id="evaluation">
       <SectionTitle
-        kicker="Evaluation — Items 33–42"
+        kicker="06 — Evaluation (Items 33–42)"
         title="A fair comparison, with uncertainty and leakage checks."
         lede="Same test rows, same split, thresholds chosen on validation data only, and 95% intervals from resampling whole trajectories. Test set: 456 simulated flights, 76 stall events, about 1.49 simulated hours."
       />

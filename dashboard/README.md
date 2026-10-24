@@ -38,6 +38,7 @@ research outputs directly:
 # from the repository root, with the project's own .venv active
 python dashboard/data_export/export_metrics.py         # -> src/data/metrics.json
 python dashboard/data_export/export_flight_replay.py    # -> src/data/flightReplay.json
+python dashboard/data_export/export_phase4.py           # -> src/data/phase4.json (stdlib only)
 ```
 
 - `export_metrics.py` copies headline numbers verbatim from

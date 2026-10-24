@@ -14,6 +14,7 @@ import { Limitations } from "./components/sections/Limitations";
 import { Timeline } from "./components/sections/Timeline";
 import { FinalCTA } from "./components/sections/FinalCTA";
 import { FutureWork } from "./components/sections/FutureWork";
+import { Phase4 } from "./components/sections/Phase4";
 import { MotionConfig } from "framer-motion";
 import { useEffect } from "react";
 
@@ -43,6 +44,7 @@ function App() {
           <FlightReplay />
           <Simulator />
           <Generalization />
+          <Phase4 />
           <Limitations />
           <Timeline />
           <FutureWork />

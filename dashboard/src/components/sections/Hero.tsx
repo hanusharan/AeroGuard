@@ -16,7 +16,7 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="flex justify-center"
         >
-          <Pill tone="neutral">Frozen Research · v1.0</Pill>
+          <Pill tone="neutral">Simulation Research · v1.1</Pill>
         </motion.div>
 
         <motion.h1

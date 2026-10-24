@@ -33,7 +33,7 @@ export function FlightReplay() {
   return (
     <Section id="replay">
       <SectionTitle
-        kicker="06 — Interactive Flight Replay"
+        kicker="07 — Interactive Flight Replay"
         title="One real held-out trajectory, scored by the frozen model."
         lede={
           <>
