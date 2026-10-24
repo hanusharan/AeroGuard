@@ -231,6 +231,30 @@ expected result is 191 passed, 24 skipped, 11 deselected (155 original tests plu
 the 36 audit tests passing).
 Passing tests do not by themselves reproduce any research result.
 
+## Evaluation after v1.0 (baselines, uncertainty, generalisation)
+
+After the v1.0 packaging, the result was re-examined against simple baselines
+under protocols written and hash-locked **before** any result was computed.
+All of this is simulation-only and uses the same author and code base, so it is
+not independent replication.
+
+| Question | Finding | Record |
+|---|---|---|
+| Does the temporal model beat simple baselines? | PR-AUC 0.890 [0.854, 0.922] vs instantaneous model 0.875 [0.835, 0.911] and angle-of-attack rule 0.709 [0.667, 0.745]; paired differences +0.015 [0.008, 0.023] and +0.181 [0.150, 0.219]. | Phase 3, Items 40–42 |
+| Is the model just reading the pilot's control inputs? | Retraining without elevator/throttle inputs: every PR-AUC difference interval includes 0 (5 seeds). No difference demonstrated, which does not show the inputs are irrelevant. | Items 33–34 |
+| How often does it warn falsely? | 18.8 [11.6, 26.8] false-warning episodes per **simulated** hour (1.49 h, 76 events), at its validation-selected threshold. | Items 37–39 |
+| Does it generalise to other simulated aircraft? | No loss detected on held-out configurations inside the training envelope; a modest loss (mainly lead time) on unfamiliar ones; large differences between regimes (gradual 4.6 s vs abrupt 0.7 s median lead). | Phase 4, Items 43–45, 52 |
+| Does it transfer to an independent simulator? | Partial skill on the JSBSim `c172p` model: PR-AUC 0.78 vs 0.94 native; median lead 1.2 s vs 4.8 s. | Phase 4, Items 48–49 |
+| Is the advantage over the instantaneous model robust? | The PR-AUC advantage persisted in 20 of 20 configuration × seed runs; lead-time and recall advantages at each model's own threshold were **not** supported. | Phase 4, Item 53 |
+
+Reports: [`outputs/phase3/`](outputs/phase3/),
+[`outputs/items33_42/`](outputs/items33_42/) (combined comparison in
+`items40_42/run_20261015T144358282823Z/REPORT.md`),
+[`outputs/phase4/run_20261015T152932Z/REPORT.md`](outputs/phase4/run_20261015T152932Z/REPORT.md);
+protocols under [`experiments/`](experiments/); reasoning in
+[`RESEARCH_LOG.md`](RESEARCH_LOG.md) (RL-001 to RL-008). The reproduction of the
+v0.3 evaluation is summarised in [`REPRODUCIBILITY_REPORT.md`](REPRODUCIBILITY_REPORT.md).
+
 ## Limitations
 
 Not a validated real-aircraft model (2D/longitudinal only, constant air

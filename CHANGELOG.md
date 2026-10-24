@@ -3,8 +3,8 @@
 Notable changes to the AeroGuard repository, newest first. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-AeroGuard has **no tagged releases or GitHub releases**. Entries below are
-grouped by commit date taken from Git history; the only version labels used are
+The first tagged release is **v1.1.0**. Earlier entries are grouped by commit
+date taken from Git history; the version labels used for them are
 the ones the repository itself uses ("v1.0" for the frozen research packaging,
 and v0.1–v0.3 for the datasets). The v0.1–v0.3 research was done before the
 first commit, so Git history does not record when it happened — see
@@ -14,6 +14,26 @@ This file covers the repository as a whole. The research paper has its own
 build notes in [`paper/CHANGELOG.md`](paper/CHANGELOG.md).
 
 ## [Unreleased]
+
+## [1.1.0] — 2026-10-24
+
+First tagged release. It preserves the v1.0 research record (Zenodo DOI
+10.5281/zenodo.22724022) and adds the integrity, reproduction and evaluation
+work listed in the dated entries below. No v1.0 result was changed.
+
+- **Paper:** event-metric scope wording applied (from
+  `paper/PROPOSED_AMENDMENT_event_metrics_scope.md`; wording only, no number
+  changed). The PDF was rebuilt and now shows the correct repository URL,
+  `github.com/hanusharan/AeroGuard`.
+- **Evaluation after v1.0:** Phase 3 baselines, Items 33–42 and the Phase 4
+  generalisation study (Items 43–53, merged from PR #4) are summarised in the
+  README section "Evaluation after v1.0".
+- **Dashboard:** launch-readiness and accessibility fixes (PR #3).
+- **Not yet in this release:** the Item 50 final report (to be added by the
+  author), and the author's own contribution statement (`AUTHOR_STATEMENT.md`,
+  to be written by the author).
+
+### Changes before the 1.1.0 tag (previously unreleased)
 
 ### Added — Phase 4 (Items 43–53), 2026-10-15
 
