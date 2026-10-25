@@ -16,16 +16,6 @@ build notes in [`paper/CHANGELOG.md`](paper/CHANGELOG.md).
 
 ## [Unreleased]
 
-- **Phase A audit of Phase 4 (documentation only):**
-  - Added `reports/PHASE_A_FINAL_AUDIT.md` and `reports/PHASE_A_STATUS.md`.
-  - Qualified the Phase 4 wording in `README.md`, `dashboard/public/docs/AEROGUARD_README.md` and the website section `Phase4.tsx`: a second simulator model rather than an independent simulator; 20 model fits over 6 partition × data combinations; intervals describe flights within the tested configurations; lead time compared at unmatched false-warning rates (1.7–4.2×); scope of row PR-AUC and of the event population.
-  - Added a Phase 4 section to `REPRODUCIBILITY.md`.
-  - Documented in `baselines/README.md` and `REPRODUCIBILITY.md` (level 0) that the baseline check fails on the paper PDF since `30e7732`, giving the manifest hash and the current hash. The frozen manifest is unchanged.
-  - Corrected the v1.1.0 wording: it is prepared, not yet tagged or released. Removed `version` and `date-released` from `CITATION.cff` until the tag exists, as `CONTRIBUTING.md` requires.
-  - Corrected the CI expected-result statements in `README.md`, its public copy and `REPRODUCIBILITY.md`: since `30e7732`, CI gives 326 passed, 1 failed (`test_all_79_baseline_hashes_pass`, because of the rebuilt PDF), 24 skipped, 11 deselected.
-  - Resolved the CI failure from the rebuilt PDF without touching `baselines/v0.3.sha256`. The baseline PDF bytes were recovered from Git into `paper/archive/AeroGuard_Research_Paper_baseline_v0.3.pdf`. New `baselines/paper_pdf_v1.1.0.sha256` records both PDFs. `test_all_79_baseline_hashes_pass` now pins the frozen manifest's own hash and verifies all 79 historical digests (the PDF via the recovered copy) plus the current PDF. CI selection: 327 passed, 24 skipped, 11 deselected (local run).
-  - No number, result file, frozen artifact, protocol or model code was changed. Reasoning in `RESEARCH_LOG.md` RL-009.
-
 ## [1.1.0] — not yet released (prepared 2026-10-24)
 
 Prepared as the first tagged release; the tag has not been created. It preserves the v1.0 research record (Zenodo DOI
@@ -51,9 +41,18 @@ work listed in the dated entries below. No v1.0 result was changed.
 - **CITATION.cff:** version 1.1.0 and release date were added in `30e7732`, then
   removed again in the Phase A audit because no release exists yet; they are to be
   added when the tag is created.
-- **Not yet in this release:** the Item 50 final report (to be added by the
-  author), and the author's own contribution statement (`AUTHOR_STATEMENT.md`,
-  to be written by the author).
+- **Excluded from this release (author decision):** the Item 50 final report,
+  which is not in the repository, and the author's contribution statement:
+  `AUTHOR_STATEMENT.md` remains an unfinished template, not linked from the README.
+- **Phase A audit of Phase 4 (documentation only):**
+  - Added `reports/PHASE_A_FINAL_AUDIT.md` and `reports/PHASE_A_STATUS.md`.
+  - Qualified the Phase 4 wording in `README.md`, `dashboard/public/docs/AEROGUARD_README.md` and the website section `Phase4.tsx`: a second simulator model rather than an independent simulator; 20 model fits over 6 partition × data combinations; intervals describe flights within the tested configurations; lead time compared at unmatched false-warning rates (1.7–4.2×); scope of row PR-AUC and of the event population.
+  - Added a Phase 4 section to `REPRODUCIBILITY.md`.
+  - Documented in `baselines/README.md` and `REPRODUCIBILITY.md` (level 0) that the baseline check fails on the paper PDF since `30e7732`, giving the manifest hash and the current hash. The frozen manifest is unchanged.
+  - Corrected the v1.1.0 wording: it is prepared, not yet tagged or released. Removed `version` and `date-released` from `CITATION.cff` until the tag exists, as `CONTRIBUTING.md` requires.
+  - Corrected the CI expected-result statements in `README.md`, its public copy and `REPRODUCIBILITY.md`: since `30e7732`, CI gives 326 passed, 1 failed (`test_all_79_baseline_hashes_pass`, because of the rebuilt PDF), 24 skipped, 11 deselected.
+  - Resolved the CI failure from the rebuilt PDF without touching `baselines/v0.3.sha256`. The baseline PDF bytes were recovered from Git into `paper/archive/AeroGuard_Research_Paper_baseline_v0.3.pdf`. New `baselines/paper_pdf_v1.1.0.sha256` records both PDFs. `test_all_79_baseline_hashes_pass` now pins the frozen manifest's own hash and verifies all 79 historical digests (the PDF via the recovered copy) plus the current PDF. CI selection: 327 passed, 24 skipped, 11 deselected (local run).
+  - No number, result file, frozen artifact, protocol or model code was changed. Reasoning in `RESEARCH_LOG.md` RL-009.
 
 ### Changes included in 1.1.0 (previously unreleased)
 
