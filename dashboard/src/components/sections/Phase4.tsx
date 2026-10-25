@@ -16,8 +16,8 @@ type Group = (typeof data.groups)["SEEN"];
 const CARDS: { label: string; sub: string; g: Group }[] = [
   { label: "Training aircraft", sub: "12 configurations, held-out test flights", g: data.groups.SEEN },
   { label: "New aircraft, inside the range", sub: "4 configurations never trained on", g: data.groups.IDH },
-  { label: "Unfamiliar aircraft", sub: "6 configurations outside the range", g: data.groups.OOD },
-  { label: "Different simulator", sub: "JSBSim c172p, trained on AeroGuard only", g: data.jsbsim.cross },
+  { label: "Unfamiliar aircraft", sub: "6 configurations, some parameters outside the range", g: data.groups.OOD },
+  { label: "Different simulator", sub: "JSBSim c172p; model without control inputs, trained on AeroGuard only", g: data.jsbsim.cross },
 ];
 
 const r = data.robustness;
@@ -42,22 +42,22 @@ const FINDINGS: { title: string; verdict: string; tone: "safe" | "caution" | "cr
     body: `Median lead ${f2(data.regimes.gradual.medianLeadS)} s on gradual approaches (${data.regimes.gradual.nEvents} events) but ${f2(data.regimes.abrupt.medianLeadS)} s on abrupt entries (${data.regimes.abrupt.nEvents} events). Multi-second warning exists only for gradual approaches.`,
   },
   {
-    title: "Transfer to an independent simulator",
+    title: "Transfer to a second simulator model",
     verdict: "Partial skill",
     tone: "caution",
-    body: `Trained only on AeroGuard, the model warned all ${data.jsbsim.cross.nEvents} JSBSim test stalls, but PR-AUC fell to ${f3(data.jsbsim.cross.prAuc)} (${f3(data.jsbsim.native.prAuc)} when trained on JSBSim itself) and median lead to ${f2(data.jsbsim.cross.medianLeadS)} s (${f2(data.jsbsim.native.medianLeadS)} s natively). Only ${data.jsbsim.cross.nEvents} test events, so event metrics are coarse.`,
+    body: `Trained only on AeroGuard, the model warned all ${data.jsbsim.cross.nEvents} JSBSim test stalls, but PR-AUC fell to ${f3(data.jsbsim.cross.prAuc)} (${f3(data.jsbsim.native.prAuc)} when trained on JSBSim itself) and median lead to ${f2(data.jsbsim.cross.medianLeadS)} s (${f2(data.jsbsim.native.medianLeadS)} s natively). Only ${data.jsbsim.cross.nEvents} test events, so event metrics are coarse. One aircraft model, with stall labels, features and input profiles shared with AeroGuard: this shows transfer to that model, not across simulators or to real flight.`,
   },
   {
     title: "Temporal vs. instantaneous model",
     verdict: "Ranking advantage persists",
     tone: "safe",
-    body: `Higher PR-AUC in ${r["K1|IDH"].signHolds}/${r["K1|IDH"].nRuns} runs on new aircraft (${signed3(r["K1|IDH"].diff)} ${ciSigned3(r["K1|IDH"].ci)}) and ${r["K1|OOD"].signHolds}/${r["K1|OOD"].nRuns} on unfamiliar ones (${signed3(r["K1|OOD"].diff)} ${ciSigned3(r["K1|OOD"].ci)}).`,
+    body: `Higher PR-AUC in ${r["K1|IDH"].signHolds}/${r["K1|IDH"].nRuns} runs on new aircraft (${signed3(r["K1|IDH"].diff)} ${ciSigned3(r["K1|IDH"].ci)}) and ${r["K1|OOD"].signHolds}/${r["K1|OOD"].nRuns} on unfamiliar ones (${signed3(r["K1|OOD"].diff)} ${ciSigned3(r["K1|OOD"].ci)}). The runs are model fits over 3 configuration partitions × 2 data seeds, not independent replications.`,
   },
   {
     title: "Longer lead or higher recall?",
     verdict: "Not supported",
     tone: "critical",
-    body: `A longer median lead than the instantaneous model held in only ${r["K2|IDH"].signHolds}/${r["K2|IDH"].nRuns} runs, and recall at least matching the angle-of-attack rule in ${r["K3|OOD"].signHolds}/${r["K3|OOD"].nRuns} on unfamiliar aircraft. Each model ran at its own threshold, so these compare operating points; a threshold-matched comparison was not part of this study.`,
+    body: `A longer median lead than the instantaneous model held in only ${r["K2|IDH"].signHolds}/${r["K2|IDH"].nRuns} runs, and recall at least matching the angle-of-attack rule in ${r["K3|OOD"].signHolds}/${r["K3|OOD"].nRuns} on unfamiliar aircraft. Each model ran at its own threshold: the instantaneous model warned earlier but raised more false warnings. These compare operating points, not models; lead time at a matched false-warning rate was not tested, so the question is open.`,
   },
 ];
 
@@ -67,7 +67,7 @@ export function Phase4() {
       <SectionTitle
         kicker="10 — Generalisation Study (Phase 4)"
         title="Does the warning survive a different aircraft — or a different simulator?"
-        lede={`${data.nConfigurations} simulated aircraft configurations varying 15 parameters (including mass, wing area, lift curve, drag, thrust, pitch response and air density), plus the independent JSBSim Cessna 172 model. The protocol and its pass/fail rules were committed before any of this data existed.`}
+        lede={`${data.nConfigurations} simulated aircraft configurations varying 15 parameters (including mass, wing area, lift curve, drag, thrust, pitch response and air density), plus a second simulator, JSBSim's community Cessna 172 (c172p) model. The protocol and its pass/fail rules were committed before any of this data existed.`}
       />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 [&>*]:min-w-0">
@@ -93,8 +93,11 @@ export function Phase4() {
         ))}
       </div>
       <p className="mt-3 text-xs text-(--color-ink-faint)">
-        Family-trained temporal model, primary seed, at its validation-selected threshold; 95% trajectory-bootstrap intervals.
-        Lead times are over warned stalls only. For comparison, the v0.3 model on its own aircraft: PR-AUC 0.890.
+        Family-trained temporal model, primary seed, at its validation-selected threshold. The 95% intervals resample flights
+        within the tested configurations, not aircraft, so they do not describe other aircraft. PR-AUC covers every evaluated
+        time step, including steps already past the stall boundary. A stall is counted only if at least 5 s of flight follow
+        it (about a quarter are repeat crossings within a flight); lead times are over warned stalls only. For comparison,
+        the v0.3 model on its own aircraft: PR-AUC 0.890.
       </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 [&>*]:min-w-0">
@@ -114,7 +117,7 @@ export function Phase4() {
       <Reveal>
         <div className="mt-6 rounded-2xl border border-(--color-line-strong) bg-white/[0.02] p-6 text-sm leading-relaxed text-(--color-ink-soft)">
           <span className="font-semibold text-(--color-ink)">An unexpected result.</span> The original v0.3 model, trained on
-          one aircraft and never refitted, ranked stalls on the unfamiliar aircraft about as well as the family-trained model
+          one aircraft and never refitted, ranked time steps on the unfamiliar aircraft about as well as the family-trained model
           (PR-AUC {f3(data.frozenZeroShotOOD.prAuc)} vs {f3(data.groups.OOD.prAuc)}) and was better calibrated, while warning
           later and less often. Retraining on many aircraft did not improve ranking on unfamiliar ones in this simulator.
         </div>

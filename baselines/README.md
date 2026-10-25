@@ -31,6 +31,34 @@ From the repository root:
 sha256sum -c baselines/v0.3.sha256        # expect: every line "OK"
 ```
 
+> **Note (Phase A audit, 2026-10-24).** Commit `30e7732` rebuilt
+> `paper/AeroGuard_Research_Paper.pdf` with corrected wording and repository URL.
+> Since then this check reports **78 OK and 1 FAILED** (the PDF). This is
+> expected and is not a repair target:
+>
+> - Baseline PDF, the version recorded in `v0.3.sha256` (the file as it was
+>   before `30e7732`): `c893914b4ace838bd5fd3623bd9f631356d1826dbc08ba2be4a21d6ff1d80dc2`.
+> - Current PDF, rebuilt in `30e7732`; `dashboard/public/paper/` holds an
+>   identical copy: `7ac9e2e9bb36d56473a5dbf96f4f14e78562a7e45cd6f176f395b42d127aa62d`.
+>
+> The current PDF does **not** match the baseline checksum. The manifest was
+> deliberately not regenerated (rule 1 below). Following rule 1, both PDFs are
+> verified by a separate manifest instead:
+>
+> ```bash
+> sha256sum -c baselines/paper_pdf_v1.1.0.sha256   # expect: both lines "OK"
+> ```
+>
+> - `paper/archive/AeroGuard_Research_Paper_baseline_v0.3.pdf` holds the baseline PDF
+>   bytes, recovered unchanged from Git (blob `865a8042`, identical in `47bc562`
+>   through `30e7732^`). It matches the digest in `v0.3.sha256`.
+> - `paper/AeroGuard_Research_Paper.pdf` is the current PDF and matches its own line.
+>
+> `tests/test_phase3_integrity.py::test_all_79_baseline_hashes_pass` pins the hash of
+> `v0.3.sha256` itself. It checks the other 78 files in place, the PDF's historical
+> digest against the recovered copy, and the current PDF against the new manifest.
+> Any other mismatch fails.
+
 `v0.3.sha256` lists 79 tracked files, all unchanged since the initial snapshot
 commit apart from the documents added or edited later (`PROVENANCE.md`, the
 final report and status, the experiment log and the paper PDF):
@@ -65,9 +93,10 @@ On macOS use `shasum -a 256 -c baselines/v0.3.sha256`.
   original runs are unknown.
 - **The paper source files.** `paper/AeroGuard_Research_Paper.md` and `.html`
   are not hashed here because their repository link was corrected after the
-  baseline was frozen; the PDF, which still carries the older link, is hashed. This
-  manifest does not show that the PDF is byte-identical to the file deposited on
-  Zenodo (not checked).
+  baseline was frozen; the PDF as it was then, carrying the older link, is hashed
+  (the current, rebuilt PDF does not match it; see the note under *Verify*). This
+  manifest does not show that the baseline PDF is byte-identical to the file
+  deposited on Zenodo (not checked).
 - **Tests and the dashboard.** They are not part of the scientific baseline.
 
 ## Rules for future baselines

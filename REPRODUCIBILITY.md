@@ -42,7 +42,11 @@ the repository. `requirements.txt` is unchanged.
 regenerated in CI. On a clean checkout the original 190 tests give 155 passed,
 24 skipped, 2 failed, 9 errors. (The 36 audit tests added later bring the
 collected total to 226 and the CI result to 191 passed, 24 skipped, 11
-deselected; the 190 and 155 below refer to the original suite.) The 11 failures/errors all come from
+deselected; the 190 and 155 below refer to the original suite. After commit
+`30e7732` rebuilt the paper PDF, the baseline-hash test failed (326 passed,
+1 failed). With the test now checking the recovered historical PDF and the
+current PDF's own manifest (see [`baselines/README.md`](baselines/README.md)),
+the CI selection gives 327 passed, 24 skipped, 11 deselected (local run, 2026-10-24).) The 11 failures/errors all come from
 `FileNotFoundError` on gitignored data files and have no skip guard: 10 need
 `data/processed/processed_dataset_v2.parquet` (all nine in
 `tests/test_ml_pipeline.py` plus `test_build_ml_table_is_deterministic`), and 1,
@@ -91,8 +95,8 @@ validate the science.
 
 | Level | What you do | Needs data? | Outcome (see evidence below) |
 |---|---|---|---|
-| 0. Verify frozen files | `sha256sum -c baselines/v0.3.sha256` | no | Confirms the tracked v0.3 model, config, reports and code are unchanged. |
-| 1. Test a clean checkout | CI command in `.github/workflows/tests.yml` | no | 191 passed, 24 skipped, 11 deselected (226 collected; 155 passed of the original 190). |
+| 0. Verify frozen files | `sha256sum -c baselines/v0.3.sha256` | no | Confirms the tracked v0.3 model, config, reports and code are unchanged. Expected result since `30e7732`: 78 OK, 1 FAILED (the paper PDF was rebuilt). Then run `sha256sum -c baselines/paper_pdf_v1.1.0.sha256`, which verifies the recovered historical PDF and the current PDF; see [`baselines/README.md`](baselines/README.md). |
+| 1. Test a clean checkout | CI command in `.github/workflows/tests.yml` | no | 191 passed, 24 skipped, 11 deselected when the audit tests were added (226 collected; 155 passed of the original 190). Now (local run, 2026-10-24): 327 passed, 24 skipped, 11 deselected; see the test policy above. |
 | 2. Regenerate datasets | `scripts/generate_dataset_v2.py`, `scripts/generate_dataset_v3.py` | no | Regenerates the data; split manifests identical, floats within about 1e-12. |
 | 3. Rebuild ML inputs and run the full suite | `scripts/prepare_ml_dataset.py`, temporal cache builders, `pytest tests/` | after level 2 | 190 passed. |
 | 4. Re-score the frozen model | Snippet below | after level 2 | Matches the published v0.3 TEST metrics to about 1e-10. |
@@ -320,6 +324,32 @@ Output: `outputs/ml_v03_generalization/`. This stage never refits or modifies
 `outputs/ml_v03/models/primary_model_D_1s.joblib` — the forward check evaluates
 it exactly as-is.
 
+## Phase 4 — aircraft family and JSBSim (Items 43–53)
+
+The commands are those in §13 of
+[`outputs/phase4/run_20261015T152932Z/REPORT.md`](outputs/phase4/run_20261015T152932Z/REPORT.md)
+(`scripts/phase4_generate.py`, `scripts/phase4_generate_jsbsim.py`,
+`scripts/run_phase4.py` with stages `primary`, `jsbsim` and `robust`, then
+`scripts/phase4_item50.py`). What is and is not known about reproducing them
+(checked in the Phase A audit, [`reports/PHASE_A_FINAL_AUDIT.md`](reports/PHASE_A_FINAL_AUDIT.md)):
+
+- **Not archived:** the generated datasets, per-trajectory metadata
+  (`*_meta.csv`), `envelopes.json`, fitted models and score arrays (about 3 GB,
+  written to a scratch `<data_dir>`). Only aggregate results are in the
+  repository, so no Phase 4 metric can be recomputed from data without
+  regenerating everything.
+- **Extra dependency:** `jsbsim==1.3.2`, needed only for the JSBSim stages; it
+  is not in `requirements-pinned.txt`.
+- **Environment:** the report states CPython 3.13; the package versions used for
+  the run, the bootstrap replicate count (`P4_SMOKE_B` can override the default
+  1000) and dataset checksums were not recorded. The experiment code (`phase4/`,
+  the Phase 4 scripts, and the `ml/`, `aeroguard/`, `aeroguard_dataset/` and
+  Items 37–39 modules it imports) is unchanged since the results commit
+  (`edf768c`).
+- **Not verified:** that a regeneration reproduces the stored results, or that
+  the JSBSim stage is deterministic. No Phase 4 result has been reproduced or
+  independently replicated.
+
 ## Testing
 
 ```bash
@@ -330,7 +360,9 @@ Expected result depends on the data available:
 - **Clean checkout (no regenerated data):** 190 collected; run unfiltered this
   gives 155 passed, 24 skipped, 2 failed, 9 errors. CI deselects the 11
   data-dependent tests and gives 155 passed, 24 skipped, 11 deselected; with
-  the 36 audit tests added, 191 passed, 24 skipped, 11 deselected.
+  the 36 audit tests added, 191 passed, 24 skipped, 11 deselected. With the
+  tests added since: 327 passed, 24 skipped, 11 deselected (local run,
+  2026-10-24; between `30e7732` and the PDF-manifest fix, 326 passed, 1 failed).
 - **After regenerating the data and caches (levels 2–3):** 190 passed, as
   measured in the scratch copy above.
 
