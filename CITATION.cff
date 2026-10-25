@@ -8,6 +8,8 @@ authors:
 repository-code: "https://github.com/hanusharan/AeroGuard"
 url: "https://hanusharan.github.io/AeroGuard/"
 license: MIT
+version: "1.1.0"
+date-released: "2026-10-25"
 preferred-citation:
   type: article
   title: "Physics-Informed Machine Learning for Multi-Second Aircraft Stall Early Warning and Cross-Mechanism Generalization"

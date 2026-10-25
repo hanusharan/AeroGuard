@@ -3,8 +3,7 @@
 Notable changes to the AeroGuard repository, newest first. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-The first release is prepared as **v1.1.0** but has not been tagged or published:
-no Git tag and no GitHub release exists (checked 2026-10-24). Earlier entries are grouped by commit
+The first tagged release is **v1.1.0** (2026-10-25). Earlier entries are grouped by commit
 date taken from Git history; the version labels used for them are
 the ones the repository itself uses ("v1.0" for the frozen research packaging,
 and v0.1–v0.3 for the datasets). The v0.1–v0.3 research was done before the
@@ -16,9 +15,9 @@ build notes in [`paper/CHANGELOG.md`](paper/CHANGELOG.md).
 
 ## [Unreleased]
 
-## [1.1.0] — not yet released (prepared 2026-10-24)
+## [1.1.0] — 2026-10-25
 
-Prepared as the first tagged release; the tag has not been created. It preserves the v1.0 research record (Zenodo DOI
+First tagged release. It preserves the v1.0 research record (Zenodo DOI
 10.5281/zenodo.22724022) and adds the integrity, reproduction and evaluation
 work listed in the dated entries below. No v1.0 result was changed.
 
@@ -38,9 +37,8 @@ work listed in the dated entries below. No v1.0 result was changed.
   validation" limitation; the causal-claim sentence qualified to the
   simulator; desktop navigation moved to 1280 px and wider, because between
   1024 and about 1074 px it clipped the "Key Result" button.
-- **CITATION.cff:** version 1.1.0 and release date were added in `30e7732`, then
-  removed again in the Phase A audit because no release exists yet; they are to be
-  added when the tag is created.
+- **CITATION.cff:** version 1.1.0 and release date 2026-10-25, set in the release
+  commit (they had been removed during the Phase A audit until a release existed).
 - **Excluded from this release (author decision):** the Item 50 final report,
   which is not in the repository, and the author's contribution statement:
   `AUTHOR_STATEMENT.md` remains an unfinished template, not linked from the README.
