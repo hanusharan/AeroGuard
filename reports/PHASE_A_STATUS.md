@@ -35,8 +35,8 @@ These agree with the stored outputs (parity 176/176), and the metric code is ver
 Yes, with the wording now in the README and on the website: simulation only, one author and code base, intervals that describe flights within the tested configurations, JSBSim as transfer to one second simulator model, the lead-time question open, and the scope of PR-AUC and the event population stated.
 
 **What MUST be done before release?**
-1. ~~Fix the red CI.~~ **Resolved, uncommitted.** The baseline PDF was recovered from Git into `paper/archive/`; `baselines/paper_pdf_v1.1.0.sha256` records both PDFs; the test verifies all 79 historical digests plus the current PDF. Local CI selection: 327 passed, 24 skipped, 11 deselected. GitHub CI has not yet run on it.
-2. Commit the reviewed documentation changes (full report §6).
+1. ~~Fix the red CI.~~ **Resolved** in commit `be0716b`. The baseline PDF was recovered from Git into `paper/archive/`; `baselines/paper_pdf_v1.1.0.sha256` records both PDFs; the test verifies all 79 historical digests plus the current PDF. GitHub Actions Tests run #12 succeeded on `be0716b`.
+2. ~~Commit the reviewed documentation changes.~~ **Done** in `be0716b` (branch `claude/gallant-babbage-m4l0wa`; not yet merged to `main`).
 3. In the release phase: create the v1.1.0 tag, then restore `version` and `date-released` in `CITATION.cff`. The docs no longer claim a tag exists.
 
 **What can safely be deferred?**
