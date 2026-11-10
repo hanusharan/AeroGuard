@@ -89,7 +89,10 @@ def apply_sensor_model(time_s, truth, config: SensorConfig) -> ObservedSignal:
 
     # Protect exact-grid comparisons from subtraction roundoff (e.g.
     # 0.3 - 0.2 evaluating to 0.09999999999999998 instead of 0.1).
-    time_tolerance = max(1e-12, 8.0 * np.finfo(float).eps * max(1.0, float(np.max(np.abs(t)))))
+    time_tolerance = min(
+        0.01 * config.sample_period_s,
+        8.0 * np.finfo(float).eps * max(1.0, float(np.max(np.abs(t)))),
+    )
     visible_sample = np.searchsorted(
         scheduled_times, t - config.latency_s + time_tolerance, side="right"
     ) - 1
