@@ -23,18 +23,26 @@ jobs:
           python-version: "3.12"
       - name: Install NumPy
         run: python -m pip install --disable-pip-version-check "numpy==2.2.6"
-      - name: Validate CSV and run non-fitting comparison
+      - name: Validate CSV structure and series
         run: |
           python - <<'PY'
           import csv
           from pathlib import Path
           path = Path("experiments/physical_validation/data/nasa_cr197497_figure6a_digitized_approx.csv")
           with path.open(newline="") as f:
-              rows = list(csv.DictReader(f))
-          assert len(rows) == 48, len(rows)
+              reader = csv.DictReader(f)
+              rows = list(reader)
           expected = {"WSU_clean", "WSU_grit", "Ref9_clean", "NACA_grit_Ref9"}
+          assert len(rows) == 48, len(rows)
+          assert set(reader.fieldnames) == {
+              "series", "source_condition", "reynolds_number", "mach", "alpha_deg",
+              "cl_section", "digitization_status", "estimated_uncertainty_alpha_deg",
+              "estimated_uncertainty_cl", "notes"
+          }
           assert {r["series"] for r in rows} == expected
-          assert all(len(r) == 10 and r["digitization_status"] == "approx_digitized_from_scan" for r in rows)
-          print(f"PASS: {len(rows)} provisional points, 4 conditions, 10 columns each.")
+          assert all(r["digitization_status"] == "approx_digitized_from_scan" for r in rows)
+          assert all(all(r[k].strip() for k in ("alpha_deg", "cl_section", "reynolds_number")) for r in rows)
+          print(f"PASS: {len(rows)} provisional points, four isolated conditions, valid CSV schema.")
           PY
-          python experiments/physical_validation/compare_nasa2412_figure6a.py
+      - name: Run non-fitting comparison
+        run: python experiments/physical_validation/compare_nasa2412_figure6a.py
