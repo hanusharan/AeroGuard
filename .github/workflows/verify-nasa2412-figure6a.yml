@@ -46,15 +46,27 @@ jobs:
           PY
       - name: Run non-fitting comparison
         run: python experiments/physical_validation/compare_nasa2412_figure6a.py
-      - name: Verify and archive deterministic comparison output
+      - name: Verify comparison values against archived reference
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          produced = json.loads(Path("experiments/physical_validation/data/nasa_cr197497_figure6a_preliminary_comparison.json").read_text())
+          data = Path("experiments/physical_validation/data")
+          produced = json.loads((data / "nasa_cr197497_figure6a_preliminary_comparison.json").read_text())
+          reference = json.loads((data / "nasa_cr197497_figure6a_reference_summary.json").read_text())
+          assert produced["source"] == reference["source"]
+          assert produced["fitting"] == "None. The model was not fitted or calibrated to these data."
           assert set(produced["series"]) == {"WSU_clean", "WSU_grit", "Ref9_clean", "NACA_grit_Ref9"}
-          assert sum(x["n_points"] for x in produced["series"].values()) == 48
-          assert all(x["evidence_status"] == "approx_visual_only_not_authoritative" for x in produced["series"].values())
-          print("PASS: comparison output includes all four provisional series and 48 points.")
+          assert sum(s["n_points"] for s in produced["series"].values()) == 48
+          assert produced["series"].keys() == reference["series"].keys()
+          for name, series in produced["series"].items():
+              baseline = reference["series"][name]
+              assert series["n_points"] == baseline["n_points"], name
+              assert series["reynolds_number"] == baseline["reynolds_number"], name
+              for metric in ("visual_digitized_peak_cl", "visual_digitized_peak_alpha_deg",
+                             "default_aeroguard_cl_at_digitized_peak_alpha",
+                             "indicative_mae_cl", "indicative_rmse_cl"):
+                  assert abs(series[metric] - baseline[metric]) < 1e-10, (name, metric)
+              assert series["evidence_status"] == "approx_visual_only_not_authoritative"
+          print("PASS: all four provisional curves and 48 points reproduce the archived comparison summary.")
           PY
-          git diff --exit-code -- experiments/physical_validation/data/nasa_cr197497_figure6a_preliminary_comparison.json
