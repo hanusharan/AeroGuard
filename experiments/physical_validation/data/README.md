@@ -21,3 +21,7 @@ This CSV is an approximate visual digitization from the scanned Figure 6(a), not
 The Reference 9 curves appear in this NASA report as comparison data only; their underlying source has not yet been independently retrieved. Treat them as secondary-in-report visual comparisons rather than fully provenance-verified primary observations.
 
 The plot page used was report page 21 (PDF zero-index page 24). The graph was visually read using the plotted axis grid and symbol traces. A reproducible, independent digitization pass (e.g. WebPlotDigitizer by a second operator) is still required.
+
+## Preliminary comparison
+
+`../compare_nasa2412_figure6a.py` compares the unmodified generic AeroGuard default lift law with each provisional curve independently. It performs no fitting. The output is a diagnostic only and is not evidence of a validated airfoil model. The comparison must be rerun after the second independent digitization and after the original Reference 9 document is retrieved.
