@@ -17,13 +17,18 @@ The current AeroGuard default is a generic, assumed aircraft model. It has no na
 
 ### Primary source A — NACA 2412 at moderate Reynolds number
 
-Seetharam, H. C., Rodgers, E. J., and Wentz, W. H. (1997), *Experimental Studies of Flow Separation of the NACA 2412 Airfoil at Low Speeds*, NASA-CR-197497 / AR77-3.
+Seetharam, H. C., Rodgers, E. J., and Wentz, W. H. (1977), *Experimental Studies of Flow Separation of the NACA 2412 Airfoil at Low Speeds*, NASA-CR-197497 / AR77-3.
 
 - NASA NTRS record: https://ntrs.nasa.gov/citations/19950002355
 - Public report PDF: https://ntrs.nasa.gov/api/citations/19950002355/downloads/19950002355.pdf
-- Reported conditions: NACA 2412 section, Reynolds number 2.2 × 10^6, Mach 0.13.
-- The report describes wind-tunnel force, pressure, tuft, hot-film, skin-friction and boundary-layer measurements, with detailed flow-field surveys at 12.4°, 14.4° and 16.4°.
-- Use the force-balance lift data and the documented near-stall/separation evidence. Verify the full tested angle range, model chord, surface condition, tunnel corrections and uncertainty from the report itself before extracting values.
+- Test section: NACA 2412, 61 cm (24 in) chord, 91.4 cm (36 in) span, in a two-dimensional insert.
+- Reported conditions: Reynolds number 2.2 × 10^6 based on chord; Mach 0.13.
+- Transition was tripped using 2.5 mm (0.1 in) wide #80 carborundum grit strips at 0.05c on both surfaces.
+- Figure 6 reports force-balance lift, drag and pitching moment over approximately −4° to +18°. The detailed flow-field surveys focus on 12.4°, 14.4° and 16.4°.
+- The report compares its force data with NACA data at Reynolds numbers 3.1 × 10^6 and 5.7 × 10^6. It explicitly notes a 0.15 difference in maximum lift coefficient between the clean WSU 2.2 × 10^6 and NACA 3.1 × 10^6 datasets, and says the reason was unknown. The grit conditions also differ.
+- This documented discrepancy is a reason to preserve each surface condition and Reynolds-number series separately, not to pool or average them.
+
+Use Figure 6's force-balance lift curve as the main section-level benchmark, and use the tuft/separation observations and Table 2 as independent qualitative evidence of separation progression. Recover the actual plotted values and all figure legend details before fitting or comparing.
 
 ### Primary source B — NACA 2412 section polar at higher Reynolds numbers
 
