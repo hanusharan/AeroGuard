@@ -44,6 +44,8 @@ jobs:
           assert all(all(r[k].strip() for k in ("alpha_deg", "cl_section", "reynolds_number")) for r in rows)
           print(f"PASS: {len(rows)} provisional points, four isolated conditions, valid CSV schema.")
           PY
+      - name: Run digitization integrity and canonical-model tests
+        run: python -m pytest -q tests/test_nasa2412_digitization_integrity.py
       - name: Run non-fitting comparison
         run: python experiments/physical_validation/compare_nasa2412_figure6a.py
       - name: Verify comparison values against archived reference
