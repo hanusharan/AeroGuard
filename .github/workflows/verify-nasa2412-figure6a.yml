@@ -46,3 +46,15 @@ jobs:
           PY
       - name: Run non-fitting comparison
         run: python experiments/physical_validation/compare_nasa2412_figure6a.py
+      - name: Verify and archive deterministic comparison output
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          produced = json.loads(Path("experiments/physical_validation/data/nasa_cr197497_figure6a_preliminary_comparison.json").read_text())
+          assert set(produced["series"]) == {"WSU_clean", "WSU_grit", "Ref9_clean", "NACA_grit_Ref9"}
+          assert sum(x["n_points"] for x in produced["series"].values()) == 48
+          assert all(x["evidence_status"] == "approx_visual_only_not_authoritative" for x in produced["series"].values())
+          print("PASS: comparison output includes all four provisional series and 48 points.")
+          PY
+          git diff --exit-code -- experiments/physical_validation/data/nasa_cr197497_figure6a_preliminary_comparison.json
