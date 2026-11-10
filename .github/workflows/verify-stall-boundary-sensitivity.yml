@@ -1,0 +1,58 @@
+name: Verify stall-boundary sensitivity analysis
+
+on:
+  push:
+    branches:
+      - analysis/stall-boundary-sensitivity-20261111
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check "numpy==2.2.6"
+      - name: Recompute sensitivity outputs
+        run: python scripts/analyze_stall_boundary_sensitivity.py
+      - name: Compare recomputed outputs with archived summaries
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          out = Path("outputs/stall_boundary_sensitivity_20261111")
+          actual = json.loads((out / "summary_recomputed.json").read_text())
+          archived_factorial = json.loads((out / "shape_parameter_factorial_summary.json").read_text())
+          archived_oat = list(csv.DictReader((out / "one_factor_at_a_time_summary.csv").open()))
+          assert len(archived_oat) == 5
+          assert abs(actual["baseline"]["alpha_peak_deg"] - 16.06907) < 5e-5
+          assert abs(actual["baseline"]["cl_max"] - 1.736234) < 5e-6
+          assert abs(actual["baseline"]["alpha_anchor_deg"] - 16.00271) < 5e-5
+          for row in archived_oat:
+              name = row["parameter"]
+              got = actual["oat"][name]
+              for key, archived_key in [
+                  ("peak_angle_min", "alpha_peak_deg_min"),
+                  ("peak_angle_max", "alpha_peak_deg_max"),
+                  ("cl_max_min", "cl_max_min"),
+                  ("cl_max_max", "cl_max_max"),
+              ]:
+                  assert abs(got[key] - float(row[archived_key])) < 5e-5, (name, key, got[key], row[archived_key])
+              assert got["monotonic_all"] == (row["all_monotone"].lower() == "true")
+          fac = actual["factorial"]
+          assert fac["n_cases"] == archived_factorial["n_cases"] == 343
+          for key in ["alpha_peak_deg_min", "alpha_peak_deg_max", "cl_max_min", "cl_max_max"]:
+              assert abs(fac[key] - archived_factorial[key]) < 5e-5, (key, fac[key], archived_factorial[key])
+          assert fac["monotonic_all"] is True
+          assert archived_factorial["monotonic_post_peak_all"] is True
+          print("PASS: recomputed baseline, all five OAT summaries and 343-case factorial match archived summaries.")
+          PY
