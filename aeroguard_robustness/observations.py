@@ -116,5 +116,6 @@ def causal_backward_difference(time_s, observed):
     out = np.full(x.shape, np.nan, dtype=float)
     valid = np.isfinite(x[1:]) & np.isfinite(x[:-1])
     differences = np.diff(x) / np.diff(t)
-    out[1:][valid] = differences[valid]
+    valid_rows = np.flatnonzero(valid) + 1
+    out[valid_rows] = differences[valid]
     return out
