@@ -17,7 +17,7 @@ The current AeroGuard default is a generic, assumed aircraft model. It has no na
 
 ### Primary source A — NACA 2412 at moderate Reynolds number
 
-Seetharam, H. C., Rodgers, E. J., and Wentz, W. H. (1977), *Experimental Studies of Flow Separation of the NACA 2412 Airfoil at Low Speeds*, NASA-CR-197497 / AR77-3.
+Seetharam, H. C., Rodgers, E. J., and Wentz, W. H. (1977; NASA NTRS catalogue record dated 1997), *Experimental Studies of Flow Separation of the NACA 2412 Airfoil at Low Speeds*, NASA-CR-197497 / AR77-3.
 
 - NASA NTRS record: https://ntrs.nasa.gov/citations/19950002355
 - Public report PDF: https://ntrs.nasa.gov/api/citations/19950002355/downloads/19950002355.pdf
@@ -28,7 +28,7 @@ Seetharam, H. C., Rodgers, E. J., and Wentz, W. H. (1977), *Experimental Studies
 - The report compares its force data with NACA data at Reynolds numbers 3.1 × 10^6 and 5.7 × 10^6. It explicitly notes a 0.15 difference in maximum lift coefficient between the clean WSU 2.2 × 10^6 and NACA 3.1 × 10^6 datasets, and says the reason was unknown. The grit conditions also differ.
 - This documented discrepancy is a reason to preserve each surface condition and Reynolds-number series separately, not to pool or average them.
 
-Use Figure 6's force-balance lift curve as the main section-level benchmark, and use the tuft/separation observations and Table 2 as independent qualitative evidence of separation progression. Recover the actual plotted values and all figure legend details before fitting or comparing.
+Use Figure 6's force-balance lift curve as the main section-level benchmark, and use the tuft/separation observations and Table 2 as independent evidence of separation progression. The report labels 14.4° as the stall condition; observed separation moves from 0.925c at 12.4° to 0.80c at 14.4° and 0.40c at 16.4°. It also reports flow reversal in the aft region at 14.4° and increasingly asymmetric post-stall flow. These are section-specific observations, not a universal aircraft stall angle. Recover the actual plotted values and all figure legend details before fitting or comparing.
 
 ### Primary source B — NACA 2412 section polar at higher Reynolds numbers
 
