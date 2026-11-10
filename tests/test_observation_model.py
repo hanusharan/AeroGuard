@@ -78,3 +78,14 @@ def test_rejects_noncausal_or_invalid_sensor_configuration():
         apply_sensor_model(t, truth, SensorConfig(sample_period_s=0.1, latency_s=-0.1))
     with pytest.raises(ValueError, match="largest simulation time step"):
         apply_sensor_model(t, truth, SensorConfig(sample_period_s=0.05))
+
+
+def test_between_step_acquisition_uses_previous_not_future_truth():
+    t = np.array([0.0, 0.1, 0.2, 0.3])
+    truth = np.array([0.0, 1.0, 2.0, 3.0])
+    observed = apply_sensor_model(
+        t, truth, SensorConfig(sample_period_s=0.15, latency_s=0.0)
+    )
+    # The acquisition scheduled at 0.15 s sees the 0.10 s truth sample.
+    assert observed.value[2] == pytest.approx(1.0)
+    assert observed.value[2] != pytest.approx(2.0)
