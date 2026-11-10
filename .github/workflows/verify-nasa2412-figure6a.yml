@@ -31,7 +31,7 @@ jobs:
           path = Path("experiments/physical_validation/data/nasa_cr197497_figure6a_digitized_approx.csv")
           with path.open(newline="") as f:
               rows = list(csv.DictReader(f))
-          assert len(rows) == 47, len(rows)
+          assert len(rows) == 48, len(rows)
           expected = {"WSU_clean", "WSU_grit", "Ref9_clean", "NACA_grit_Ref9"}
           assert {r["series"] for r in rows} == expected
           assert all(len(r) == 10 and r["digitization_status"] == "approx_digitized_from_scan" for r in rows)
