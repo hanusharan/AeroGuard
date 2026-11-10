@@ -87,8 +87,11 @@ def apply_sensor_model(time_s, truth, config: SensorConfig) -> ObservedSignal:
     )
     dropped = rng.random(count) < config.dropout_probability
 
+    # Protect exact-grid comparisons from subtraction roundoff (e.g.
+    # 0.3 - 0.2 evaluating to 0.09999999999999998 instead of 0.1).
+    time_tolerance = max(1e-12, 8.0 * np.finfo(float).eps * max(1.0, float(np.max(np.abs(t)))))
     visible_sample = np.searchsorted(
-        scheduled_times, t - config.latency_s, side="right"
+        scheduled_times, t - config.latency_s + time_tolerance, side="right"
     ) - 1
     output = np.full(t.shape, np.nan, dtype=float)
     has_visible_sample = visible_sample >= 0
