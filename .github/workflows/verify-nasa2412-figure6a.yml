@@ -1,0 +1,74 @@
+name: Verify provisional NASA NACA 2412 comparison
+
+on:
+  push:
+    branches:
+      - research/nasa2412-figure6-digitization-20261111
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install NumPy
+        run: python -m pip install --disable-pip-version-check "numpy==2.2.6" "pytest==9.1.1"
+      - name: Validate CSV structure and series
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          path = Path("experiments/physical_validation/data/nasa_cr197497_figure6a_digitized_approx.csv")
+          with path.open(newline="") as f:
+              reader = csv.DictReader(f)
+              rows = list(reader)
+          expected = {"WSU_clean", "WSU_grit", "Ref9_clean", "NACA_grit_Ref9"}
+          assert len(rows) == 48, len(rows)
+          assert set(reader.fieldnames) == {
+              "series", "source_condition", "reynolds_number", "mach", "alpha_deg",
+              "cl_section", "digitization_status", "estimated_uncertainty_alpha_deg",
+              "estimated_uncertainty_cl", "notes"
+          }
+          assert {r["series"] for r in rows} == expected
+          assert all(r["digitization_status"] == "approx_digitized_from_scan" for r in rows)
+          assert all(all(r[k].strip() for k in ("alpha_deg", "cl_section", "reynolds_number")) for r in rows)
+          print(f"PASS: {len(rows)} provisional points, four isolated conditions, valid CSV schema.")
+          PY
+      - name: Run digitization integrity and canonical-model tests
+        run: python -m pytest -q tests/test_nasa2412_digitization_integrity.py
+      - name: Run non-fitting comparison
+        run: python experiments/physical_validation/compare_nasa2412_figure6a.py
+      - name: Verify comparison values against archived reference
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = Path("experiments/physical_validation/data")
+          produced = json.loads((data / "nasa_cr197497_figure6a_preliminary_comparison.json").read_text())
+          reference = json.loads((data / "nasa_cr197497_figure6a_reference_summary.json").read_text())
+          assert produced["source"] == reference["source"]
+          assert produced["fitting"] == "None. The model was not fitted or calibrated to these data."
+          assert set(produced["series"]) == {"WSU_clean", "WSU_grit", "Ref9_clean", "NACA_grit_Ref9"}
+          assert sum(s["n_points"] for s in produced["series"].values()) == 48
+          assert produced["series"].keys() == reference["series"].keys()
+          for name, series in produced["series"].items():
+              baseline = reference["series"][name]
+              assert series["n_points"] == baseline["n_points"], name
+              assert series["reynolds_number"] == baseline["reynolds_number"], name
+              for metric in ("visual_digitized_peak_cl", "visual_digitized_peak_alpha_deg",
+                             "default_aeroguard_cl_at_digitized_peak_alpha",
+                             "indicative_mae_cl", "indicative_rmse_cl"):
+                  assert abs(series[metric] - baseline[metric]) < 1e-10, (name, metric)
+              assert series["evidence_status"] == "approx_visual_only_not_authoritative"
+          print("PASS: all four provisional curves and 48 points reproduce the archived comparison summary.")
+          PY

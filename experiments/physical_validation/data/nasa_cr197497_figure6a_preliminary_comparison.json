@@ -1,0 +1,58 @@
+{
+  "source": "Seetharam, Rodgers & Wentz, NASA-CR-197497 / AR77-3, Figure 6(a), report page 21",
+  "source_url": "https://ntrs.nasa.gov/api/citations/19950002355/downloads/19950002355.pdf",
+  "digitization": "Approximate hand-read estimates from scanned curves; not raw wind-tunnel points and not an author-provided numerical table. Second independent digitization pending.",
+  "model": "Unmodified AeroGuard generic default lift law: CL0=0.2, CL_alpha=5.5 rad^-1, alpha_stall=0.2793 rad, blend rate=25, post-stall decay=3 rad^-1.",
+  "fitting": "None. The model was not fitted or calibrated to these data.",
+  "interpretation": "Exploratory model-form diagnostic only. Generic AeroGuard aircraft parameters are not identified as a NACA 2412 finite wing. Section/aircraft equivalence is not established.",
+  "series": {
+    "NACA_grit_Ref9": {
+      "n_points": 10,
+      "reynolds_number": 5700000,
+      "alpha_min_deg": -4,
+      "alpha_max_deg": 14,
+      "visual_digitized_peak_cl": 1.25,
+      "visual_digitized_peak_alpha_deg": 12,
+      "default_aeroguard_cl_at_digitized_peak_alpha": 1.4089727302990713,
+      "indicative_mae_cl": 0.12152577288479516,
+      "indicative_rmse_cl": 0.27166593433140596,
+      "evidence_status": "approx_visual_only_not_authoritative"
+    },
+    "Ref9_clean": {
+      "n_points": 12,
+      "reynolds_number": 3100000,
+      "alpha_min_deg": -4,
+      "alpha_max_deg": 18,
+      "visual_digitized_peak_cl": 1.58,
+      "visual_digitized_peak_alpha_deg": 16,
+      "default_aeroguard_cl_at_digitized_peak_alpha": 1.7360197940189164,
+      "indicative_mae_cl": 0.08370712928957524,
+      "indicative_rmse_cl": 0.14052271905799799,
+      "evidence_status": "approx_visual_only_not_authoritative"
+    },
+    "WSU_clean": {
+      "n_points": 13,
+      "reynolds_number": 2200000,
+      "alpha_min_deg": -4,
+      "alpha_max_deg": 18,
+      "visual_digitized_peak_cl": 1.42,
+      "visual_digitized_peak_alpha_deg": 14,
+      "default_aeroguard_cl_at_digitized_peak_alpha": 1.600511610019209,
+      "indicative_mae_cl": 0.12535066455753252,
+      "indicative_rmse_cl": 0.2174320171538592,
+      "evidence_status": "approx_visual_only_not_authoritative"
+    },
+    "WSU_grit": {
+      "n_points": 13,
+      "reynolds_number": 2200000,
+      "alpha_min_deg": -4,
+      "alpha_max_deg": 18,
+      "visual_digitized_peak_cl": 1.4,
+      "visual_digitized_peak_alpha_deg": 14,
+      "default_aeroguard_cl_at_digitized_peak_alpha": 1.600511610019209,
+      "indicative_mae_cl": 0.14219571812705212,
+      "indicative_rmse_cl": 0.23491197342351533,
+      "evidence_status": "approx_visual_only_not_authoritative"
+    }
+  }
+}
