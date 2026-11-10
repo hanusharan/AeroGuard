@@ -1,31 +1,32 @@
 """Exploratory non-fitting comparison with provisional NASA NACA 2412 curves.
 
 The digitized data are approximate hand-read points from a scanned graph, not
-author-supplied numerical observations. Use this for diagnostics only.
+author-supplied numerical observations. Use this for diagnostics only. The
+prediction path deliberately calls AeroGuard's canonical lift implementation
+so this comparison cannot silently drift from the simulator equation.
 """
 import csv
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+
+from aeroguard.aircraft import Aircraft
+from aeroguard.aerodynamics import lift_coefficient
+
 DATA = ROOT / "experiments/physical_validation/data/nasa_cr197497_figure6a_digitized_approx.csv"
 OUT = ROOT / "experiments/physical_validation/data/nasa_cr197497_figure6a_preliminary_comparison.json"
+DEFAULT_AIRCRAFT = Aircraft()
 
 
 def aero_guard_cl(alpha_deg):
-    """Current AeroGuard default lift equation, with no parameters fitted."""
+    """Canonical AeroGuard default lift equation; no parameters are fitted."""
     alpha = np.radians(np.asarray(alpha_deg, dtype=float))
-    alpha_stall, rate, decay = 0.2793, 25.0, 3.0
-    cl0, cl_alpha = 0.2, 5.5
-    numerator = 1.0 + np.exp(-rate * (alpha - alpha_stall)) + np.exp(rate * (alpha + alpha_stall))
-    denominator = (1.0 + np.exp(-rate * (alpha - alpha_stall))) * (1.0 + np.exp(rate * (alpha + alpha_stall)))
-    sigma = numerator / denominator
-    cl_linear = cl0 + cl_alpha * alpha
-    cl_anchor = cl0 + cl_alpha * alpha_stall
-    cl_post = np.sign(alpha) * cl_anchor * np.exp(-decay * np.maximum(np.abs(alpha) - alpha_stall, 0.0))
-    return (1.0 - sigma) * cl_linear + sigma * cl_post
+    return np.asarray(lift_coefficient(alpha, DEFAULT_AIRCRAFT), dtype=float)
 
 
 with DATA.open(newline="") as handle:
@@ -60,7 +61,7 @@ summary = {
     "source": "Seetharam, Rodgers & Wentz, NASA-CR-197497 / AR77-3, Figure 6(a), report page 21",
     "source_url": "https://ntrs.nasa.gov/api/citations/19950002355/downloads/19950002355.pdf",
     "digitization": "Approximate hand-read estimates from scanned curves; not raw wind-tunnel points and not an author-provided numerical table. Second independent digitization pending.",
-    "model": "Unmodified AeroGuard generic default lift law: CL0=0.2, CL_alpha=5.5 rad^-1, alpha_stall=0.2793 rad, blend rate=25, post-stall decay=3 rad^-1.",
+    "model": "Unmodified canonical AeroGuard generic default lift law via aeroguard.aerodynamics.lift_coefficient; Aircraft() defaults; no fitting.",
     "fitting": "None. The model was not fitted or calibrated to these data.",
     "interpretation": "Exploratory model-form diagnostic only. Generic AeroGuard aircraft parameters are not identified as a NACA 2412 finite wing. Section/aircraft equivalence is not established.",
     "series": results,
