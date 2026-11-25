@@ -1,0 +1,47 @@
+"""Regression checks for the offline evidence audit; no generated data needed."""
+import importlib.util
+from pathlib import Path
+
+import pytest
+
+ROOT = Path(__file__).resolve().parents[1]
+SPEC = importlib.util.spec_from_file_location(
+    "evidence_audit", ROOT / "experiments/evidence_audit/audit.py")
+audit = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(audit)
+
+
+def test_identification_bounds():
+    result = audit.bounds(67, 57, 54)
+    assert result["unknown_first_crossings"] == 10
+    assert result["conditional_recall"] == pytest.approx(54 / 57)
+    assert result["lower_bound"] == pytest.approx(54 / 67)
+    assert result["upper_bound"] == pytest.approx(64 / 67)
+    assert audit.bounds(0, 0, 0)["lower_bound"] is None
+    assert audit.bounds(4, 0, 0)["upper_bound"] == 1
+    with pytest.raises(ValueError):
+        audit.bounds(4, 2, 3)
+
+
+def test_frozen_metadata_reconciliation():
+    result = audit.audit(ROOT)
+    groups = result["groups"]
+    assert sum(g["trajectories"] for g in groups.values()) == 3150
+    assert sum(g["rows"] for g in groups.values()) == 5340865
+    assert sum(g["usable_rows"] for k, g in groups.items()
+               if k.startswith("test/")) == 538034
+    assert groups["test/stall"]["excluded_end"] == 8
+    assert groups["test/gradual_approach_v3"]["excluded_end"] == 2
+    b = result["test_first_event_identification_bounds"]
+    assert b["all"]["warned_evaluated_first_crossings"] == 54
+    assert b["stall"]["evaluated_first_crossings"] == 17
+    assert b["gradual_approach_v3"]["evaluated_first_crossings"] == 40
+
+
+def test_frozen_input_mutation_rejected(tmp_path):
+    path = next(iter(audit.INPUTS))
+    target = tmp_path / path
+    target.parent.mkdir(parents=True)
+    target.write_bytes(b"modified")
+    with pytest.raises(ValueError, match="Frozen input mismatch"):
+        audit.read_verified(tmp_path, path)
