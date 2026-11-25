@@ -28,4 +28,4 @@ This reproduces the secondary metadata analysis only. For the broader research, 
 
 ## Review status
 
-The initial supplemental audit was verified by [GitHub Actions](https://github.com/hanusharan/AeroGuard/actions/runs/45532041894). Updated code has a separate test result. No independent reviewer has signed off. This index and supplemental audit were AI-assisted for author review.
+The initial supplemental audit was verified by [GitHub Actions](https://github.com/hanusharan/AeroGuard/actions/runs/45532041894). The expanded four-test audit also passed [GitHub Actions run 45532652474](https://github.com/hanusharan/AeroGuard/actions/runs/45532652474): 331 passed, 24 skipped, 11 deselected. No independent reviewer has signed off. This index and supplemental audit were AI-assisted for author review.

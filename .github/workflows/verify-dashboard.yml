@@ -1,0 +1,33 @@
+name: Verify dashboard evidence
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: dashboard/package-lock.json
+      - name: Install locked dependencies
+        working-directory: dashboard
+        run: npm ci
+      - name: Verify displayed research metrics against archived outputs
+        working-directory: dashboard
+        run: node parity/check_metrics.mjs
+      - name: Verify browser simulator against committed reference fixture
+        working-directory: dashboard
+        run: node parity/check.mjs
+      - name: Build dashboard
+        working-directory: dashboard
+        run: npm run build

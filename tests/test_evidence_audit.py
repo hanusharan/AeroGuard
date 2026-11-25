@@ -57,3 +57,20 @@ def test_first_event_coverage_reconciles_archived_leads():
     assert overall["coverage_at_least_4s"]["upper_bound"] == pytest.approx(35 / 67)
     assert coverage["stall"]["coverage_at_least_2s"]["conditional_recall"] == 0
     assert coverage["stall"]["median_credited_lead_warned_s"] == pytest.approx(0.66)
+
+
+@pytest.mark.parametrize("source,mirror", [
+    ("README.md", "dashboard/public/docs/AEROGUARD_README.md"),
+    ("PROVENANCE.md", "dashboard/public/docs/PROVENANCE.md"),
+    ("outputs/final/AEROGUARD_FINAL_RESEARCH_REPORT.md",
+     "dashboard/public/docs/AEROGUARD_FINAL_RESEARCH_REPORT.md"),
+    ("paper/AeroGuard_Research_Paper.pdf",
+     "dashboard/public/paper/AeroGuard_Research_Paper.pdf"),
+    ("paper/AeroGuard_Research_Paper.html",
+     "dashboard/public/paper/AeroGuard_Research_Paper.html"),
+    *[(f"paper/figures/{name}", f"dashboard/public/paper/figures/{name}")
+      for name in ("fig1_pipeline.png", "fig2_precursor.png",
+                   "fig3_temporal_ml.png", "fig4_generalization.png")],
+])
+def test_public_research_artifact_mirrors(source, mirror):
+    assert (ROOT / source).read_bytes() == (ROOT / mirror).read_bytes()

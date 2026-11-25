@@ -28,6 +28,7 @@ result here should be read as a claim about real-aircraft behavior or safety.
 **Project status:** [`outputs/final/FINAL_STATUS.md`](outputs/final/FINAL_STATUS.md)
 **File provenance (canonical vs. historical vs. rejected-candidate):** [`PROVENANCE.md`](PROVENANCE.md)
 **Exact reproduction commands:** [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md)
+**Reviewer evidence map and supplemental audit:** [reviewer index](https://github.com/hanusharan/AeroGuard/blob/main/experiments/evidence_audit/REVIEWER_INDEX.md)
 
 ## Research question
 
@@ -43,7 +44,7 @@ a memorized fingerprint of one specific control-input shape?
 ## Key result
 
 Slowing and re-timing the elevator control profile — without touching the
-validated aircraft physics or stall boundary — produced a dataset (v0.3) with a
+existing simulated dynamics or model-defined stall boundary — produced a dataset (v0.3) with a
 median 4.38s physical precursor (vs. v0.2's 0.54s). A temporal ML model trained
 on it achieved **96.1% event recall** (73 of 76 evaluated events) **at a median
 4.72s lead time among the warned events** (vs. v0.2's 100% recall at 0.53s; the
@@ -73,9 +74,8 @@ ml/                      baseline (instantaneous) + temporal (windowed
                          state+derivative) ML pipelines: RandomForest,
                          logistic regression, rule-based baselines.
 scripts/                 one script per pipeline stage.
-tests/                   226 tests (the original 190 plus 36 research-audit
-                         tests) covering physics, dataset generation, ML
-                         pipelines, leakage/integrity guards and audit checks.
+tests/                   physics, dataset generation, ML pipelines,
+                         leakage/integrity guards and reproducibility checks.
 data/                    versioned trajectory datasets (v1/v2/v3) — large
                          binary files excluded from git, regenerable (see
                          REPRODUCIBILITY.md).
@@ -152,6 +152,12 @@ crossing in the test split (definitions in `ml/events.py`; counts from
   horizon, and any warning that starts before the crossing and is active within
   the 5s window counts, with no minimum duration. Warning coverage ≥τ is measured
   over all 76 evaluated events.
+- **First crossings alone.** The archived first-event outcomes give 54/57 warned
+  (94.7%), with a median credited lead of 3.15 s among those warned. Of all 67
+  first crossings in test metadata, 10 were outside the evaluated population.
+  The [supplemental audit](https://github.com/hanusharan/AeroGuard/blob/main/experiments/evidence_audit/README.md)
+  reconciles these counts, warning coverage and logical bounds without treating
+  excluded crossings as observed outcomes. The published pooled results are unchanged.
 
 ## Generalization result
 
@@ -215,7 +221,7 @@ pip install -r requirements-pinned.txt
 pytest tests/ -v
 ```
 
-The test suite now collects 226 tests: the original 190-test suite plus 36
+An earlier test suite collected 226 tests: the original 190-test suite plus 36
 research-audit tests added after the v1.0 packaging
 (`tests/test_audit_labels_features_splits.py` and
 `tests/test_audit_event_metrics.py`). The "190/190" figure below refers only to
@@ -234,7 +240,7 @@ paper PDF (`test_all_79_baseline_hashes_pass` failed). That test now checks the
 PDF's historical digest against a copy recovered from Git and the current PDF
 against its own manifest (see [`baselines/README.md`](baselines/README.md)); the
 selection then gives 327 passed, 24 skipped, 11 deselected (local run, 2026-10-24).
-Passing tests do not by themselves reproduce any research result.
+The supplemental audit revision `52992f6` passed [CI on 2026-11-25](https://github.com/hanusharan/AeroGuard/actions/runs/45532652474): 331 passed, 24 skipped, 11 deselected. This is a dated result, not a guarantee about later revisions. Passing tests do not by themselves reproduce a full research experiment.
 
 ## Evaluation after v1.0 (baselines, uncertainty, generalisation)
 
