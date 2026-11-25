@@ -23,7 +23,7 @@ Eligibility is defined using the existing 100-row history requirement and 500-ro
 
 ## Results
 
-The following counts were calculated directly from the three tracked CSVs through an independent in-memory table join during creation of this addendum. The Python implementation is intended to reproduce them; execution status is recorded by CI, not assumed here.
+The following counts were calculated directly from the three tracked CSVs through an independent in-memory table join during creation of this addendum. The initial audit and all three initial regression tests passed [GitHub Actions run 45532041894](https://github.com/hanusharan/AeroGuard/actions/runs/45532041894) (330 passed, 24 skipped, 11 deselected). This is automated reproduction from archived metadata, not independent scientific validation.
 
 | Test regime | All first crossings | Eligible | Excluded | Warned among eligible | Excluded fraction |
 |---|---:|---:|---:|---:|---:|
@@ -53,3 +53,15 @@ The new artifact is a small, independently runnable selection-bias audit with a 
 - [Scientific audit](../../reports/PHASE_A_FINAL_AUDIT.md).
 - [REFORMS reporting guidance](https://pmc.ncbi.nlm.nih.gov/articles/PMC11092361/).
 - [NeurIPS paper checklist](https://neurips.cc/public/guides/PaperChecklist).
+
+## Additional first-event warning coverage
+
+A separate join of the archived first-crossing records gives the following counts. Conditional coverage uses all eligible first crossings, including misses; lead-time medians use warned first crossings only. Logical bounds use all metadata first crossings and allow unknown outcomes to vary, holding the recorded outcomes fixed.
+
+| Regime | Median credited lead among warned | Eligible coverage ≥2 s | Eligible coverage ≥4 s | Complete-population ≥2 s bounds | Complete-population ≥4 s bounds |
+|---|---:|---:|---:|---:|---:|
+| Gradual approach | 4.83 s | 30/40 | 25/40 | 30/42–32/42 | 25/42–27/42 |
+| Abrupt stall | 0.66 s | 0/17 | 0/17 | 0/25–8/25 | 0/25–8/25 |
+| All | 3.15 s | 30/57 | 25/57 | 30/67–40/67 | 25/67–35/67 |
+
+No evaluated abrupt first crossing had a credited warning at least two seconds in advance. The result describes this archived synthetic dataset only; it is not an operational safety assessment. The updated script and regression test are designed to verify these values on clean checkout. The generic bounds fields named `conditional_recall` and `warned_evaluated_first_crossings` represent conditional coverage and count meeting the specified lead-time criterion when nested under a coverage metric.

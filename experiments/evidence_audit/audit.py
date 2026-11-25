@@ -5,6 +5,8 @@ import argparse
 import csv
 import hashlib
 import json
+import math
+import statistics
 from collections import defaultdict
 from pathlib import Path
 
@@ -103,6 +105,7 @@ def audit(root=ROOT):
     if events.keys() != test_first.keys():
         raise ValueError("Archived first-crossing records do not match test metadata")
     counts = defaultdict(lambda: [0, 0, 0])
+    leads = defaultdict(list)
     for key, (regime, eligible) in test_first.items():
         row = events[key]
         if row["split"] != "test" or row["regime"] != regime:
@@ -112,16 +115,31 @@ def audit(root=ROOT):
         warned = boolean(row["ml_warned"])
         if warned and not eligible:
             raise ValueError("Warning credited to unavailable population")
+        if warned:
+            lead = float(row["ml_credited_lead_time_s"])
+            if not math.isfinite(lead) or not 0 <= lead <= 5.0 + 1e-9:
+                raise ValueError("Invalid archived warning lead")
         for name in (regime, "all"):
             c = counts[name]
             c[0] += 1
             c[1] += int(eligible)
             c[2] += int(warned and eligible)
+            if warned:
+                leads[name].append(lead)
+    coverage = {}
+    for name, (total, observed, warned) in sorted(counts.items()):
+        times = leads[name]
+        coverage[name] = {
+            "median_credited_lead_warned_s": statistics.median(times) if times else None,
+            "coverage_at_least_2s": bounds(total, observed, sum(t >= 2 for t in times)),
+            "coverage_at_least_4s": bounds(total, observed, sum(t >= 4 for t in times)),
+        }
     return {
         "source_commit": SOURCE_COMMIT,
         "inputs": hashes,
         "scope": "Frozen v0.3 metadata and archived first-crossing outcomes only",
         "groups": dict(sorted(groups.items())),
+        "first_event_coverage": coverage,
         "test_first_event_identification_bounds": {
             k: bounds(*v) for k, v in sorted(counts.items())
         },

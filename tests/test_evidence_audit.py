@@ -45,3 +45,15 @@ def test_frozen_input_mutation_rejected(tmp_path):
     target.write_bytes(b"modified")
     with pytest.raises(ValueError, match="Frozen input mismatch"):
         audit.read_verified(tmp_path, path)
+
+
+def test_first_event_coverage_reconciles_archived_leads():
+    coverage = audit.audit(ROOT)["first_event_coverage"]
+    overall = coverage["all"]
+    assert overall["median_credited_lead_warned_s"] == pytest.approx(3.15)
+    assert overall["coverage_at_least_2s"]["warned_evaluated_first_crossings"] == 30
+    assert overall["coverage_at_least_4s"]["warned_evaluated_first_crossings"] == 25
+    assert overall["coverage_at_least_2s"]["lower_bound"] == pytest.approx(30 / 67)
+    assert overall["coverage_at_least_4s"]["upper_bound"] == pytest.approx(35 / 67)
+    assert coverage["stall"]["coverage_at_least_2s"]["conditional_recall"] == 0
+    assert coverage["stall"]["median_credited_lead_warned_s"] == pytest.approx(0.66)
